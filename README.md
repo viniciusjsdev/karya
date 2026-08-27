@@ -1,8 +1,10 @@
 # App Factory Skills
 
-> A composable skill system for building, researching, launching, and scaling projects with Codex.
+> **From idea to production with AI — structured Codex skills for building, researching, launching, and operating projects.**
 
-App Factory Skills turns rough ideas and existing repositories into explicit, durable AI workflows.
+App Factory Skills is an open-source collection of Codex skills for structuring how AI works across the lifecycle of a project—from product definition and implementation to research, launch, and long-term AI-assisted development.
+
+Each skill is a small, self-contained package centered on a `SKILL.md`, optionally backed by references, deterministic scripts, schemas, and assets.
 
 Instead of letting an agent guess its way through a project, the Factory uses:
 
@@ -62,6 +64,8 @@ Install the skills using the [Windows](#windows--powershell) or [Linux/macOS](#l
 
 ```txt
 Use $project-harness-architect to audit this repository and prepare the minimum durable AI operating harness.
+
+Use $project-spec-architect to turn the next bounded change into a READY Spec with explicit model, reasoning, thread, and validation policy.
 
 Use $product-brief-architect to turn this idea into an executable product contract: <your idea>.
 
@@ -178,7 +182,7 @@ Account creation, credentials, paid activation, consequential product decisions,
 
 Core:
 
-- Codex;
+- [OpenAI Codex](https://developers.openai.com/codex/);
 - Git.
 
 Project Harness:
@@ -191,6 +195,8 @@ Existing MVP, Research, and Marketing mechanisms may additionally use:
 - Node.js 24+;
 - npm;
 - provider-specific tools documented by their owning skill.
+
+App Factory Skills is designed and tested for OpenAI Codex. Other coding agents may reuse the underlying Markdown workflows, but Codex-specific metadata, runtime routing, thread management, and installation paths may require adaptation.
 
 ## Installation
 
@@ -273,6 +279,10 @@ Factory-specific validators and tests remain inside their owning skill folders.
 ```txt
 app-factory-skills/
 ├── skills/       # independently installable Codex skills
+│   ├── <MVP Factory skills>
+│   ├── <Research Factory skills>
+│   ├── <Marketing Factory skills>
+│   └── <Project Harness Factory skills>
 ├── docs/         # architecture and workflow documentation
 ├── specs/        # durable contracts and catalogs
 ├── .codex/       # repository-level Codex workflows and references
@@ -281,3 +291,11 @@ app-factory-skills/
 ```
 
 Start with the Factory that matches the current objective. Use optional handoff artifacts when another Factory becomes useful; do not turn the four workflows into one mandatory pipeline.
+
+## Contributing
+
+Contributions to skills, deterministic tooling, tests, examples, documentation, and cross-platform support are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) for the skill package format, runtime conventions, validation requirements, and pull-request checklist.
+
+## License
+
+App Factory Skills is available under the [MIT License](LICENSE).
