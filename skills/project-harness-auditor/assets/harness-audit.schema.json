@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Harness audit report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "project_root", "findings", "summary", "unassessed"],
+  "properties": {
+    "status": { "enum": ["approved", "approved_with_notes", "corrections_required", "blocked"] },
+    "project_root": { "type": "string" },
+    "findings": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["id", "severity", "category", "message", "evidence"], "properties": { "id": { "type": "string", "pattern": "^HARNESS-[0-9]{3}$" }, "severity": { "enum": ["high", "medium", "low"] }, "category": { "type": "string" }, "message": { "type": "string" }, "evidence": { "type": "array", "items": { "type": "string" } } } } },
+    "summary": { "type": "object", "required": ["high", "medium", "low", "specs", "local_skills"] },
+    "unassessed": { "type": "array", "items": { "type": "string" } }
+  }
+}

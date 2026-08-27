@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-08-26T09:00:00Z",
+    "value": 20,
+    "unit": "C",
+    "source": "sensor-a"
+  },
+  {
+    "timestamp": "2026-08-26T10:00:00Z",
+    "value": 21.5,
+    "unit": "C",
+    "source": "sensor-b"
+  },
+  {
+    "timestamp": "2026-08-26T10:00:00Z",
+    "value": 21.4,
+    "unit": "C",
+    "source": "sensor-c"
+  }
+]

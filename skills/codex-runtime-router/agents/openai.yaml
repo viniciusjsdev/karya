@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Runtime Router"
+  short_description: "Start or resume resolved Codex Specs"
+  default_prompt: "Use $codex-runtime-router to validate this READY Spec and deterministically start or resume its materialized Codex runtime."

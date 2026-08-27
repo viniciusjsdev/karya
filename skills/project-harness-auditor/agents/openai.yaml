@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Harness Auditor"
+  short_description: "Audit durable AI project operations"
+  default_prompt: "Use $project-harness-auditor to reconcile this project's docs, Specs, skills, runtime, threads, validation, and completion evidence without implementing fixes."

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "status": "accepted",
+  "project": { "name": "sensor-export", "domain": "sensor data integration", "project_type": "software", "objective": "Produce reproducible sensor exports with durable AI execution context." },
+  "sources_of_truth": [{ "path": "docs/project/overview.md", "kind": "domain_truth", "authority": "primary", "action": "preserve" }],
+  "documentation": { "preserve": ["docs/project/overview.md"], "create": [{ "path": "docs/decisions/", "purpose": "durable consequential decisions" }], "path_mappings": [] },
+  "decisions": { "durable_path": "docs/decisions", "open": [] },
+  "workflows": [{ "name": "spec lifecycle", "path": ".codex/workflows/spec-lifecycle.md", "action": "create" }],
+  "local_skill_candidates": [{ "capability": "normalize sensor samples", "disposition": "skill", "reason": "Stable recurring procedure with provenance invariants." }],
+  "spec_strategy": { "root": "specs", "active_pattern": "specs/active/SPEC-NNN", "markdown_name": "SPEC.md", "execution_name": "SPEC.execution.json" },
+  "validation": [{ "id": "VAL-001", "command": "node tests/sensor-export.test.mjs", "required": true }],
+  "runtime_policy": { "policy_version": "1.0", "project_path": ".codex/references/runtime-policy.json" },
+  "thread_policy": { "design": "new_or_existing_design_thread", "implementation": "new_clean_thread", "needs_design": "resume_implementation_after_design_resolution", "parallel_writes": "sequential_by_default", "subagents": "not_default" },
+  "automatic_handoff": false
+}

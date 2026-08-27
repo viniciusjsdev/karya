@@ -1,0 +1,11 @@
+{
+  "spec_id": "SPEC-023",
+  "contract_version": 2,
+  "status": "approved",
+  "thread_id": "review-sol-023",
+  "runtime": { "classification": "critical_review", "model": "gpt-5.6-sol", "reasoning": "high" },
+  "review_input": ["SPEC.md", "SPEC.execution.json", "git diff", "evidence/completion.json", "node tests/sensor-export.test.mjs result"],
+  "findings": [],
+  "evidence": ["ADR-004 is implemented by test_equal_timestamps_preserve_input_order", "Both acceptance criteria have passing implementation evidence"],
+  "usage": { "input_tokens": 2200, "cached_input_tokens": 900, "cache_write_input_tokens": 0, "output_tokens": 360, "reasoning_output_tokens": 140 }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Spec Architect"
+  short_description: "Create clean-thread executable Specs"
+  default_prompt: "Use $project-spec-architect to turn this bounded change into a READY Spec and resolved execution manifest without implementing it."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Harness Architect"
+  short_description: "Bootstrap durable AI project context"
+  default_prompt: "Use $project-harness-architect to audit this project, design the minimum durable AI harness, and materialize only accepted missing artifacts."

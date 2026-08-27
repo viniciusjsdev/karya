@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Skill Author"
+  short_description: "Author durable project-local skills"
+  default_prompt: "Use $project-skill-author to decide whether this recurring project procedure deserves a local skill and create it only when the selection gate passes."

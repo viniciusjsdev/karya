@@ -1,6 +1,6 @@
 ## App Factory Skills Repository
 
-This repository contains independent Codex skills for direct MVP/prototype creation, opt-in market research/validation, and opt-in commercial launch/validation.
+This repository contains independent Codex skills for direct MVP/prototype creation, opt-in market research/validation, opt-in commercial launch/validation, and opt-in project AI-harness design/execution/audit.
 
 Rules:
 
@@ -12,9 +12,17 @@ Rules:
 - Keep `templates/` focused on reusable generated-project starter material.
 - Keep `examples/` focused on sample contracts and project structures.
 - Keep executable instructions, scripts, and detailed references inside the relevant skill folder.
-- Treat the MVP Factory, Research Factory, and Marketing Factory as independent workflows.
+- Treat the MVP Factory, Research Factory, Marketing Factory, and Project Harness Factory as independent workflows.
 - Never make Research or Marketing a prerequisite, hidden stage, or blocking gate for the MVP Factory.
 - Invoke a cross-factory handoff only after explicit user request or approval; record `automatic_handoff: false` in machine-readable decisions.
+- Use `project-harness-architect` only when the user explicitly asks to bootstrap or evolve how a project works with AI; it is not a prerequisite of any other Factory.
+- Use `project-spec-architect` to create a bounded human-readable Spec plus resolved machine-readable execution manifest; READY requires clean-thread executability without design-chat history.
+- Use `project-skill-author` only for stable, specialized, recurring project procedures; keep truth in docs, decisions in ADRs, changes in Specs, and deterministic operations in scripts.
+- Use `codex-runtime-router` only after runtime selection is materialized; the router validates and starts/resumes the declared Codex thread without another LLM choosing the runtime.
+- Use `project-harness-auditor` to reconcile project truth, decisions, Specs, skills, runtime, threads, validation, and completion evidence without implementing corrections.
+- Keep the project-pinned runtime policy at `.codex/references/runtime-policy.json`; do not silently validate a historical Spec against a newer Factory default.
+- Keep temporary Spec/thread/run state under generated-project `.codex/runtime/` and out of durable project truth/version control.
+- Prefer Design Thread -> durable Spec -> independent Implementation Thread. Do not use subagents as the normal specialization mechanism.
 - Start from a PRD, product brief, client notes, or rough idea.
 - Use `product-brief-architect` to create an executable product contract.
 - Use `app-factory-frontend-builder` to implement the React frontend directly from product contracts.
@@ -32,8 +40,23 @@ Rules:
 - For product definition, construction, backend, infrastructure, hosting, or technical MVP validation, use the standalone MVP Factory.
 - For market investigation, app-market intelligence, evidence collection, or hypothesis validation, use the standalone Research Factory.
 - For positioning, account setup information, launch planning, creative production, platform execution, or commercial-result validation, use the standalone Marketing Factory.
+- For project knowledge architecture, AGENTS/Codex context, local skill policy, Spec-driven execution, deterministic model/reasoning/thread routing, or harness audit, use the standalone Project Harness Factory.
 - Accept existing products and artifacts from outside the App Factory; no factory must have produced the input for another factory to use it.
 - Preserve producer artifacts and use optional handoff contracts instead of silently changing another factory's source of truth.
+
+## Project Harness Factory
+
+- Audit before materializing; classify mechanisms as exists, generalize, keep specific, or create new.
+- Do not impose a fixed docs tree or create empty directories. Adapt to the project's domain and preserve coherent existing paths.
+- Keep human intent in `SPEC.md` and resolved runtime in `SPEC.execution.json`.
+- Central runtime defaults are Sol/high for design, Terra/medium for normal implementation, Luna/low for mechanical work, and Sol/high for critical review; deviations require reasons.
+- Treat complexity as the nature of reasoning, not the number of files.
+- On an absent consequential decision, return `needs_design`, persist the resolution in docs/ADR/Spec, and resume the existing implementation thread when possible.
+- Preserve a thread ID as soon as the SDK exposes it, including failed structured-output/evidence runs; retry through `resume`, not a duplicate `new` thread.
+- Use the implementation completion schema for implementation/worker runs and the independent review evidence schema for review runs. A required review must receive the Spec, resolved manifest, diff/artifacts, tests, and completion evidence.
+- Audit declared changed files and local artifacts against the working tree. Structured prose claiming a command passed is not sufficient when its files, IDs, paths, or required review do not reconcile.
+- Keep same-working-tree writes sequential by default. Parallel writers require isolated worktrees/branches, ownership, merge, conflict, and completion policy.
+- Preserve frontend/backend context starters and specialized Django contracts/audits; generic Harness artifacts may reference but must not downgrade them.
 
 ## Research and Market Validation
 

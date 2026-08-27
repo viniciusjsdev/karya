@@ -1,6 +1,6 @@
 # App Factory Skills
 
-Independent Codex skills for three opt-in workflows: building a hosted MVP, researching/validating a market, and launching/learning commercially.
+Independent Codex skills for four opt-in workflows: building a hosted MVP, researching/validating a market, launching/learning commercially, and structuring how any project works and scales with AI.
 
 The factories keep every stage explicit. Each skill consumes durable artifacts, reports missing context instead of silently inventing consequential requirements, and never invokes another factory automatically.
 
@@ -11,6 +11,7 @@ The factories keep every stage explicit. Each skill consumes durable artifacts, 
 | Define, build, and host a product | MVP | `product-brief-architect` |
 | Research and challenge a market hypothesis | Research | `market-research-architect` |
 | Plan, create, execute, and evaluate a launch | Marketing | `commercial-launch-architect` |
+| Structure durable project knowledge, Specs, local skills, runtime, threads, evidence, and audit | Project Harness | `project-harness-architect` |
 
 ```mermaid
 flowchart LR
@@ -19,6 +20,7 @@ flowchart LR
     I --> MVP["MVP Factory"]
     I --> R["Research Factory"]
     I --> M["Marketing Factory"]
+    I --> H["Project Harness Factory"]
 
     R -. "optional approved handoff" .-> MVP
     R -. "optional approved handoff" .-> M
@@ -27,9 +29,28 @@ flowchart LR
     MVP --> P["Hosted, testable MVP"]
     R --> D["Market decision"]
     M --> C["Launch and commercial learning"]
+    H --> O["Durable AI project operating harness"]
 ```
 
-Research and marketing are optional. The MVP Factory does not depend on either of them.
+Every Factory is optional and independent. Project Harness is not a hidden stage or prerequisite of MVP, Research, or Marketing.
+
+## Project Harness Factory flow
+
+```txt
+Idea or existing project
+  -> project-harness-architect
+  -> minimal durable truth map, AGENTS.md, .codex context, Spec/runtime/thread policy
+  -> project-skill-author only for recurring specialized procedures
+  -> project-spec-architect
+  -> READY clean-thread validation
+  -> project-pinned runtime policy
+  -> codex-runtime-router startThread/resumeThread
+  -> completion evidence | needs_design -> durable design resolution -> resume
+  -> self-validation or independent review evidence
+  -> project-harness-auditor
+```
+
+The Harness reuses the frontend/backend project-context standards, the backend human-readable contract plus machine-readable manifest pattern, deterministic routers, structured completion/review evidence, and architect/executor/auditor separation. It does not replace the richer Django contract kit or existing specialized routers. The router uses the policy versioned inside the target project and preserves any SDK thread ID already exposed even when structured output fails, preventing accidental duplicate execution. See [docs/project-harness-factory.md](docs/project-harness-factory.md) for the audit matrix and architecture and [examples/project-harness/spec-023-sensor-export](examples/project-harness/spec-023-sensor-export) for the executable end-to-end example.
 
 ## MVP Factory flow
 
@@ -151,6 +172,14 @@ Use $commercial-launch-architect to create the launch contract and Instagram acc
 Use $marketing-creative-builder to create the approved launch creative pack without publishing it.
 
 Use $app-factory-commercial-router to route this exact approved publish operation while minimizing Manus usage.
+
+Use $project-harness-architect to audit this existing project and materialize the minimum durable AI operating harness.
+
+Use $project-spec-architect to turn this bounded change into a READY Spec and resolved execution manifest.
+
+Use $codex-runtime-router to preview and start or resume the exact runtime declared by this READY Spec.
+
+Use $project-harness-auditor to reconcile the project's docs, decisions, Specs, local skills, runtime, thread state, validation, and evidence.
 ```
 
 ## Skills
@@ -190,6 +219,16 @@ A complete filled example is available in [examples/backend-contracts/django-cas
 | `manus-commercial-operator` | Bounded approved native execution and verification receipt |
 | `commercial-validation-analyst` | Funnel/data-quality analysis and scale/iterate/pivot/pause/stop decision |
 
+### Project Harness Factory
+
+| Skill | Responsibility |
+| --- | --- |
+| `project-harness-architect` | Project audit, source-of-truth mapping, minimal AGENTS/Codex context, Spec/runtime/thread/validation strategy |
+| `project-spec-architect` | Human-readable bounded Spec, resolved execution manifest, lifecycle, READY gate, model/reasoning/review/escalation policy |
+| `project-skill-author` | Generic project-local skill selection, authoring, references, invariants, and validation |
+| `codex-runtime-router` | Deterministic Codex SDK preflight, project-pinned policy, start/resume/review routing, thread recovery, usage, and structured evidence |
+| `project-harness-auditor` | Cross-project docs/decisions/Specs/skills/runtime/threads/evidence audit, including real artifact paths and required independent review |
+
 ## Frontend baseline
 
 - Node.js 24 LTS and npm
@@ -211,6 +250,8 @@ Sites remains an external Codex plugin. It owns preview and publication when exp
 - Backend execution uses OpenCode only when its CLI, OpenCode Go credential, and configured model are ready; otherwise Codex continues automatically.
 - Domain apps use one Model/Configuration module per entity, DTO/Mapper/Controller modules per use case, repository-only ORM access, persistence-agnostic Services, opening module docstrings in every authored Python file, and Django-generated migrations.
 - Infrastructure never commits secrets or claims readiness without attempted validation.
+- Project Harness never marks a Spec READY when it depends on design-chat history, never lets the runtime router choose a model with another LLM, never silently substitutes a newer runtime policy, and never treats temporary thread state as durable project truth.
+- Completion cannot pass merely by claiming test results: declared changed files/local artifacts must exist, required validation evidence must reconcile by ID and command, and a `DONE` Spec with independent review must have approved review evidence.
 
 ## Repository layout
 
@@ -236,6 +277,12 @@ app-factory-skills/
     app-factory-commercial-router/
     manus-commercial-operator/
     commercial-validation-analyst/
+    # Project Harness Factory
+    project-harness-architect/
+    project-spec-architect/
+    project-skill-author/
+    codex-runtime-router/
+    project-harness-auditor/
   .codex/
   docs/
   specs/
@@ -276,4 +323,12 @@ node .\skills\django-backend-service-architect\scripts\validate-backend-contract
 python .\skills\django-backend-service-architect\scripts\scan-django-architecture.py
 python .\skills\django-backend-code-executor\scripts\scan-django-boundaries.py
 node .\skills\app-factory-infra-orchestrator\scripts\scan-infra.mjs
+node .\skills\project-harness-architect\scripts\test-harness-bootstrap.mjs
+node .\skills\project-spec-architect\scripts\test-spec-validator.mjs
+node .\skills\project-skill-author\scripts\test-project-skill-validator.mjs
+node .\skills\codex-runtime-router\scripts\test-runtime-router.mjs
+node .\skills\project-harness-auditor\scripts\test-harness-auditor.mjs
+Push-Location .\examples\project-harness\spec-023-sensor-export\project
+node .\tests\sensor-export.test.mjs
+Pop-Location
 ```

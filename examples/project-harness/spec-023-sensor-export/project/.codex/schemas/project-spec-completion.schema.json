@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Harness execution completion evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["spec_id", "contract_version", "status", "thread_id", "runtime", "changed_files", "artifacts", "acceptance_evidence", "validation_evidence", "deviations", "unresolved_items", "needs_design", "usage"],
+  "properties": {
+    "spec_id": { "type": "string", "pattern": "^SPEC-[0-9]{3,}$" },
+    "contract_version": { "type": "integer", "minimum": 1 },
+    "status": { "enum": ["completed", "needs_design", "blocked", "failed"] },
+    "thread_id": { "type": ["string", "null"] },
+    "runtime": { "type": "object", "required": ["classification", "model", "reasoning"] },
+    "changed_files": { "type": "array", "items": { "type": "string" } },
+    "artifacts": { "type": "array", "items": { "type": "string" } },
+    "acceptance_evidence": { "type": "object" },
+    "validation_evidence": { "type": "object" },
+    "deviations": { "type": "array", "items": { "type": "string" } },
+    "unresolved_items": { "type": "array", "items": { "type": "string" } },
+    "needs_design": { "type": ["object", "null"] },
+    "usage": { "type": ["object", "null"] }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Harness Spec execution manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "spec_id", "contract_version", "status", "automatic_handoff", "execution", "skills", "references", "validation", "review", "escalation", "completion"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "1.0" },
+    "spec_id": { "type": "string", "pattern": "^SPEC-[0-9]{3,}$" },
+    "contract_version": { "type": "integer", "minimum": 1 },
+    "status": { "enum": ["draft", "design", "ready", "in_progress", "needs_design", "implemented", "review", "done"] },
+    "automatic_handoff": { "const": false },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["classification", "role", "model", "reasoning", "routing_rationale", "runtime_override", "working_directory", "sandbox_mode", "approval_policy", "thread", "handoff_prompt"],
+      "properties": {
+        "classification": { "enum": ["design", "normal_implementation", "mechanical", "critical_review"] },
+        "role": { "enum": ["architect", "developer", "worker", "reviewer"] },
+        "model": { "enum": ["gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna"] },
+        "reasoning": { "enum": ["low", "medium", "high", "xhigh", "max"] },
+        "routing_rationale": { "type": "string", "minLength": 20 },
+        "runtime_override": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "object", "additionalProperties": false, "required": ["default_model", "default_reasoning", "reason"], "properties": { "default_model": { "type": "string" }, "default_reasoning": { "type": "string" }, "reason": { "type": "string", "minLength": 20 } } }
+          ]
+        },
+        "working_directory": { "type": "string", "minLength": 1 },
+        "sandbox_mode": { "enum": ["read-only", "workspace-write", "danger-full-access"] },
+        "approval_policy": { "enum": ["never", "on-request", "on-failure", "untrusted"] },
+        "thread": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["mode", "purpose", "thread_id"],
+          "properties": {
+            "mode": { "enum": ["new", "resume"] },
+            "purpose": { "enum": ["design", "implementation", "worker", "review"] },
+            "thread_id": { "type": ["string", "null"] }
+          },
+          "allOf": [{ "if": { "properties": { "mode": { "const": "resume" } } }, "then": { "properties": { "thread_id": { "type": "string", "minLength": 1 } } } }]
+        },
+        "handoff_prompt": { "type": "string", "minLength": 40 }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "source", "path", "required"],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "source": { "enum": ["project", "installed"] },
+          "path": { "type": ["string", "null"] },
+          "required": { "type": "boolean" }
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": false, "required": ["path", "purpose", "required"], "properties": { "path": { "type": "string", "minLength": 1 }, "purpose": { "type": "string", "minLength": 5 }, "required": { "type": "boolean" } } }
+    },
+    "validation": {
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": false, "required": ["id", "kind", "command", "required"], "properties": { "id": { "type": "string", "pattern": "^VAL-[0-9]{3}$" }, "kind": { "enum": ["check", "test", "scan", "build", "format", "lint", "integration", "browser", "manual", "evidence"] }, "command": { "type": "string", "minLength": 1 }, "required": { "type": "boolean" } } }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "independence", "model", "reasoning", "rationale"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "independence": { "enum": ["self", "independent"] },
+        "model": { "type": ["string", "null"] },
+        "reasoning": { "type": ["string", "null"] },
+        "rationale": { "type": "string", "minLength": 10 }
+      }
+    },
+    "escalation": { "type": "object", "additionalProperties": false, "required": ["policy_version", "allowed"], "properties": { "policy_version": { "type": "string", "minLength": 1 }, "allowed": { "type": "array", "items": { "enum": ["terra_medium", "terra_high", "needs_design", "sol_high", "sol_xhigh"] }, "uniqueItems": true } } },
+    "completion": { "type": "object", "additionalProperties": false, "required": ["schema_path", "output_path"], "properties": { "schema_path": { "type": "string", "minLength": 1 }, "output_path": { "type": "string", "minLength": 1 } } }
+  }
+}

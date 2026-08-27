@@ -35,6 +35,8 @@ node scripts/init-project-context.mjs <project-root>
 
 The script creates missing files and preserves every existing file. Run with `--dry-run` to preview. Never overwrite an existing `AGENTS.md`, project decision, goal, or reference automatically.
 
+When `project-harness-architect` has already initialized the root context, do not create a competing generic starter. Preserve its `AGENTS.md`, Spec/runtime policy, thread lifecycle, decisions, and source-of-truth map; add only missing frontend-specific references, workflows, checklists, and routing. The frontend initializer remains valid for projects that did not request Project Harness.
+
 ## Evolution
 
 Start with factory-neutral frontend references. As domain rules become stable and repeatable:
@@ -46,6 +48,8 @@ Start with factory-neutral frontend references. As domain rules become stable an
 5. Validate and test the skill against realistic project requests.
 
 Do not convert temporary notes, one-off decisions, or generic project documentation into skills.
+
+Use the generic `project-skill-author` selection policy when available. The frontend domain-skill specification remains a compact compatible input, not a second source of truth.
 
 ## Source of Truth
 

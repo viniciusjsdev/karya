@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Harness execution completion evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["spec_id", "contract_version", "status", "thread_id", "runtime", "changed_files", "artifacts", "acceptance_evidence", "validation_evidence", "deviations", "unresolved_items", "needs_design", "usage"],
+  "properties": {
+    "spec_id": { "type": "string", "pattern": "^SPEC-[0-9]{3,}$" },
+    "contract_version": { "type": "integer", "minimum": 1 },
+    "status": { "enum": ["completed", "needs_design", "blocked", "failed"] },
+    "thread_id": { "type": ["string", "null"] },
+    "runtime": { "type": "object", "additionalProperties": false, "required": ["classification", "model", "reasoning"], "properties": { "classification": { "type": "string" }, "model": { "type": "string" }, "reasoning": { "type": "string" } } },
+    "changed_files": { "type": "array", "items": { "type": "string" } },
+    "artifacts": { "type": "array", "items": { "type": "string" } },
+    "acceptance_evidence": { "type": "object", "additionalProperties": { "type": "object", "additionalProperties": false, "required": ["result", "evidence", "notes"], "properties": { "result": { "enum": ["passed", "failed", "not-run", "not-applicable"] }, "evidence": { "type": "array", "items": { "type": "string" } }, "notes": { "type": "array", "items": { "type": "string" } } } } },
+    "validation_evidence": { "type": "object", "additionalProperties": { "type": "object", "additionalProperties": false, "required": ["command", "result", "exit_code", "evidence", "notes"], "properties": { "command": { "type": "string" }, "result": { "enum": ["passed", "failed", "not-run"] }, "exit_code": { "type": ["integer", "null"] }, "evidence": { "type": "array", "items": { "type": "string" } }, "notes": { "type": "array", "items": { "type": "string" } } } } },
+    "deviations": { "type": "array", "items": { "type": "string" } },
+    "unresolved_items": { "type": "array", "items": { "type": "string" } },
+    "needs_design": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "object", "additionalProperties": false, "required": ["question", "reason", "impact", "affected_areas", "alternatives"], "properties": { "question": { "type": "string", "minLength": 5 }, "reason": { "type": "string", "minLength": 10 }, "impact": { "type": "string", "minLength": 5 }, "affected_areas": { "type": "array", "minItems": 1, "items": { "type": "string" } }, "alternatives": { "type": "array", "items": { "type": "string" } } } }
+      ]
+    },
+    "usage": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "object", "additionalProperties": false, "required": ["input_tokens", "cached_input_tokens", "cache_write_input_tokens", "output_tokens", "reasoning_output_tokens"], "properties": { "input_tokens": { "type": "integer", "minimum": 0 }, "cached_input_tokens": { "type": "integer", "minimum": 0 }, "cache_write_input_tokens": { "type": "integer", "minimum": 0 }, "output_tokens": { "type": "integer", "minimum": 0 }, "reasoning_output_tokens": { "type": "integer", "minimum": 0 } } }
+      ]
+    }
+  }
+}

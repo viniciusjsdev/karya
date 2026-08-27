@@ -1,0 +1,16 @@
+{
+  "$schema": "./harness-plan.schema.json",
+  "schema_version": "1.0",
+  "status": "proposed",
+  "project": { "name": "replace-me", "domain": "replace-me", "project_type": "general", "objective": "replace-me" },
+  "sources_of_truth": [{ "path": "replace-me", "kind": "domain_truth", "authority": "primary", "action": "preserve" }],
+  "documentation": { "preserve": [], "create": [], "path_mappings": [] },
+  "decisions": { "durable_path": ".codex/decisions", "open": [] },
+  "workflows": [],
+  "local_skill_candidates": [],
+  "spec_strategy": { "root": "specs", "active_pattern": "specs/active/SPEC-NNN", "markdown_name": "SPEC.md", "execution_name": "SPEC.execution.json" },
+  "validation": [],
+  "runtime_policy": { "policy_version": "1.0", "project_path": ".codex/references/runtime-policy.json" },
+  "thread_policy": { "design": "new_or_existing_design_thread", "implementation": "new_clean_thread", "needs_design": "resume_implementation_after_design_resolution", "parallel_writes": "sequential_by_default", "subagents": "not_default" },
+  "automatic_handoff": false
+}

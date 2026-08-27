@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Harness runtime policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["policy_version", "selection_principle", "models", "reasoning_levels", "defaults", "critical_review_triggers", "escalations"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "policy_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+    "selection_principle": { "type": "string", "minLength": 20 },
+    "models": { "type": "object", "minProperties": 3 },
+    "reasoning_levels": { "type": "array", "minItems": 3, "items": { "type": "string" }, "uniqueItems": true },
+    "defaults": { "type": "object", "required": ["design", "normal_implementation", "mechanical", "critical_review"] },
+    "critical_review_triggers": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "escalations": { "type": "array", "items": { "type": "object", "required": ["from", "to", "condition"] } }
+  }
+}

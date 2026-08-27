@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0",
+  "spec_id": "SPEC-023",
+  "contract_version": 2,
+  "status": "review",
+  "automatic_handoff": false,
+  "execution": {
+    "classification": "critical_review",
+    "role": "reviewer",
+    "model": "gpt-5.6-sol",
+    "reasoning": "high",
+    "routing_rationale": "Ordering and field names are a public integration contract requiring independent review.",
+    "runtime_override": null,
+    "working_directory": ".",
+    "sandbox_mode": "read-only",
+    "approval_policy": "never",
+    "thread": { "mode": "new", "purpose": "review", "thread_id": null },
+    "handoff_prompt": "Review SPEC-023 independently from the implementation conversation using the contract, diff, tests, completion evidence, and durable decisions."
+  },
+  "skills": [],
+  "references": [
+    { "path": "docs/decisions/ADR-004-equal-timestamp-order.md", "purpose": "ordering decision", "required": true },
+    { "path": "specs/active/SPEC-023/evidence/completion.json", "purpose": "implementation completion evidence", "required": true }
+  ],
+  "validation": [{ "id": "VAL-001", "kind": "test", "command": "node tests/sensor-export.test.mjs", "required": true }],
+  "review": { "required": true, "independence": "independent", "model": "gpt-5.6-sol", "reasoning": "high", "rationale": "Ordering and fields are a public integration contract." },
+  "escalation": { "policy_version": "1.0", "allowed": ["sol_xhigh"] },
+  "completion": { "schema_path": ".codex/schemas/project-spec-review.schema.json", "output_path": "specs/active/SPEC-023/evidence/review.json" }
+}

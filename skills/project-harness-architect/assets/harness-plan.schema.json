@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Harness bootstrap plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "project", "sources_of_truth", "documentation", "decisions", "workflows", "local_skill_candidates", "spec_strategy", "validation", "runtime_policy", "thread_policy", "automatic_handoff"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "1.0" },
+    "status": { "enum": ["proposed", "accepted"] },
+    "project": { "type": "object", "additionalProperties": false, "required": ["name", "domain", "project_type", "objective"], "properties": { "name": { "type": "string", "minLength": 1 }, "domain": { "type": "string", "minLength": 1 }, "project_type": { "enum": ["software", "research", "data", "ai", "automation", "infrastructure", "commercial", "general", "other"] }, "objective": { "type": "string", "minLength": 10 } } },
+    "sources_of_truth": { "type": "array", "minItems": 1, "items": { "type": "object", "additionalProperties": false, "required": ["path", "kind", "authority", "action"], "properties": { "path": { "type": "string", "minLength": 1 }, "kind": { "enum": ["domain_truth", "product", "architecture", "decision", "methodology", "data", "operation", "contract", "other"] }, "authority": { "enum": ["primary", "supporting", "external"] }, "action": { "enum": ["preserve", "map", "create"] } } } },
+    "documentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["preserve", "create", "path_mappings"],
+      "properties": {
+        "preserve": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "create": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "purpose"],
+            "properties": {
+              "path": { "type": "string" },
+              "purpose": { "type": "string" }
+            }
+          }
+        },
+        "path_mappings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["generic_role", "existing_path"],
+            "properties": {
+              "generic_role": { "type": "string" },
+              "existing_path": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "decisions": { "type": "object", "required": ["durable_path", "open"] },
+    "workflows": { "type": "array", "items": { "type": "object", "required": ["name", "path", "action"] } },
+    "local_skill_candidates": { "type": "array", "items": { "type": "object", "required": ["capability", "disposition", "reason"], "properties": { "capability": { "type": "string" }, "disposition": { "enum": ["skill", "docs", "decision", "spec", "script", "none"] }, "reason": { "type": "string" } } } },
+    "spec_strategy": { "type": "object", "required": ["root", "active_pattern", "markdown_name", "execution_name"] },
+    "validation": { "type": "array", "items": { "type": "object", "required": ["id", "command", "required"] } },
+    "runtime_policy": { "type": "object", "required": ["policy_version", "project_path"] },
+    "thread_policy": { "type": "object", "required": ["design", "implementation", "needs_design", "parallel_writes", "subagents"] },
+    "automatic_handoff": { "const": false }
+  }
+}

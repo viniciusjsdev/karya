@@ -2,7 +2,7 @@
 
 ## Invocation model
 
-The catalog is divided into three independent factories. Install or invoke only the skills needed for the current objective. Research and Marketing are never implicit prerequisites of MVP construction.
+The catalog is divided into four independent factories. Install or invoke only the skills needed for the current objective. Research, Marketing, and Project Harness are never implicit prerequisites of MVP construction or of one another.
 
 ## MVP Factory
 
@@ -73,6 +73,28 @@ Executes only an approved publish, schedule, one-to-one contact, metrics read, o
 ### commercial-validation-analyst
 
 Reconciles launch contract, receipts, funnel metrics, costs, and feedback to recommend scale, iterate, pivot, pause, or stop.
+
+## Project Harness Factory
+
+### project-harness-architect
+
+Audits any new or existing project, maps sources of truth, preserves existing documentation, and materializes only the minimum AGENTS/Codex/Spec/runtime/thread/validation infrastructure needed for durable AI work. It does not implement project scope.
+
+### project-spec-architect
+
+Creates or refines one bounded `SPEC.md` plus a resolved `SPEC.execution.json`, applies the clean-thread READY definition, and materializes classification, model, reasoning, thread, skills, references, validation, review, escalation, and completion evidence paths. It does not execute.
+
+### project-skill-author
+
+Creates a project-local `.agents/skills/` capability only for stable specialized recurring procedure. It routes truth to docs, decisions to ADRs, changes to Specs, deterministic work to scripts, and rejects entity/file/endpoint/temporary-task skill fragmentation.
+
+### codex-runtime-router
+
+Validates a resolved READY/review execution manifest against the project-pinned runtime policy and deterministically calls the Codex SDK `startThread` or `resumeThread`. It records actual thread ID and usage, preserves mappings across invalid output, validates implementation or review evidence, and never asks another LLM to select the runtime.
+
+### project-harness-auditor
+
+Reconciles project truth, decisions, AGENTS routing, Specs, local skills, runtime policy, thread state, validation, completion/review evidence, actual changed files/artifacts, and specialized audits. It reports semantic/unobservable checks as unassessed rather than silently passing them.
 
 ## General rule
 

@@ -1,0 +1,21 @@
+{
+  "policy_version": "1.0",
+  "selection_principle": "Choose the smallest runtime capable of acceptable reliability.",
+  "models": {
+    "gpt-5.6-sol": { "profile": "frontier design and critical review", "relative_cost": "high" },
+    "gpt-5.6-terra": { "profile": "balanced implementation", "relative_cost": "medium" },
+    "gpt-5.6-luna": { "profile": "bounded mechanical work", "relative_cost": "low" }
+  },
+  "reasoning_levels": ["low", "medium", "high", "xhigh", "max"],
+  "defaults": {
+    "design": { "role": "architect", "model": "gpt-5.6-sol", "reasoning": "high" },
+    "normal_implementation": { "role": "developer", "model": "gpt-5.6-terra", "reasoning": "medium" },
+    "mechanical": { "role": "worker", "model": "gpt-5.6-luna", "reasoning": "low" },
+    "critical_review": { "role": "reviewer", "model": "gpt-5.6-sol", "reasoning": "high" }
+  },
+  "critical_review_triggers": ["public_contract"],
+  "escalations": [
+    { "from": "gpt-5.6-terra/medium", "to": "needs_design", "condition": "a consequential design decision is absent" },
+    { "from": "needs_design", "to": "gpt-5.6-sol/high", "condition": "the design thread resolves and persists the decision" }
+  ]
+}

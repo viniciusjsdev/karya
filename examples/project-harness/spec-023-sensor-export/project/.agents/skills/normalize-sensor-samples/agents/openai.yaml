@@ -1,0 +1,4 @@
+interface:
+  display_name: "Normalize Sensor Samples"
+  short_description: "Normalize samples without losing provenance"
+  default_prompt: "Use $normalize-sensor-samples to apply the approved sample normalization procedure and return validation evidence."

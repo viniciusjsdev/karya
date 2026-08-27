@@ -1,0 +1,20 @@
+{
+  "spec_id": "SPEC-023",
+  "contract_version": 2,
+  "status": "completed",
+  "thread_id": "impl-terra-023",
+  "runtime": { "classification": "normal_implementation", "model": "gpt-5.6-terra", "reasoning": "medium" },
+  "changed_files": ["src/sensor-export.mjs", "tests/sensor-export.test.mjs", "tests/fixtures/sensor-export.json"],
+  "artifacts": ["tests/fixtures/sensor-export.json"],
+  "acceptance_evidence": {
+    "AC-001": { "result": "passed", "evidence": ["tests/fixtures/sensor-export.json", "test_export_matches_approved_fixture"], "notes": [] },
+    "AC-002": { "result": "passed", "evidence": ["test_equal_timestamps_preserve_input_order"], "notes": ["Implements ADR-004."] }
+  },
+  "validation_evidence": {
+    "VAL-001": { "command": "node tests/sensor-export.test.mjs", "result": "passed", "exit_code": 0, "evidence": ["2 tests passed"], "notes": [] }
+  },
+  "deviations": [],
+  "unresolved_items": [],
+  "needs_design": null,
+  "usage": { "input_tokens": 4100, "cached_input_tokens": 2000, "cache_write_input_tokens": 0, "output_tokens": 700, "reasoning_output_tokens": 180 }
+}

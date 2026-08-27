@@ -9,13 +9,16 @@
 - `templates/`: starter material for generated projects.
 - `examples/`: sample outputs and project shapes.
 
-The repository contains three independent catalogs:
+The repository contains four independent catalogs:
 
 - MVP Factory: product, frontend, backend architecture/routing/execution, and infrastructure skills.
 - Research Factory: `market-research-architect`, `app-factory-research-router`, `app-market-intelligence-analyst`, `manus-platform-researcher`, and `market-validation-harness`.
 - Marketing Factory: `commercial-launch-architect`, `marketing-creative-builder`, `app-factory-commercial-router`, `manus-commercial-operator`, and `commercial-validation-analyst`.
+- Project Harness Factory: `project-harness-architect`, `project-spec-architect`, `project-skill-author`, `codex-runtime-router`, and `project-harness-auditor`.
 
 Backend planning/audit lives in `skills/django-backend-service-architect/`. Optional OpenCode/Codex selection lives in `skills/app-factory-backend-router/`. Approved backend code execution lives in the independent, executor-neutral `skills/django-backend-code-executor/` skill. Research and Marketing workflows live in `.codex/workflows/` but do not alter the MVP sequence.
+
+Project Harness owns generic project-context audit/bootstrap, bounded Specs, generic local-skill policy, project-pinned runtime resolution, deterministic Codex SDK start/resume/review routing, structured implementation/review evidence, and cross-project audit. It references rather than replaces richer frontend/backend context, Django contracts, provider routing, or commercial execution contracts.
 
 ## Do Not Confuse
 

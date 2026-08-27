@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Harness temporary thread state",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "specs"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "specs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["contract_version", "implementation_thread_id", "review_thread_id", "last_status", "updated_at"],
+        "properties": {
+          "contract_version": { "type": "integer", "minimum": 1 },
+          "implementation_thread_id": { "type": ["string", "null"] },
+          "review_thread_id": { "type": ["string", "null"] },
+          "last_status": { "enum": ["completed", "needs_design", "approved", "changes_requested", "blocked", "failed"] },
+          "updated_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

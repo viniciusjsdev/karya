@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../.codex/schemas/project-spec-execution.schema.json",
+  "schema_version": "1.0",
+  "spec_id": "SPEC-001",
+  "contract_version": 1,
+  "status": "draft",
+  "automatic_handoff": false,
+  "execution": {
+    "classification": "normal_implementation",
+    "role": "developer",
+    "model": "gpt-5.6-terra",
+    "reasoning": "medium",
+    "routing_rationale": "Architecture and acceptance criteria are resolved for normal implementation.",
+    "runtime_override": null,
+    "working_directory": ".",
+    "sandbox_mode": "workspace-write",
+    "approval_policy": "on-request",
+    "thread": { "mode": "new", "purpose": "implementation", "thread_id": null },
+    "handoff_prompt": "Execute this Spec. Follow AGENTS.md and declared sources. Do not redesign; return needs_design for absent consequential decisions."
+  },
+  "skills": [],
+  "references": [],
+  "validation": [{ "id": "VAL-001", "kind": "test", "command": "replace with an exact command", "required": true }],
+  "review": { "required": false, "independence": "self", "model": null, "reasoning": null, "rationale": "Low-risk bounded change uses executor self-validation." },
+  "escalation": { "policy_version": "1.0", "allowed": ["terra_high", "needs_design"] },
+  "completion": { "schema_path": ".codex/schemas/project-spec-completion.schema.json", "output_path": ".codex/runtime/completions/SPEC-001.json" }
+}

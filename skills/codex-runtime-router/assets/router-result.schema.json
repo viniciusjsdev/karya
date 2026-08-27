@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Harness Codex route result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["route", "spec_id", "action", "model", "reasoning", "thread_id", "completion_status", "artifacts", "errors"],
+  "properties": {
+    "route": { "enum": ["preview", "completed", "needs_design", "approved", "changes_requested", "blocked", "failed", "preflight_blocked"] },
+    "spec_id": { "type": "string" },
+    "action": { "enum": ["start", "resume", "none"] },
+    "model": { "type": ["string", "null"] },
+    "reasoning": { "type": ["string", "null"] },
+    "thread_id": { "type": ["string", "null"] },
+    "completion_status": { "type": ["string", "null"] },
+    "artifacts": { "type": "object" },
+    "errors": { "type": "array", "items": { "type": "string" } }
+  }
+}

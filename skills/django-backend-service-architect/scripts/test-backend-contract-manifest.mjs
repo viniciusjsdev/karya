@@ -44,7 +44,7 @@ try {
 
   const validationPlanPath = resolve(architecture, "backend-validation-plan.md");
   const validationPlan = readFileSync(validationPlanPath, "utf8");
-  writeFileSync(validationPlanPath, validationPlan.replace("python scripts/smoke_django_fastapi.py\n", ""), "utf8");
+  writeFileSync(validationPlanPath, validationPlan.replace(/python scripts\/smoke_django_fastapi\.py\r?\n/, ""), "utf8");
   const unsynchronizedPlan = run("--require-approved");
   assert.equal(unsynchronizedPlan.status, 1);
   assert.match(unsynchronizedPlan.stderr, /missing manifest command: python scripts\/smoke_django_fastapi.py/);

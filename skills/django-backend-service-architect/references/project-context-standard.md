@@ -23,6 +23,8 @@ project/
 
 Never create `backend/.codex` inside a full-stack repository.
 
+When `project-harness-architect` already owns the generic root context, preserve it and enrich only missing backend-specific references, workflows, checklists, contracts, and layer skills. Do not replace the generic Spec/runtime policy, and do not downgrade the richer backend contract manifest into a generic Spec manifest. The backend initializer remains valid when Project Harness was not requested.
+
 ## Responsibilities
 
 - `docs/`: durable human-facing product and architecture truth.
@@ -49,6 +51,8 @@ The mandatory kit is:
 ```
 
 Create additional domain skills only when the project has stable, repeated, product-specific behavior that benefits from invocation. Do not create one skill per entity, endpoint, or temporary task.
+
+The generic `project-skill-author` policy may classify a candidate, but `backend-domain-skill-author` remains authoritative for backend product behavior because it requires approved product/backend contracts and `BR-###` traceability.
 
 Backend context must resolve the domain-first package layout and explicit mapping policy, including Model/Configuration pairs, use-case DTO/Mapper/Controller modules, and any repository-local ORM/record mapper.
 
