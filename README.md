@@ -44,13 +44,13 @@ Idea or existing project
   -> project-spec-architect
   -> READY clean-thread validation
   -> project-pinned runtime policy
-  -> codex-runtime-router startThread/resumeThread
+  -> codex-runtime-router thread_start/thread_resume through Python
   -> completion evidence | needs_design -> durable design resolution -> resume
   -> self-validation or independent review evidence
   -> project-harness-auditor
 ```
 
-The Harness reuses the frontend/backend project-context standards, the backend human-readable contract plus machine-readable manifest pattern, deterministic routers, structured completion/review evidence, and architect/executor/auditor separation. It does not replace the richer Django contract kit or existing specialized routers. The router uses the policy versioned inside the target project and preserves any SDK thread ID already exposed even when structured output fails, preventing accidental duplicate execution. See [docs/project-harness-factory.md](docs/project-harness-factory.md) for the audit matrix and architecture and [examples/project-harness/spec-023-sensor-export](examples/project-harness/spec-023-sensor-export) for the executable end-to-end example.
+The Harness reuses the frontend/backend project-context standards, the backend human-readable contract plus machine-readable manifest pattern, deterministic routers, structured completion/review evidence, and architect/executor/auditor separation. Its new core uses Python 3.12+ and the official Python Codex SDK directly; existing Node mechanisms in the other Factories are unchanged. Persistent operational knowledge stays in `.codex/`, while gitignored ephemeral execution state stays in `.harness/runtime/`. The router uses the policy versioned inside the target project and preserves any SDK thread ID already exposed even when structured output fails, preventing accidental duplicate execution. See [docs/project-harness-factory.md](docs/project-harness-factory.md) for the audit matrix and architecture and [examples/project-harness/spec-023-sensor-export](examples/project-harness/spec-023-sensor-export) for the executable end-to-end example.
 
 ## MVP Factory flow
 
@@ -250,7 +250,7 @@ Sites remains an external Codex plugin. It owns preview and publication when exp
 - Backend execution uses OpenCode only when its CLI, OpenCode Go credential, and configured model are ready; otherwise Codex continues automatically.
 - Domain apps use one Model/Configuration module per entity, DTO/Mapper/Controller modules per use case, repository-only ORM access, persistence-agnostic Services, opening module docstrings in every authored Python file, and Django-generated migrations.
 - Infrastructure never commits secrets or claims readiness without attempted validation.
-- Project Harness never marks a Spec READY when it depends on design-chat history, never lets the runtime router choose a model with another LLM, never silently substitutes a newer runtime policy, and never treats temporary thread state as durable project truth.
+- Project Harness never marks a Spec READY when it depends on design-chat history, never lets the runtime router choose a model with another LLM, never silently substitutes a newer runtime policy, and never treats `.harness/runtime/` state as durable project truth.
 - Completion cannot pass merely by claiming test results: declared changed files/local artifacts must exist, required validation evidence must reconcile by ID and command, and a `DONE` Spec with independent review must have approved review evidence.
 
 ## Repository layout
@@ -290,7 +290,7 @@ app-factory-skills/
   examples/
 ```
 
-`skills/` contains installable factory skills. `.codex/` contains factory-level workflows, references, checklists, goals, and templates. Generated projects receive their own `.codex/` context and a compact `.agents/skills/` backend architecture kit, then may add contract-backed product-specific domain skills.
+`skills/` contains installable factory skills. `.codex/` contains persistent factory-level workflows, references, checklists, goals, and templates. Generated Harness projects keep ephemeral execution state in ignored `.harness/runtime/`; they receive persistent `.codex/` context and may add contract-backed project-local skills under `.agents/skills/`.
 
 The generated backend kit includes `django-model-configuration`, `django-dto-mapper`, `django-repository`, `django-service`, `django-controller`, `django-migration`, `django-backend-testing`, and `backend-domain-skill-author`.
 
@@ -323,12 +323,15 @@ node .\skills\django-backend-service-architect\scripts\validate-backend-contract
 python .\skills\django-backend-service-architect\scripts\scan-django-architecture.py
 python .\skills\django-backend-code-executor\scripts\scan-django-boundaries.py
 node .\skills\app-factory-infra-orchestrator\scripts\scan-infra.mjs
-node .\skills\project-harness-architect\scripts\test-harness-bootstrap.mjs
-node .\skills\project-spec-architect\scripts\test-spec-validator.mjs
-node .\skills\project-skill-author\scripts\test-project-skill-validator.mjs
-node .\skills\codex-runtime-router\scripts\test-runtime-router.mjs
-node .\skills\project-harness-auditor\scripts\test-harness-auditor.mjs
+python -m pip install -r .\skills\codex-runtime-router\requirements-dev.txt
+python -m pytest `
+  .\skills\project-harness-architect\scripts\test_harness_bootstrap.py `
+  .\skills\project-spec-architect\scripts\test_spec_validator.py `
+  .\skills\project-skill-author\scripts\test_project_skill_validator.py `
+  .\skills\codex-runtime-router\scripts\test_runtime_router.py `
+  .\skills\project-harness-auditor\scripts\test_harness_auditor.py `
+  .\examples\project-harness\spec-023-sensor-export\project\tests\test_sensor_export.py -q
 Push-Location .\examples\project-harness\spec-023-sensor-export\project
-node .\tests\sensor-export.test.mjs
+python -m pytest .\tests\test_sensor_export.py -q
 Pop-Location
 ```

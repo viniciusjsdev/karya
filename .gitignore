@@ -2,5 +2,6 @@
 .env.*
 !.env.example
 .app-factory/runs/
+.harness/runtime/
 **/__pycache__/
 *.pyc

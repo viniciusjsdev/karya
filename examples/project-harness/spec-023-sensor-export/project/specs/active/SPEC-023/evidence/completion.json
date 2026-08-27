@@ -4,14 +4,14 @@
   "status": "completed",
   "thread_id": "impl-terra-023",
   "runtime": { "classification": "normal_implementation", "model": "gpt-5.6-terra", "reasoning": "medium" },
-  "changed_files": ["src/sensor-export.mjs", "tests/sensor-export.test.mjs", "tests/fixtures/sensor-export.json"],
+  "changed_files": ["src/sensor_export.py", "tests/test_sensor_export.py", "tests/fixtures/sensor-export.json"],
   "artifacts": ["tests/fixtures/sensor-export.json"],
   "acceptance_evidence": {
     "AC-001": { "result": "passed", "evidence": ["tests/fixtures/sensor-export.json", "test_export_matches_approved_fixture"], "notes": [] },
     "AC-002": { "result": "passed", "evidence": ["test_equal_timestamps_preserve_input_order"], "notes": ["Implements ADR-004."] }
   },
   "validation_evidence": {
-    "VAL-001": { "command": "node tests/sensor-export.test.mjs", "result": "passed", "exit_code": 0, "evidence": ["2 tests passed"], "notes": [] }
+    "VAL-001": { "command": "python -m pytest tests/test_sensor_export.py -q", "result": "passed", "exit_code": 0, "evidence": ["2 passed"], "notes": [] }
   },
   "deviations": [],
   "unresolved_items": [],

@@ -14,7 +14,7 @@
     "execution": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["classification", "role", "model", "reasoning", "routing_rationale", "runtime_override", "working_directory", "sandbox_mode", "approval_policy", "thread", "handoff_prompt"],
+      "required": ["classification", "role", "model", "reasoning", "routing_rationale", "runtime_override", "working_directory", "sandbox_mode", "approval_mode", "thread", "handoff_prompt"],
       "properties": {
         "classification": { "enum": ["design", "normal_implementation", "mechanical", "critical_review"] },
         "role": { "enum": ["architect", "developer", "worker", "reviewer"] },
@@ -28,8 +28,8 @@
           ]
         },
         "working_directory": { "type": "string", "minLength": 1 },
-        "sandbox_mode": { "enum": ["read-only", "workspace-write", "danger-full-access"] },
-        "approval_policy": { "enum": ["never", "on-request", "on-failure", "untrusted"] },
+        "sandbox_mode": { "enum": ["read-only", "workspace-write", "full-access"] },
+        "approval_mode": { "enum": ["deny_all", "auto_review"] },
         "thread": {
           "type": "object",
           "additionalProperties": false,

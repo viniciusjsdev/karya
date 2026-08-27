@@ -6,4 +6,4 @@
 - Local skill: `.agents/skills/normalize-sensor-samples/`
 - Runtime policy: `.codex/references/runtime-policy.json`
 - Durable completion/review evidence: `specs/active/SPEC-023/evidence/`
-- Temporary runtime state: `.codex/runtime/`
+- Temporary runtime state: `.harness/runtime/`

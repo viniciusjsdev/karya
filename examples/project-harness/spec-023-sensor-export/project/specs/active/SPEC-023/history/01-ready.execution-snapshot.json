@@ -13,14 +13,14 @@
     "runtime_override": null,
     "working_directory": ".",
     "sandbox_mode": "workspace-write",
-    "approval_policy": "on-request",
+    "approval_mode": "auto_review",
     "thread": { "mode": "new", "purpose": "implementation", "thread_id": null },
     "handoff_prompt": "Execute SPEC-023 and return needs_design instead of inventing any consequential ordering decision."
   },
   "skills": [{ "name": "normalize-sensor-samples", "source": "project", "path": ".agents/skills/normalize-sensor-samples/SKILL.md", "required": true }],
   "references": [{ "path": "docs/project/overview.md", "purpose": "project truth", "required": true }],
-  "validation": [{ "id": "VAL-001", "kind": "test", "command": "node tests/sensor-export.test.mjs", "required": true }],
+  "validation": [{ "id": "VAL-001", "kind": "test", "command": "python -m pytest tests/test_sensor_export.py -q", "required": true }],
   "review": { "required": true, "independence": "independent", "model": "gpt-5.6-sol", "reasoning": "high", "rationale": "The export is a public integration contract." },
   "escalation": { "policy_version": "1.0", "allowed": ["terra_high", "needs_design", "sol_high"] },
-  "completion": { "schema_path": ".codex/schemas/project-spec-completion.schema.json", "output_path": ".codex/runtime/completions/SPEC-023.json" }
+  "completion": { "schema_path": ".codex/schemas/project-spec-completion.schema.json", "output_path": ".harness/runtime/completions/SPEC-023.json" }
 }

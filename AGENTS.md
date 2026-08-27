@@ -8,7 +8,7 @@ Rules:
 - Keep installable skills in `skills/`, not `.codex/` or `.agents/skills/`.
 - Keep product definition, frontend construction, backend work, and infrastructure work in separate skills.
 - Keep root `docs/` and `specs/` focused on workflow, routing, and handoff contracts.
-- Keep `.codex/` focused on factory-level workflows, references, checklists, goals, and templates.
+- Keep `.codex/` focused on persistent factory-level workflows, references, checklists, decisions, goals, templates, and schemas.
 - Keep `templates/` focused on reusable generated-project starter material.
 - Keep `examples/` focused on sample contracts and project structures.
 - Keep executable instructions, scripts, and detailed references inside the relevant skill folder.
@@ -21,7 +21,8 @@ Rules:
 - Use `codex-runtime-router` only after runtime selection is materialized; the router validates and starts/resumes the declared Codex thread without another LLM choosing the runtime.
 - Use `project-harness-auditor` to reconcile project truth, decisions, Specs, skills, runtime, threads, validation, and completion evidence without implementing corrections.
 - Keep the project-pinned runtime policy at `.codex/references/runtime-policy.json`; do not silently validate a historical Spec against a newer Factory default.
-- Keep temporary Spec/thread/run state under generated-project `.codex/runtime/` and out of durable project truth/version control.
+- Keep ephemeral Spec/thread/run state under generated-project `.harness/runtime/`, gitignored and separate from durable project truth. Never store secrets, transcripts, conversation history, domain knowledge, ADRs, Specs, or persistent documentation there.
+- Implement new Project Harness core scripts and deterministic tests in Python 3.12+; use the official Python Codex SDK directly for live routing. Preserve pre-existing Node mechanisms belonging to the other Factories.
 - Prefer Design Thread -> durable Spec -> independent Implementation Thread. Do not use subagents as the normal specialization mechanism.
 - Start from a PRD, product brief, client notes, or rough idea.
 - Use `product-brief-architect` to create an executable product contract.

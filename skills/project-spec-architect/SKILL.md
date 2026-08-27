@@ -19,7 +19,7 @@ A Spec is `ready` only when a clean thread can execute it from `AGENTS.md`, the 
 4. Classify the reasoning before selecting a runtime. Read [references/runtime-policy.md](references/runtime-policy.md) and use `assets/runtime-policy.json` as the machine-readable defaults.
 5. Resolve the exact runtime, thread mode, skills, references, validation, review, escalation, and completion paths in `SPEC.execution.json` from `assets/SPEC.execution.template.json`.
 6. Record `automatic_handoff: false`. This skill prepares the handoff; it does not start another Factory or execution thread.
-7. Run `node scripts/validate-spec.mjs <SPEC.md> <SPEC.execution.json> --project-root <root> --require-ready` before marking the Spec `ready`.
+7. Run `python scripts/validate_spec.py <SPEC.md> <SPEC.execution.json> --project-root <root> --require-ready` before marking the Spec `ready`.
 
 ## Lifecycle authority
 
@@ -47,4 +47,4 @@ Do not mark implementation complete or review approved from this skill alone.
 - `assets/spec-execution.schema.json`: execution manifest JSON Schema.
 - `assets/completion.schema.json`: structured completion evidence JSON Schema.
 - `assets/review-evidence.schema.json`: structured independent review inputs, findings, result, runtime, thread, and usage.
-- `scripts/validate-spec.mjs`: dependency-free Spec/readiness validator.
+- `scripts/validate_spec.py`: dependency-free Python 3.12+ Spec/readiness validator.

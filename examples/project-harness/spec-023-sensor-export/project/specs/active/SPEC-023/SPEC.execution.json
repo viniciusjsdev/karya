@@ -13,7 +13,7 @@
     "runtime_override": null,
     "working_directory": ".",
     "sandbox_mode": "workspace-write",
-    "approval_policy": "on-request",
+    "approval_mode": "auto_review",
     "thread": { "mode": "resume", "purpose": "implementation", "thread_id": "impl-terra-023" },
     "handoff_prompt": "Execute SPEC-023 without redesigning the public contract; return needs_design for any absent consequential decision."
   },
@@ -22,7 +22,7 @@
     { "path": "docs/project/overview.md", "purpose": "project and provenance truth", "required": true },
     { "path": "docs/decisions/ADR-004-equal-timestamp-order.md", "purpose": "equal timestamp ordering", "required": true }
   ],
-  "validation": [{ "id": "VAL-001", "kind": "test", "command": "node tests/sensor-export.test.mjs", "required": true }],
+  "validation": [{ "id": "VAL-001", "kind": "test", "command": "python -m pytest tests/test_sensor_export.py -q", "required": true }],
   "review": { "required": true, "independence": "independent", "model": "gpt-5.6-sol", "reasoning": "high", "rationale": "Ordering and fields are a public integration contract." },
   "escalation": { "policy_version": "1.0", "allowed": ["terra_high", "needs_design", "sol_high"] },
   "completion": { "schema_path": ".codex/schemas/project-spec-completion.schema.json", "output_path": "specs/active/SPEC-023/evidence/completion.json" }

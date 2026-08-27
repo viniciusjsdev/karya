@@ -10,6 +10,6 @@
 | one-time task | task/Spec only when needed | recurrence does not justify a skill |
 | execution policy | versioned runtime policy | supplies defaults and escalation rules |
 | resolved runtime for one change | `SPEC.execution.json` | historical execution must not drift with policy |
-| temporary run/thread state | `.codex/runtime/` or external state store | not project truth; normally ignored by VCS |
+| temporary run/thread state | `.harness/runtime/` or external state store | not project truth or `.codex` context; ignored by VCS |
 
 Link to authoritative material rather than copying it into AGENTS, skills, Specs, and references. Promote important chat discoveries into the appropriate durable home before ending the design thread.

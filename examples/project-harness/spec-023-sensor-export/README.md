@@ -13,7 +13,7 @@ This example shows one software project, but every Harness artifact is domain-ne
 7. **Implementation resumes — same `impl-terra-023`, Terra/medium.** `history/03-resume-ready.execution-snapshot.json` uses thread mode `resume`, not a new implementation thread.
 8. **Implementation completes.** `evidence/completion.json` maps AC/VAL IDs to files and command results.
 9. **Critical review — new `review-sol-023`, Sol/high.** The matching `history/04-review.SPEC-snapshot.md` and `history/04-review.execution-snapshot.json` materialize the clean review handoff. The reviewer receives Spec, manifest, diff/artifacts, tests, and completion evidence; `evidence/review.json` records the schema-valid independent result.
-10. **DONE.** `evidence/thread-state.json` maps SPEC-023 to both thread IDs. `project-harness-auditor` reconciles the durable chain.
+10. **DONE.** Durable completion/review evidence retains both thread IDs; live mappings exist only in ignored `.harness/runtime/spec-threads.json`. `project-harness-auditor` reconciles the durable chain.
 
 ```txt
 Design Thread Sol/high
@@ -29,4 +29,4 @@ Design Thread Sol/high
 
 No worker thread or subagent appears because the mechanical work belongs to the bounded implementation and has no independent ownership benefit.
 
-Run `node tests/sensor-export.test.mjs` from `project/` to reproduce the two passing acceptance tests cited by the completion evidence. The Harness auditor also verifies that every declared changed file and local artifact exists before approving the example.
+Run `python -m pytest tests/test_sensor_export.py -q` from `project/` to reproduce the two passing acceptance tests cited by the completion evidence. The Harness auditor also verifies that every declared changed file and local artifact exists before approving the example.

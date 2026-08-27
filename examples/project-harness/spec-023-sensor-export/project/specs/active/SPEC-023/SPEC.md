@@ -64,7 +64,7 @@ The project preserves raw provenance and uses the local normalization capability
 
 ## Validation requirements
 
-- VAL-001: `node tests/sensor-export.test.mjs`.
+- VAL-001: `python -m pytest tests/test_sensor_export.py -q`.
 
 ## Review requirements
 

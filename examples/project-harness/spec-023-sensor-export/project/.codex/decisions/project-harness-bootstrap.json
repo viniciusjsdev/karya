@@ -8,7 +8,7 @@
   "workflows": [{ "name": "spec lifecycle", "path": ".codex/workflows/spec-lifecycle.md", "action": "create" }],
   "local_skill_candidates": [{ "capability": "normalize sensor samples", "disposition": "skill", "reason": "Stable recurring procedure with provenance invariants." }],
   "spec_strategy": { "root": "specs", "active_pattern": "specs/active/SPEC-NNN", "markdown_name": "SPEC.md", "execution_name": "SPEC.execution.json" },
-  "validation": [{ "id": "VAL-001", "command": "node tests/sensor-export.test.mjs", "required": true }],
+  "validation": [{ "id": "VAL-001", "command": "python -m pytest tests/test_sensor_export.py -q", "required": true }],
   "runtime_policy": { "policy_version": "1.0", "project_path": ".codex/references/runtime-policy.json" },
   "thread_policy": { "design": "new_or_existing_design_thread", "implementation": "new_clean_thread", "needs_design": "resume_implementation_after_design_resolution", "parallel_writes": "sequential_by_default", "subagents": "not_default" },
   "automatic_handoff": false

@@ -12,7 +12,7 @@ Verify that the project can continue without relying on the conversation that de
 Read [references/audit-method.md](references/audit-method.md). Run deterministic structure and evidence checks first:
 
 ```bash
-node scripts/audit-project-harness.mjs --project-root <root> [--skills-root <installed-skills>]
+python scripts/audit_project_harness.py --project-root <root> [--skills-root <installed-skills>]
 ```
 
 Then perform semantic reconciliation against actual project artifacts. Preserve specialized auditors: for example, a Django backend audit still owns its contract-ID-to-code-to-test traceability; this auditor verifies that the specialized result is correctly connected to the generic Spec and runtime lifecycle.

@@ -61,7 +61,7 @@ The implementation is complete. The clean review thread receives the durable con
 
 ## Validation requirements
 
-- VAL-001: `node tests/sensor-export.test.mjs`.
+- VAL-001: `python -m pytest tests/test_sensor_export.py -q`.
 
 ## Review requirements
 

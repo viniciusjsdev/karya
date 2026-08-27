@@ -1,21 +1,20 @@
-# Codex SDK capability snapshot
+# Codex Python SDK capability snapshot
 
-Verified 2026-08-26 against official Codex SDK documentation and published `@openai/codex-sdk` package version `0.150.0`.
+Verified 2026-08-26 against the official Codex SDK documentation and the published `openai-codex==0.147.0` Python package.
 
 Official documentation: [Codex SDK](https://developers.openai.com/codex/codex-sdk) and [GPT-5.6 model guidance](https://developers.openai.com/api/docs/guides/latest-model).
 
-The TypeScript SDK supports:
+The Python package exposes the direct runtime surface required by Project Harness:
 
-- `new Codex()`;
-- `startThread(options)` and `resumeThread(id, options)`;
-- `ThreadOptions.model`, `workingDirectory`, `modelReasoningEffort`, `sandboxMode`, `approvalPolicy`, network/search controls, and additional directories;
-- `thread.id`, populated after the first turn starts;
-- `run(input, { outputSchema })` and streamed execution;
-- result `finalResponse`, items, and token usage;
-- thread/turn failure and fatal error events.
+- `from openai_codex import Codex`;
+- `Codex.thread_start(...)` and `Codex.thread_resume(thread_id, ...)`;
+- thread options including `model`, `cwd`, `sandbox`, `approval_mode`, and `config`;
+- reasoning through `config={"model_reasoning_effort": "low|medium|high|xhigh|max"}`;
+- `Thread.run(input, output_schema=schema)`;
+- `TurnResult.final_response` and token `usage`;
+- sandbox values `read_only`, `workspace_write`, and `full_access`;
+- approval values `deny_all` and `auto_review`.
 
-The current published reasoning type also includes `minimal`, `ultra`, and other levels, but Project Harness policy intentionally materializes only `low`, `medium`, `high`, `xhigh`, and `max`. Policy support is not inferred from SDK type support.
+The repository policy requires Python 3.12+ even if a published SDK release supports an older interpreter. The Project Harness manifest uses stable JSON spellings such as `workspace-write`; the Python adapter maps them explicitly to SDK enum values. Policy support is not inferred merely from SDK type support.
 
-The official Python SDK uses a different surface (`thread_start`) and app-server transport. This router implements the confirmed TypeScript surface. It does not invent a cross-language abstraction or promise remote/cloud thread control.
-
-Re-check the official docs and published types before upgrading the pinned SDK. Prices and model availability are not encoded in routing logic.
+The router imports the SDK directly. It does not use a Python-to-Node bridge, does not ask another model to select runtime policy, and does not promise remote/cloud thread control. Re-check official documentation and the installed package signatures before changing the pin.

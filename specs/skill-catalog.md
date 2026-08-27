@@ -90,7 +90,7 @@ Creates a project-local `.agents/skills/` capability only for stable specialized
 
 ### codex-runtime-router
 
-Validates a resolved READY/review execution manifest against the project-pinned runtime policy and deterministically calls the Codex SDK `startThread` or `resumeThread`. It records actual thread ID and usage, preserves mappings across invalid output, validates implementation or review evidence, and never asks another LLM to select the runtime.
+Validates a resolved READY/review execution manifest against the project-pinned runtime policy and deterministically calls the official Python Codex SDK `thread_start` or `thread_resume`. It records actual thread ID and usage under ignored `.harness/runtime/`, preserves mappings across invalid output, validates implementation or review evidence, and never asks another LLM to select the runtime.
 
 ### project-harness-auditor
 

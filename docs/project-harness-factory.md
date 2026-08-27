@@ -17,7 +17,7 @@ The Project Harness Factory is an independent, opt-in workflow for making any pr
 | `app-factory-commercial-router` | keep specific | continues approved external commercial operations |
 | generic Spec lifecycle/readiness | create new | `project-spec-architect`, schemas, validator, templates |
 | explicit GPT-5.6 runtime + reasoning materialization | create new | centralized runtime policy and per-Spec resolved execution manifest |
-| Codex SDK start/resume router and thread mapping | create new | `codex-runtime-router` with temporary state and mock-tested adapter |
+| Codex SDK start/resume router and thread mapping | create new | Python 3.12+ `codex-runtime-router`, official Python SDK, ignored `.harness/runtime/` state, and mock-tested adapter |
 | cross-project harness audit | create new | `project-harness-auditor` with deterministic and semantic layers |
 
 ## Minimal architecture
@@ -41,7 +41,7 @@ Idea or existing project
   -> project-skill-author only for recurring specialized procedures
   -> project-spec-architect for one bounded change
   -> clean-thread READY validation and resolved runtime
-  -> codex-runtime-router start/resume
+  -> codex-runtime-router thread_start/thread_resume
   -> completion evidence or needs_design
   -> appropriate review
   -> project-harness-auditor
@@ -52,6 +52,8 @@ The Factory never invokes MVP, Research, or Marketing automatically. Those facto
 ## Runtime and evidence guarantees
 
 - Bootstrap copies a versioned runtime policy into `.codex/references/runtime-policy.json`; the router blocks a missing or version-incompatible policy instead of silently using a newer Factory default.
+- Persistent operational knowledge remains under `.codex/`. Ephemeral thread mappings, implementation/review state, temporary receipts, usage, and status remain under gitignored `.harness/runtime/`; secrets, transcripts, conversation history, domain truth, ADRs, Specs, and persistent documentation are prohibited there.
+- The new Harness core runs on Python 3.12+ and calls the official Python Codex SDK directly. Existing Node-based mechanisms from MVP, Research, and Marketing remain unchanged.
 - `new` is rejected when the Spec/purpose already has a mapped thread. Once the SDK exposes an ID, the mapping survives invalid structured output so the next attempt uses `resume`.
 - Implementation and worker runs emit `project-spec-completion.schema.json`. Independent review runs emit `project-spec-review.schema.json` and return `approved`, `changes_requested`, `blocked`, or `failed`.
 - Completion validation reconciles acceptance and validation IDs, exact required commands, thread/runtime identity, and the existence of declared changed files and local artifacts.

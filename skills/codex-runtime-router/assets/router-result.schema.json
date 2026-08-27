@@ -6,7 +6,7 @@
   "required": ["route", "spec_id", "action", "model", "reasoning", "thread_id", "completion_status", "artifacts", "errors"],
   "properties": {
     "route": { "enum": ["preview", "completed", "needs_design", "approved", "changes_requested", "blocked", "failed", "preflight_blocked"] },
-    "spec_id": { "type": "string" },
+    "spec_id": { "type": ["string", "null"] },
     "action": { "enum": ["start", "resume", "none"] },
     "model": { "type": ["string", "null"] },
     "reasoning": { "type": ["string", "null"] },

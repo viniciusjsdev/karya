@@ -27,7 +27,7 @@ Do not create one skill per endpoint, class, file, entity, CRUD operation, or te
 4. Put discriminating triggers and non-triggers in the frontmatter description. Keep detailed context, workflow, invariants, boundaries, references, and validation in the body.
 5. Link to project truth instead of copying it. Stable rules remain owned by their source documents.
 6. Add deterministic scripts only when repeated reliability warrants them and test every added script.
-7. Validate with the available `quick_validate.py` and `node scripts/validate-project-skill.mjs <skill-dir> --project-root <root>`.
+7. Validate with the available `quick_validate.py` and `python scripts/validate_project_skill.py <skill-dir> --project-root <root>`.
 8. Add the capability to the relevant `AGENTS.md` routing inventory without turning AGENTS into a duplicate manual.
 
 ## Boundaries

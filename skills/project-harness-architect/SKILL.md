@@ -14,20 +14,20 @@ Create the minimum cognitive and operational infrastructure that lets a project 
 3. Preserve existing sources of truth and richer contracts. Record path mappings instead of moving or flattening them without explicit need.
 4. Apply [references/knowledge-taxonomy.md](references/knowledge-taxonomy.md). Do not turn every fact, task, entity, or file into a skill.
 5. Write an accepted `harness-plan.json` from `assets/harness-plan.template.json`. Keep `automatic_handoff: false`.
-6. Validate it with `node scripts/validate-harness-plan.mjs <plan>`.
+6. Validate it with `python scripts/validate_harness_plan.py <plan>`.
 
 ## Materialization
 
 Preview before writing:
 
 ```bash
-node scripts/bootstrap-project-harness.mjs --project-root <root> --plan <harness-plan.json> --dry-run
-node scripts/bootstrap-project-harness.mjs --project-root <root> --plan <harness-plan.json>
+python scripts/bootstrap_project_harness.py --project-root <root> --plan <harness-plan.json> --dry-run
+python scripts/bootstrap_project_harness.py --project-root <root> --plan <harness-plan.json>
 ```
 
 The initializer creates only missing operational files, copies the canonical Spec/runtime schemas from sibling `project-spec-architect`, records the accepted bootstrap decision, and preserves every existing file. It does not create domain documentation directories. Author only the domain documents listed in the accepted plan and only when no equivalent truth exists.
 
-Merge relevant routing into an existing `AGENTS.md` after inspection; never overwrite it. Use `.codex/` for agent-operational references, workflows, checklists, decisions, goals, templates, schemas, and ignored runtime state. Use `.agents/skills/` for project-local capabilities. Keep human and stakeholder truth in domain-appropriate `docs/` or an existing equivalent.
+Merge relevant routing into an existing `AGENTS.md` after inspection; never overwrite it. Use `.codex/` for persistent agent-operational references, workflows, checklists, decisions, goals, templates, and schemas. Use ignored `.harness/runtime/` only for ephemeral Harness execution state and receipts. Use `.agents/skills/` for project-local capabilities. Keep human and stakeholder truth in domain-appropriate `docs/` or an existing equivalent.
 
 ## Factory and authority boundaries
 

@@ -4,7 +4,7 @@
   "status": "needs_design",
   "thread_id": "impl-terra-023",
   "runtime": { "classification": "normal_implementation", "model": "gpt-5.6-terra", "reasoning": "medium" },
-  "changed_files": ["src/sensor-export.mjs", "tests/sensor-export.test.mjs"],
+  "changed_files": ["src/sensor_export.py", "tests/test_sensor_export.py"],
   "artifacts": [],
   "acceptance_evidence": {},
   "validation_evidence": {},

@@ -5,7 +5,7 @@
 - `skills/`: installable Codex skills.
 - `docs/`: factory method and architecture documentation.
 - `specs/`: durable handoff contracts between stages.
-- `.codex/`: Codex-facing workflows, references, goals, checklists and templates.
+- `.codex/`: persistent Codex-facing workflows, references, goals, checklists, decisions, schemas, and templates.
 - `templates/`: starter material for generated projects.
 - `examples/`: sample outputs and project shapes.
 
@@ -18,7 +18,7 @@ The repository contains four independent catalogs:
 
 Backend planning/audit lives in `skills/django-backend-service-architect/`. Optional OpenCode/Codex selection lives in `skills/app-factory-backend-router/`. Approved backend code execution lives in the independent, executor-neutral `skills/django-backend-code-executor/` skill. Research and Marketing workflows live in `.codex/workflows/` but do not alter the MVP sequence.
 
-Project Harness owns generic project-context audit/bootstrap, bounded Specs, generic local-skill policy, project-pinned runtime resolution, deterministic Codex SDK start/resume/review routing, structured implementation/review evidence, and cross-project audit. It references rather than replaces richer frontend/backend context, Django contracts, provider routing, or commercial execution contracts.
+Project Harness owns generic project-context audit/bootstrap, bounded Specs, generic local-skill policy, project-pinned runtime resolution, deterministic Python Codex SDK start/resume/review routing, structured implementation/review evidence, and cross-project audit. Generated projects keep ephemeral Harness execution state under ignored `.harness/runtime/`, separate from persistent `.codex/` context. It references rather than replaces richer frontend/backend context, Django contracts, provider routing, or commercial execution contracts.
 
 ## Do Not Confuse
 

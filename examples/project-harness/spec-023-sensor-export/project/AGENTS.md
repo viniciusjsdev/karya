@@ -5,5 +5,5 @@
 - Use `$normalize-sensor-samples` when importing or comparing raw sensor samples.
 - Preserve raw input order and never invent tie-breaking behavior.
 - Return `needs_design` for a consequential absent decision.
-- Keep `.codex/runtime/` temporary and resume the recorded implementation thread after design resolution.
+- Keep `.harness/runtime/` temporary and outside `.codex/`; resume the recorded implementation thread after design resolution.
 - Do not use subagents as the normal specialization path.
