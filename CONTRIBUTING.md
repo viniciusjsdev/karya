@@ -4,7 +4,7 @@ Thanks for your interest in contributing. Karya welcomes new skills, improvement
 
 ## What this project is
 
-This repository contains independent Codex skill packages organized into four opt-in Factories: MVP, Research, Marketing, and Project Harness.
+This repository contains the optional Karya conversational coordinator plus independent Codex skill packages organized into four opt-in Factories: MVP, Research, Marketing, and Project Harness.
 
 Each skill is a small, self-contained package centered on a `SKILL.md`, optionally backed by references, deterministic scripts, schemas, and assets. You are primarily defining an agent capability, not building an application feature. A skill may still include validators, routers, schemas, and utilities when code is the more reliable mechanism.
 
@@ -16,6 +16,8 @@ A good skill:
 - produces artifacts another stage or skill can consume;
 - validates its output proportionally to risk;
 - does not silently invoke another Factory.
+
+The `karya` skill is the narrow coordination exception: it may recommend and apply only the specialist capabilities explicitly approved by the user, while keeping every cross-factory handoff optional and preserving each specialist's contract.
 
 Read [AGENTS.md](AGENTS.md) before changing repository structure or Factory behavior. The complete catalog is in [specs/skill-catalog.md](specs/skill-catalog.md).
 

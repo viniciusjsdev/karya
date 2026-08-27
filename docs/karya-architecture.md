@@ -13,6 +13,8 @@ Every Factory is optional. None is a prerequisite, hidden stage, or blocking gat
 
 ```txt
 Karya
+├── optional $karya coordination layer
+│     └── classify -> recommend -> explain -> approve -> coordinate
 ├── MVP Factory
 ├── Research Factory
 ├── Marketing Factory
@@ -21,11 +23,20 @@ Karya
 
 Artifacts may move between Factories only through an explicit, approved handoff. A compatible output never means automatic invocation.
 
+## Karya coordination layer
+
+`$karya` is the optional conversational front door for users who do not already know which Factory or skill fits their immediate objective. It reads a compact routing model and skill map, inspects relevant project context, recommends the smallest suitable route, explains why, and waits for approval.
+
+After approval, Karya remains the user-facing coordinator while specialist skills are applied internally. It does not create another architectural stage, weaken specialist contracts, or make cross-factory continuation automatic. Direct skill invocation remains valid for users who already know the route.
+
+See [Karya routing and coordination](karya-routing.md).
+
 ## Brand and architecture terminology
 
 | Term | Meaning |
 | --- | --- |
 | Karya | Framework, system, and umbrella project |
+| Karya coordination | Optional conversational classification, recommendation, approval, and specialist coordination layer |
 | Factory | Independent workflow family inside Karya |
 | Skill | Specialized reusable capability |
 | Spec | Bounded executable unit of change |
@@ -105,7 +116,7 @@ When execution encounters a consequential unresolved decision, it returns `needs
 - Root `specs/` define optional cross-skill handoffs; skill folders contain executable instructions, references, scripts, and local schemas/templates.
 - Providers are mechanisms, not evidence sources. Preserve original-source lineage.
 - External writes require an exact operation and explicit confirmation.
-- No factory silently invokes another factory.
+- No Factory silently invokes another Factory. Karya may coordinate only an explicitly approved route and keeps cross-factory handoffs optional.
 - Missing research does not block an MVP; missing marketing does not block publication of a technical preview.
 - Secrets and authenticated session material stay outside the repository and generated projects.
 
@@ -113,6 +124,9 @@ When execution encounters a consequential unresolved decision, it returns `needs
 
 ```txt
 skills/
+  # Optional Karya coordination
+  karya/
+
   # MVP Factory
   product-brief-architect/
   karya-frontend-builder/

@@ -1,5 +1,7 @@
 # Research Factory Workflow
 
+This workflow may be invoked directly or selected through an approved `$karya` recommendation. Karya coordination does not make research a prerequisite or weaken its evidence contracts.
+
 1. Confirm that market research/validation was explicitly requested; do not run because an MVP is being built.
 2. Use `$market-research-architect` to define the decision, market frame, hypotheses, falsifiers, depth, evidence tasks, provider permissions, and stop conditions.
 3. Use `$karya-research-router` to split and route bounded tasks.

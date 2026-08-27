@@ -2,6 +2,8 @@
 
 The Project Harness Factory is an independent, opt-in workflow for making any project operable and scalable with AI through durable knowledge, Specs, local skills, deterministic runtime materialization, Codex threads, validation, completion evidence, and audit.
 
+It may be invoked directly or selected through an approved `$karya` recommendation. Karya remains the conversational coordinator, while Project Harness retains authority over its own planning, Spec, runtime, thread, evidence, and audit contracts.
+
 ## Audit result and reuse matrix
 
 | Mechanism | Disposition | Project Harness treatment |

@@ -1,5 +1,7 @@
 # Marketing Factory Workflow
 
+This workflow may be invoked directly or selected through an approved `$karya` recommendation. Karya coordination does not authorize accounts, publication, communication, credentials, or spending.
+
 1. Confirm that commercial launch/marketing work was explicitly requested; do not make it a prerequisite for MVP construction.
 2. Use `$commercial-launch-architect` to define audience, positioning, offer, channels, account setup kits, phases, KPIs, attribution, and experiments.
 3. Give the human owner the account-creation/security checklist. Never collect or store credentials, verification codes, recovery codes, or 2FA secrets.

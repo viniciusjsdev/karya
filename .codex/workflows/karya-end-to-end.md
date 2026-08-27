@@ -2,6 +2,8 @@
 
 This workflow is the standalone MVP Factory. Do not insert Research Factory or Marketing Factory stages unless the user explicitly asks to run them. Their absence is not a product-contract defect.
 
+It may be invoked directly or selected through an approved `$karya` recommendation. When Karya selected it, Karya remains the conversational coordinator while the specialist skills below retain their full contracts.
+
 1. Inspect the idea, PRD, existing repository, and product documents.
 2. Route missing or incomplete product contracts to `product-brief-architect`.
 3. Validate `docs/product/` and resolve blocking product questions.

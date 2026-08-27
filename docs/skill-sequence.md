@@ -1,6 +1,16 @@
 # Skill Sequences
 
-There is no mandatory global sequence. Select one factory based on the user's current objective. Cross-factory handoffs are optional and require explicit invocation.
+There is no mandatory global sequence. When the correct route is unclear, `$karya` classifies the immediate objective, recommends one primary route, explains why, and waits for approval. It then remains the conversational coordinator while approved specialist skills work internally. Users may still invoke any specialist directly when the route is already known.
+
+```txt
+User objective
+  -> optional $karya classification
+  -> recommendation and approval
+  -> direct execution or one Factory sequence
+  -> unified result through Karya
+```
+
+Cross-factory handoffs remain optional and require explicit approval.
 
 ## MVP Factory
 

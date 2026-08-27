@@ -1,0 +1,58 @@
+{
+  "$schema": "./routing-decision.schema.json",
+  "schema_version": "1.0",
+  "decision_id": "KARYA-ROUTE-001",
+  "request_summary": "Create a new automation that monitors processes and produces reports.",
+  "classification": {
+    "primary_intent": "product_work",
+    "project_state": "rough idea",
+    "confidence": "high",
+    "signals": [
+      "The user wants to create a new automation.",
+      "Inputs, rules, integrations, failure behavior, and acceptance criteria are not defined yet."
+    ]
+  },
+  "recommended_route": {
+    "mode": "factory",
+    "factory": "MVP Factory",
+    "entry_skill": "product-brief-architect",
+    "reason": "The automation needs an executable product contract before implementation.",
+    "approved_scope": [
+      "Define the automation product contract."
+    ],
+    "planned_skills": [
+      {
+        "skill": "product-brief-architect",
+        "purpose": "Define inputs, outputs, rules, integrations, failure states, and acceptance criteria.",
+        "when": "After the user approves this route."
+      }
+    ]
+  },
+  "coordination": {
+    "coordinator": "karya",
+    "user_facing_interface": "karya",
+    "execution_mode": "same_thread_by_default",
+    "active_skill": null
+  },
+  "supporting_routes": [
+    {
+      "factory": "Project Harness Factory",
+      "entry_skill": "project-harness-architect",
+      "reason": "A durable AI operating structure may become useful once the project exists and will be maintained across threads.",
+      "when": "Only if the user later asks to structure ongoing AI-assisted development.",
+      "requires_additional_approval": true,
+      "automatic_handoff": false
+    }
+  ],
+  "not_recommended": [
+    "Research Factory is not required to define or build the requested automation.",
+    "Marketing Factory is not part of the current objective."
+  ],
+  "open_questions": [],
+  "approval": {
+    "required": true,
+    "status": "pending",
+    "question": "Do you approve the MVP Factory route and the use of product-brief-architect for the stated scope?"
+  },
+  "automatic_handoff": false
+}

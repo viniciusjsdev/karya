@@ -1,6 +1,6 @@
 # Karya Method
 
-This document describes only the MVP Factory. It remains independently runnable: the Research Factory and Marketing Factory are optional workflows documented in `research-workflow.md` and `marketing-workflow.md`.
+This document describes only the MVP Factory. It remains independently runnable: the Research Factory, Marketing Factory, and Project Harness Factory are optional workflows. Users who do not know the appropriate entry point may first invoke `$karya` for an explained recommendation and approval; direct invocation of `product-brief-architect` remains valid.
 
 1. Capture the idea, existing PRD, client notes, or product constraints.
 2. Use `product-brief-architect` to create or complete executable product contracts.

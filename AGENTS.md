@@ -4,6 +4,8 @@ This repository contains independent Codex skills for direct MVP/prototype creat
 
 Karya is the umbrella system. A Factory is an independent workflow family inside Karya; a Skill is a specialized reusable capability. Preserve the names MVP Factory, Research Factory, Marketing Factory, and Project Harness Factory.
 
+The installable `karya` skill is the optional conversational coordinator. It classifies the user's immediate objective, recommends the smallest suitable direct or Factory route, explains why, obtains approval, and then applies approved specialist skills internally while remaining the user-facing voice. It is not a fifth Factory or a mandatory prerequisite.
+
 Rules:
 
 - Treat each folder under `skills/` as an independent skill.
@@ -15,6 +17,9 @@ Rules:
 - Keep `examples/` focused on sample contracts and project structures.
 - Keep executable instructions, scripts, and detailed references inside the relevant skill folder.
 - Treat the MVP Factory, Research Factory, Marketing Factory, and Project Harness Factory as independent workflows.
+- Let users start with `$karya` when they do not know the catalog. Preserve direct specialist invocation when the required skill is already known.
+- Require `$karya` to wait for route approval before applying specialist skills. Keep every cross-factory suggestion optional with `automatic_handoff: false`.
+- Keep Karya as the conversational coordinator after approval; specialist skills work internally and retain their full contracts, prerequisites, validation, and authority boundaries.
 - Never make Research or Marketing a prerequisite, hidden stage, or blocking gate for the MVP Factory.
 - Invoke a cross-factory handoff only after explicit user request or approval; record `automatic_handoff: false` in machine-readable decisions.
 - Use `project-harness-architect` only when the user explicitly asks to bootstrap or evolve how a project works with AI; it is not a prerequisite of any other Factory.
@@ -40,6 +45,9 @@ Rules:
 
 ## Factory Routing
 
+- When `$karya` is explicitly invoked, classify the immediate desired outcome and current artifact state before selecting a route. Project type alone is insufficient; an automation may require direct execution, MVP, Research, Marketing, or Project Harness depending on the requested outcome.
+- Recommend one primary route, explain the reason, name the internal skills covered by the proposed scope, and wait for explicit approval. Do not require the user to invoke each approved specialist manually.
+- Use direct Codex execution for bounded, sufficiently defined work when no Factory contract is needed.
 - For product definition, construction, backend, infrastructure, hosting, or technical MVP validation, use the standalone MVP Factory.
 - For market investigation, app-market intelligence, evidence collection, or hypothesis validation, use the standalone Research Factory.
 - For positioning, account setup information, launch planning, creative production, platform execution, or commercial-result validation, use the standalone Marketing Factory.

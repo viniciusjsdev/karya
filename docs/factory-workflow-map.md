@@ -2,16 +2,19 @@
 
 ## Selection rule
 
+When the route is unknown, start with `$karya`. It classifies the current objective and artifact state, recommends the smallest route with reasons, and waits for approval before applying specialist skills internally. Direct specialist invocation remains valid when the route is already known.
+
 Route by the current objective:
 
 | User objective | Factory | Starts with |
 |---|---|---|
+| Complete a bounded, sufficiently defined task | No Factory required | Direct Codex execution |
 | Define/build/host a product | MVP | `product-brief-architect` |
 | Investigate/validate a market | Research | `market-research-architect` |
 | Prepare/operate/evaluate a launch | Marketing | `commercial-launch-architect` |
 | Structure how a project works and scales with AI | Project Harness | `project-harness-architect` |
 
-If the user asks for more than one, create separate contracts and state the handoff order. Do not merge their responsibilities into one skill.
+If the user asks for more than one, Karya recommends one primary route and optional later routes with explicit approval boundaries. Create separate contracts and state the handoff order. Do not merge their responsibilities into one skill.
 
 ## Independence guarantees
 
@@ -21,6 +24,7 @@ If the user asks for more than one, create separate contracts and state the hand
 - The Project Harness Factory can start from an idea, empty project, existing project, or artifact produced anywhere; no other Factory requires it.
 - A failure or unavailable provider in one factory does not disable the others.
 - Cross-factory artifacts are copied/referenced deliberately; no workflow mutates another factory's source of truth silently.
+- Karya coordination never changes `automatic_handoff: false`; a new Factory requires a new recommendation and approval.
 
 ## Provider responsibilities
 

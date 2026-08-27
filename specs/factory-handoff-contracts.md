@@ -2,7 +2,7 @@
 
 ## Independence and invocation
 
-The MVP, Research, and Marketing factories are independent. The handoffs below describe compatible artifacts, not a mandatory global pipeline. A consumer runs only after explicit user invocation or approval; a producer must never trigger it silently.
+The MVP, Research, Marketing, and Project Harness Factories are independent. The handoffs below describe compatible artifacts, not a mandatory global pipeline. A consumer runs only after explicit user invocation or approval; a producer must never trigger it silently. `$karya` may recommend and coordinate an approved handoff, but it does not change this boundary.
 
 ## Product to frontend
 
@@ -124,4 +124,4 @@ Required output: receipt with operation/provider task IDs, status, account/platf
 
 ## Cross-factory handoff rule
 
-When one factory's result suggests work in another, record `optional_handoff`, target skill, reason, required input, and `automatic_handoff: false`. The user chooses whether and when to continue.
+When one Factory's result suggests work in another, Karya or the producing skill records `optional_handoff`, target skill, reason, required input, and `automatic_handoff: false`. Karya explains the proposed route and the user chooses whether and when to continue.

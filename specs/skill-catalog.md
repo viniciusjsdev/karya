@@ -2,7 +2,13 @@
 
 ## Invocation model
 
-Karya's catalog is divided into four independent Factories. Install or invoke only the skills needed for the current objective. Research, Marketing, and Project Harness are never implicit prerequisites of MVP construction or of one another.
+Karya provides one optional conversational coordination skill plus specialist skills divided into four independent Factories. Users may invoke `$karya` to receive an explained route and continue through approved specialist capabilities without learning the catalog first, or invoke a specialist directly when the route is already known. Research, Marketing, and Project Harness are never implicit prerequisites of MVP construction or of one another.
+
+## Karya Coordination
+
+### karya
+
+Classifies the user's immediate objective and relevant project state, recommends the smallest direct-execution or Factory route, explains why, names the specialist skills covered by the proposed scope, and waits for explicit approval. After approval it remains the conversational coordinator while applying the selected specialists internally. It is not a fifth Factory, does not replace specialist contracts, and keeps every cross-factory handoff optional with `automatic_handoff: false`.
 
 ## MVP Factory
 
@@ -98,4 +104,4 @@ Reconciles project truth, decisions, AGENTS routing, Specs, local skills, runtim
 
 ## General rule
 
-Every skill reports missing/contradictory inputs. No skill silently invokes another factory, creates an account, handles credentials, authorizes spend, or changes a product contract outside its responsibility.
+Every skill reports missing/contradictory inputs. Karya may coordinate explicitly approved specialist skills inside the approved route, but no skill silently invokes another Factory, creates an account, handles credentials, authorizes spend, or changes a product contract outside its responsibility.

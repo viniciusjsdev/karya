@@ -66,6 +66,22 @@ Karya is a brand adaptation inspired by the Caryatids: female figures used as st
 
 Karya is not the application being built. It is the structure that helps AI build and evolve it reliably.
 
+## Start with Karya
+
+You do not need to know the skill catalog before starting. After installing the repository, describe the objective to Karya:
+
+```txt
+$karya I want to create an automation that monitors processes and produces a daily report.
+```
+
+Karya inspects the request and relevant project context, consults its compact skill map, recommends the smallest suitable Factory, specialist skill, or direct-execution route, explains why, and waits for approval. After approval, Karya remains the conversational coordinator while the approved specialist skills work internally; the user does not need to invoke each one manually.
+
+```txt
+You -> $karya -> recommendation + reason -> approval -> specialist skills -> unified result
+```
+
+Karya is an optional coordination layer, not a fifth Factory. Direct skill invocation remains supported, and no cross-factory handoff happens automatically. See the [Karya routing model](docs/karya-routing.md).
+
 ## Four independent factories
 
 | Factory | Use it when you want to... | Start with |
@@ -86,7 +102,13 @@ git clone https://github.com/viniciusjsdev/karya.git
 cd karya
 ```
 
-Install the skills using the [Windows](#windows--powershell) or [Linux/macOS](#linux--macos) instructions below. Then ask Codex to invoke the entry skill that matches your objective:
+Install the skills using the [Windows](#windows--powershell) or [Linux/macOS](#linux--macos) instructions below. The simplest entry point is:
+
+```txt
+Use $karya to analyze this objective and project, recommend the smallest suitable route with reasons, and wait for my approval before applying specialist skills internally: <your objective>
+```
+
+You may also invoke a Factory entry skill directly when you already know the required workflow:
 
 ```txt
 Use $project-harness-architect to audit this repository and prepare the minimum durable AI operating harness.
@@ -257,11 +279,12 @@ python skills/codex-runtime-router/scripts/codex_runtime_doctor.py
 
 ## Skill catalog
 
-The repository currently contains 21 independent skills across the four Factories. The complete responsibility, trigger, and boundary catalog lives in [specs/skill-catalog.md](specs/skill-catalog.md).
+The repository currently contains one optional Karya coordination skill plus 21 independent specialist skills across the four Factories. The complete responsibility, trigger, and boundary catalog lives in [specs/skill-catalog.md](specs/skill-catalog.md).
 
 ## Architecture and documentation
 
 - [Karya architecture](docs/karya-architecture.md)
+- [Karya routing and coordination](docs/karya-routing.md)
 - [Factory workflow map](docs/factory-workflow-map.md)
 - [Project Harness architecture](docs/project-harness-factory.md)
 - [Project Harness contract](specs/project-harness-contract.md)
@@ -305,6 +328,7 @@ Factory-specific validators and tests remain inside their owning skill folders.
 ```txt
 karya/
 ├── skills/       # independently installable Codex skills
+│   ├── karya/     # optional conversational coordinator
 │   ├── <MVP Factory skills>
 │   ├── <Research Factory skills>
 │   ├── <Marketing Factory skills>
@@ -320,7 +344,7 @@ karya/
 └── README.md
 ```
 
-Start with the Factory that matches the current objective. Use optional handoff artifacts when another Factory becomes useful; do not turn the four workflows into one mandatory pipeline.
+Start with `$karya` when the correct route is unclear, or invoke a specialist directly when it is already known. Use optional handoff artifacts when another Factory becomes useful; do not turn the four workflows into one mandatory pipeline.
 
 ## Contributing
 
