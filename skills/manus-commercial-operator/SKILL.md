@@ -11,7 +11,7 @@ Provide a portable, minimal-credit execution contract for Manus. Receive final a
 
 ## Invocation Boundary
 
-- Accept only an approved commercial-operation manifest produced or checked by `$app-factory-commercial-router`.
+- Accept only an approved commercial-operation manifest produced or checked by `$karya-commercial-router`.
 - Supported modes: `publish`, `schedule`, `approved_contact`, `metrics_read`, and `crm_update`.
 - Do not research strategy, rewrite assets, choose recipients, infer timing, or expand scope.
 - Do not create accounts, handle passwords/recovery codes, solve CAPTCHA, complete email/SMS/identity verification, or control 2FA.

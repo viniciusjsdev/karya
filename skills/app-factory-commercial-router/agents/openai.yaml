@@ -1,4 +1,0 @@
-interface:
-  display_name: "App Factory Commercial Router"
-  short_description: "Route commercial work with approval gates"
-  default_prompt: "Use $app-factory-commercial-router to route this commercial operation safely and economically."

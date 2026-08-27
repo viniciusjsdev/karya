@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://app-factory.local/schemas/manus-execution-receipt.schema.json",
+  "$id": "https://karya.local/schemas/manus-execution-receipt.schema.json",
   "title": "Manus Commercial Execution Receipt",
   "type": "object",
   "additionalProperties": false,

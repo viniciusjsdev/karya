@@ -3,7 +3,7 @@
 - Executable product contract exists and passes its validator.
 - Scope, non-scope, primary journey, permissions, and open questions are explicit.
 - Frontend code, architecture, API boundary, and validation report exist before backend work.
-- Standard site creation invokes external `@sites` together with `$app-factory-frontend-builder` without adding Sites to npm dependencies.
+- Standard site creation invokes external `@sites` together with `$karya-frontend-builder` without adding Sites to npm dependencies.
 - Backend preflight context, six human-readable architecture contracts, matching approved `backend-contract-manifest.json`, resolved project-root `.codex` context, and the validated `.agents/skills/` backend architecture kit exist before implementation.
 - Backend implementation contract is explicitly approved before `django-backend-code-executor` runs.
 - Backend routing records OpenCode readiness and uses Codex fallback automatically when `auto` is selected.

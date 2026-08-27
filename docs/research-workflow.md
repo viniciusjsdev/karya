@@ -7,7 +7,7 @@ Produce an auditable market decision from a bounded question and traceable evide
 ## Sequence
 
 1. `market-research-architect` creates the decision frame, hypotheses, falsifiers, evidence tasks, depth, budget, and completion criteria.
-2. `app-factory-research-router` splits tasks by evidence class and selects the cheapest capable mechanism.
+2. `karya-research-router` splits tasks by evidence class and selects the cheapest capable mechanism.
 3. Specialized work runs only where needed:
    - Codex for focused web research, original-source reading, normalization, and synthesis;
    - `app-market-intelligence-analyst` for AppStoreTracker/Apple iOS analysis;

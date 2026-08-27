@@ -5,7 +5,7 @@ This is the standalone MVP generation flow. Research and marketing may consume o
 The process may start from a rough idea, PRD, client notes, screen list, or existing partial project.
 
 1. Create or complete the executable product contract.
-2. Invoke external `@sites` together with `$app-factory-frontend-builder` to build from that contract, show the result, and publish it privately without installing Sites in the application.
+2. Invoke external `@sites` together with `$karya-frontend-builder` to build from that contract, show the result, and publish it privately without installing Sites in the application.
 3. Validate product flows, responsive behavior, data boundaries, tests, and build.
 4. Plan Django, create the strict machine-readable backend contract manifest with exact URLs/tests/commands, enrich root `.codex` backend context, materialize the `.agents/skills/` architecture kit, and approve the matching manifest/implementation contract version.
 5. Route the approved backend to OpenCode Go when ready or Codex as fallback.

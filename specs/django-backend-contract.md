@@ -26,7 +26,7 @@ Summarize entities, ownership, repositories, services, DTO/controller groups, au
 
 Producer: `django-backend-code-executor`
 
-Router: `app-factory-backend-router` selects OpenCode Go when ready or Codex as fallback. Executor selection does not change this contract.
+Router: `karya-backend-router` selects OpenCode Go when ready or Codex as fallback. Executor selection does not change this contract.
 
 Implement:
 

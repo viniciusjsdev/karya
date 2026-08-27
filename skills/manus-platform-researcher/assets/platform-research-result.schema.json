@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://app-factory.local/schemas/platform-research-result.schema.json",
+  "$id": "https://karya.local/schemas/platform-research-result.schema.json",
   "title": "Read-only Platform Research Result",
   "type": "object",
   "additionalProperties": false,

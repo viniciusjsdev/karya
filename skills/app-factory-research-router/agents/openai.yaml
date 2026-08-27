@@ -1,4 +1,0 @@
-interface:
-  display_name: "App Factory Research Router"
-  short_description: "Route research to the right evidence source"
-  default_prompt: "Use $app-factory-research-router to route this research request across available providers."

@@ -1,4 +1,4 @@
 interface:
   display_name: "Product Brief Architect"
-  short_description: "Cria PRDs execut·veis e contratos de produto"
-  default_prompt: "Use $product-brief-architect para transformar esta ideia ou PRD em contratos execut·veis para frontend e backend."
+  short_description: "Cria PRDs execut√°veis e contratos de produto"
+  default_prompt: "Use $product-brief-architect para transformar esta ideia ou PRD em contratos execut√°veis para frontend e backend."

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://app-factory.local/schemas/creative-pack-manifest.schema.json",
+  "$id": "https://karya.local/schemas/creative-pack-manifest.schema.json",
   "title": "Marketing Creative Pack Manifest",
   "type": "object",
   "additionalProperties": false,

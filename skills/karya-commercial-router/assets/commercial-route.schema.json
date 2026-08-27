@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://karya.local/schemas/commercial-route.schema.json",
+  "title": "Karya Commercial Route",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "operation_id", "operation_type", "owner", "status", "confirmation_gate", "reason", "fallback", "external_state_changed"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "operation_id": { "type": "string", "minLength": 1 },
+    "operation_type": { "type": "string", "minLength": 1 },
+    "owner": { "enum": ["codex", "human", "research_factory", "manus"] },
+    "status": { "enum": ["ready", "approval_required", "human_required", "provider_unavailable", "blocked"] },
+    "confirmation_gate": { "enum": ["none_required", "human_step", "explicit_action_confirmation"] },
+    "reason": { "type": "string", "minLength": 1 },
+    "fallback": { "type": "string" },
+    "limits": { "type": "object" },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "external_state_changed": { "const": false }
+  }
+}

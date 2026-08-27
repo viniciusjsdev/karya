@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://app-factory.local/schemas/market-validation-decision.schema.json",
+  "$id": "https://karya.local/schemas/market-validation-decision.schema.json",
   "title": "Market Validation Decision",
   "type": "object",
   "additionalProperties": false,

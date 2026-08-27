@@ -2,7 +2,7 @@
 
 ## Producer
 
-`app-factory-infra-orchestrator`
+`karya-infra-orchestrator`
 
 ## Required Inputs
 

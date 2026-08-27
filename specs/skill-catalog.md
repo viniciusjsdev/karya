@@ -2,7 +2,7 @@
 
 ## Invocation model
 
-The catalog is divided into four independent factories. Install or invoke only the skills needed for the current objective. Research, Marketing, and Project Harness are never implicit prerequisites of MVP construction or of one another.
+Karya's catalog is divided into four independent Factories. Install or invoke only the skills needed for the current objective. Research, Marketing, and Project Harness are never implicit prerequisites of MVP construction or of one another.
 
 ## MVP Factory
 
@@ -10,7 +10,7 @@ The catalog is divided into four independent factories. Install or invoke only t
 
 Creates or completes an executable product contract from ideas, PRDs, notes, problems, features, or screens. It does not write application code.
 
-### app-factory-frontend-builder
+### karya-frontend-builder
 
 Builds the complete React/TypeScript frontend from product contracts. In the visible-site workflow it is composed with external `@sites`, which owns preview/publication without becoming an npm dependency.
 
@@ -18,7 +18,7 @@ Builds the complete React/TypeScript frontend from product contracts. In the vis
 
 Creates backend planning, security, validation, and implementation contracts plus the machine-readable service/invariant/endpoint/validation manifest, materializes project context/architecture skills, and audits completed code with ID-level traceability. It does not implement.
 
-### app-factory-backend-router
+### karya-backend-router
 
 Routes an approved matching backend contract/manifest version to OpenCode Go when ready or Codex as fallback and validates structured per-ID completion evidence. It does not define or approve backend architecture.
 
@@ -26,7 +26,7 @@ Routes an approved matching backend contract/manifest version to OpenCode Go whe
 
 Implements an approved Django contract/manifest with explicit Model/Configuration, DTO/Mapper, Controller, Service, Repository, migrations, exact invariant and endpoint tests, exact allowed migration-generation commands, required validations, and structured evidence.
 
-### app-factory-infra-orchestrator
+### karya-infra-orchestrator
 
 Prepares Docker, environment, Supabase, frontend hosting, backend container, and VPS paths after a project shape exists.
 
@@ -36,7 +36,7 @@ Prepares Docker, environment, Supabase, frontend hosting, backend container, and
 
 Creates the research decision frame, hypotheses, falsifiers, source/evidence tasks, depth, budget, and completion criteria. It plans but does not retrieve or decide.
 
-### app-factory-research-router
+### karya-research-router
 
 Routes evidence tasks across Codex, AppStoreTracker/Apple, OpenAlex, optional Perplexity, and Manus. It preserves source lineage and does not validate the idea.
 
@@ -62,7 +62,7 @@ Creates positioning, offer, channels, account setup kits, campaign phases, KPIs,
 
 Creates channel-ready copy, creative/video briefs and assets, variants, accessibility fields, UTM metadata, and a production manifest. It never publishes.
 
-### app-factory-commercial-router
+### karya-commercial-router
 
 Routes commercial work to Codex, Manus, or human gates while minimizing Manus credits and requiring exact approval for external actions.
 

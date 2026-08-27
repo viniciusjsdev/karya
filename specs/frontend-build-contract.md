@@ -9,7 +9,7 @@
 
 ## Output
 
-- React/TypeScript application using the App Factory stack
+- React/TypeScript application using the Karya stack
 - feature architecture following `Route -> Feature Page -> Hook/View Model -> Service -> Repository Adapter`
 - functional routes, interactions, feedback, and responsive states
 - realistic mocks and versioned local persistence when backend is absent
@@ -20,4 +20,4 @@
 
 The frontend must preserve explicit product semantics. Any implementation assumption or variance must be recorded for backend and product review.
 
-The standard factory command names both `@sites` and `$app-factory-frontend-builder`. Sites owns preview and hosting mechanics. The frontend skill remains authoritative for the application stack and architecture.
+The standard factory command names both `@sites` and `$karya-frontend-builder`. Sites owns preview and hosting mechanics. The frontend skill remains authoritative for the application stack and architecture.

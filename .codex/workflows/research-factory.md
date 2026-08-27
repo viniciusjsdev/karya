@@ -2,7 +2,7 @@
 
 1. Confirm that market research/validation was explicitly requested; do not run because an MVP is being built.
 2. Use `$market-research-architect` to define the decision, market frame, hypotheses, falsifiers, depth, evidence tasks, provider permissions, and stop conditions.
-3. Use `$app-factory-research-router` to split and route bounded tasks.
+3. Use `$karya-research-router` to split and route bounded tasks.
 4. Keep Codex as the default researcher and synthesizer.
 5. Route iOS app/developer/family/cohort work to `$app-market-intelligence-analyst` using AppStoreTracker plus Apple confirmation.
 6. Use OpenAlex for scholarly discovery and inspect original works before substantive claims.

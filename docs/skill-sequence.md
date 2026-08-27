@@ -7,12 +7,12 @@ There is no mandatory global sequence. Select one factory based on the user's cu
 ```txt
 Idea or PRD
   -> product-brief-architect
-  -> @sites + app-factory-frontend-builder
+  -> @sites + karya-frontend-builder
   -> django-backend-service-architect
-  -> app-factory-backend-router
+  -> karya-backend-router
   -> OpenCode Go or Codex + django-backend-code-executor
   -> django-backend-service-architect audit
-  -> app-factory-infra-orchestrator
+  -> karya-infra-orchestrator
   -> publication and MVP validation
 ```
 
@@ -23,7 +23,7 @@ This sequence is self-contained. Do not insert market research or marketing as a
 ```txt
 Market question
   -> market-research-architect
-  -> app-factory-research-router
+  -> karya-research-router
   -> specialized retrieval/analysis tasks
   -> market-validation-harness
   -> decision and next experiment
@@ -41,7 +41,7 @@ Market question
 Product or launch input
   -> commercial-launch-architect
   -> marketing-creative-builder
-  -> app-factory-commercial-router
+  -> karya-commercial-router
   -> Codex, human, or manus-commercial-operator
   -> commercial-validation-analyst
 ```

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Karya backend route result",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["task_id", "route", "executor", "model", "project_root", "reasons", "artifacts"],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 1 },
+    "route": {
+      "enum": [
+        "preflight-blocked",
+        "codex-fallback-required",
+        "opencode-unavailable",
+        "opencode-completed",
+        "opencode-reported-blocked",
+        "opencode-error",
+        "opencode-ready"
+      ]
+    },
+    "executor": { "enum": ["codex", "opencode", "none"] },
+    "model": { "type": "string" },
+    "project_root": { "type": "string", "minLength": 1 },
+    "reasons": { "type": "array", "items": { "type": "string" } },
+    "artifacts": { "type": "object" }
+  }
+}

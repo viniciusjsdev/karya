@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://karya.local/schemas/research-route.schema.json",
+  "title": "Karya Research Route",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "request_id", "intent", "depth", "tasks"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "request_id": { "type": "string", "minLength": 1 },
+    "intent": {
+      "enum": ["targeted_web", "broad_web", "app_market", "scientific", "platform_native", "mixed"]
+    },
+    "depth": { "enum": ["rapid", "standard", "deep"] },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["task_id", "evidence_class", "primary", "fallback", "status", "reason"],
+        "properties": {
+          "task_id": { "type": "string", "minLength": 1 },
+          "evidence_class": { "type": "string", "minLength": 1 },
+          "primary": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "fallback": { "type": "array", "items": { "type": "string" } },
+          "status": { "enum": ["ready", "limited", "manual_required", "blocked"] },
+          "reason": { "type": "string", "minLength": 1 },
+          "limits": { "type": "object" }
+        }
+      }
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } }
+  }
+}

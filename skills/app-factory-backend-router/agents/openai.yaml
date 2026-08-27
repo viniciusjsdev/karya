@@ -1,4 +1,0 @@
-interface:
-  display_name: "App Factory Backend Router"
-  short_description: "Route backend coding to OpenCode or Codex"
-  default_prompt: "Use $app-factory-backend-router to route an approved Django backend implementation to OpenCode with Codex fallback."

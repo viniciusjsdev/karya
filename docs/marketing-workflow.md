@@ -9,7 +9,7 @@ Prepare a product for commercial contact, create its campaign assets, execute on
 1. `commercial-launch-architect` creates positioning, offer, channel plan, account setup kits, campaign phases, KPIs, attribution, and experiments.
 2. The human owner creates and secures required accounts using the kit.
 3. `marketing-creative-builder` creates approved channel-ready copy, creative briefs/assets, variants, accessibility fields, and a manifest.
-4. `app-factory-commercial-router` routes the next bounded operation:
+4. `karya-commercial-router` routes the next bounded operation:
    - Codex for strategy/artifacts;
    - human for account/security/confirmation/spend;
    - `manus-commercial-operator` for exact connected-platform execution.

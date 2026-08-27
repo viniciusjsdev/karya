@@ -1,6 +1,6 @@
 # Root Project Template
 
-Use this folder for reusable root-level starter material for generated App Factory projects.
+Use this folder for reusable root-level starter material for generated Karya projects.
 
 Expected generated project root files usually include:
 

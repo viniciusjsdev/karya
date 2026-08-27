@@ -12,9 +12,9 @@ The Project Harness Factory is an independent, opt-in workflow for making any pr
 | backend `backend-domain-skill-author` and domain-skill policy | generalize and keep specific | generic selection becomes `project-skill-author`; the backend author remains the richer backend capability |
 | backend Markdown implementation contract + JSON manifest | generalize and keep specific | use the human/machine split for generic Specs; never downgrade the backend manifest |
 | backend completion schema and ID-level audit | generalize and keep specific | generic acceptance/validation evidence follows the pattern; backend keeps invariant/endpoint traceability |
-| `app-factory-backend-router` | keep specific | continues OpenCode/Codex Django routing and security boundaries |
-| `app-factory-research-router` | keep specific | continues provider/evidence routing; it does not execute Project Specs |
-| `app-factory-commercial-router` | keep specific | continues approved external commercial operations |
+| `karya-backend-router` | keep specific | continues OpenCode/Codex Django routing and security boundaries |
+| `karya-research-router` | keep specific | continues provider/evidence routing; it does not execute Project Specs |
+| `karya-commercial-router` | keep specific | continues approved external commercial operations |
 | generic Spec lifecycle/readiness | create new | `project-spec-architect`, schemas, validator, templates |
 | explicit GPT-5.6 runtime + reasoning materialization | create new | centralized runtime policy and per-Spec resolved execution manifest |
 | Codex SDK start/resume router and thread mapping | create new | Python 3.12+ `codex-runtime-router`, official Python SDK, ignored `.harness/runtime/` state, and mock-tested adapter |
@@ -63,6 +63,6 @@ The executable [SPEC-023 sensor export example](../examples/project-harness/spec
 
 ## Compatibility
 
-Generic Specs may reference a specialized backend planning contract. A Django change can therefore flow from a generic project change into `django-backend-service-architect`, its approved manifest, `app-factory-backend-router`, `django-backend-code-executor`, and its specialized audit. The generic harness records the cross-artifact handoff without replacing the backend contract.
+Generic Specs may reference a specialized backend planning contract. A Django change can therefore flow from a generic project change into `django-backend-service-architect`, its approved manifest, `karya-backend-router`, `django-backend-code-executor`, and its specialized audit. The generic harness records the cross-artifact handoff without replacing the backend contract.
 
 Frontend/backend context initializers remain valid when Project Harness is absent. When a Harness already exists, they enrich missing domain-specific context and preserve the generic root context.

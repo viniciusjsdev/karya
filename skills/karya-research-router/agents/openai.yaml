@@ -1,0 +1,4 @@
+interface:
+  display_name: "Karya Research Router"
+  short_description: "Route research to the right evidence source"
+  default_prompt: "Use $karya-research-router to route this research request across available providers."

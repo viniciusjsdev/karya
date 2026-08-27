@@ -65,4 +65,4 @@ Follow `references/result-contract.md` and `assets/platform-research-result.sche
 
 ## Portable Handoff
 
-This skill is intentionally self-contained so the same `SKILL.md`, references, and schema can be imported into a Manus workspace. Provider-specific connection mechanics stay outside the App Factory project and outside generated product repositories.
+This skill is intentionally self-contained so the same `SKILL.md`, references, and schema can be imported into a Manus workspace. Provider-specific connection mechanics stay outside Karya and outside generated product repositories.

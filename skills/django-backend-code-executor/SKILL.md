@@ -1,6 +1,6 @@
 ---
 name: django-backend-code-executor
-description: Implement an approved Django backend contract using scalable per-domain Model, Configuration, DTO, explicit Mapper, Controller, Service, and Repository packages. Use when an App Factory project has approved backend architecture, API, security, validation, and implementation contracts and Codex, OpenCode, or another executor must write Django code, generate command-only migrations, add layered tests, validate boundaries, and return completion evidence. Do not use for planning, product decisions, contract approval, frontend, infrastructure, or implementation without approved contracts.
+description: Implement an approved Django backend contract using scalable per-domain Model, Configuration, DTO, explicit Mapper, Controller, Service, and Repository packages. Use when an Karya project has approved backend architecture, API, security, validation, and implementation contracts and Codex, OpenCode, or another executor must write Django code, generate command-only migrations, add layered tests, validate boundaries, and return completion evidence. Do not use for planning, product decisions, contract approval, frontend, infrastructure, or implementation without approved contracts.
 ---
 
 # Django Backend Code Executor

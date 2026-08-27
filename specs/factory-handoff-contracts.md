@@ -8,7 +8,7 @@ The MVP, Research, and Marketing factories are independent. The handoffs below d
 
 Producer: `product-brief-architect`
 
-Consumer: external `@sites` composed with `app-factory-frontend-builder`
+Consumer: external `@sites` composed with `karya-frontend-builder`
 
 Required output: product source of truth, scope/non-scope, primary journey, routes/screens/states/interactions, numbered business rules, data/DTO contract, visual direction, acceptance criteria, assumptions, and open questions.
 
@@ -16,7 +16,7 @@ Invocation rule: Sites owns preview/private publication; the frontend builder ow
 
 ## Frontend to backend
 
-Producer: `app-factory-frontend-builder`
+Producer: `karya-frontend-builder`
 
 Consumer: `django-backend-service-architect`
 
@@ -26,7 +26,7 @@ Required output: implemented frontend, architecture notes, repository/service co
 
 Producer: `django-backend-service-architect`
 
-Consumer: `app-factory-backend-router`, then OpenCode Go or Codex using `django-backend-code-executor`
+Consumer: `karya-backend-router`, then OpenCode Go or Codex using `django-backend-code-executor`
 
 Required output: explicitly approved backend implementation contract, domain/API/security/validation contracts, matching approved `backend-contract-manifest.json`, resolved project-root `.codex` backend context, compact `.agents/skills/` architecture kit, scalable per-domain package/module map, service/active-URLconf/exact-environment topology, invariant-to-test map, exact endpoint/layer/test map, exact allowed migration-generation commands, explicit mapper responsibilities, authored-module documentation policy, writable scope, migration policy, and layered test expectations.
 
@@ -44,13 +44,13 @@ Required output: Django implementation with meaningful opening docstrings in eve
 
 Producer: audited output from `django-backend-service-architect`
 
-Consumer: `app-factory-infra-orchestrator`
+Consumer: `karya-infra-orchestrator`
 
 Required output: backend structure, environment example, database ownership, migrations and server commands, health endpoint, CORS/auth/rate-limit expectations, API contract, container compatibility, and validation status.
 
 ## Infrastructure to validation/publication
 
-Producer: `app-factory-infra-orchestrator`
+Producer: `karya-infra-orchestrator`
 
 Consumer: user and selected deployment target
 
@@ -60,13 +60,13 @@ Required output: local orchestration, service Docker assets where applicable, en
 
 Producer: `market-research-architect`
 
-Consumer: `app-factory-research-router`
+Consumer: `karya-research-router`
 
 Required output: research/decision ID, market frame, numbered hypotheses and falsifiers, evidence tasks, geography/platform/period/freshness, inclusion/exclusion rules, depth, provider permissions/budget, completion/stop conditions, and open questions.
 
 ## Research routing to specialized evidence work
 
-Producer: `app-factory-research-router`
+Producer: `karya-research-router`
 
 Consumers: Codex research, `app-market-intelligence-analyst`, OpenAlex discovery, optional Perplexity discovery, or `manus-platform-researcher`
 
@@ -102,13 +102,13 @@ Required output: handle options, display/category/bio/link/contact fields, visua
 
 Producer: `marketing-creative-builder`
 
-Consumer: `app-factory-commercial-router`
+Consumer: `karya-commercial-router`
 
 Required output: immutable artifact/version references, final copy/assets, channel/placement, target account, CTA/URL/UTM, accessibility fields, claim proof, approval state, experiment ID, and expected metrics.
 
 ## Commercial routing to Manus execution
 
-Producer: `app-factory-commercial-router`
+Producer: `karya-commercial-router`
 
 Consumer: `manus-commercial-operator`
 

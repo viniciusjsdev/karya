@@ -71,7 +71,7 @@ Define tasks by evidence class rather than by provider. Typical classes are:
 - pricing, distribution, and channel evidence;
 - direct validation experiments.
 
-For each task, record preferred and fallback sources, freshness needs, inclusion/exclusion rules, required fields, and maximum effort or provider budget. Let `$app-factory-research-router` resolve the provider.
+For each task, record preferred and fallback sources, freshness needs, inclusion/exclusion rules, required fields, and maximum effort or provider budget. Let `$karya-research-router` resolve the provider.
 
 ### 6. Define completion and failure
 
@@ -91,7 +91,7 @@ Return:
 4. research tasks with evidence class, source policy, and budget;
 5. falsification and completion criteria;
 6. risk and open-question register;
-7. expected handoff to `$app-factory-research-router` and then `$market-validation-harness`;
+7. expected handoff to `$karya-research-router` and then `$market-validation-harness`;
 8. a statement that no product or marketing workflow is started automatically.
 
 ## Quality Gate

@@ -2,7 +2,7 @@
 
 ## Source reviewed
 
-The separate `research-harness` repository was reviewed as a methodological reference for the App Factory Research Factory. Its strongest contribution is an adversarial validation loop that distinguishes sourced evidence from interpretation and deliberately constructs both rejection and opportunity cases.
+The separate `research-harness` repository was reviewed as a methodological reference for Karya's Research Factory. Its strongest contribution is an adversarial validation loop that distinguishes sourced evidence from interpretation and deliberately constructs both rejection and opportunity cases.
 
 ## Adopted
 
@@ -26,12 +26,12 @@ These are analytical lenses inside `market-validation-harness`, not a requiremen
 - additional paid calls merely to simulate debate;
 - automatic handoff into product construction.
 
-## App Factory mapping
+## Karya mapping
 
-| Harness concern | App Factory owner |
+| Harness concern | Karya owner |
 |---|---|
 | Decision and hypotheses | `market-research-architect` |
-| Retrieval routing | `app-factory-research-router` |
+| Retrieval routing | `karya-research-router` |
 | App economics/cohorts | `app-market-intelligence-analyst` |
 | Native platform discovery | `manus-platform-researcher` |
 | Scholarly discovery | OpenAlex route |

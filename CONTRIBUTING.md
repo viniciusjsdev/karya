@@ -1,6 +1,6 @@
-# Contributing to App Factory Skills
+# Contributing to Karya
 
-Thanks for your interest in contributing. App Factory Skills welcomes new skills, improvements to existing ones, bug fixes, documentation, examples, tests, and cross-platform compatibility work.
+Thanks for your interest in contributing. Karya welcomes new skills, improvements to existing ones, bug fixes, documentation, examples, tests, and cross-platform compatibility work.
 
 ## What this project is
 
@@ -91,8 +91,8 @@ Keep `default_prompt` aligned with the skill name and its real trigger.
 ### 1. Fork and branch
 
 ```bash
-git clone https://github.com/<your-username>/app-factory-skills.git
-cd app-factory-skills
+git clone https://github.com/<your-username>/karya.git
+cd karya
 git checkout -b skill/my-skill-name
 ```
 
@@ -151,4 +151,4 @@ Include:
 
 ## Questions
 
-Open a [GitHub Issue](https://github.com/viniciusjsdev/app-factory-skills/issues) before investing in a large capability if its Factory placement or responsibility is unclear.
+Open a [GitHub Issue](https://github.com/viniciusjsdev/karya/issues) before investing in a large capability if its Factory placement or responsibility is unclear.

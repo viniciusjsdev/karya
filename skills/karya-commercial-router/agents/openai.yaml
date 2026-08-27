@@ -1,0 +1,4 @@
+interface:
+  display_name: "Karya Commercial Router"
+  short_description: "Route commercial work with approval gates"
+  default_prompt: "Use $karya-commercial-router to route this commercial operation safely and economically."

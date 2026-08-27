@@ -7,7 +7,7 @@ description: Turn an existing app, platform, service, product brief, or validate
 
 ## Purpose
 
-Create the commercial source of truth for launching or testing a product with real users. The input may come from the App Factory, another development stack, an existing business, or a standalone concept.
+Create the commercial source of truth for launching or testing a product with real users. The input may come from Karya, another development stack, an existing business, or a standalone concept.
 
 ## Invocation Boundary
 
@@ -72,7 +72,7 @@ Use `assets/commercial-launch-contract.template.md` and `references/launch-plann
 - KPI/funnel/attribution plan;
 - experiment backlog with thresholds;
 - risk, approvals, and human-action register;
-- optional handoffs to `$marketing-creative-builder`, `$app-factory-commercial-router`, or `$commercial-validation-analyst`.
+- optional handoffs to `$marketing-creative-builder`, `$karya-commercial-router`, or `$commercial-validation-analyst`.
 
 ## Quality Gate
 

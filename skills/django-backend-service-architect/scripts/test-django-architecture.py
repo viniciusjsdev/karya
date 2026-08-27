@@ -306,7 +306,7 @@ def main() -> int:
     if SCRIPT_DIR.joinpath("scan-django-architecture.py").read_bytes() != executor_scanner.read_bytes():
         raise AssertionError("architect and executor scanner implementations have drifted")
 
-    with tempfile.TemporaryDirectory(prefix="app-factory-django-scan-") as value:
+    with tempfile.TemporaryDirectory(prefix="karya-django-scan-") as value:
         root = Path(value)
         build_fixture(root)
 

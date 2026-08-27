@@ -1,6 +1,8 @@
-## App Factory Skills Repository
+## Karya Repository
 
 This repository contains independent Codex skills for direct MVP/prototype creation, opt-in market research/validation, opt-in commercial launch/validation, and opt-in project AI-harness design/execution/audit.
+
+Karya is the umbrella system. A Factory is an independent workflow family inside Karya; a Skill is a specialized reusable capability. Preserve the names MVP Factory, Research Factory, Marketing Factory, and Project Harness Factory.
 
 Rules:
 
@@ -26,13 +28,13 @@ Rules:
 - Prefer Design Thread -> durable Spec -> independent Implementation Thread. Do not use subagents as the normal specialization mechanism.
 - Start from a PRD, product brief, client notes, or rough idea.
 - Use `product-brief-architect` to create an executable product contract.
-- Use `app-factory-frontend-builder` to implement the React frontend directly from product contracts.
-- For the standard visible site flow, invoke external `@sites` together with `$app-factory-frontend-builder`; Sites owns preview/publication and the frontend skill owns implementation standards.
+- Use `karya-frontend-builder` to implement the React frontend directly from product contracts.
+- For the standard visible site flow, invoke external `@sites` together with `$karya-frontend-builder`; Sites owns preview/publication and the frontend skill owns implementation standards.
 - Do not install Sites as an npm dependency merely to invoke the plugin.
 - Use `django-backend-service-architect` only after enough product/frontend/API context exists; it plans, enriches backend project context, and audits but does not implement.
-- Use `app-factory-backend-router` after backend contract approval to choose OpenCode Go when ready or Codex as the automatic fallback.
+- Use `karya-backend-router` after backend contract approval to choose OpenCode Go when ready or Codex as the automatic fallback.
 - Use `django-backend-code-executor` only after the backend implementation contract is explicitly approved.
-- Use `app-factory-infra-orchestrator` only after a frontend/backend project shape exists.
+- Use `karya-infra-orchestrator` only after a frontend/backend project shape exists.
 - Preserve MVP validation speed over premature platform complexity.
 - Validate every changed skill with `quick_validate.py`.
 
@@ -42,7 +44,7 @@ Rules:
 - For market investigation, app-market intelligence, evidence collection, or hypothesis validation, use the standalone Research Factory.
 - For positioning, account setup information, launch planning, creative production, platform execution, or commercial-result validation, use the standalone Marketing Factory.
 - For project knowledge architecture, AGENTS/Codex context, local skill policy, Spec-driven execution, deterministic model/reasoning/thread routing, or harness audit, use the standalone Project Harness Factory.
-- Accept existing products and artifacts from outside the App Factory; no factory must have produced the input for another factory to use it.
+- Accept existing products and artifacts from outside Karya; no factory must have produced the input for another factory to use it.
 - Preserve producer artifacts and use optional handoff contracts instead of silently changing another factory's source of truth.
 
 ## Project Harness Factory
@@ -62,7 +64,7 @@ Rules:
 ## Research and Market Validation
 
 - Use `market-research-architect` to create the research decision, hypotheses, falsifiers, evidence tasks, depth, provider permissions, and completion rules.
-- Use `app-factory-research-router` after a research question/contract exists; Codex is the default researcher and synthesizer.
+- Use `karya-research-router` after a research question/contract exists; Codex is the default researcher and synthesizer.
 - Use `app-market-intelligence-analyst` for iOS apps, developers/app families, or comparable cohorts with AppStoreTracker plus Apple confirmation.
 - Treat AppStoreTracker downloads/revenue as directional modeled estimates, never audited actuals; normalize storefronts, periods, currencies, cohorts, and metric definitions.
 - Use OpenAlex for scholarly discovery and inspect original works for substantive evidence.
@@ -78,7 +80,7 @@ Rules:
 - Codex produces account information and instructions; the human owner creates the account and controls credentials, verification, CAPTCHA, recovery, 2FA, connector authorization, roles, billing, and paid activation.
 - Never store passwords, tokens, cookies, verification codes, recovery codes, or authenticated browser state in the repository, generated projects, prompts, or receipts.
 - Use `marketing-creative-builder` for channel-ready copy/assets, real experiment variants, accessibility fields, UTM metadata, claims QA, and the creative manifest; it must not publish.
-- Use `app-factory-commercial-router` for bounded external operations. Keep strategy, synthesis, and creative preparation in Codex to minimize Manus credits.
+- Use `karya-commercial-router` for bounded external operations. Keep strategy, synthesis, and creative preparation in Codex to minimize Manus credits.
 - Route platform-native discovery to the Research Factory, not inside a write/execution task.
 - Use `manus-commercial-operator` only after the exact account, content, target/recipients, timing, limits, and required human confirmation are present.
 - Prohibit mass engagement, autonomous recipient expansion, account creation, credential handling, unapproved spend, and blind retries of ambiguous writes.
@@ -95,7 +97,7 @@ Rules:
 
 ## Frontend Construction
 
-- Build directly with the App Factory React/TypeScript stack.
+- Build directly with the Karya React/TypeScript stack.
 - Enforce `Route -> Feature Page -> Hook/View Model -> Service -> Repository Adapter`.
 - Keep mocks, local persistence, API access, and environment variables outside UI components.
 - Use secure npm defaults, exact direct dependency versions, and a committed lockfile.

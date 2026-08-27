@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the strict App Factory Django boundary scan.
+"""Run the strict Karya Django boundary scan.
 
 This file intentionally mirrors the architect skill scanner so the executor skill
 remains independently installable.

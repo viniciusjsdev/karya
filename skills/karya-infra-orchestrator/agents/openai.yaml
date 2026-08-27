@@ -1,0 +1,8 @@
+interface:
+  display_name: "Karya Infra Orchestrator"
+  short_description: "Orchestrate Docker, Terraform and cloud infrastructure."
+  brand_color: "#2563EB"
+  default_prompt: "Use $karya-infra-orchestrator to create or normalize Docker and declarative cloud infrastructure for this monorepo."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,7 +1,7 @@
 .env
 .env.*
 !.env.example
-.app-factory/runs/
+.karya/runs/
 .harness/runtime/
 **/__pycache__/
 *.pyc

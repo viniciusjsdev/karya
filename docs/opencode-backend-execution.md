@@ -2,7 +2,7 @@
 
 ## Responsibility
 
-Codex remains the App Factory orchestrator. It creates or validates the Goal, requires an approved backend contract, invokes the router once, waits passively, and resumes only when OpenCode exits successfully or with an error. OpenCode performs the heavy Django code-writing phase using `django-backend-code-executor`. Codex then sends the result to `django-backend-service-architect` for contract audit.
+Codex remains the Karya orchestrator. It creates or validates the Goal, requires an approved backend contract, invokes the router once, waits passively, and resumes only when OpenCode exits successfully or with an error. OpenCode performs the heavy Django code-writing phase using `django-backend-code-executor`. Codex then sends the result to `django-backend-service-architect` for contract audit.
 
 OpenCode is optional. When it is absent, unauthenticated, or missing the selected model, the default `auto` route returns `codex-fallback-required` and Codex implements the same approved contract directly.
 
@@ -26,7 +26,7 @@ OpenCode recommends WSL for the best Windows experience. Inside WSL:
 curl -fsSL https://opencode.ai/install | bash
 ```
 
-Choose one execution environment and keep installation, authentication, the App Factory router, and target project in that environment. PowerShell and WSL use separate OpenCode credential stores.
+Choose one execution environment and keep installation, authentication, the Karya router, and target project in that environment. PowerShell and WSL use separate OpenCode credential stores.
 
 Verify:
 
@@ -67,7 +67,7 @@ opencode models opencode-go
 
 OpenCode stores provider credentials in its user-level credential store. Never place the API key in this repository, `.env`, `opencode.json`, a generated project, shell history, task prompt, or completion evidence.
 
-## 3. Configure App Factory routing
+## 3. Configure Karya routing
 
 Create the ignored local file:
 
@@ -78,12 +78,12 @@ Copy-Item .env.example .env
 Available settings:
 
 ```dotenv
-APP_FACTORY_BACKEND_EXECUTOR=auto
-APP_FACTORY_OPENCODE_MODEL=opencode-go/kimi-k2.7-code
-APP_FACTORY_OPENCODE_TIMEOUT_MINUTES=120
+KARYA_BACKEND_EXECUTOR=auto
+KARYA_OPENCODE_MODEL=opencode-go/kimi-k2.7-code
+KARYA_OPENCODE_TIMEOUT_MINUTES=120
 ```
 
-When invoking the installed router from outside this repository and using non-default preferences, set `APP_FACTORY_ENV_FILE` to this ignored `.env`. Credentials still remain in OpenCode's native store.
+When invoking the installed router from outside this repository and using non-default preferences, set `KARYA_ENV_FILE` to this ignored `.env`. Credentials still remain in OpenCode's native store.
 
 Executor values:
 
@@ -96,7 +96,7 @@ The default heavy-code model is `opencode-go/kimi-k2.7-code`. `opencode-go/deeps
 Run the doctor:
 
 ```powershell
-node .\skills\app-factory-backend-router\scripts\opencode-doctor.mjs
+node .\skills\karya-backend-router\scripts\opencode-doctor.mjs
 ```
 
 Readiness is true only when the CLI runs, OpenCode Go is authenticated, and the exact configured model is available.
@@ -117,7 +117,7 @@ Dry-run the decision:
 
 ```powershell
 $projectRoot = (Resolve-Path ..\my-project).Path
-node .\skills\app-factory-backend-router\scripts\route-backend-execution.mjs `
+node .\skills\karya-backend-router\scripts\route-backend-execution.mjs `
   --project-root $projectRoot `
   --dry-run
 ```
@@ -126,12 +126,12 @@ Execute:
 
 ```powershell
 $projectRoot = (Resolve-Path ..\my-project).Path
-node .\skills\app-factory-backend-router\scripts\route-backend-execution.mjs `
+node .\skills\karya-backend-router\scripts\route-backend-execution.mjs `
   --project-root $projectRoot `
   --task-id implementar-contrato-backend-v1
 ```
 
-The router calls `opencode --pure run` non-interactively with the configured model, a runtime-defined App Factory agent, the executor skill as mandatory instructions, restricted permissions, and `--auto`. It disables external plugins, redirects all raw events to a file, and performs no polling. The single child-process exit is the completion/error wake-up signal for Codex.
+The router calls `opencode --pure run` non-interactively with the configured model, a runtime-defined Karya agent, the executor skill as mandatory instructions, restricted permissions, and `--auto`. It disables external plugins, redirects all raw events to a file, and performs no polling. The single child-process exit is the completion/error wake-up signal for Codex.
 
 The manifest must have the same `contract_version`, `status: approved`, no template values, and non-empty services, invariants, endpoints, and required validations. Environment bindings include the exact approved example URL. Invariants and endpoints list exact required test function names. `allowed_execution_commands` lists exact project-specific `makemigrations` commands. Completion evidence must cite those exact tests for every invariant/endpoint ID and report passing evidence for every required validation ID before the router returns `opencode-completed`.
 
@@ -145,7 +145,7 @@ node .\skills\django-backend-service-architect\scripts\validate-backend-contract
 Artifacts are stored under the operating system temporary directory:
 
 ```txt
-<temp>/app-factory-backend-runs/<task-id>/
+<temp>/karya-backend-runs/<task-id>/
   request.json
   opencode-events.ndjson
   opencode-stderr.log
@@ -178,7 +178,7 @@ Playwright/full-stack validation remains Codex-supervised because it benefits fr
 
 `OpenCode Go is not authenticated`: run `opencode auth login` or TUI `/connect`, then check `opencode auth list`.
 
-`configured model is unavailable`: run `opencode models opencode-go` and update `APP_FACTORY_OPENCODE_MODEL` to an exact returned identifier.
+`configured model is unavailable`: run `opencode models opencode-go` and update `KARYA_OPENCODE_MODEL` to an exact returned identifier.
 
 PowerShell works but WSL does not, or the reverse: authenticate separately in the environment that runs the router.
 

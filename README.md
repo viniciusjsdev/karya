@@ -1,12 +1,14 @@
-# App Factory Skills
+# Karya
 
-> **From idea to production with AI — structured Codex skills for building, researching, launching, and operating projects.**
+> **The structure behind AI-native development.**
 
-App Factory Skills is an open-source collection of Codex skills for structuring how AI works across the lifecycle of a project—from product definition and implementation to research, launch, and long-term AI-assisted development.
+Karya is an open-source development system for Codex built around durable project knowledge, executable Specs, reusable Skills, isolated Threads, deterministic routing, validation, and evidence.
+
+The name is inspired by the Caryatids of classical architecture—female figures used as structural supports. Karya applies that metaphor to AI-assisted development: it provides the structural layer that allows projects to grow without depending on the memory of a single conversation.
 
 Each skill is a small, self-contained package centered on a `SKILL.md`, optionally backed by references, deterministic scripts, schemas, and assets.
 
-Instead of letting an agent guess its way through a project, the Factory uses:
+Instead of letting an agent guess its way through a project, Karya uses:
 
 - durable project knowledge;
 - explicit Specs and contracts;
@@ -17,9 +19,11 @@ Instead of letting an agent guess its way through a project, the Factory uses:
 - validation and structured evidence;
 - independent audits.
 
-## Why App Factory?
+## Why Karya?
 
-AI coding works well until a project becomes large enough that important knowledge starts living inside chats. App Factory moves that knowledge into durable artifacts.
+AI coding works well until important decisions start living only inside conversations. The result is lost context, architecture drift, repeated rediscovery, inconsistent execution, and decisions that cannot be reliably reproduced.
+
+Karya moves that knowledge into durable artifacts.
 
 ```txt
 Chat -> Agent -> Code
@@ -38,7 +42,29 @@ Intent
   -> Audit
 ```
 
-The goal is not to create more agents. The goal is to make AI work reproducible, auditable, and resumable without depending on one conversation.
+The goal is not to create more agents. The goal is to give AI development a structure strong enough to survive the conversations that created it.
+
+## Why the name Karya?
+
+Karya is a brand adaptation inspired by the Caryatids: female figures used as structural supports in classical architecture. Related male architectural figures are known as Atlantes or Telamons. Karya uses this history as a metaphor and identity, not as a literal translation of the word.
+
+```txt
+              Project
+                 │
+      ┌──────────┼──────────┐
+      │          │          │
+   Knowledge    Specs      Skills
+      │          │          │
+      └──────┬───┴───┬──────┘
+             │       │
+          Threads   Runtime
+             │       │
+             └───┬───┘
+                 │
+               KARYA
+```
+
+Karya is not the application being built. It is the structure that helps AI build and evolve it reliably.
 
 ## Four independent factories
 
@@ -56,8 +82,8 @@ Every Factory is opt-in and independent. Research, Marketing, and Project Harnes
 Clone the repository:
 
 ```bash
-git clone https://github.com/viniciusjsdev/app-factory-skills.git
-cd app-factory-skills
+git clone https://github.com/viniciusjsdev/karya.git
+cd karya
 ```
 
 Install the skills using the [Windows](#windows--powershell) or [Linux/macOS](#linux--macos) instructions below. Then ask Codex to invoke the entry skill that matches your objective:
@@ -74,7 +100,7 @@ Use $market-research-architect to create a research contract for this market hyp
 Use $commercial-launch-architect to create a launch contract for this existing product: <your product>.
 ```
 
-Skills may also consume existing PRDs, repositories, research, launch plans, or other artifacts. You do not need to start from another App Factory workflow.
+Skills may also consume existing PRDs, repositories, research, launch plans, or other artifacts. You do not need to start from another Karya workflow.
 
 ## Core principles
 
@@ -106,9 +132,9 @@ Threads receive the smallest useful context and load more only when required.
 
 Factories, external operations, credentials, spending, and consequential product decisions never become implicit stages.
 
-## Project Harness Factory
+## Karya Project Harness
 
-Project Harness makes a project resumable by clean Codex threads without copying design-chat history into execution.
+Project Harness is the Factory that most directly expresses Karya's core idea: project knowledge must outlive the AI thread that discovered it. It makes a project resumable by clean Codex threads without copying design-chat history into execution.
 
 ```mermaid
 flowchart TD
@@ -196,7 +222,7 @@ Existing MVP, Research, and Marketing mechanisms may additionally use:
 - npm;
 - provider-specific tools documented by their owning skill.
 
-App Factory Skills is designed and tested for OpenAI Codex. Other coding agents may reuse the underlying Markdown workflows, but Codex-specific metadata, runtime routing, thread management, and installation paths may require adaptation.
+Karya is designed and tested for OpenAI Codex. Other coding agents may reuse the underlying Markdown workflows, but Codex-specific metadata, runtime routing, thread management, and installation paths may require adaptation.
 
 ## Installation
 
@@ -235,7 +261,7 @@ The repository currently contains 21 independent skills across the four Factorie
 
 ## Architecture and documentation
 
-- [Factory architecture](docs/app-factory-architecture.md)
+- [Karya architecture](docs/karya-architecture.md)
 - [Factory workflow map](docs/factory-workflow-map.md)
 - [Project Harness architecture](docs/project-harness-factory.md)
 - [Project Harness contract](specs/project-harness-contract.md)
@@ -277,7 +303,7 @@ Factory-specific validators and tests remain inside their owning skill folders.
 ## Repository structure
 
 ```txt
-app-factory-skills/
+karya/
 ├── skills/       # independently installable Codex skills
 │   ├── <MVP Factory skills>
 │   ├── <Research Factory skills>
@@ -287,7 +313,11 @@ app-factory-skills/
 ├── specs/        # durable contracts and catalogs
 ├── .codex/       # repository-level Codex workflows and references
 ├── templates/    # reusable generated-project starter material
-└── examples/     # sample contracts and project structures
+├── examples/     # sample contracts and project structures
+├── AGENTS.md
+├── CONTRIBUTING.md
+├── LICENSE
+└── README.md
 ```
 
 Start with the Factory that matches the current objective. Use optional handoff artifacts when another Factory becomes useful; do not turn the four workflows into one mandatory pipeline.
@@ -298,4 +328,4 @@ Contributions to skills, deterministic tooling, tests, examples, documentation, 
 
 ## License
 
-App Factory Skills is available under the [MIT License](LICENSE).
+Karya is available under the [MIT License](LICENSE).

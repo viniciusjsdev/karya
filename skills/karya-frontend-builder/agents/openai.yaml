@@ -1,0 +1,4 @@
+interface:
+  display_name: "Karya Frontend Builder"
+  short_description: "Build secure React MVPs for Sites workflows"
+  default_prompt: "Use $karya-frontend-builder as the mandatory stack and architecture contract while @sites builds, previews, and privately publishes this product."

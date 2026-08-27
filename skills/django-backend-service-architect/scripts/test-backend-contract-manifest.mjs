@@ -10,7 +10,7 @@ import { spawnSync } from "node:child_process";
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const skillRoot = resolve(scriptDir, "..");
 const source = resolve(skillRoot, "assets", "backend-contracts");
-const fixture = mkdtempSync(resolve(tmpdir(), "app-factory-contract-manifest-test-"));
+const fixture = mkdtempSync(resolve(tmpdir(), "karya-contract-manifest-test-"));
 const architecture = resolve(fixture, "docs", "architecture");
 
 function run(...extra) {

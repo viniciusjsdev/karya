@@ -7,7 +7,7 @@ description: Transform a rough product idea, PRD, client notes, market problem, 
 
 ## Purpose
 
-Turn product intent into an executable PRD that `app-factory-frontend-builder` and `django-backend-service-architect` can implement without reconstructing essential decisions from guesses.
+Turn product intent into an executable PRD that `karya-frontend-builder` and `django-backend-service-architect` can implement without reconstructing essential decisions from guesses.
 
 Write product contracts inside the target project. Do not produce instructions for an external application builder, and do not implement application code.
 
@@ -119,11 +119,11 @@ Read `references/quality-and-traceability.md` before validation.
 
 The frontend builder consumes the PRD, screen map, data contract, visual direction, and acceptance criteria. It may use mocks or local persistence while preserving the documented DTO shapes.
 
-For the standard App Factory site handoff, provide this next-step invocation:
+For the standard Karya site handoff, provide this next-step invocation:
 
 ```txt
 Use @sites to build, show, and privately publish this product.
-Follow $app-factory-frontend-builder as the mandatory implementation contract.
+Follow $karya-frontend-builder as the mandatory implementation contract.
 Read docs/product/ and preserve its stack, architecture, npm security,
 data boundaries, responsive rules, tests, and validation.
 ```

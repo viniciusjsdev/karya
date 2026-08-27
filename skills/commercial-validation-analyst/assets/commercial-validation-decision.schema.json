@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://app-factory.local/schemas/commercial-validation-decision.schema.json",
+  "$id": "https://karya.local/schemas/commercial-validation-decision.schema.json",
   "title": "Commercial Validation Decision",
   "type": "object",
   "additionalProperties": false,

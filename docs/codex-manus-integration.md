@@ -13,7 +13,7 @@ This division reduces Manus credit consumption and keeps product/commercial reas
 ```txt
 User approval
   -> Codex builds bounded contract + final artifacts + output schema
-  -> App Factory router selects Manus only when native access adds value
+  -> Karya router selects Manus only when native access adds value
   -> Manus API v2 task.create
        - exact message
        - connector UUIDs
@@ -36,7 +36,7 @@ In Manus, add/bundle the skill, resolve its ID with `skill.list`, and pass it th
 
 ## Connector and account setup
 
-The human owner first creates and secures the platform account, then authorizes the connector in Manus/OAuth with minimum scopes. `connector.list` returns the UUID passed to `task.create`. Do not place passwords, access tokens, cookies, verification codes, or recovery codes in App Factory files.
+The human owner first creates and secures the platform account, then authorizes the connector in Manus/OAuth with minimum scopes. `connector.list` returns the UUID passed to `task.create`. Do not place passwords, access tokens, cookies, verification codes, or recovery codes in Karya files.
 
 ## Lifecycle and approval
 

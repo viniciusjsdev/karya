@@ -11,7 +11,7 @@
 - TanStack Query and Axios behind services/adapters
 - Vitest, Testing Library, Playwright, ESLint, and Prettier
 
-The complete version and supply-chain baseline lives in `skills/app-factory-frontend-builder/references/stack-baseline.md` and `npm-supply-chain-security.md`.
+The complete version and supply-chain baseline lives in `skills/karya-frontend-builder/references/stack-baseline.md` and `npm-supply-chain-security.md`.
 
 ## Backend
 

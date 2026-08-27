@@ -7,12 +7,12 @@ description: Challenge a market hypothesis with a provider-neutral, adversarial 
 
 ## Purpose
 
-Convert collected evidence into a defensible market decision. Apply opposing lenses, audit provenance and methodology, expose uncertainty, and design the cheapest next experiment. This adapts the useful reasoning structure from `research-harness` without coupling the App Factory to its runtime.
+Convert collected evidence into a defensible market decision. Apply opposing lenses, audit provenance and methodology, expose uncertainty, and design the cheapest next experiment. This adapts the useful reasoning structure from `research-harness` without coupling Karya to its runtime.
 
 ## Invocation Boundary
 
 - Run only after an explicit validation request and an evidence bundle or declared evidence gap.
-- Do not browse by default; request targeted follow-up through `$app-factory-research-router` when necessary.
+- Do not browse by default; request targeted follow-up through `$karya-research-router` when necessary.
 - Do not modify the PRD, start an MVP, create a marketing plan, or trigger platform activity.
 - Offer an optional handoff only after the decision is accepted by the user.
 

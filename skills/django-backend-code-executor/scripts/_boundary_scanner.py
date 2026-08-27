@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit Django backends against App Factory architecture and documentation rules."""
+"""Audit Django backends against Karya architecture and documentation rules."""
 
 from __future__ import annotations
 
