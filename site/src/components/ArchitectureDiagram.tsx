@@ -15,14 +15,21 @@ import {
 import '@xyflow/react/dist/style.css'
 import { architectureEdges, architectureItems } from '../content/karya'
 
-type ArchitectureData = { label: string; kind: string }
+type ArchitectureData = { label: string; kind: string; onSelect: (id: string) => void }
 
-function StructuralNode({ data, selected }: NodeProps<Node<ArchitectureData>>) {
+function StructuralNode({ id, data, selected }: NodeProps<Node<ArchitectureData>>) {
   return (
-    <div className={`architecture-node ${data.kind}`} data-selected={selected} tabIndex={0}>
+    <div className={`architecture-node ${data.kind}`} data-selected={selected}>
       <Handle type="target" position={Position.Top} />
-      <span>{data.kind}</span>
-      <strong>{data.label}</strong>
+      <button
+        type="button"
+        aria-pressed={selected}
+        aria-label={`Inspect ${data.label}`}
+        onClick={() => data.onSelect(id)}
+      >
+        <span>{data.kind}</span>
+        <strong>{data.label}</strong>
+      </button>
       <Handle type="source" position={Position.Bottom} />
     </div>
   )
@@ -31,7 +38,7 @@ function StructuralNode({ data, selected }: NodeProps<Node<ArchitectureData>>) {
 function FitButton() {
   const { fitView } = useReactFlow()
   return (
-    <button className="fit-button" type="button" onClick={() => void fitView({ padding: 0.2 })}>
+    <button className="fit-button" type="button" onClick={() => void fitView({ padding: 0.26 })}>
       <Maximize2 size={16} />
       Reset view
     </button>
@@ -48,7 +55,7 @@ function ArchitectureCanvas() {
         id: item.id,
         type: 'structural',
         position: { x: item.x, y: item.y },
-        data: { label: item.label, kind: item.kind },
+        data: { label: item.label, kind: item.kind, onSelect: setSelectedId },
       })),
     [],
   )
@@ -59,7 +66,8 @@ function ArchitectureCanvas() {
         source,
         target,
         animated: false,
-        style: { stroke: 'var(--line-strong)', strokeWidth: 1.5 },
+        type: 'step',
+        style: { stroke: 'var(--diagram-edge)', strokeWidth: 1.25 },
       })),
     [],
   )
@@ -78,7 +86,7 @@ function ArchitectureCanvas() {
           nodeTypes={nodeTypes}
           onNodeClick={onNodeClick}
           fitView
-          fitViewOptions={{ padding: 0.2 }}
+          fitViewOptions={{ padding: 0.26 }}
           minZoom={0.55}
           maxZoom={1.5}
           nodesDraggable={false}
@@ -101,6 +109,10 @@ function ArchitectureCanvas() {
           <div>
             <dt>What it contains</dt>
             <dd>{selected.contains}</dd>
+          </div>
+          <div>
+            <dt>Relationship</dt>
+            <dd>{selected.relationship}</dd>
           </div>
           <div>
             <dt>What it is not</dt>

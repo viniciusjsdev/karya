@@ -2,11 +2,11 @@ import { lazy, Suspense, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowDown, ExternalLink, Github, ShieldCheck } from 'lucide-react'
 import { Header } from './components/Header'
+import { BenefitDisclosure } from './components/BenefitDisclosure'
 import { ProblemFlow } from './components/ProblemFlow'
 import { Section, Arrow } from './components/Section'
 import { WorkflowDiagram } from './components/WorkflowDiagram'
 import {
-  benefits,
   docs,
   factories,
   getStartedLinks,
@@ -54,16 +54,19 @@ function App() {
           <div className="hero-grid" aria-hidden="true" />
           <motion.div
             className="hero-figure"
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65 }}
           >
+            <span className="hero-frame-label">IDENTITY / STRUCTURAL SUPPORT</span>
+            <span className="hero-support-line hero-support-line-top" aria-hidden="true" />
             <img
               src={`brand/icon/karya-icon-${theme === 'amphora' ? 'dark' : 'light'}.png`}
-              alt="Official Karya Caryatid mark"
+              alt="Current official Karya icon"
               width="1024"
               height="1024"
             />
+            <span className="hero-support-line hero-support-line-bottom" aria-hidden="true" />
             <span className="structural-caption">STRUCTURAL SUPPORT / 01</span>
           </motion.div>
           <motion.div
@@ -73,7 +76,7 @@ function App() {
             transition={{ duration: 0.65, delay: 0.08 }}
           >
             <span className="eyebrow">Open-source development system for Codex</span>
-            <h1>K A R Y A</h1>
+            <h1 aria-label="Karya">KARYA</h1>
             <p className="hero-statement">The structure behind AI-native development.</p>
             <p className="hero-description">
               Karya gives AI-native development durable structure through project knowledge,
@@ -90,10 +93,17 @@ function App() {
             </div>
           </motion.div>
           <div className="hero-foundation">
-            <span>INTENT</span>
-            <span>DURABLE ARTIFACTS</span>
-            <span>EXECUTION</span>
-            <span>EVIDENCE</span>
+            {['INTENT', 'DURABLE ARTIFACTS', 'EXECUTION', 'EVIDENCE'].map((label, index) => (
+              <motion.span
+                key={label}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.28 + index * 0.08 }}
+              >
+                <small>{String(index + 1).padStart(2, '0')}</small>
+                {label}
+              </motion.span>
+            ))}
           </div>
         </section>
 
@@ -111,28 +121,7 @@ function App() {
           title="Structure changes what survives the session."
           intro="Each benefit is tied to a mechanism in Karya’s documented architecture—not to an abstract promise."
         >
-          <div className="benefit-grid">
-            {benefits.map((benefit, index) => (
-              <article className="benefit-card" key={benefit.title}>
-                <span className="node-index">{String(index + 1).padStart(2, '0')}</span>
-                <h3>{benefit.title}</h3>
-                <dl>
-                  <div>
-                    <dt>Problem</dt>
-                    <dd>{benefit.problem}</dd>
-                  </div>
-                  <div>
-                    <dt>Karya</dt>
-                    <dd>{benefit.mechanism}</dd>
-                  </div>
-                  <div>
-                    <dt>Expected result</dt>
-                    <dd>{benefit.result}</dd>
-                  </div>
-                </dl>
-              </article>
-            ))}
-          </div>
+          <BenefitDisclosure />
         </Section>
 
         <Section
@@ -270,15 +259,20 @@ function App() {
                 type="button"
                 role="tab"
                 aria-selected={factory.id === factoryId}
+                aria-controls="factory-detail"
                 key={factory.id}
                 onClick={() => setFactoryId(factory.id)}
                 style={{ '--factory-accent': factory.accent } as React.CSSProperties}
               >
-                {factory.name}
+                <span className="factory-indicator" aria-hidden="true" />
+                <strong>{factory.name}</strong>
+                <span>{factory.summary}</span>
+                <small>{factory.when}</small>
               </button>
             ))}
           </div>
           <article
+            id="factory-detail"
             className="factory-detail"
             style={{ '--factory-accent': selectedFactory.accent } as React.CSSProperties}
           >

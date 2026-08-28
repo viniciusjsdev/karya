@@ -154,11 +154,12 @@ export const architectureItems = [
     id: 'project',
     label: 'Project',
     kind: 'truth',
-    x: 320,
+    x: 245,
     y: 0,
     what: 'The product, system, automation, or repository being built and evolved.',
     why: 'It is the subject Karya helps humans and AI work on reliably.',
     contains: 'Code, product/domain truth, decisions, contracts, tests, and history.',
+    relationship: 'Knowledge, Specs, and Skills organize how the project can be changed safely.',
     not: 'Karya itself.',
     href: docs.architecture,
   },
@@ -166,11 +167,12 @@ export const architectureItems = [
     id: 'knowledge',
     label: 'Knowledge',
     kind: 'artifact',
-    x: 0,
+    x: 40,
     y: 130,
     what: 'Durable project truth, architecture, rules, decisions, Docs, and ADRs.',
     why: 'A clean Thread can continue without inheriting a design conversation.',
     contains: 'Persistent context; Codex-facing operational knowledge may live under .codex/.',
+    relationship: 'Knowledge informs Specs and gives isolated Threads durable context.',
     not: 'Chat history or ephemeral runtime status.',
     href: docs.harness,
   },
@@ -183,6 +185,8 @@ export const architectureItems = [
     what: 'Bounded executable units of change, with human intent and resolved execution policy.',
     why: 'They let a clean implementation Thread act without silently redesigning the work.',
     contains: 'SPEC.md plus SPEC.execution.json when Project Harness materializes runtime.',
+    relationship:
+      'Specs bind human intent to a declared Thread, runtime, validation, and evidence.',
     not: 'A general knowledge base or an implementation transcript.',
     href: docs.harness,
   },
@@ -190,11 +194,13 @@ export const architectureItems = [
     id: 'skills',
     label: 'Skills',
     kind: 'capability',
-    x: 490,
+    x: 450,
     y: 130,
     what: 'Specialized, reusable capabilities centered on SKILL.md and optional references, scripts, schemas, and assets.',
     why: 'They preserve repeatable expertise without multiplying agents.',
     contains: 'Executable instructions and capability-specific supporting resources.',
+    relationship:
+      'Skills apply reusable capability to approved Specs without replacing project truth.',
     not: 'Project truth, one temporary task, or a Factory.',
     href: docs.architecture,
   },
@@ -207,6 +213,7 @@ export const architectureItems = [
     what: 'Temporary, isolated design, implementation, worker, or review contexts.',
     why: 'Isolation keeps responsibilities clear and makes handoff artifacts testable.',
     contains: 'The smallest useful context for one purpose.',
+    relationship: 'Threads consume durable artifacts and return implementation or review evidence.',
     not: 'Durable knowledge; Threads communicate through artifacts, not chat history.',
     href: docs.harness,
   },
@@ -214,11 +221,12 @@ export const architectureItems = [
     id: 'runtime',
     label: 'Runtime',
     kind: 'runtime',
-    x: 405,
+    x: 365,
     y: 285,
     what: 'The selected model, reasoning level, working context, thread mode, and execution policy.',
     why: 'A resolved Spec makes execution reproducible and prevents silent default drift.',
     contains: 'Materialized runtime policy and ephemeral mappings/status under .harness/runtime/.',
+    relationship: 'Runtime resolves how an approved Spec is executed without changing its intent.',
     not: 'Persistent domain truth, secrets, transcripts, or an advisory recommendation alone.',
     href: docs.harness,
   },
@@ -226,11 +234,13 @@ export const architectureItems = [
     id: 'karya',
     label: 'Karya',
     kind: 'foundation',
-    x: 165,
+    x: 70,
     y: 450,
     what: 'The framework, system, and umbrella that coordinates durable AI-native development.',
     why: 'It connects intent, durable artifacts, reusable capabilities, runtime, validation, and evidence.',
     contains: 'An optional conversational coordinator and four independent Factories.',
+    relationship:
+      'Karya is the foundation connecting intent, artifacts, execution, evidence, and audit.',
     not: 'The product, a universal autonomous agent, a mandatory gateway, or a fifth Factory.',
     href: docs.architecture,
   },
@@ -334,6 +344,7 @@ export const workflowTrace = [
 export type Factory = {
   id: string
   name: string
+  summary: string
   purpose: string
   when: string
   input: string
@@ -347,6 +358,7 @@ export const factories: Factory[] = [
   {
     id: 'mvp',
     name: 'MVP Factory',
+    summary: 'Define and build a testable product.',
     purpose:
       'Turn product intent into a hosted, testable MVP through explicit frontend, backend, infrastructure, and validation contracts.',
     when: 'Define, build, integrate, host, or validate a product, system, or automation.',
@@ -365,6 +377,7 @@ export const factories: Factory[] = [
   {
     id: 'research',
     name: 'Research Factory',
+    summary: 'Investigate and challenge a market hypothesis.',
     purpose:
       'Investigate and challenge a bounded market hypothesis with traceable, normalized evidence.',
     when: 'Research demand, competitors, users, evidence, a category, an app, or a market hypothesis.',
@@ -384,6 +397,7 @@ export const factories: Factory[] = [
   {
     id: 'marketing',
     name: 'Marketing Factory',
+    summary: 'Prepare, operate, and evaluate a launch.',
     purpose:
       'Prepare a commercial launch, create artifacts, execute only bounded approved operations, and learn from measured results.',
     when: 'Position, launch, publish, operate, or evaluate commercial work for an existing product.',
@@ -403,6 +417,7 @@ export const factories: Factory[] = [
   {
     id: 'harness',
     name: 'Project Harness Factory',
+    summary: 'Make AI project operations durable.',
     purpose:
       'Make a project operable and scalable with AI through durable knowledge, Specs, Skills, runtime, optional economic execution, evidence, and audit.',
     when: 'Structure how an empty or existing project works durably across clean AI Threads.',
@@ -450,6 +465,7 @@ export const harnessFlow = [
 export const benefits = [
   {
     title: 'Durable knowledge',
+    summary: 'Important context should survive the conversation.',
     problem: 'Important project context disappears between conversations.',
     mechanism:
       'Project truth, Docs, ADRs, and Codex-facing context live outside transient Threads.',
@@ -458,6 +474,7 @@ export const benefits = [
   },
   {
     title: 'Explicit contracts',
+    summary: 'Intent should stay bounded while implementation moves.',
     problem: 'An executor can silently reinterpret intent while changing code.',
     mechanism:
       'Specs and specialist contracts separate human intent, acceptance, and resolved execution policy.',
@@ -465,6 +482,7 @@ export const benefits = [
   },
   {
     title: 'Reusable capabilities',
+    summary: 'Stable expertise should not be improvised every time.',
     problem: 'Specialized procedures are repeatedly improvised inside prompts.',
     mechanism:
       'Independent Skills package stable instructions, references, scripts, schemas, and assets.',
@@ -472,6 +490,7 @@ export const benefits = [
   },
   {
     title: 'Deliberate routing',
+    summary: 'The route should match the immediate outcome.',
     problem: 'Every objective is treated as the same kind of agent task.',
     mechanism:
       'Karya classifies the immediate outcome and recommends the smallest capable route and runtime.',
@@ -480,6 +499,7 @@ export const benefits = [
   },
   {
     title: 'Human approval boundaries',
+    summary: 'Recommendation should never become implicit permission.',
     problem: 'A recommendation can be mistaken for permission to act or broaden scope.',
     mechanism: 'Karya explains route, runtime, rationale, exclusions, and exact scope, then waits.',
     result:
@@ -487,6 +507,7 @@ export const benefits = [
   },
   {
     title: 'Evidence-driven delivery',
+    summary: 'Completion claims should reconcile with reality.',
     problem:
       'A passing narrative can hide missing files, tests, receipts, or mismatched execution.',
     mechanism:

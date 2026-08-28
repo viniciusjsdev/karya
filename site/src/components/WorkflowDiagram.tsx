@@ -10,7 +10,13 @@ export function WorkflowDiagram() {
     <div className="interactive-layout">
       <div className="workflow-rail" role="group" aria-label="How work moves through Karya">
         {workflowSteps.map((step, index) => (
-          <div className="contents" key={step.id}>
+          <div className="workflow-stage" data-human={step.id === 'approval'} key={step.id}>
+            {step.id === 'approval' ? (
+              <span className="approval-boundary">
+                <span>Human approval boundary</span>
+                Nothing crosses implicitly
+              </span>
+            ) : null}
             <button
               type="button"
               className="workflow-node"
