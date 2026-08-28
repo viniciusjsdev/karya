@@ -11,6 +11,9 @@ type SectionProps = {
 }
 
 export function Section({ id, eyebrow, title, intro, children, className = '' }: SectionProps) {
+  const [index, ...categoryParts] = eyebrow.split('/')
+  const category = categoryParts.join('/').trim()
+
   return (
     <section id={id} className={`section-shell scroll-mt-24 ${className}`}>
       <motion.div
@@ -20,7 +23,10 @@ export function Section({ id, eyebrow, title, intro, children, className = '' }:
         viewport={{ once: true, margin: '-80px' }}
         transition={{ duration: 0.45 }}
       >
-        <span className="eyebrow">{eyebrow}</span>
+        <span className="eyebrow section-eyebrow">
+          <span className="section-index">{index?.trim() ?? eyebrow}</span>
+          <span className="section-category">{category}</span>
+        </span>
         <h2>{title}</h2>
         {intro ? <p>{intro}</p> : null}
       </motion.div>

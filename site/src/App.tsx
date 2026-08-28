@@ -25,7 +25,7 @@ type Theme = 'amphora' | 'papyrus'
 function resolveInitialTheme(): Theme {
   const saved = localStorage.getItem('karya-theme')
   if (saved === 'amphora' || saved === 'papyrus') return saved
-  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'papyrus' : 'amphora'
+  return 'amphora'
 }
 
 function App() {
@@ -75,7 +75,7 @@ function App() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.08 }}
           >
-            <span className="eyebrow">Open-source development system for Codex</span>
+            <span className="eyebrow">Open-source / AI-native development system</span>
             <h1 aria-label="Karya">KARYA</h1>
             <p className="hero-statement">The structure behind AI-native development.</p>
             <p className="hero-description">
@@ -205,7 +205,7 @@ function App() {
               role="group"
               aria-label="Illustrative routing examples"
             >
-              <span className="eyebrow">Illustrative routing examples</span>
+              <span className="eyebrow route-inspector-label">Route inspector / Input</span>
               {routingExamples.map((example, index) => (
                 <button
                   type="button"
@@ -219,7 +219,9 @@ function App() {
               ))}
             </div>
             <aside className="routing-result" aria-live="polite">
-              <span className="eyebrow">Recommended route</span>
+              <span className="eyebrow route-inspector-label">
+                Route inspector / Recommended route
+              </span>
               <h3>{selectedRouting.route}</h3>
               <p>{selectedRouting.reason}</p>
               <dl>
@@ -254,7 +256,7 @@ function App() {
           intro="Every Factory is opt-in. None is a prerequisite, hidden stage, or automatic continuation of another."
         >
           <div className="factory-tabs" role="tablist" aria-label="Karya Factories">
-            {factories.map((factory) => (
+            {factories.map((factory, index) => (
               <button
                 type="button"
                 role="tab"
@@ -264,6 +266,7 @@ function App() {
                 onClick={() => setFactoryId(factory.id)}
                 style={{ '--factory-accent': factory.accent } as React.CSSProperties}
               >
+                <span className="factory-id">F.{String(index + 1).padStart(2, '0')}</span>
                 <span className="factory-indicator" aria-hidden="true" />
                 <strong>{factory.name}</strong>
                 <span>{factory.summary}</span>
@@ -313,7 +316,7 @@ function App() {
                 alt=""
               />
               <div>
-                <span>OPTIONAL COORDINATION</span>
+                <span>KARYA / COORDINATION</span>
                 <strong>$karya</strong>
                 <p>Classify → recommend → explain → approve → coordinate</p>
               </div>
@@ -366,6 +369,7 @@ function App() {
         </Section>
 
         <Section
+          id="evidence"
           eyebrow="10 / Evidence and audit"
           title="Execution is not the end."
           intro="Karya keeps an important distinction visible: a task can run without its completion claim being proved."
@@ -373,18 +377,21 @@ function App() {
           <div className="evidence-flow">
             <article>
               <span>01</span>
+              <small>OUTPUT / EXECUTION</small>
               <h3>Execution</h3>
               <p>Approved work produces changed artifacts and command results.</p>
             </article>
             <Arrow />
             <article>
               <span>02</span>
+              <small>SYSTEM / EVIDENCE</small>
               <h3>Evidence</h3>
               <p>IDs, files, tests, receipts, runtime identity, and required commands reconcile.</p>
             </article>
             <Arrow />
             <article>
               <span>03</span>
+              <small>CONTROL / REVIEW</small>
               <h3>Independent review</h3>
               <p>
                 Contract, changes, tests, and evidence are checked by the appropriate reviewer or
@@ -429,6 +436,7 @@ function App() {
           eyebrow="12 / The name"
           title="The Caryatid is not decoration. She is structure."
           intro="In classical architecture, Caryatids are female figures used as structural supports. Karya uses that history as metaphor and identity—not as a literal translation or decorative Greek theme."
+          className="story-section"
         >
           <div className="name-section">
             <img
@@ -496,15 +504,23 @@ function App() {
           <img src="brand/logo/karya-mark-terracotta-transparent.png" alt="Karya" />
           <div>
             <span className="eyebrow">OPEN SOURCE / MIT</span>
+            <span className="cta-wordmark">KARYA</span>
             <h2>Inspect the structure. Use the skills. Help evolve the system.</h2>
             <p>
               The website is the visual map. The repository remains the technical source of truth.
             </p>
           </div>
-          <a className="button primary" href={repositoryUrl} target="_blank" rel="noreferrer">
-            <Github size={17} />
-            Open GitHub
-          </a>
+          <div className="cta-links">
+            <a href={repositoryUrl} target="_blank" rel="noreferrer">
+              <Github size={17} /> View on GitHub
+            </a>
+            <a href={docs.architecture} target="_blank" rel="noreferrer">
+              Read the documentation <ExternalLink size={14} />
+            </a>
+            <a href={docs.contributing} target="_blank" rel="noreferrer">
+              Contribute <ExternalLink size={14} />
+            </a>
+          </div>
         </section>
       </main>
       <footer>

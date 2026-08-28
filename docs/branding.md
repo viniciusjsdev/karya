@@ -11,6 +11,28 @@ Karya é inspirada nas Caryatids da arquitetura clássica: figuras femininas usa
 - Terracotta — `#C45A3C`
 - Amphora — `#171310`
 - Papyrus — `#F2E7D5`
+- Aegean — `#1F6670` (secondary technical signal)
+- Gold — `#B58A3C` (Marketing Factory identifier)
+- Sage — `#74866B` (Project Harness Factory identifier)
+
+UI accessibility variants may be derived as semantic tokens when a brand color does not provide sufficient contrast for small text. These variants support interface legibility and do not replace the official brand colors.
+
+Current interface variants:
+
+- Active Terracotta fill — `#A9432D` with Papyrus/near-white text
+- Terracotta small text — `#E27758` on Amphora and `#923721` on Papyrus
+- Aegean small text — `#82C0C6` on Amphora and `#185761` on Papyrus
+
+## Visual system principles
+
+- Architectural composition and measured alignment
+- Amphora-led surfaces with Papyrus as a technical drawing surface
+- Restrained Terracotta for brand, action, approval, and active structural state
+- Aegean as a secondary signal for information, runtime, and technical state
+- Geometric sans for brand, display, and interface typography
+- Monospace notation for indices, metadata, routes, roles, and system status
+- Serif reserved for rare human and historical accents
+- Low-radius, rectilinear geometry with structural rules instead of decorative cards
 
 ## Official assets
 

@@ -392,7 +392,7 @@ export const factories: Factory[] = [
       'Adversarial validation',
     ],
     href: docs.research,
-    accent: '#7A8B74',
+    accent: '#1F6670',
   },
   {
     id: 'marketing',
@@ -412,7 +412,7 @@ export const factories: Factory[] = [
       'Commercial validation',
     ],
     href: docs.marketing,
-    accent: '#A97845',
+    accent: '#B58A3C',
   },
   {
     id: 'harness',
@@ -432,7 +432,7 @@ export const factories: Factory[] = [
       'Evidence + independent audit',
     ],
     href: docs.harness,
-    accent: '#766A8B',
+    accent: '#74866B',
   },
 ]
 

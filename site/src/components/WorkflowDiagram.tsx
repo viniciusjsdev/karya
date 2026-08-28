@@ -13,8 +13,9 @@ export function WorkflowDiagram() {
           <div className="workflow-stage" data-human={step.id === 'approval'} key={step.id}>
             {step.id === 'approval' ? (
               <span className="approval-boundary">
-                <span>Human approval boundary</span>
-                Nothing crosses implicitly
+                <small>BOUNDARY / APPROVAL</small>
+                <span>Human approval</span>
+                <em>Nothing crosses implicitly</em>
               </span>
             ) : null}
             <button
@@ -34,7 +35,7 @@ export function WorkflowDiagram() {
         ))}
       </div>
       <aside className="detail-panel" aria-live="polite">
-        <span className="eyebrow">Selected stage</span>
+        <span className="eyebrow">System / Selected stage</span>
         <h3>{selected.label}</h3>
         <p className="detail-lead">{selected.summary}</p>
         <dl>

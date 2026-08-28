@@ -1,7 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import { ExternalLink, Maximize2 } from 'lucide-react'
 import {
-  Background,
   Controls,
   Handle,
   Position,
@@ -93,13 +92,12 @@ function ArchitectureCanvas() {
           nodesConnectable={false}
           elementsSelectable
         >
-          <Background color="var(--line)" gap={28} size={1} />
           <Controls showInteractive={false} />
           <FitButton />
         </ReactFlow>
       </div>
       <aside className="detail-panel architecture-detail" aria-live="polite">
-        <span className="eyebrow">{selected.label}</span>
+        <span className="eyebrow">Structure / {selected.label}</span>
         <h3>{selected.what}</h3>
         <dl>
           <div>
