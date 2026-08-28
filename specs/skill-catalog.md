@@ -8,7 +8,7 @@ Karya provides one optional conversational coordination skill plus specialist sk
 
 ### karya
 
-Classifies the user's immediate objective and relevant project state, recommends the smallest direct-execution or Factory route plus an explicit model/reasoning profile, rationale, downshift condition, and audit requirement, and waits for explicit approval. After approval it remains the conversational coordinator while applying the selected specialists internally. Runtime advice remains advisory until Project Harness materializes it. It is not a fifth Factory, does not replace specialist contracts, and keeps every cross-factory handoff optional with `automatic_handoff: false`.
+Classifies the user's immediate objective, project state, and cost preference; recommends the smallest direct-execution or Factory route plus an explicit model/reasoning profile, rationale, downshift condition, optional economic executor eligibility, and audit requirement; and waits for explicit approval. It assumes no OpenCode installation, provider access, credit, subscription, or authorization. After approval it remains the conversational coordinator while applying the selected specialists internally. Runtime advice remains advisory until Project Harness materializes it. It is not a fifth Factory, does not replace specialist contracts, and keeps every cross-factory handoff optional with `automatic_handoff: false`.
 
 ## MVP Factory
 
@@ -97,6 +97,10 @@ Creates a project-local `.agents/skills/` capability only for stable specialized
 ### codex-runtime-router
 
 Validates a resolved READY/review execution manifest against the project-pinned runtime policy and deterministically calls the official Python Codex SDK `thread_start` or `thread_resume`. It records actual thread ID and usage under ignored `.harness/runtime/`, preserves mappings across invalid output, validates implementation or review evidence, and never asks another LLM to select the runtime.
+
+### karya-execution-router
+
+Routes an explicitly confirmed READY non-Django implementation to OpenCode as an optional economic executor or returns Codex fallback. It keeps provider configuration and credentials outside the project, restricts writable paths and commands, snapshots changes, waits for one final process signal, reruns exact validations, and requires independent Codex review. It does not plan, handle Django contracts, authorize spend, or approve its own result.
 
 ### project-harness-auditor
 

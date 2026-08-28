@@ -26,6 +26,23 @@ Ask: “What result would make this request complete now?”
 
 Do not route to Project Harness merely because the project is long-lived, contains automation, uses Codex, or has an `AGENTS.md`. The requested outcome must concern its AI operating structure.
 
+## Cost-aware implementation routing
+
+Cost is a recommendation criterion only after authority and contract readiness are established.
+
+```txt
+Planning, unresolved decision, critical review, credential or external action?
+  -> Codex; do not delegate
+READY normal/mechanical implementation + user wants economy?
+  -> advise OpenCode eligibility and Codex fallback
+Django backend contract?
+  -> karya-backend-router, never the generic router
+No exact model, validation, writable scope, snapshot, or action confirmation?
+  -> advisory only; do not start OpenCode
+```
+
+OpenCode is never essential to Karya. `karya-execution-router` is the generic optional economic route for Python, automations, frontend, and other non-Django implementation contracts. It requires an external request outside the project repository and returns Codex fallback when optional OpenCode readiness fails. Provider/model options remain consultative until the user confirms installation, authentication, cost exposure, exact model, scope, and execution.
+
 ## Recommend the runtime as well as the route
 
 Every Karya recommendation names a runtime for the immediate phase, even when no Harness exists yet. The recommendation is advisory until Project Harness materializes it in `SPEC.execution.json`; it does not silently change the active conversation.
@@ -82,6 +99,7 @@ Do not skip a prerequisite because the user asked for a later stage. Explain wha
 | One bounded change needs a clean-thread-executable Spec and resolved runtime manifest | `project-spec-architect` |
 | A stable specialized recurring project procedure deserves a project-local skill | `project-skill-author` |
 | A READY execution manifest must start or resume the exact Codex implementation/review thread | `codex-runtime-router` |
+| A READY non-Django implementation may use an explicitly approved economic OpenCode executor | `karya-execution-router` |
 | Existing Harness artifacts and implementation evidence need independent reconciliation | `project-harness-auditor` |
 
 ## Mixed requests

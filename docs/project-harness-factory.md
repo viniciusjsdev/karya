@@ -15,22 +15,25 @@ It may be invoked directly or selected through an approved `$karya` recommendati
 | backend Markdown implementation contract + JSON manifest | generalize and keep specific | use the human/machine split for generic Specs; never downgrade the backend manifest |
 | backend completion schema and ID-level audit | generalize and keep specific | generic acceptance/validation evidence follows the pattern; backend keeps invariant/endpoint traceability |
 | `karya-backend-router` | keep specific | continues OpenCode/Codex Django routing and security boundaries |
+| Django OpenCode safety pattern | generalize | reuse approval, deny-by-default permissions, snapshots, one final signal, and independent audit without reusing Django contracts |
 | `karya-research-router` | keep specific | continues provider/evidence routing; it does not execute Project Specs |
 | `karya-commercial-router` | keep specific | continues approved external commercial operations |
 | generic Spec lifecycle/readiness | create new | `project-spec-architect`, schemas, validator, templates |
 | explicit GPT-5.6 runtime + reasoning materialization | create new | centralized runtime policy and per-Spec resolved execution manifest |
 | Codex SDK start/resume router and thread mapping | create new | Python 3.12+ `codex-runtime-router`, official Python SDK, ignored `.harness/runtime/` state, and mock-tested adapter |
+| generic optional economic execution | create new | `karya-execution-router` consumes a READY non-Django Spec plus an external approved request and returns OpenCode evidence or Codex fallback |
 | cross-project harness audit | create new | `project-harness-auditor` with deterministic and semantic layers |
 
 ## Minimal architecture
 
-Five skills are retained because they have different authority and side effects:
+Six skills are retained because they have different authority and side effects:
 
 1. `project-harness-architect` audits and bootstraps project context; it does not design a change or implement it.
 2. `project-spec-architect` makes bounded change and runtime decisions; it does not execute.
 3. `project-skill-author` authors reusable local procedure; it does not invent domain truth.
 4. `codex-runtime-router` validates and executes a resolved manifest; it does not select a runtime.
-5. `project-harness-auditor` independently reconciles contracts, reality, and evidence; it does not repair.
+5. `karya-execution-router` optionally executes a READY implementation through OpenCode after exact external confirmation; it does not plan, approve, or replace Codex.
+6. `project-harness-auditor` independently reconciles contracts, reality, and evidence; it does not repair.
 
 Combining these would let an executor redefine its contract or let an author self-approve its output. Shared runtime defaults and schemas remain centralized under `project-spec-architect`; bootstrap and routing consume those canonical resources.
 
@@ -44,8 +47,9 @@ Idea or existing project
   -> project-spec-architect for one bounded change
   -> clean-thread READY validation and resolved runtime
   -> codex-runtime-router thread_start/thread_resume
+       or explicitly approved karya-execution-router/OpenCode execution
   -> completion evidence or needs_design
-  -> appropriate review
+  -> independent Codex review when OpenCode executed
   -> project-harness-auditor
 ```
 
@@ -59,6 +63,7 @@ The Factory never invokes MVP, Research, or Marketing automatically. Those facto
 - `new` is rejected when the Spec/purpose already has a mapped thread. Once the SDK exposes an ID, the mapping survives invalid structured output so the next attempt uses `resume`.
 - Implementation and worker runs emit `project-spec-completion.schema.json`. Independent review runs emit `project-spec-review.schema.json` and return `approved`, `changes_requested`, `blocked`, or `failed`.
 - Completion validation reconciles acceptance and validation IDs, exact required commands, thread/runtime identity, and the existence of declared changed files and local artifacts.
+- Optional economic execution keeps provider configuration, credentials, and its exact action-time request outside the project repository; it snapshots the project, restricts writes, returns one process-exit signal, reruns exact validations, and requires independent Codex review.
 - A `DONE` Spec with required independent review must have an approved review receipt whose runtime and inputs match the manifest.
 
 The executable [SPEC-023 sensor export example](../examples/project-harness/spec-023-sensor-export/) demonstrates bootstrap, local skill creation, clean-thread handoff, `needs_design`, ADR resolution, resume, real implementation tests, completion evidence, independent review, and final audit without subagents.

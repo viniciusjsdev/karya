@@ -36,6 +36,8 @@ Do not mark implementation complete or review approved from this skill alone.
 - A `ready` normal implementation defaults to Terra/medium.
 - Mechanical, low-risk, easily validated work defaults to Luna/low.
 - Critical review defaults to Sol/high.
+- A READY Spec may declare independent review and later be routed through `karya-execution-router` when the user explicitly wants an economic non-Django executor. Provider/model selection, credentials, writable paths, snapshot, and action-time confirmation stay in an external request outside the project repository; they do not become Spec fields.
+- The resolved Codex runtime remains the fallback and review contract. OpenCode eligibility never makes the external executor mandatory.
 - Size is not complexity. Runtime deviations require an explicit override reason.
 - An executor that finds an absent consequential decision returns `needs_design`; it does not invent the decision.
 
@@ -48,3 +50,5 @@ Do not mark implementation complete or review approved from this skill alone.
 - `assets/completion.schema.json`: structured completion evidence JSON Schema.
 - `assets/review-evidence.schema.json`: structured independent review inputs, findings, result, runtime, thread, and usage.
 - `scripts/validate_spec.py`: dependency-free Python 3.12+ Spec/readiness validator.
+
+For optional economic execution, the Spec must make affected areas, non-scope, exact validations, and independent review sufficiently precise for the external request to narrow writable paths without redesigning the change.

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Karya economic execution route result",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["task_id", "route", "executor", "provider", "model", "project_root", "reasons", "artifacts"],
+  "properties": {
+    "task_id": { "type": "string" },
+    "route": { "enum": ["preflight-blocked", "codex-fallback-required", "opencode-unavailable", "opencode-ready", "opencode-completed", "opencode-reported-blocked", "opencode-error"] },
+    "executor": { "enum": ["codex", "opencode", "none"] },
+    "provider": { "type": "string" },
+    "model": { "type": "string" },
+    "project_root": { "type": "string" },
+    "reasons": { "type": "array", "items": { "type": "string" } },
+    "artifacts": { "type": "object" }
+  }
+}

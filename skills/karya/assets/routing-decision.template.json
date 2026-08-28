@@ -1,11 +1,12 @@
 {
   "$schema": "./routing-decision.schema.json",
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "decision_id": "KARYA-ROUTE-001",
   "request_summary": "Create a new automation that monitors processes and produces reports.",
   "classification": {
     "primary_intent": "product_work",
     "project_state": "rough idea",
+    "cost_preference": "unspecified",
     "confidence": "high",
     "signals": [
       "The user wants to create a new automation.",
@@ -40,6 +41,16 @@
       "capability": null,
       "when": null
     }
+  },
+  "economic_execution": {
+    "eligible": false,
+    "status": "not_applicable",
+    "recommended_executor": null,
+    "reason": "Product definition and unresolved decisions remain with Codex; implementation routing is premature.",
+    "provider_options": [],
+    "requires_action_confirmation": true,
+    "fallback": "codex",
+    "assumptions": "none"
   },
   "coordination": {
     "coordinator": "karya",

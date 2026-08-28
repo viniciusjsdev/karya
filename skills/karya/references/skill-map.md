@@ -47,6 +47,7 @@ This is a compact routing index. After approval, load the selected skill's full 
 | `project-spec-architect` | Creates one bounded `SPEC.md` and resolved `SPEC.execution.json` | A concrete change needing clean-thread execution |
 | `project-skill-author` | Creates a project-local skill for a stable specialized recurring procedure | Durable truth exists and recurrence justifies a skill |
 | `codex-runtime-router` | Validates and starts/resumes an exact READY implementation or review thread | Resolved valid execution manifest and project-pinned runtime policy |
+| `karya-execution-router` | Routes a READY non-Django implementation to optional economic OpenCode execution or Codex fallback, then returns one evidence signal for Codex audit | Exact external confirmation, provider/model readiness, writable scope, snapshot, validations, and independent review |
 | `project-harness-auditor` | Reconciles project truth, Specs, runtime, threads, validation, and evidence | Existing Harness artifacts and observable project state |
 
 ## Direct execution

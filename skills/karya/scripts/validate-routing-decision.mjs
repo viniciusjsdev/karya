@@ -11,6 +11,7 @@ const intents = new Set([
   "unclear"
 ]);
 const confidenceLevels = new Set(["low", "medium", "high"]);
+const costPreferences = new Set(["unspecified", "economize_codex", "lowest_safe_cost", "codex_preferred"]);
 const routeModes = new Set(["direct", "factory"]);
 const factories = new Set(["MVP Factory", "Research Factory", "Marketing Factory", "Project Harness Factory"]);
 const approvalStatuses = new Set(["pending", "approved", "rejected", "revised"]);
@@ -50,6 +51,7 @@ export const factorySkills = Object.freeze({
     "project-spec-architect",
     "project-skill-author",
     "codex-runtime-router",
+    "karya-execution-router",
     "project-harness-auditor"
   ])
 });
@@ -79,7 +81,7 @@ function requireStringArray(value, name, { minItems = 0 } = {}) {
 
 export function validateRoutingDecision(value) {
   requireObject(value, "decision");
-  if (value.schema_version !== "1.1") fail("schema_version must be 1.1.");
+  if (value.schema_version !== "1.2") fail("schema_version must be 1.2.");
   requireString(value.decision_id, "decision_id");
   requireString(value.request_summary, "request_summary");
   if (value.automatic_handoff !== false) fail("automatic_handoff must be false.");
@@ -87,6 +89,7 @@ export function validateRoutingDecision(value) {
   requireObject(value.classification, "classification");
   if (!intents.has(value.classification.primary_intent)) fail("classification.primary_intent is invalid.");
   requireString(value.classification.project_state, "classification.project_state");
+  if (!costPreferences.has(value.classification.cost_preference)) fail("classification.cost_preference is invalid.");
   if (!confidenceLevels.has(value.classification.confidence)) fail("classification.confidence is invalid.");
   requireStringArray(value.classification.signals, "classification.signals");
 
@@ -150,6 +153,25 @@ export function validateRoutingDecision(value) {
       fail("Project Harness bootstrap must plan project-harness-auditor.");
     }
   }
+
+  requireObject(value.economic_execution, "economic_execution");
+  const economic = value.economic_execution;
+  if (typeof economic.eligible !== "boolean") fail("economic_execution.eligible must be boolean.");
+  requireString(economic.reason, "economic_execution.reason");
+  if (!Array.isArray(economic.provider_options)) fail("economic_execution.provider_options must be an array.");
+  economic.provider_options.forEach((option, index) => requireString(option, `economic_execution.provider_options[${index}]`));
+  if (economic.requires_action_confirmation !== true) fail("economic execution must require action-time confirmation.");
+  if (economic.fallback !== "codex") fail("economic execution fallback must be codex.");
+  if (economic.assumptions !== "none") fail("economic execution must assume no provider, credit, subscription, or authorization.");
+  if (economic.eligible) {
+    if (economic.status !== "advisory" || economic.recommended_executor !== "opencode") fail("eligible economic execution must be an advisory OpenCode recommendation.");
+    if (economic.provider_options.length === 0) fail("eligible economic execution must name at least one consultative provider option.");
+    if (!["resolved_implementation", "mechanical_change"].includes(runtime.phase)) fail("OpenCode is eligible only for resolved or mechanical implementation.");
+    if (!runtime.audit.required || runtime.audit.capability !== "project-harness-auditor") fail("OpenCode eligibility requires independent Project Harness audit.");
+  } else if (economic.status !== "not_applicable" || economic.recommended_executor !== null || economic.provider_options.length !== 0) {
+    fail("ineligible economic execution must be not_applicable with no executor or provider options.");
+  }
+  if (route.entry_skill === "karya-execution-router" && !economic.eligible) fail("karya-execution-router requires eligible economic execution.");
 
   requireObject(value.coordination, "coordination");
   if (value.coordination.coordinator !== "karya") fail("coordination.coordinator must be karya.");

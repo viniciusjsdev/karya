@@ -26,6 +26,7 @@ Rules:
 - Use `project-spec-architect` to create a bounded human-readable Spec plus resolved machine-readable execution manifest; READY requires clean-thread executability without design-chat history.
 - Use `project-skill-author` only for stable, specialized, recurring project procedures; keep truth in docs, decisions in ADRs, changes in Specs, and deterministic operations in scripts.
 - Use `codex-runtime-router` only after runtime selection is materialized; the router validates and starts/resumes the declared Codex thread without another LLM choosing the runtime.
+- Use `karya-execution-router` only as an optional economic route for a READY non-Django implementation with exact external confirmation, provider/model readiness, writable paths, mandatory prohibitions, snapshot, validations, and independent Codex review. OpenCode is never essential to Karya and Codex remains the fallback.
 - Use `project-harness-auditor` to reconcile project truth, decisions, Specs, skills, runtime, threads, validation, and completion evidence without implementing corrections.
 - Keep the project-pinned runtime policy at `.codex/references/runtime-policy.json`; do not silently validate a historical Spec against a newer Factory default.
 - Keep ephemeral Spec/thread/run state under generated-project `.harness/runtime/`, gitignored and separate from durable project truth. Never store secrets, transcripts, conversation history, domain knowledge, ADRs, Specs, or persistent documentation there.
@@ -48,6 +49,7 @@ Rules:
 - When `$karya` is explicitly invoked, classify the immediate desired outcome and current artifact state before selecting a route. Project type alone is insufficient; an automation may require direct execution, MVP, Research, Marketing, or Project Harness depending on the requested outcome.
 - Recommend one primary route, explain the reason, name the internal skills covered by the proposed scope, and wait for explicit approval. Do not require the user to invoke each approved specialist manually.
 - Include the recommended model, reasoning, rationale, downshift condition, and required audit in every `$karya` recommendation. Treat it as advisory until a Project Harness `SPEC.execution.json` materializes the runtime; never claim the active conversation changed models silently.
+- Treat cost or Codex-limit pressure as an explicit recommendation signal. Distinguish Codex-owned planning/critical decisions/audit, normal READY implementation, and mechanical low-risk work. Provider options remain consultative and assume no installation, authentication, subscription, credit, billing, authorization, or model access.
 - Use direct Codex execution for bounded, sufficiently defined work when no Factory contract is needed.
 - For product definition, construction, backend, infrastructure, hosting, or technical MVP validation, use the standalone MVP Factory.
 - For market investigation, app-market intelligence, evidence collection, or hypothesis validation, use the standalone Research Factory.
@@ -66,6 +68,9 @@ Rules:
 - Treat complexity as the nature of reasoning, not the number of files.
 - On an absent consequential decision, return `needs_design`, persist the resolution in docs/ADR/Spec, and resume the existing implementation thread when possible.
 - Preserve a thread ID as soon as the SDK exposes it, including failed structured-output/evidence runs; retry through `resume`, not a duplicate `new` thread.
+- Keep OpenCode provider configuration, credentials, and exact execution requests outside project repositories, documentation, Specs, persisted prompts, and project `.env` files. A live external run requires separate action-time confirmation after the exact executor, provider, model, writable paths, validation IDs, and cost mode are known.
+- Route generic OpenCode execution through one passive non-interactive child process and one final completion/error result. Do not spend Codex turns polling it. Reconcile snapshot diff, completion evidence, router-run validations, and independent Codex review before approval.
+- Preserve `karya-backend-router` as the richer Django-specific route. Never send its backend contracts or migration rules through `karya-execution-router`.
 - Use the implementation completion schema for implementation/worker runs and the independent review evidence schema for review runs. A required review must receive the Spec, resolved manifest, diff/artifacts, tests, and completion evidence.
 - Audit declared changed files and local artifacts against the working tree. Structured prose claiming a command passed is not sufficient when its files, IDs, paths, or required review do not reconcile.
 - Keep same-working-tree writes sequential by default. Parallel writers require isolated worktrees/branches, ownership, merge, conflict, and completion policy.

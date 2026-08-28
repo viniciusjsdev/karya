@@ -101,10 +101,11 @@ Account setup information is produced by Codex. Account creation, credentials, v
 ```txt
 Design Thread
   -> durable SPEC and resolved runtime manifest
-  -> Python Codex Runtime Router
-  -> isolated Implementation Thread
+  -> Codex Runtime Router
+       or optional Economic Execution Router -> OpenCode implementation
+  -> isolated implementation execution
   -> tests and structured evidence
-  -> independent review
+  -> independent Codex review
   -> harness audit
 ```
 
@@ -116,6 +117,7 @@ When execution encounters a consequential unresolved decision, it returns `needs
 - Root `specs/` define optional cross-skill handoffs; skill folders contain executable instructions, references, scripts, and local schemas/templates.
 - Providers are mechanisms, not evidence sources. Preserve original-source lineage.
 - External writes require an exact operation and explicit confirmation.
+- OpenCode is an optional economic implementation executor, never a Karya prerequisite or auditor. Provider configuration and credentials remain outside project repositories; Codex owns architecture, fallback, validation, and final audit.
 - No Factory silently invokes another Factory. Karya may coordinate only an explicitly approved route and keeps cross-factory handoffs optional.
 - Missing research does not block an MVP; missing marketing does not block publication of a technical preview.
 - Secrets and authenticated session material stay outside the repository and generated projects.
@@ -154,6 +156,7 @@ skills/
   project-spec-architect/
   project-skill-author/
   codex-runtime-router/
+  karya-execution-router/
   project-harness-auditor/
 ```
 

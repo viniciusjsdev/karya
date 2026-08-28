@@ -1,0 +1,4 @@
+interface:
+  display_name: "Karya Execution Router"
+  short_description: "Route approved coding to economical executors"
+  default_prompt: "Use $karya-execution-router to evaluate an approved implementation for optional economic OpenCode execution with Codex audit."

@@ -59,10 +59,11 @@ export const workflowSteps: DetailItem[] = [
   {
     id: 'recommendation',
     label: 'Route + runtime',
-    summary: 'Karya recommends the smallest suitable route and an advisory model/reasoning level.',
-    input: 'Classification, project state, risk, and complexity of reasoning.',
+    summary:
+      'Karya recommends the smallest suitable route, advisory model/reasoning, and optional economic executor eligibility.',
+    input: 'Classification, project state, cost preference, risk, and complexity of reasoning.',
     output:
-      'Entry skill, planned capabilities, rationale, downshift condition, and audit requirement.',
+      'Entry skill, planned capabilities, rationale, downshift condition, economic option, fallback, and audit requirement.',
     owner: '$karya coordination.',
     constraints: 'Without a resolved Harness manifest, the runtime recommendation is advisory.',
     documentation: [{ label: 'Routing', href: docs.routing }],
@@ -98,9 +99,9 @@ export const workflowSteps: DetailItem[] = [
     input:
       'Contracts, Specs, knowledge, selected skill, and materialized runtime when Harness is used.',
     output: 'Changed artifacts and command results.',
-    owner: 'Approved executor or bounded operator.',
+    owner: 'Codex or an explicitly approved bounded executor such as OpenCode.',
     constraints:
-      'The executor must not silently redefine consequential decisions or broaden scope.',
+      'OpenCode is optional and cannot redefine decisions, authorize external actions, broaden scope, or approve itself.',
     documentation: [
       { label: 'Karya method', href: `${repositoryUrl}/blob/main/docs/karya-method.md` },
     ],
@@ -403,7 +404,7 @@ export const factories: Factory[] = [
     id: 'harness',
     name: 'Project Harness Factory',
     purpose:
-      'Make a project operable and scalable with AI through durable knowledge, Specs, Skills, runtime, Threads, evidence, and audit.',
+      'Make a project operable and scalable with AI through durable knowledge, Specs, Skills, runtime, optional economic execution, evidence, and audit.',
     when: 'Structure how an empty or existing project works durably across clean AI Threads.',
     input: 'Idea, repository, existing project, or artifact from any workflow.',
     result:
@@ -412,7 +413,7 @@ export const factories: Factory[] = [
       'Harness audit',
       'Durable context',
       'READY Spec',
-      'Runtime + isolated Thread',
+      'Codex runtime or optional OpenCode executor',
       'Evidence + independent audit',
     ],
     href: docs.harness,

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Karya external economic execution request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "task_id", "project_root", "spec", "executor", "provider", "model", "provider_kind", "billing_mode", "timeout_minutes", "writable_paths", "prohibited_actions", "baseline", "validation_ids", "confirmation"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "task_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]{0,95}$" },
+    "project_root": { "type": "string", "minLength": 1 },
+    "spec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["markdown_path", "manifest_path", "id", "contract_version"],
+      "properties": {
+        "markdown_path": { "type": "string", "minLength": 1 },
+        "manifest_path": { "type": "string", "minLength": 1 },
+        "id": { "type": "string", "pattern": "^SPEC-[0-9]{3,}$" },
+        "contract_version": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "executor": { "enum": ["auto", "opencode"] },
+    "provider": { "type": "string", "minLength": 1 },
+    "model": { "type": "string", "minLength": 1 },
+    "provider_kind": { "enum": ["managed", "byok", "local"] },
+    "billing_mode": { "enum": ["subscription", "credits", "provider_billed", "local_compute", "unknown"] },
+    "timeout_minutes": { "type": "number", "exclusiveMinimum": 0, "maximum": 1440 },
+    "writable_paths": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+    "prohibited_actions": { "type": "array", "minItems": 6, "uniqueItems": true, "items": { "enum": ["secrets_and_credentials", "environment_files", "external_actions", "spec_changes", "destructive_git", "web_access"] } },
+    "baseline": { "type": "object", "additionalProperties": false, "required": ["mode"], "properties": { "mode": { "enum": ["full_snapshot"] } } },
+    "validation_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^VAL-[0-9]{3}$" } },
+    "confirmation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["approved", "approved_at", "task_id", "spec_id", "contract_version", "executor", "provider", "model", "writable_paths", "validation_ids"],
+      "properties": {
+        "approved": { "const": true },
+        "approved_at": { "type": "string", "format": "date-time" },
+        "task_id": { "type": "string" },
+        "spec_id": { "type": "string" },
+        "contract_version": { "type": "integer" },
+        "executor": { "const": "opencode" },
+        "provider": { "type": "string" },
+        "model": { "type": "string" },
+        "writable_paths": { "type": "array", "items": { "type": "string" } },
+        "validation_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

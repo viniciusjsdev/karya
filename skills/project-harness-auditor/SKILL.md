@@ -28,6 +28,7 @@ Then perform semantic reconciliation against actual project artifacts. Preserve 
 - thread IDs/purposes and context boundaries against the manifest;
 - validation claims against commands, exit codes, and evidence;
 - parallel-writing claims against actual isolation and ownership.
+- optional OpenCode route results against the external request fingerprint, Spec/version, snapshot diff, approved writable paths, router-run validations, and independent Codex review; OpenCode-authored completion is never approval.
 
 Detect missing or obsolete truth, implicit decisions, chat-only knowledge when chat evidence is supplied, missing or redundant skills, skills for temporary tasks, oversized skills, unjustified Sol/Terra/Luna or reasoning choices, Specs that depend on history, missing evidence, and unsafe parallelism.
 

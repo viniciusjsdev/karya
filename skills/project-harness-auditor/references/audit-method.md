@@ -9,6 +9,8 @@
 
 For a completed implementation, declared changed files and local artifacts must exist. A `DONE` Spec with required independent review must have sibling `evidence/review.json` whose Spec/version, runtime, thread ID, inputs, and approval result reconcile with the manifest.
 
+For optional economic execution, inspect the external router result and its temporary artifacts. Confirm that the request fingerprint is present, the result matches the Spec/version, snapshot changes equal reported changed files, every changed path was approved, and router-run validations passed. Require an approved independent Codex review receipt that explicitly names the route result, completion evidence, snapshot diff, and router validations as inputs. Provider readiness and OpenCode completion are execution evidence, not audit approval.
+
 ## Findings
 
 Each finding names severity, category, statement, and evidence. `high` blocks approval; `medium` requires correction; `low` may produce approval with notes. Unassessed work is not a pass.

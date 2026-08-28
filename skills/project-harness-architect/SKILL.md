@@ -35,6 +35,8 @@ This Factory is independent and opt-in. It may consume an idea, existing project
 
 Use `project-spec-architect` for bounded change Specs, `project-skill-author` for approved recurring project procedures, `codex-runtime-router` for an already resolved READY execution manifest, and `project-harness-auditor` for reconciliation. Do not implement the project with this skill.
 
+When the user explicitly wants an economic implementation route, map the project to `karya-execution-router` without making OpenCode part of the minimum Harness. Preserve the READY Spec and Codex fallback/review runtime, keep provider configuration and the exact execution request outside the project repository, and require a separate action-time confirmation. Use `karya-backend-router` instead when the implementation is governed by the richer Django backend contract.
+
 ## Completion
 
 Report created, preserved, mapped, and intentionally omitted artifacts. A bootstrap is complete only when project truth is discoverable, AGENTS routing is accurate, Spec/runtime policy is usable, validation is named, temporary runtime state is excluded from durable truth, and no important decision exists only in the bootstrap conversation.

@@ -12,6 +12,19 @@ User objective
 
 Cross-factory handoffs remain optional and require explicit approval.
 
+## Optional economic implementation
+
+```txt
+READY non-Django Spec + explicit need to economize Codex
+  -> Karya advisory provider/model options
+  -> separate exact action-time confirmation
+  -> karya-execution-router
+  -> one passive OpenCode completion/error signal or Codex fallback
+  -> independent Codex validation and project-harness-auditor
+```
+
+OpenCode is not required for any Factory. Planning, consequential decisions, credentials, external actions, critical review, and unresolved contracts remain with Codex. Django implementation continues through `karya-backend-router` and its specialized contracts.
+
 ## MVP Factory
 
 ```txt

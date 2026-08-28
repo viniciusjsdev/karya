@@ -38,11 +38,13 @@ Before execution, Karya reports:
 
 - its understanding of the request;
 - the observed project/artifact state;
+- the user's cost preference, including whether economizing Codex limits is an explicit objective;
 - the primary Factory or direct route;
 - the entry skill;
 - the evidence-based reason;
 - the recommended model and reasoning for the immediate phase;
 - the runtime rationale, downshift condition, and required audit;
+- whether optional economic OpenCode execution is eligible, its prerequisites, and Codex fallback;
 - the specialist skills expected inside the approved scope;
 - relevant exclusions or alternatives;
 - route-changing open questions;
@@ -53,6 +55,8 @@ The user can approve, reject, or revise the recommendation. Approval does not au
 The runtime recommendation is advisory when the project has no Project Harness manifest: Karya cannot claim to have changed the active conversation's model or reasoning. When Harness is approved, the exact runtime is materialized by `project-spec-architect` in `SPEC.execution.json` and executed by `codex-runtime-router`.
 
 Default recommendations are Sol/high for new-project or missing-structure diagnosis and first-Spec design, Terra/medium for the first resolved implementation, Luna/low for later mechanical corrections, and Sol/high for security, credentials, consequential external action, hard-to-reverse work, or critical review. A Harness bootstrap includes an independent `project-harness-auditor` pass after materialization.
+
+When the user explicitly needs to economize Codex limits or cost, Karya may recommend `karya-execution-router` for a READY normal or mechanical non-Django implementation. The recommendation is advisory: OpenCode is optional, Codex remains the fallback, and installation, authentication, provider/model choice, billing, credit use, writable scope, and execution each retain explicit human control. Django continues through `karya-backend-router`.
 
 ## Internal specialist use
 

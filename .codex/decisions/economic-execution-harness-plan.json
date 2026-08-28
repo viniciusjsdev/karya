@@ -1,0 +1,133 @@
+{
+  "$schema": "../../skills/project-harness-architect/assets/harness-plan.schema.json",
+  "schema_version": "1.0",
+  "status": "accepted",
+  "project": {
+    "name": "Karya",
+    "domain": "AI-native project factories and execution harnesses",
+    "project_type": "ai",
+    "objective": "Add an optional cost-aware OpenCode implementation route while preserving Codex architecture, fallback, validation, and independent audit authority."
+  },
+  "sources_of_truth": [
+    {
+      "path": "AGENTS.md",
+      "kind": "operation",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "docs/project-harness-factory.md",
+      "kind": "architecture",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "skills/project-spec-architect/assets/runtime-policy.json",
+      "kind": "contract",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "skills/karya-backend-router/",
+      "kind": "operation",
+      "authority": "primary",
+      "action": "preserve"
+    }
+  ],
+  "documentation": {
+    "preserve": [
+      "docs/opencode-backend-execution.md",
+      "skills/karya-backend-router/",
+      "skills/codex-runtime-router/"
+    ],
+    "create": [
+      {
+        "path": "docs/economic-execution-routing.md",
+        "purpose": "Teach the optional executor-neutral OpenCode route, its cost policy, confirmation gates, provider boundaries, and Codex audit responsibility."
+      },
+      {
+        "path": "skills/karya-execution-router/",
+        "purpose": "Provide the installable deterministic router, schemas, safety policy, readiness checks, and one-signal execution protocol."
+      }
+    ],
+    "path_mappings": [
+      {
+        "generic_role": "Django-specific OpenCode execution",
+        "existing_path": "skills/karya-backend-router/"
+      },
+      {
+        "generic_role": "Codex SDK execution and thread lifecycle",
+        "existing_path": "skills/codex-runtime-router/"
+      },
+      {
+        "generic_role": "Executor-neutral implementation contract",
+        "existing_path": "skills/project-spec-architect/"
+      }
+    ]
+  },
+  "decisions": {
+    "durable_path": ".codex/decisions",
+    "open": [
+      "Every live OpenCode installation, authentication, provider selection, billing action, credit spend, or implementation start requires separate explicit human confirmation."
+    ]
+  },
+  "workflows": [
+    {
+      "name": "Optional economic implementation routing",
+      "path": "docs/economic-execution-routing.md",
+      "action": "create"
+    }
+  ],
+  "local_skill_candidates": [
+    {
+      "capability": "Generic cost-aware implementation routing",
+      "disposition": "skill",
+      "reason": "It is a recurring cross-project capability with deterministic readiness, security, execution, evidence, and audit behavior."
+    },
+    {
+      "capability": "Django backend routing",
+      "disposition": "none",
+      "reason": "The existing specialized router remains authoritative and must not be generalized or replaced."
+    }
+  ],
+  "spec_strategy": {
+    "root": "specs",
+    "active_pattern": "specs/active/SPEC-NNN",
+    "markdown_name": "SPEC.md",
+    "execution_name": "SPEC.execution.json"
+  },
+  "validation": [
+    {
+      "id": "VAL-001",
+      "command": "python skills/karya-execution-router/scripts/test_execution_router.py",
+      "required": true
+    },
+    {
+      "id": "VAL-002",
+      "command": "node skills/karya-backend-router/scripts/test-router.mjs",
+      "required": true
+    },
+    {
+      "id": "VAL-003",
+      "command": "node skills/karya/scripts/test-routing-decision.mjs",
+      "required": true
+    },
+    {
+      "id": "VAL-004",
+      "command": "git diff --check",
+      "required": true
+    }
+  ],
+  "runtime_policy": {
+    "policy_version": "1.0",
+    "project_path": "skills/project-spec-architect/assets/runtime-policy.json"
+  },
+  "thread_policy": {
+    "design": "current approved design thread",
+    "implementation": "sequential current working tree after explicit approval",
+    "needs_design": "return to Codex architecture and persist the decision before retry",
+    "parallel_writes": "sequential_by_default",
+    "subagents": "not_default"
+  },
+  "automatic_handoff": false
+}

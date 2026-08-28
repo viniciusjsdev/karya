@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Karya external executor completion evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "spec_id", "contract_version", "status", "changed_files", "acceptance_evidence", "validation_evidence", "deviations", "unresolved_items", "needs_design"],
+  "properties": {
+    "task_id": { "type": "string" },
+    "spec_id": { "type": "string" },
+    "contract_version": { "type": "integer" },
+    "status": { "enum": ["completed", "blocked", "needs_design", "failed"] },
+    "changed_files": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+    "acceptance_evidence": { "type": "object" },
+    "validation_evidence": { "type": "object" },
+    "deviations": { "type": "array", "items": { "type": "string" } },
+    "unresolved_items": { "type": "array", "items": { "type": "string" } },
+    "needs_design": { "type": ["object", "null"] }
+  }
+}

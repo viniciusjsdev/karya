@@ -11,6 +11,7 @@
     "classification",
     "recommended_route",
     "runtime_recommendation",
+    "economic_execution",
     "coordination",
     "supporting_routes",
     "open_questions",
@@ -19,18 +20,19 @@
   ],
   "properties": {
     "$schema": { "const": "./routing-decision.schema.json" },
-    "schema_version": { "const": "1.1" },
+    "schema_version": { "const": "1.2" },
     "decision_id": { "type": "string", "minLength": 1 },
     "request_summary": { "type": "string", "minLength": 1 },
     "classification": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["primary_intent", "project_state", "confidence", "signals"],
+      "required": ["primary_intent", "project_state", "cost_preference", "confidence", "signals"],
       "properties": {
         "primary_intent": {
           "enum": ["direct_execution", "product_work", "market_research", "commercial_work", "project_harness", "mixed", "unclear"]
         },
         "project_state": { "type": "string", "minLength": 1 },
+        "cost_preference": { "enum": ["unspecified", "economize_codex", "lowest_safe_cost", "codex_preferred"] },
         "confidence": { "enum": ["low", "medium", "high"] },
         "signals": { "type": "array", "items": { "type": "string", "minLength": 1 } }
       }
@@ -84,6 +86,21 @@
             "when": { "type": ["string", "null"] }
           }
         }
+      }
+    },
+    "economic_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eligible", "status", "recommended_executor", "reason", "provider_options", "requires_action_confirmation", "fallback", "assumptions"],
+      "properties": {
+        "eligible": { "type": "boolean" },
+        "status": { "enum": ["not_applicable", "advisory"] },
+        "recommended_executor": { "type": ["string", "null"], "enum": [null, "opencode"] },
+        "reason": { "type": "string", "minLength": 1 },
+        "provider_options": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "requires_action_confirmation": { "const": true },
+        "fallback": { "const": "codex" },
+        "assumptions": { "const": "none" }
       }
     },
     "coordination": {

@@ -39,6 +39,16 @@ Load progressively: Spec, declared skills, declared references, then relevant re
 
 Same-working-tree writes are sequential by default. Parallel writers require isolated branches/worktrees, explicit ownership, merge and conflict policy, and completion reconciliation.
 
+## Optional economic executor
+
+The model/reasoning in `SPEC.execution.json` remains the resolved Codex implementation fallback or review runtime. When the user explicitly prioritizes economy and the Spec is READY, `karya-execution-router` may resolve an OpenCode provider/model at action time through an external request outside the repository.
+
+- `normal_implementation` and `mechanical` may be eligible.
+- `design`, `critical_review`, unresolved decisions, credentials, external actions, and hard-to-reverse work are ineligible by default.
+- OpenCode availability never changes the Spec's requirements, validation, review, or escalation policy.
+- A live external run requires exact human confirmation and independent Codex review.
+- No provider, subscription, credit, authentication, or local-model readiness is assumed.
+
 ## Review
 
 Simple work may use executor self-validation. Medium work may use an independent Terra review when independence adds value. Critical categories require independent Sol/high review. Review receives the Spec, manifest, diff/artifacts, tests, and completion evidence, not the implementation conversation.

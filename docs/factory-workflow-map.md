@@ -30,13 +30,14 @@ If the user asks for more than one, Karya recommends one primary route and optio
 
 | Actor/source | Responsibility |
 |---|---|
-| Codex | Orchestration, focused research, original-source inspection, strategy, synthesis, creative preparation, contracts, validation |
+| Codex | Architecture, orchestration, fallback implementation, focused research, strategy, contracts, independent validation, and final audit |
+| OpenCode | Optional economic implementation executor for an exact approved READY contract; never architecture, external-action authority, or self-approval |
 | AppStoreTracker | Directional iOS app/developer/family/cohort market estimates and history |
 | Apple | First-party app identity and listing metadata |
 | OpenAlex | Scholarly discovery; original works remain the evidence |
 | Perplexity | Optional broad open-web discovery |
 | Manus research | Read-only native/authenticated platform discovery |
 | Manus commercial | Exact approved native execution and measurement |
-| Human owner | Accounts, credentials, verification, 2FA, connector authorization, confirmation, paid activation |
+| Human owner | Accounts, credentials, verification, 2FA, provider setup, exact execution confirmation, billing, credits, and paid activation |
 
 Provider availability and pricing may change. The contracts route by capability and preserve fallbacks instead of making one paid provider a hard dependency.
