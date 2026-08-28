@@ -1,12 +1,4 @@
-# Karya
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/brand/banners/karya-readme-hero-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="./assets/brand/banners/karya-readme-hero-light.png">
-  <img alt="Karya — The structure behind AI-native development." src="./assets/brand/banners/karya-readme-hero-light.png" width="100%">
-</picture>
-
-> **The structure behind AI-native development.**
+<img src="./assets/brand/banners/karya-readme-hero.png" alt="Karya — The structure behind AI-native development." width="100%" />
 
 Karya is an open-source development system for Codex built around durable project knowledge, executable Specs, reusable Skills, isolated Threads, deterministic routing, validation, and evidence.
 
