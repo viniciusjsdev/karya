@@ -281,9 +281,7 @@ a {
   top: 0;
   left: 0;
   color: var(--muted);
-  font:
-    9px/1.3 'Cascadia Code',
-    monospace;
+  font: 9px/1.3 var(--font-mono);
   letter-spacing: 0.14em;
 }
 .hero-support-line {
@@ -317,34 +315,25 @@ a {
   display: block;
   margin-top: 14px;
   color: var(--muted);
-  font:
-    11px/1.3 'Cascadia Code',
-    monospace;
+  font: 11px/1.3 var(--font-mono);
   letter-spacing: 0.16em;
 }
 .eyebrow {
   display: block;
   color: var(--text);
-  font:
-    700 11px/1.4 'Cascadia Code',
-    monospace;
+  font: 700 11px/1.4 var(--font-mono);
   letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 .hero h1 {
   margin: 24px 0 6px;
-  font:
-    500 clamp(58px, 7vw, 105px) / 0.92 'Segoe UI',
-    Inter,
-    sans-serif;
+  font: 500 clamp(58px, 7vw, 105px) / 0.92 var(--font-display);
   letter-spacing: 0.22em;
   white-space: nowrap;
 }
 .hero-statement {
   margin: 0 0 30px;
-  font:
-    400 clamp(25px, 3.2vw, 45px) / 1.15 Georgia,
-    serif;
+  font: 400 clamp(25px, 3.2vw, 45px) / 1.15 var(--font-display);
   max-width: 780px;
 }
 .hero-description {
@@ -394,9 +383,7 @@ a {
   border-top: 3px double var(--line-strong);
   border-bottom: 8px solid var(--diagram-foundation);
   color: var(--muted);
-  font:
-    10px 'Cascadia Code',
-    monospace;
+  font: 10px var(--font-mono);
   letter-spacing: 0.14em;
 }
 .hero-foundation span {
@@ -465,9 +452,7 @@ a {
 .section-heading h2,
 .open-source-cta h2 {
   margin: 14px 0 18px;
-  font:
-    400 clamp(38px, 5.3vw, 72px) / 1.03 Georgia,
-    serif;
+  font: 400 clamp(38px, 5.3vw, 72px) / 1.03 var(--font-display);
   letter-spacing: -0.025em;
 }
 .section-heading p {
@@ -478,9 +463,7 @@ a {
 }
 .node-index {
   color: var(--muted);
-  font:
-    11px 'Cascadia Code',
-    monospace;
+  font: 11px var(--font-mono);
   letter-spacing: 0.1em;
 }
 .flow-arrow {
@@ -489,9 +472,7 @@ a {
   justify-content: center;
   min-width: 26px;
   color: var(--accent-accessible);
-  font:
-    20px Georgia,
-    serif;
+  font: 20px var(--font-mono);
 }
 .diagram-summary {
   margin: 24px 0 0;
@@ -545,9 +526,7 @@ a {
 }
 .flow-card h3 {
   margin: 10px 0 5px;
-  font:
-    400 18px Georgia,
-    serif;
+  font: 400 18px var(--font-display);
 }
 .flow-card p {
   margin: 0;
@@ -587,9 +566,7 @@ a {
   gap: 10px;
 }
 .benefit-summary strong {
-  font:
-    400 28px/1.15 Georgia,
-    serif;
+  font: 400 28px/1.15 var(--font-display);
 }
 .benefit-summary > span {
   max-width: 38ch;
@@ -601,9 +578,7 @@ a {
   align-items: center;
   gap: 7px;
   color: var(--accent-accessible);
-  font:
-    700 10px/1.4 'Cascadia Code',
-    monospace;
+  font: 700 10px/1.4 var(--font-mono);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -635,9 +610,7 @@ dl > div + div {
 }
 dt {
   color: var(--text);
-  font:
-    700 10px 'Cascadia Code',
-    monospace;
+  font: 700 10px var(--font-mono);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -704,9 +677,7 @@ dd {
   padding: 8px 12px;
   border-block: 3px double var(--diagram-boundary);
   color: var(--muted);
-  font:
-    9px/1.4 'Cascadia Code',
-    monospace;
+  font: 9px/1.4 var(--font-mono);
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
@@ -739,10 +710,7 @@ dd {
   border-bottom-color: var(--accent);
 }
 .workflow-node strong {
-  font:
-    500 15px/1.25 'Segoe UI',
-    Inter,
-    sans-serif;
+  font: 500 15px/1.25 var(--font-display);
 }
 .workflow-node svg {
   position: absolute;
@@ -757,9 +725,7 @@ dd {
 }
 .detail-panel h3 {
   margin: 12px 0;
-  font:
-    400 28px/1.18 Georgia,
-    serif;
+  font: 400 28px/1.18 var(--font-display);
 }
 .detail-lead {
   color: var(--text);
@@ -794,9 +760,7 @@ dd {
   border-block: 3px double var(--diagram-boundary);
   border-inline: 0;
   color: var(--text);
-  font:
-    700 12px 'Cascadia Code',
-    monospace;
+  font: 700 12px var(--font-mono);
   letter-spacing: 0.08em;
   text-align: center;
 }
@@ -832,14 +796,10 @@ dd {
 }
 .trace-list li > span {
   color: var(--accent-accessible);
-  font:
-    12px 'Cascadia Code',
-    monospace;
+  font: 12px var(--font-mono);
 }
 .trace-list li strong {
-  font:
-    400 22px Georgia,
-    serif;
+  font: 400 22px var(--font-display);
 }
 .trace-list li p {
   max-width: 760px;
@@ -875,16 +835,12 @@ dd {
 }
 .architecture-node button > span {
   color: var(--muted);
-  font:
-    9px 'Cascadia Code',
-    monospace;
+  font: 9px var(--font-mono);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .architecture-node strong {
-  font:
-    400 20px Georgia,
-    serif;
+  font: 400 20px var(--font-display);
 }
 .architecture-node.foundation {
   width: 540px;
@@ -973,17 +929,13 @@ dd {
 }
 .knowledge-chain article > span {
   color: var(--text);
-  font:
-    10px 'Cascadia Code',
-    monospace;
+  font: 10px var(--font-mono);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .knowledge-chain h3 {
   margin: 34px 0 10px;
-  font:
-    400 25px Georgia,
-    serif;
+  font: 400 25px var(--font-display);
 }
 .knowledge-chain p {
   margin: 0;
@@ -1013,9 +965,7 @@ dd {
 }
 .routing-options button span {
   color: var(--muted);
-  font:
-    11px 'Cascadia Code',
-    monospace;
+  font: 11px var(--font-mono);
 }
 .routing-options button[data-selected='true'] {
   border-color: var(--accent);
@@ -1030,9 +980,7 @@ dd {
 }
 .routing-result h3 {
   margin: 18px 0;
-  font:
-    400 40px Georgia,
-    serif;
+  font: 400 40px var(--font-display);
 }
 .routing-result > p {
   color: var(--muted);
@@ -1095,10 +1043,7 @@ dd {
   background: var(--factory-accent);
 }
 .factory-tabs button strong {
-  font:
-    500 16px/1.2 'Segoe UI',
-    Inter,
-    sans-serif;
+  font: 500 16px/1.2 var(--font-display);
 }
 .factory-tabs button > span:not(.factory-indicator) {
   color: var(--text);
@@ -1125,9 +1070,7 @@ dd {
 .factory-copy h3 {
   max-width: 700px;
   margin: 18px 0 34px;
-  font:
-    400 clamp(27px, 3vw, 42px) / 1.2 Georgia,
-    serif;
+  font: 400 clamp(27px, 3vw, 42px) / 1.2 var(--font-display);
 }
 .factory-copy a {
   margin-top: 28px;
@@ -1150,14 +1093,10 @@ dd {
 }
 .factory-flow li span {
   color: var(--text);
-  font:
-    11px 'Cascadia Code',
-    monospace;
+  font: 11px var(--font-mono);
 }
 .factory-flow li strong {
-  font:
-    400 17px Georgia,
-    serif;
+  font: 400 17px var(--font-display);
 }
 .factory-map {
   margin-top: 52px;
@@ -1179,15 +1118,11 @@ dd {
 .karya-umbrella span {
   display: block;
   color: var(--text);
-  font:
-    9px 'Cascadia Code',
-    monospace;
+  font: 9px var(--font-mono);
   letter-spacing: 0.12em;
 }
 .karya-umbrella strong {
-  font:
-    400 28px Georgia,
-    serif;
+  font: 400 28px var(--font-display);
 }
 .karya-umbrella p {
   margin: 0;
@@ -1231,9 +1166,7 @@ dd {
   display: block;
 }
 .factory-branches strong {
-  font:
-    400 17px Georgia,
-    serif;
+  font: 400 17px var(--font-display);
 }
 .factory-branches span {
   margin-top: 7px;
@@ -1271,15 +1204,11 @@ dd {
 }
 .harness-grid span {
   color: var(--text);
-  font:
-    10px 'Cascadia Code',
-    monospace;
+  font: 10px var(--font-mono);
 }
 .harness-grid h3 {
   margin: 33px 0 9px;
-  font:
-    400 20px Georgia,
-    serif;
+  font: 400 20px var(--font-display);
 }
 .harness-grid p {
   margin: 0;
@@ -1320,15 +1249,11 @@ dd {
 }
 .evidence-flow article > span {
   color: var(--text);
-  font:
-    11px 'Cascadia Code',
-    monospace;
+  font: 11px var(--font-mono);
 }
 .evidence-flow h3 {
   margin: 47px 0 10px;
-  font:
-    400 28px Georgia,
-    serif;
+  font: 400 28px var(--font-display);
 }
 .evidence-flow p {
   margin: 0;
@@ -1403,9 +1328,7 @@ dd {
   margin: 40px 0 0;
   padding-left: 22px;
   border-left: 3px solid var(--accent);
-  font:
-    400 clamp(27px, 4vw, 48px) / 1.15 Georgia,
-    serif;
+  font: 400 clamp(27px, 4vw, 48px) / 1.15 var(--font-editorial);
 }
 
 .start-grid {
@@ -1437,9 +1360,7 @@ dd {
 .terminal small {
   margin-left: auto;
   color: var(--muted);
-  font:
-    9px 'Cascadia Code',
-    monospace;
+  font: 9px var(--font-mono);
   letter-spacing: 0.12em;
 }
 pre {
@@ -1453,7 +1374,7 @@ pre {
   margin: 0;
 }
 code {
-  font-family: 'Cascadia Code', monospace;
+  font-family: var(--font-mono);
 }
 .terminal code {
   font-size: clamp(12px, 1.25vw, 16px);
@@ -1470,9 +1391,7 @@ code {
 }
 .start-copy h3 {
   margin: 0 0 25px;
-  font:
-    400 29px Georgia,
-    serif;
+  font: 400 29px var(--font-display);
 }
 .start-copy pre {
   padding: 18px;
@@ -2055,7 +1974,7 @@ code,
 }
 
 .factory-id {
-  color: var(--factory-accent);
+  color: var(--text);
   font-size: 10px;
   letter-spacing: 0.1em;
 }
