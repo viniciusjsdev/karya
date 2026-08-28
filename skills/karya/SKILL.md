@@ -15,11 +15,12 @@ Karya is not a fifth Factory and does not replace specialist contracts.
 2. Inspect the current project read-only when repository state materially affects the route. Preserve its `AGENTS.md`, documentation, contracts, code, and existing decisions as authoritative context.
 3. Read [references/routing-model.md](references/routing-model.md) to classify the request. Read [references/skill-map.md](references/skill-map.md) when selecting an entry skill, checking prerequisites, or planning internal specialist use.
 4. Recommend the smallest route that can achieve the immediate outcome. Direct execution without a Factory is a valid recommendation for bounded, well-defined work.
-5. Explain the recommendation, named capabilities, prerequisites, alternatives when useful, and why other Factories are not currently necessary.
-6. Ask for explicit approval before applying the first recommended route. Do not begin specialist execution in the same response as the recommendation.
-7. After approval, load and apply the named specialist skill through the environment's normal skill mechanism. Keep Karya as the user-facing coordinator; do not require the user to invoke the specialist manually.
-8. Move to another skill only when it was included in the approved scope and its prerequisites are satisfied. Propose and obtain approval for any material scope expansion or new Factory.
-9. Return one unified result with active capabilities, produced artifacts, validation, unresolved items, and optional next routes.
+5. Recommend the runtime profile for the immediate phase. Read the runtime section in [references/routing-model.md](references/routing-model.md), state the model, reasoning, rationale, downshift condition, and required audit. Treat this as advisory unless an approved Project Harness manifest materializes it.
+6. Explain the recommendation, named capabilities, prerequisites, alternatives when useful, and why other Factories are not currently necessary.
+7. Ask for explicit approval before applying the first recommended route. Do not begin specialist execution in the same response as the recommendation.
+8. After approval, load and apply the named specialist skill through the environment's normal skill mechanism. Keep Karya as the user-facing coordinator; do not require the user to invoke the specialist manually.
+9. Move to another skill only when it was included in the approved scope and its prerequisites are satisfied. Propose and obtain approval for any material scope expansion or new Factory.
+10. Return one unified result with active capabilities, produced artifacts, validation, unresolved items, and optional next routes.
 
 ## Recommendation format
 
@@ -33,6 +34,10 @@ Project state: <idea, existing project, approved contract, evidence available, e
 Primary route: <direct execution or exact Factory>
 Entry capability: <$skill-name or Codex direct execution>
 Why: <evidence-based reason>
+Recommended runtime: <model/reasoning for the immediate phase>
+Runtime rationale: <why this reasoning profile fits>
+Downshift condition: <observable condition for moving to a smaller runtime, or none>
+Required audit: <audit capability and timing, or none>
 Internal capabilities: <skills Karya expects to apply after approval>
 Not needed now: <Factories or skills intentionally excluded, when useful>
 Open questions: <only questions that materially change the route>
@@ -49,6 +54,16 @@ Do not overwhelm the user with the entire catalog. Show one primary route, the c
 - If one missing answer would change the primary Factory or authorize consequential scope, ask a short question before recommending.
 - Otherwise make a reasonable, reversible assumption, state it, and provide the recommendation with `medium` or `low` confidence.
 - For mixed requests, choose the user's stated priority. If no priority exists, recommend an order without starting more than the first approved route.
+
+## Runtime recommendation
+
+- A new project, or one without durable AI structure, starts its Harness diagnosis, source mapping, documentation/decision design, and first Spec with `gpt-5.6-sol/high`.
+- After the contract and READY Spec resolve the work, recommend `gpt-5.6-terra/medium` for the first implementation. Use `gpt-5.6-terra/high` only for unusual implementation complexity while the Spec remains complete.
+- Recommend `gpt-5.6-luna/low` for later bounded mechanical corrections with resolved behavior and low risk.
+- Recommend `gpt-5.6-sol/high` for security, credentials, consequential external actions, hard-to-reverse changes, or critical review.
+- Bootstrap of a Project Harness requires a final independent `project-harness-auditor` pass after materialization; planning or file creation alone is not completion.
+- Outside Project Harness, label the runtime as a recommendation for the user or execution environment. Do not claim that Karya changed the current conversation's model or reasoning.
+- Inside Project Harness, `project-spec-architect` owns the exact materialized runtime in `SPEC.execution.json`; `codex-runtime-router` validates and executes it. Karya must not override that manifest conversationally.
 
 ## Approval contract
 

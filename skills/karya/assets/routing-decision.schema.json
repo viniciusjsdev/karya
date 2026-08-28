@@ -10,6 +10,7 @@
     "request_summary",
     "classification",
     "recommended_route",
+    "runtime_recommendation",
     "coordination",
     "supporting_routes",
     "open_questions",
@@ -18,7 +19,7 @@
   ],
   "properties": {
     "$schema": { "const": "./routing-decision.schema.json" },
-    "schema_version": { "const": "1.0" },
+    "schema_version": { "const": "1.1" },
     "decision_id": { "type": "string", "minLength": 1 },
     "request_summary": { "type": "string", "minLength": 1 },
     "classification": {
@@ -58,6 +59,29 @@
               "purpose": { "type": "string", "minLength": 1 },
               "when": { "type": "string", "minLength": 1 }
             }
+          }
+        }
+      }
+    },
+    "runtime_recommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "phase", "model", "reasoning", "rationale", "downshift_condition", "audit"],
+      "properties": {
+        "status": { "enum": ["advisory", "materialized"] },
+        "phase": { "enum": ["bootstrap_design", "resolved_implementation", "mechanical_change", "critical_risk_or_review"] },
+        "model": { "enum": ["gpt-5.6-sol", "gpt-5.6-terra", "gpt-5.6-luna"] },
+        "reasoning": { "enum": ["low", "medium", "high"] },
+        "rationale": { "type": "string", "minLength": 1 },
+        "downshift_condition": { "type": ["string", "null"] },
+        "audit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["required", "capability", "when"],
+          "properties": {
+            "required": { "type": "boolean" },
+            "capability": { "type": ["string", "null"] },
+            "when": { "type": ["string", "null"] }
           }
         }
       }

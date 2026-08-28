@@ -14,6 +14,14 @@ const confidenceLevels = new Set(["low", "medium", "high"]);
 const routeModes = new Set(["direct", "factory"]);
 const factories = new Set(["MVP Factory", "Research Factory", "Marketing Factory", "Project Harness Factory"]);
 const approvalStatuses = new Set(["pending", "approved", "rejected", "revised"]);
+const runtimeStatuses = new Set(["advisory", "materialized"]);
+const runtimePhases = new Set(["bootstrap_design", "resolved_implementation", "mechanical_change", "critical_risk_or_review"]);
+const runtimeProfiles = Object.freeze({
+  bootstrap_design: Object.freeze({ model: "gpt-5.6-sol", reasoning: Object.freeze(["high"]) }),
+  resolved_implementation: Object.freeze({ model: "gpt-5.6-terra", reasoning: Object.freeze(["medium", "high"]) }),
+  mechanical_change: Object.freeze({ model: "gpt-5.6-luna", reasoning: Object.freeze(["low"]) }),
+  critical_risk_or_review: Object.freeze({ model: "gpt-5.6-sol", reasoning: Object.freeze(["high"]) })
+});
 export const factorySkills = Object.freeze({
   "MVP Factory": Object.freeze([
     "product-brief-architect",
@@ -71,7 +79,7 @@ function requireStringArray(value, name, { minItems = 0 } = {}) {
 
 export function validateRoutingDecision(value) {
   requireObject(value, "decision");
-  if (value.schema_version !== "1.0") fail("schema_version must be 1.0.");
+  if (value.schema_version !== "1.1") fail("schema_version must be 1.1.");
   requireString(value.decision_id, "decision_id");
   requireString(value.request_summary, "request_summary");
   if (value.automatic_handoff !== false) fail("automatic_handoff must be false.");
@@ -111,6 +119,37 @@ export function validateRoutingDecision(value) {
     requireString(item.purpose, `recommended_route.planned_skills[${index}].purpose`);
     requireString(item.when, `recommended_route.planned_skills[${index}].when`);
   });
+
+  requireObject(value.runtime_recommendation, "runtime_recommendation");
+  const runtime = value.runtime_recommendation;
+  if (!runtimeStatuses.has(runtime.status)) fail("runtime_recommendation.status is invalid.");
+  if (!runtimePhases.has(runtime.phase)) fail("runtime_recommendation.phase is invalid.");
+  const expectedRuntime = runtimeProfiles[runtime.phase];
+  if (runtime.model !== expectedRuntime.model || !expectedRuntime.reasoning.includes(runtime.reasoning)) {
+    fail(`runtime_recommendation must use ${expectedRuntime.model}/${expectedRuntime.reasoning.join("|")} for ${runtime.phase}.`);
+  }
+  requireString(runtime.rationale, "runtime_recommendation.rationale");
+  if (runtime.downshift_condition !== null) requireString(runtime.downshift_condition, "runtime_recommendation.downshift_condition");
+  requireObject(runtime.audit, "runtime_recommendation.audit");
+  if (typeof runtime.audit.required !== "boolean") fail("runtime_recommendation.audit.required must be boolean.");
+  if (runtime.audit.required) {
+    requireString(runtime.audit.capability, "runtime_recommendation.audit.capability");
+    requireString(runtime.audit.when, "runtime_recommendation.audit.when");
+    if (runtime.audit.capability !== "project-harness-auditor") fail("required runtime audit must use project-harness-auditor.");
+  } else if (runtime.audit.capability !== null || runtime.audit.when !== null) {
+    fail("an optional runtime audit requires null capability and when.");
+  }
+  if (runtime.status === "materialized" && route.factory !== "Project Harness Factory") {
+    fail("only Project Harness Factory may materialize a runtime recommendation.");
+  }
+  if (route.entry_skill === "project-harness-architect") {
+    if (runtime.phase !== "bootstrap_design" || runtime.audit.required !== true) {
+      fail("Project Harness bootstrap requires bootstrap_design runtime and an independent audit.");
+    }
+    if (!route.planned_skills.some((item) => item.skill === "project-harness-auditor")) {
+      fail("Project Harness bootstrap must plan project-harness-auditor.");
+    }
+  }
 
   requireObject(value.coordination, "coordination");
   if (value.coordination.coordinator !== "karya") fail("coordination.coordinator must be karya.");

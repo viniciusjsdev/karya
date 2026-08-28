@@ -1,6 +1,6 @@
 {
   "$schema": "./routing-decision.schema.json",
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "decision_id": "KARYA-ROUTE-001",
   "request_summary": "Create a new automation that monitors processes and produces reports.",
   "classification": {
@@ -27,6 +27,19 @@
         "when": "After the user approves this route."
       }
     ]
+  },
+  "runtime_recommendation": {
+    "status": "advisory",
+    "phase": "bootstrap_design",
+    "model": "gpt-5.6-sol",
+    "reasoning": "high",
+    "rationale": "The new project still needs its sources, contracts, decisions, and first executable specification resolved.",
+    "downshift_condition": "Move to gpt-5.6-terra/medium after the product contract and first READY Spec resolve design uncertainty.",
+    "audit": {
+      "required": false,
+      "capability": null,
+      "when": null
+    }
   },
   "coordination": {
     "coordinator": "karya",

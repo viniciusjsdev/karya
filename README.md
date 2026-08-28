@@ -72,10 +72,10 @@ You do not need to know the skill catalog before starting. After installing the 
 $karya I want to create an automation that monitors processes and produces a daily report.
 ```
 
-Karya inspects the request and relevant project context, consults its compact skill map, recommends the smallest suitable Factory, specialist skill, or direct-execution route, explains why, and waits for approval. After approval, Karya remains the conversational coordinator while the approved specialist skills work internally; the user does not need to invoke each one manually.
+Karya inspects the request and relevant project context, consults its compact skill map, recommends the smallest suitable Factory, specialist skill, or direct-execution route, includes an explicit model/reasoning recommendation with its rationale, downshift condition, and audit requirement, then waits for approval. After approval, Karya remains the conversational coordinator while the approved specialist skills work internally; the user does not need to invoke each one manually.
 
 ```txt
-You -> $karya -> recommendation + reason -> approval -> specialist skills -> unified result
+You -> $karya -> route + runtime recommendation -> approval -> specialist skills -> unified result
 ```
 
 Karya is an optional coordination layer, not a fifth Factory. Direct skill invocation remains supported, and no cross-factory handoff happens automatically. See the [Karya routing model](docs/karya-routing.md).

@@ -8,7 +8,7 @@ Karya provides one optional conversational coordination skill plus specialist sk
 
 ### karya
 
-Classifies the user's immediate objective and relevant project state, recommends the smallest direct-execution or Factory route, explains why, names the specialist skills covered by the proposed scope, and waits for explicit approval. After approval it remains the conversational coordinator while applying the selected specialists internally. It is not a fifth Factory, does not replace specialist contracts, and keeps every cross-factory handoff optional with `automatic_handoff: false`.
+Classifies the user's immediate objective and relevant project state, recommends the smallest direct-execution or Factory route plus an explicit model/reasoning profile, rationale, downshift condition, and audit requirement, and waits for explicit approval. After approval it remains the conversational coordinator while applying the selected specialists internally. Runtime advice remains advisory until Project Harness materializes it. It is not a fifth Factory, does not replace specialist contracts, and keeps every cross-factory handoff optional with `automatic_handoff: false`.
 
 ## MVP Factory
 

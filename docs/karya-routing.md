@@ -9,7 +9,7 @@ The user does not need to read the repository or know every skill name before st
 ```txt
 User objective
   -> Karya classification
-  -> recommendation and rationale
+  -> route plus runtime recommendation and rationale
   -> explicit approval
   -> approved specialist capabilities
   -> unified progress and result through Karya
@@ -41,12 +41,18 @@ Before execution, Karya reports:
 - the primary Factory or direct route;
 - the entry skill;
 - the evidence-based reason;
+- the recommended model and reasoning for the immediate phase;
+- the runtime rationale, downshift condition, and required audit;
 - the specialist skills expected inside the approved scope;
 - relevant exclusions or alternatives;
 - route-changing open questions;
 - the exact scope awaiting approval.
 
 The user can approve, reject, or revise the recommendation. Approval does not authorize unlisted scope, another Factory, external writes, publication, communication, spending, credentials, or other consequential actions.
+
+The runtime recommendation is advisory when the project has no Project Harness manifest: Karya cannot claim to have changed the active conversation's model or reasoning. When Harness is approved, the exact runtime is materialized by `project-spec-architect` in `SPEC.execution.json` and executed by `codex-runtime-router`.
+
+Default recommendations are Sol/high for new-project or missing-structure diagnosis and first-Spec design, Terra/medium for the first resolved implementation, Luna/low for later mechanical corrections, and Sol/high for security, credentials, consequential external action, hard-to-reverse work, or critical review. A Harness bootstrap includes an independent `project-harness-auditor` pass after materialization.
 
 ## Internal specialist use
 
@@ -78,7 +84,7 @@ $product-brief-architect <already-known product-definition request>
 
 ## Machine-readable decisions
 
-Substantial or auditable routing decisions may use `skills/karya/assets/routing-decision.schema.json`. The record captures classification, confidence, primary route, approved scope, planned skills, optional routes, approval status, and the invariant `automatic_handoff: false`.
+Substantial or auditable routing decisions may use `skills/karya/assets/routing-decision.schema.json`. The record captures classification, confidence, primary route, runtime recommendation, downshift condition, audit requirement, approved scope, planned skills, optional routes, approval status, and the invariant `automatic_handoff: false`.
 
 Validate a materialized decision with:
 

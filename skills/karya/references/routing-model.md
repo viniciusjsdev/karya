@@ -26,6 +26,19 @@ Ask: “What result would make this request complete now?”
 
 Do not route to Project Harness merely because the project is long-lived, contains automation, uses Codex, or has an `AGENTS.md`. The requested outcome must concern its AI operating structure.
 
+## Recommend the runtime as well as the route
+
+Every Karya recommendation names a runtime for the immediate phase, even when no Harness exists yet. The recommendation is advisory until Project Harness materializes it in `SPEC.execution.json`; it does not silently change the active conversation.
+
+| Immediate phase | Recommended runtime | Downshift or escalation |
+| --- | --- | --- |
+| New project or missing AI structure: diagnose sources, documentation, decisions, and first Spec | `gpt-5.6-sol/high` | Downshift after the contract and READY Spec remove design uncertainty |
+| First implementation from a resolved contract/Spec | `gpt-5.6-terra/medium` | Use Terra/high only when implementation is unusually complex but design remains resolved |
+| Later bounded mechanical correction | `gpt-5.6-luna/low` | Escalate to Terra/medium when behavior or architecture is no longer mechanical |
+| Security, credentials, consequential external action, hard-to-reverse change, or critical review | `gpt-5.6-sol/high` | Do not downshift while the risk trigger remains |
+
+When Project Harness bootstrap is the route, plan `project-harness-architect` for diagnosis/materialization and a final independent `project-harness-auditor` pass in the same approved Factory scope. The first implementation is a later phase and uses a separately resolved Spec runtime, normally Terra/medium.
+
 ## Select the earliest unmet prerequisite
 
 ### MVP Factory

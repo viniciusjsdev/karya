@@ -47,6 +47,7 @@ Rules:
 
 - When `$karya` is explicitly invoked, classify the immediate desired outcome and current artifact state before selecting a route. Project type alone is insufficient; an automation may require direct execution, MVP, Research, Marketing, or Project Harness depending on the requested outcome.
 - Recommend one primary route, explain the reason, name the internal skills covered by the proposed scope, and wait for explicit approval. Do not require the user to invoke each approved specialist manually.
+- Include the recommended model, reasoning, rationale, downshift condition, and required audit in every `$karya` recommendation. Treat it as advisory until a Project Harness `SPEC.execution.json` materializes the runtime; never claim the active conversation changed models silently.
 - Use direct Codex execution for bounded, sufficiently defined work when no Factory contract is needed.
 - For product definition, construction, backend, infrastructure, hosting, or technical MVP validation, use the standalone MVP Factory.
 - For market investigation, app-market intelligence, evidence collection, or hypothesis validation, use the standalone Research Factory.
@@ -54,6 +55,7 @@ Rules:
 - For project knowledge architecture, AGENTS/Codex context, local skill policy, Spec-driven execution, deterministic model/reasoning/thread routing, or harness audit, use the standalone Project Harness Factory.
 - Accept existing products and artifacts from outside Karya; no factory must have produced the input for another factory to use it.
 - Preserve producer artifacts and use optional handoff contracts instead of silently changing another factory's source of truth.
+- For a new project or one without durable AI structure, recommend Sol/high for Harness diagnosis, source/documentation/decision design, and the first Spec; recommend Terra/medium for the first resolved implementation, Luna/low for later mechanical corrections, and Sol/high for security, credentials, consequential external actions, hard-to-reverse changes, or critical review. Require an independent Harness audit after bootstrap materialization.
 
 ## Project Harness Factory
 
