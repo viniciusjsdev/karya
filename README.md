@@ -2,6 +2,8 @@
 
 Karya is an open-source development system for Codex built around durable project knowledge, executable Specs, reusable Skills, isolated Threads, deterministic routing, validation, and evidence.
 
+[Website](https://viniciusjsdev.github.io/karya/) · [Documentation](docs/karya-architecture.md) · [Contributing](CONTRIBUTING.md)
+
 The name is inspired by the Caryatids of classical architecture—female figures used as structural supports. Karya applies that metaphor to AI-assisted development: it provides the structural layer that allows projects to grow without depending on the memory of a single conversation.
 
 Each skill is a small, self-contained package centered on a `SKILL.md`, optionally backed by references, deterministic scripts, schemas, and assets.
