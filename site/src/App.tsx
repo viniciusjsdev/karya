@@ -61,10 +61,10 @@ function App() {
             <span className="hero-frame-label">IDENTITY / STRUCTURAL SUPPORT</span>
             <span className="hero-support-line hero-support-line-top" aria-hidden="true" />
             <img
-              src={`brand/icon/karya-icon-${theme === 'amphora' ? 'dark' : 'light'}.png`}
-              alt="Current official Karya icon"
-              width="1024"
-              height="1024"
+              src="brand/icon/karya-caryatid-capital-master.png"
+              alt="Karya Caryatid supporting an architectural capital"
+              width="1254"
+              height="1254"
             />
             <span className="hero-support-line hero-support-line-bottom" aria-hidden="true" />
             <span className="structural-caption">STRUCTURAL SUPPORT / 01</span>
@@ -432,10 +432,10 @@ function App() {
         >
           <div className="name-section">
             <img
-              src={`brand/icon/karya-icon-${theme === 'amphora' ? 'dark' : 'light'}.png`}
-              alt="Official Karya Caryatid icon"
-              width="1024"
-              height="1024"
+              src="brand/icon/karya-caryatid-capital-master.png"
+              alt="Karya Caryatid and capital master mark"
+              width="1254"
+              height="1254"
             />
             <div>
               <span className="eyebrow">IDENTITY / STRUCTURE</span>

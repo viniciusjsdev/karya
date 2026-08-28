@@ -6,6 +6,7 @@ const siteRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const source = resolve(siteRoot, '..', 'assets', 'brand')
 const destination = resolve(siteRoot, 'public', 'brand')
 const requiredAssets = [
+  'icon/karya-caryatid-capital-master.png',
   'icon/karya-icon-dark.png',
   'icon/karya-icon-light.png',
   'icon/karya-icon-dark-64.png',

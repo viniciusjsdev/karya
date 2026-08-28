@@ -8,6 +8,7 @@
   "official": {
     "readme_banner": "assets/brand/banners/karya-readme-hero.png",
     "readme_banner_high_dpi": "assets/brand/banners/karya-readme-hero@2x.png",
+    "caryatid_capital_master": "assets/brand/icon/karya-caryatid-capital-master.png",
     "icon_dark": "assets/brand/icon/karya-icon-dark.png",
     "icon_light": "assets/brand/icon/karya-icon-light.png",
     "logo_dark": "assets/brand/logo/karya-mark-dark.png",

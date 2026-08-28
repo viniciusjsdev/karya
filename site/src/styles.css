@@ -238,7 +238,7 @@ a {
   height: auto;
   margin: auto;
   display: block;
-  border-radius: 2px;
+  object-fit: contain;
 }
 .hero-frame-label {
   position: absolute;
@@ -1354,6 +1354,8 @@ dd {
 .name-section img {
   width: 100%;
   max-width: 440px;
+  height: auto;
+  object-fit: contain;
   border-bottom: 8px solid var(--text);
 }
 .name-section p {

@@ -15,6 +15,7 @@ Karya é inspirada nas Caryatids da arquitetura clássica: figuras femininas usa
 ## Official assets
 
 - README banner: `assets/brand/banners/karya-readme-hero.png`
+- Caryatid + capital master (transparent): `assets/brand/icon/karya-caryatid-capital-master.png`
 - Official icon: `assets/brand/icon/karya-icon-dark.png`
 - Official icon light variant: `assets/brand/icon/karya-icon-light.png`
 - Official logo dark: `assets/brand/logo/karya-mark-dark.png`
@@ -22,6 +23,8 @@ Karya é inspirada nas Caryatids da arquitetura clássica: figuras femininas usa
 - Social preview: `assets/brand/social/karya-social-preview-1280x640.png`
 
 Do not redraw, reinterpret, recolor arbitrarily, or modify the approved logo, icon, or banner.
+
+Use the transparent Caryatid + capital master for large structural compositions. Use the dark and light icon variants for compact interface placements such as the header, favicon, and coordinator map. Keep the K/profile mark as the secondary signature.
 
 ## GitHub social preview
 
