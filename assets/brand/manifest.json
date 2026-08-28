@@ -1,0 +1,62 @@
+{
+  "repository": "https://github.com/viniciusjsdev/karya",
+  "brand_colors": {
+    "terracotta": "#C45A3C",
+    "amphora": "#171310",
+    "papyrus": "#F2E7D5"
+  },
+  "selected": {
+    "logo_dark": "assets/brand/logo/karya-mark-dark.png",
+    "logo_light": "assets/brand/logo/karya-mark-light.png",
+    "banner_light": "assets/brand/banners/karya-readme-hero-light.png",
+    "banner_dark": "assets/brand/banners/karya-readme-hero-dark.png"
+  },
+  "official_icons": {
+    "primary": "assets/brand/icons/karya-icon-caryatid-classic.png",
+    "light_background_alternative": "assets/brand/icons/karya-icon-caryatid-terracotta.png",
+    "complementary_favicon_variant": "assets/brand/icons/karya-emblem-classic-terracotta-volutes.png"
+  },
+  "icon_policy": "The canonical icon files above are the selected official brand assets, mapped from concepts 01, 07, and 05 in the supplied package. The remaining concepts remain historical/reference material and are not official options.",
+  "icon_options": [
+    {
+      "id": "01",
+      "name": "01-caryatid-profile-classic",
+      "recommended_primary_file": "assets/brand/icons/01-caryatid-profile-classic/01-caryatid-profile-classic-512.png"
+    },
+    {
+      "id": "02",
+      "name": "02-caryatid-profile-inverted",
+      "recommended_primary_file": "assets/brand/icons/02-caryatid-profile-inverted/02-caryatid-profile-inverted-512.png"
+    },
+    {
+      "id": "03",
+      "name": "03-caryatid-profile-circle-dark",
+      "recommended_primary_file": "assets/brand/icons/03-caryatid-profile-circle-dark/03-caryatid-profile-circle-dark-512.png"
+    },
+    {
+      "id": "04",
+      "name": "04-caryatid-profile-circle-light",
+      "recommended_primary_file": "assets/brand/icons/04-caryatid-profile-circle-light/04-caryatid-profile-circle-light-512.png"
+    },
+    {
+      "id": "05",
+      "name": "05-caryatid-column-dark",
+      "recommended_primary_file": "assets/brand/icons/05-caryatid-column-dark/05-caryatid-column-dark-512.png"
+    },
+    {
+      "id": "06",
+      "name": "06-caryatid-column-light",
+      "recommended_primary_file": "assets/brand/icons/06-caryatid-column-light/06-caryatid-column-light-512.png"
+    },
+    {
+      "id": "07",
+      "name": "07-minimal-profile-circle-terracotta",
+      "recommended_primary_file": "assets/brand/icons/07-minimal-profile-circle-terracotta/07-minimal-profile-circle-terracotta-512.png"
+    },
+    {
+      "id": "08",
+      "name": "08-minimal-profile-circle-dark",
+      "recommended_primary_file": "assets/brand/icons/08-minimal-profile-circle-dark/08-minimal-profile-circle-dark-512.png"
+    }
+  ]
+}
