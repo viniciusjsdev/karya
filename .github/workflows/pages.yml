@@ -43,8 +43,16 @@ jobs:
         run: npm run lint
       - name: Build
         run: npm run build
+      - name: Verify brand assets
+        run: |
+          test -s dist/brand/icon/karya-icon-dark.png
+          test -s dist/brand/icon/karya-icon-light.png
+          test -s dist/brand/icon/karya-icon-dark-64.png
+          test -s dist/brand/icon/karya-icon-light-64.png
+          test -s dist/brand/logo/karya-mark-terracotta-transparent.png
+          test -s dist/brand/social/karya-social-preview-1280x640.png
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: site/dist
 

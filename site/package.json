@@ -9,10 +9,9 @@
     "npm": ">=11"
   },
   "scripts": {
-    "predev": "node scripts/sync-brand-assets.mjs",
-    "dev": "vite",
-    "prebuild": "node scripts/sync-brand-assets.mjs",
-    "build": "tsc -b && vite build",
+    "sync:brand": "node scripts/sync-brand-assets.mjs",
+    "dev": "node scripts/sync-brand-assets.mjs && vite",
+    "build": "node scripts/sync-brand-assets.mjs && tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b --pretty false",
     "lint": "eslint . --max-warnings 0",
