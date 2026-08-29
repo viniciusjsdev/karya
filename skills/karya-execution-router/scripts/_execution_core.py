@@ -11,6 +11,7 @@ import re
 import shlex
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -222,7 +223,15 @@ def load_spec_validator(skill_root: Path):
     if module_spec is None or module_spec.loader is None:
         raise RuntimeError(f"cannot load project Spec validator: {spec_core}")
     module = importlib.util.module_from_spec(module_spec)
-    module_spec.loader.exec_module(module)
+    scripts_path = str(spec_core.parent)
+    inserted_path = scripts_path not in sys.path
+    if inserted_path:
+        sys.path.insert(0, scripts_path)
+    try:
+        module_spec.loader.exec_module(module)
+    finally:
+        if inserted_path:
+            sys.path.remove(scripts_path)
     return module
 
 

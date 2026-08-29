@@ -9,7 +9,6 @@ import sys
 import tempfile
 from pathlib import Path
 
-
 SPEC = """---
 id: SPEC-024
 title: Change a generic project value
@@ -174,7 +173,10 @@ def make_project(root: Path, repository_root: Path) -> Path:
     (project / "specs/active/SPEC-024/SPEC.execution.json").write_text(json.dumps(manifest()), encoding="utf-8")
     policy = repository_root / "skills/project-spec-architect/assets/runtime-policy.json"
     (project / ".codex/references/runtime-policy.json").write_text(policy.read_text(encoding="utf-8"), encoding="utf-8")
-    (project / ".codex/schemas/project-spec-completion.schema.json").write_text("{}\n", encoding="utf-8")
+    completion_schema = repository_root / "skills/project-spec-architect/assets/completion.schema.json"
+    (project / ".codex/schemas/project-spec-completion.schema.json").write_text(
+        completion_schema.read_text(encoding="utf-8"), encoding="utf-8"
+    )
     return project
 
 
@@ -274,6 +276,11 @@ def main() -> None:
         assert any("protected path changed" in reason for reason in result["reasons"])
 
     print("economic execution router tests passed")
+
+
+def test_economic_execution_router() -> None:
+    """Exercise the router in clean subprocesses under pytest and direct runs."""
+    main()
 
 
 if __name__ == "__main__":
