@@ -16,9 +16,13 @@ for scripts in (
 ):
     if str(scripts) not in os.sys.path:
         os.sys.path.insert(0, str(scripts))
-from _runtime_core import validate_completion, validate_review_evidence  # noqa: E402
-from _spec_core import validate_spec_pair  # noqa: E402
-from validate_project_skill import validate_project_skill  # noqa: E402
+from _runtime_core import (
+    validate_completion,
+    validate_lifecycle,
+    validate_review_evidence,
+)
+from _spec_core import validate_spec_pair, validate_structural_baseline
+from validate_project_skill import validate_project_skill
 
 
 def audit_project_harness(
@@ -72,7 +76,7 @@ def audit_project_harness(
                 encoding="utf-8-sig"
             )
         )
-    except Exception as error:
+    except Exception as error:  # noqa: BLE001 - audit must convert parse failures to findings
         add(
             "high",
             "runtime",
@@ -149,6 +153,7 @@ def audit_project_harness(
                 )
             version2 = manifest.get("schema_version") == "2.0"
             lifecycle = None
+            review_evidence = None
             if version2 and manifest.get("status") not in {"draft", "design", "ready"}:
                 lifecycle_path = (
                     root / manifest.get("lifecycle", {}).get("output_path", "")
@@ -164,6 +169,8 @@ def audit_project_harness(
                     lifecycle = json.loads(
                         lifecycle_path.read_text(encoding="utf-8-sig")
                     )
+                    for error in validate_lifecycle(lifecycle, manifest):
+                        add("high", "lifecycle", error, [rel(lifecycle_path)])
                     if lifecycle.get("spec_id") != manifest.get(
                         "spec_id"
                     ) or lifecycle.get("contract_version") != manifest.get(
@@ -267,6 +274,7 @@ def audit_project_harness(
                     )
                 else:
                     review = json.loads(review_path.read_text(encoding="utf-8-sig"))
+                    review_evidence = review
                     if version2:
                         for error in validate_review_evidence(
                             review, manifest, review.get("thread_id")
@@ -318,6 +326,8 @@ def audit_project_harness(
                 baseline_path = (root / manifest["baseline"]["path"]).resolve()
                 if baseline_path.is_file():
                     baseline = json.loads(baseline_path.read_text(encoding="utf-8-sig"))
+                    for error in validate_structural_baseline(baseline, manifest):
+                        add("high", "baseline", error, [rel(baseline_path)])
                     baseline_count = baseline.get("tests", {}).get("count")
                     patterns = (
                         "test*.py",
@@ -355,7 +365,76 @@ def audit_project_harness(
                                 *[rel(path) for path in current_tests],
                             ],
                         )
-        except Exception as error:
+                    assessments = {
+                        item.get("category"): item
+                        for item in (review_evidence or {}).get(
+                            "baseline_assessment", []
+                        )
+                        if isinstance(item, dict)
+                    }
+
+                    def audit_baseline_paths(
+                        category: str,
+                        paths: list[str],
+                        *,
+                        allow_approved_move: bool,
+                        assessments: dict[str, Any] = assessments,
+                        baseline_path: Path = baseline_path,
+                    ) -> None:
+                        missing = [path for path in paths if not (root / path).exists()]
+                        if not missing:
+                            return
+                        assessment = assessments.get(category, {})
+                        evidence_text = " ".join(
+                            str(item) for item in assessment.get("evidence", [])
+                        )
+                        explicitly_moved = (
+                            allow_approved_move
+                            and assessment.get("result") == "changed_as_approved"
+                            and all(path in evidence_text for path in missing)
+                        )
+                        if not explicitly_moved:
+                            add(
+                                "high",
+                                "baseline",
+                                f"Structural baseline {category} paths are missing without explicit approved migration evidence.",
+                                [rel(baseline_path), *missing],
+                            )
+
+                    audit_baseline_paths(
+                        "tests",
+                        baseline.get("tests", {}).get("paths", []),
+                        allow_approved_move=True,
+                    )
+                    for category in ("json_contracts", "persistence", "schemas"):
+                        audit_baseline_paths(
+                            category,
+                            [
+                                item.get("path", "")
+                                for item in baseline.get(category, [])
+                                if isinstance(item, dict)
+                            ],
+                            allow_approved_move=True,
+                        )
+                    audit_baseline_paths(
+                        "protected_paths",
+                        [
+                            item.get("path", "")
+                            for item in baseline.get("protected_paths", [])
+                            if isinstance(item, dict)
+                        ],
+                        allow_approved_move=False,
+                    )
+                    audit_baseline_paths(
+                        "decisions",
+                        [
+                            item.get("path", "")
+                            for item in baseline.get("decisions", [])
+                            if isinstance(item, dict)
+                        ],
+                        allow_approved_move=False,
+                    )
+        except Exception as error:  # noqa: BLE001 - one bad Spec must not abort the audit
             add(
                 "high",
                 "spec",
@@ -543,7 +622,7 @@ def audit_project_harness(
                             str(artifacts["snapshot_diff"]),
                         ],
                     )
-        except Exception as error:
+        except Exception as error:  # noqa: BLE001 - external receipts are untrusted input
             add(
                 "high",
                 "economic_execution",

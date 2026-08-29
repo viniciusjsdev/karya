@@ -18,6 +18,7 @@ from _runtime_core import (
     capture_git_snapshot,
     commands_equivalent,
     execution_phase,
+    normalize_legacy_output_schema,
     output_contract,
     read_lifecycle,
     read_state,
@@ -283,6 +284,16 @@ def main() -> int:
         else:
             try:
                 schema = json.loads(schema_path.read_text(encoding="utf-8-sig"))
+                if not version2:
+                    schema = normalize_legacy_output_schema(
+                        schema,
+                        acceptance_ids=list(
+                            dict.fromkeys(re.findall(r"\bAC-[0-9]{3}\b", markdown))
+                        ),
+                        validation_ids=[
+                            item["id"] for item in manifest.get("validation", [])
+                        ],
+                    )
                 errors.extend(validate_structured_output_schema(schema))
             except json.JSONDecodeError as error:
                 errors.append(f"output schema is invalid JSON: {error}")
@@ -356,10 +367,20 @@ def main() -> int:
                 if action == "start"
                 else codex.thread_resume(recorded, **options)
             )
+            thread_id = thread.id
+            if not thread_id:
+                raise RuntimeError("SDK did not expose a thread ID after start/resume")
+            if lifecycle_path:
+                lifecycle = append_lifecycle(
+                    lifecycle,
+                    phase=phase,
+                    action=action,
+                    outcome=phase,
+                    thread_id=thread_id,
+                    evidence_path=None,
+                )
+                write_json_atomic(lifecycle_path, lifecycle)
             result = thread.run(prompt, output_schema=schema)
-        thread_id = thread.id
-        if not thread_id:
-            raise RuntimeError("SDK did not expose a thread ID after the turn")
         write_json_atomic(
             state_path, update_state(state, manifest, thread_id, "failed", phase)
         )
@@ -420,7 +441,9 @@ def main() -> int:
         write_json_atomic(output_path, evidence)
         transition = evidence["status"]
         if version2:
+            lifecycle_outcome = transition
             if phase == "implementation" and transition == "completed":
+                lifecycle_outcome = "implemented"
                 transition = (
                     "implemented"
                     if manifest.get("review", {}).get("required")
@@ -428,17 +451,24 @@ def main() -> int:
                 )
             elif phase == "review" and transition == "approved":
                 transition = "done"
-            write_json_atomic(
-                lifecycle_path,
-                append_lifecycle(
+            lifecycle = append_lifecycle(
+                lifecycle,
+                phase=phase,
+                action=action,
+                outcome=lifecycle_outcome,
+                thread_id=thread_id,
+                evidence_path=output_path.relative_to(project_root).as_posix(),
+            )
+            if transition == "done" and lifecycle_outcome != "done":
+                lifecycle = append_lifecycle(
                     lifecycle,
                     phase=phase,
                     action=action,
-                    outcome=transition,
+                    outcome="done",
                     thread_id=thread_id,
                     evidence_path=output_path.relative_to(project_root).as_posix(),
-                ),
-            )
+                )
+            write_json_atomic(lifecycle_path, lifecycle)
             if transition in {
                 "implemented",
                 "done",
@@ -467,7 +497,7 @@ def main() -> int:
         )
         print(json.dumps(base, indent=2))
         return 0
-    except Exception as error:
+    except Exception as error:  # noqa: BLE001 - preserve thread identity on any SDK failure
         recoverable_thread_id = getattr(thread, "id", None)
         if recoverable_thread_id and recovery:
             base["thread_id"] = recoverable_thread_id
@@ -494,7 +524,7 @@ def main() -> int:
                             evidence_path=None,
                         ),
                     )
-            except Exception as state_error:
+            except Exception as state_error:  # noqa: BLE001 - retain the original route error
                 base["errors"].append(
                     f"unable to preserve thread mapping: {state_error}"
                 )

@@ -7,7 +7,12 @@ import subprocess
 import sys
 from pathlib import Path
 
-from _runtime_core import capture_git_snapshot, commands_equivalent, validate_completion
+from _runtime_core import (
+    capture_git_snapshot,
+    commands_equivalent,
+    produced_git_changes,
+    validate_completion,
+)
 
 
 def _run(
@@ -46,6 +51,7 @@ def _fixture(tmp_path: Path) -> tuple[Path, Path, Path]:
         root / ".codex/references",
         root / "src",
         root / "tests",
+        root / "docs/decisions",
     ):
         path.mkdir(parents=True, exist_ok=True)
     assets = Path(__file__).resolve().parents[2] / "project-spec-architect/assets"
@@ -68,6 +74,10 @@ def _fixture(tmp_path: Path) -> tuple[Path, Path, Path]:
     (root / "src/value.py").write_text("VALUE = 1\n", encoding="utf-8")
     (root / "tests/test_value.py").write_text(
         "def test_value():\n    assert True\n", encoding="utf-8"
+    )
+    (root / "docs/decisions/archive.json").write_text(
+        json.dumps({"decision": "archive legacy procedure", "status": "archived"}),
+        encoding="utf-8",
     )
     markdown = """---
 id: SPEC-101
@@ -369,6 +379,12 @@ def test_v2_reuses_two_threads_and_preserves_attempts_through_review_cycle(
     assert lifecycle["implementation_thread_id"] == "thread-implementation"
     assert lifecycle["review_thread_id"] == "thread-review"
     assert lifecycle["status"] == "done"
+    outcomes = [event["outcome"] for event in lifecycle["events"]]
+    assert "implementation" in outcomes
+    assert "implemented" in outcomes
+    assert "review" in outcomes
+    assert "approved" in outcomes
+    assert outcomes[-1] == "done"
     assert (
         len(list((spec_dir / "evidence/attempts").glob("implementation-*.json"))) == 2
     )
@@ -450,6 +466,20 @@ def test_changed_file_evidence_reconciles_added_modified_and_deleted(
         == []
     )
 
+    _git(root, "add", ".")
+    _git(root, "commit", "-m", "implementation")
+    assert (
+        validate_completion(
+            completion,
+            manifest,
+            "## Acceptance criteria\n- AC-001: Files reconcile.",
+            "thread",
+            project_root=root,
+            baseline_snapshot=snapshot,
+        )
+        == []
+    )
+
     duplicated = dict(completion)
     duplicated["acceptance_evidence"] = completion["acceptance_evidence"] * 2
     errors = validate_completion(
@@ -461,3 +491,57 @@ def test_changed_file_evidence_reconciles_added_modified_and_deleted(
         baseline_snapshot=snapshot,
     )
     assert any("duplicate AC-001" in error for error in errors)
+
+
+def test_git_reconciliation_treats_dirty_to_clean_as_modified(tmp_path: Path) -> None:
+    root = tmp_path / "dirty-project"
+    root.mkdir()
+    tracked = root / "tracked.py"
+    tracked.write_text("clean\n", encoding="utf-8")
+    _git(root, "init")
+    _git(root, "config", "user.email", "tests@example.invalid")
+    _git(root, "config", "user.name", "Harness Tests")
+    _git(root, "add", ".")
+    _git(root, "commit", "-m", "baseline")
+    tracked.write_text("user dirt\n", encoding="utf-8")
+    snapshot = capture_git_snapshot(root, "SPEC-103", 1)
+
+    tracked.write_text("clean\n", encoding="utf-8")
+
+    assert produced_git_changes(root, snapshot) == {"tracked.py": "modified"}
+
+
+def test_git_reconciliation_ignores_preexisting_deletion_and_rename(
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "preexisting-dirt"
+    root.mkdir()
+    (root / "deleted.py").write_text("tracked\n", encoding="utf-8")
+    (root / "old_name.py").write_text("tracked\n", encoding="utf-8")
+    _git(root, "init")
+    _git(root, "config", "user.email", "tests@example.invalid")
+    _git(root, "config", "user.name", "Harness Tests")
+    _git(root, "add", ".")
+    _git(root, "commit", "-m", "baseline")
+    (root / "deleted.py").unlink()
+    _git(root, "mv", "old_name.py", "new_name.py")
+    snapshot = capture_git_snapshot(root, "SPEC-104", 1)
+
+    assert produced_git_changes(root, snapshot) == {}
+
+
+def test_router_rejects_malformed_structural_baseline_before_sdk_call(
+    tmp_path: Path,
+) -> None:
+    root, spec_dir, mock = _fixture(tmp_path)
+    baseline_path = spec_dir / "baseline.json"
+    baseline = json.loads(baseline_path.read_text())
+    baseline["tests"]["count"] = 2
+    baseline_path.write_text(json.dumps(baseline), encoding="utf-8")
+    router = Path(__file__).resolve().parent / "route_codex_runtime.py"
+
+    result = _run(router, root, mock, "--dry-run")
+
+    assert result.returncode == 1
+    assert "tests.count must equal" in result.stdout
+    assert not (root / ".harness/runtime/mock-count.json").exists()

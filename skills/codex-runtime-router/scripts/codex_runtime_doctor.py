@@ -14,7 +14,7 @@ SPEC_SCRIPTS = (
 )
 if str(SPEC_SCRIPTS) not in os.sys.path:
     os.sys.path.insert(0, str(SPEC_SCRIPTS))
-from _structured_output_schema import validate_structured_output_schema  # noqa: E402
+from _structured_output_schema import validate_structured_output_schema
 
 
 def main() -> int:
@@ -31,7 +31,7 @@ def main() -> int:
                 f"{path}: {error}"
                 for error in validate_structured_output_schema(schema)
             )
-        except Exception as error:
+        except Exception as error:  # noqa: BLE001 - doctor must report every local failure
             schema_errors.append(f"{path}: {error}")
     if args.schema_only:
         print(
@@ -80,7 +80,7 @@ def main() -> int:
             )
         )
         return 0 if ready else 1
-    except Exception as error:
+    except Exception as error:  # noqa: BLE001 - optional SDK inspection is a boundary
         print(
             json.dumps(
                 {

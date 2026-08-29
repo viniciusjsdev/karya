@@ -7,7 +7,10 @@ import re
 from pathlib import Path
 from typing import Any
 
-from _structured_output_schema import validate_structured_output_schema
+from _structured_output_schema import (
+    normalize_legacy_output_schema,
+    validate_structured_output_schema,
+)
 
 STATUSES = {
     "draft",
@@ -88,6 +91,146 @@ def _has_placeholder(value: Any) -> bool:
 
 def _unsafe_command(command: str) -> bool:
     return bool(re.search(r"[;&|><`\r\n]|\$\(", command))
+
+
+def validate_structural_baseline(
+    baseline: Any,
+    manifest: dict[str, Any],
+    *,
+    project_root: str | Path | None = None,
+) -> list[str]:
+    """Validate structural baseline shape, identity, inventory, and durable paths."""
+    errors: list[str] = []
+    root_keys = {
+        "schema_version",
+        "spec_id",
+        "contract_version",
+        "captured_at",
+        "tests",
+        "cli",
+        "json_contracts",
+        "persistence",
+        "schemas",
+        "protected_paths",
+        "decisions",
+    }
+    if not isinstance(baseline, dict):
+        return ["structural baseline must be an object"]
+    if set(baseline) != root_keys:
+        errors.append("structural baseline fields do not match its schema")
+    if baseline.get("schema_version") != "1.0":
+        errors.append("structural baseline schema_version must be 1.0")
+    if baseline.get("spec_id") != manifest.get("spec_id") or baseline.get(
+        "contract_version"
+    ) != manifest.get("contract_version"):
+        errors.append("structural baseline identity/version differs from manifest")
+    if not isinstance(baseline.get("captured_at"), str) or not baseline["captured_at"]:
+        errors.append("structural baseline captured_at must be a non-empty string")
+
+    root = Path(project_root).resolve() if project_root else None
+
+    def durable_path(value: Any, label: str, kind: str = "file") -> None:
+        if not isinstance(value, str) or not value:
+            errors.append(f"{label} path must be a non-empty string")
+            return
+        if root is None:
+            return
+        resolved = (root / value).resolve()
+        try:
+            resolved.relative_to(root)
+        except ValueError:
+            errors.append(f"{label} path escapes project root: {value}")
+            return
+        valid = resolved.is_file() if kind == "file" else resolved.is_dir()
+        if not valid:
+            errors.append(f"{label} {kind} does not exist: {value}")
+
+    def string_list(value: Any, label: str) -> bool:
+        if not isinstance(value, list) or any(
+            not isinstance(item, str) for item in value
+        ):
+            errors.append(f"{label} must be an array of strings")
+            return False
+        if len(value) != len(set(value)):
+            errors.append(f"{label} must not contain duplicates")
+        return True
+
+    tests = baseline.get("tests")
+    test_keys = {"count", "paths", "commands", "notes"}
+    if not isinstance(tests, dict) or set(tests) != test_keys:
+        errors.append("structural baseline tests fields do not match its schema")
+    else:
+        count = tests.get("count")
+        paths = tests.get("paths")
+        if not isinstance(count, int) or isinstance(count, bool) or count < 0:
+            errors.append(
+                "structural baseline tests.count must be a non-negative integer"
+            )
+        if string_list(paths, "structural baseline tests.paths"):
+            if isinstance(count, int) and count != len(paths):
+                errors.append(
+                    "structural baseline tests.count must equal tests.paths length"
+                )
+            for path in paths:
+                durable_path(path, "structural baseline test")
+        string_list(tests.get("commands"), "structural baseline tests.commands")
+        string_list(tests.get("notes"), "structural baseline tests.notes")
+
+    groups = {
+        "cli": ({"command", "flags"}, None, "flags"),
+        "json_contracts": ({"path", "fields"}, "path", "fields"),
+        "persistence": ({"path", "public_methods"}, "path", "public_methods"),
+        "schemas": ({"path", "idempotency_keys"}, "path", "idempotency_keys"),
+    }
+    for group, (keys, path_key, list_key) in groups.items():
+        values = baseline.get(group)
+        if not isinstance(values, list):
+            errors.append(f"structural baseline {group} must be an array")
+            continue
+        for index, item in enumerate(values):
+            label = f"structural baseline {group}[{index}]"
+            if not isinstance(item, dict) or set(item) != keys:
+                errors.append(f"{label} fields do not match its schema")
+                continue
+            if path_key:
+                durable_path(item[path_key], label)
+            elif not isinstance(item.get("command"), str) or not item["command"]:
+                errors.append(f"{label}.command must be a non-empty string")
+            string_list(item.get(list_key), f"{label}.{list_key}")
+
+    protected = baseline.get("protected_paths")
+    if not isinstance(protected, list):
+        errors.append("structural baseline protected_paths must be an array")
+    else:
+        for index, item in enumerate(protected):
+            label = f"structural baseline protected_paths[{index}]"
+            if not isinstance(item, dict) or set(item) != {"path", "kind"}:
+                errors.append(f"{label} fields do not match its schema")
+                continue
+            if item.get("kind") not in {"file", "directory"}:
+                errors.append(f"{label}.kind is invalid")
+            else:
+                durable_path(item.get("path"), label, item["kind"])
+
+    decisions = baseline.get("decisions")
+    if not isinstance(decisions, list):
+        errors.append("structural baseline decisions must be an array")
+    else:
+        for index, item in enumerate(decisions):
+            label = f"structural baseline decisions[{index}]"
+            if not isinstance(item, dict) or set(item) != {
+                "path",
+                "status",
+                "effective_before_spec",
+            }:
+                errors.append(f"{label} fields do not match its schema")
+                continue
+            durable_path(item.get("path"), label)
+            if not isinstance(item.get("status"), str) or not item["status"]:
+                errors.append(f"{label}.status must be a non-empty string")
+            if not isinstance(item.get("effective_before_spec"), bool):
+                errors.append(f"{label}.effective_before_spec must be boolean")
+    return errors
 
 
 def validate_runtime_policy(policy: Any) -> list[str]:
@@ -454,6 +597,16 @@ def validate_spec_pair(
                     continue
                 try:
                     schema = json.loads(resolved_schema.read_text(encoding="utf-8-sig"))
+                    if manifest.get("schema_version") == "1.0":
+                        schema = normalize_legacy_output_schema(
+                            schema,
+                            acceptance_ids=list(
+                                dict.fromkeys(re.findall(r"\bAC-[0-9]{3}\b", markdown))
+                            ),
+                            validation_ids=[
+                                item["id"] for item in manifest.get("validation", [])
+                            ],
+                        )
                     errors.extend(
                         f"{schema_path}: {item}"
                         for item in validate_structured_output_schema(schema)
@@ -474,26 +627,11 @@ def validate_spec_pair(
                         value = json.loads(
                             baseline_path.read_text(encoding="utf-8-sig")
                         )
-                        categories = (
-                            "tests",
-                            "cli",
-                            "json_contracts",
-                            "persistence",
-                            "schemas",
-                            "protected_paths",
-                            "decisions",
-                        )
-                        if value.get("spec_id") != manifest.get("spec_id") or value.get(
-                            "contract_version"
-                        ) != manifest.get("contract_version"):
-                            errors.append(
-                                "structural baseline identity/version differs from manifest"
+                        errors.extend(
+                            validate_structural_baseline(
+                                value, manifest, project_root=root
                             )
-                        for category in categories:
-                            if category not in value:
-                                errors.append(
-                                    f"structural baseline is missing {category}"
-                                )
+                        )
                     except (OSError, json.JSONDecodeError) as error:
                         errors.append(f"structural baseline is invalid: {error}")
     return errors

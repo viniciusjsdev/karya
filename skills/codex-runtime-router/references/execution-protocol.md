@@ -18,9 +18,15 @@ For `needs_design`, completion includes the question, reason, impact, affected a
 
 Thread purposes map independently: implementation/worker IDs use `implementation_thread_id`; review uses `review_thread_id`. Version 2 derives the phase from status and never rewrites the implementation runtime to review. `changes_requested` resumes the same implementation ID, then the same review ID.
 
+The durable lifecycle is authoritative for resume after `.harness/runtime/` loss. Each run records the phase entry (`implementation` or `review`) as soon as the SDK exposes the thread, then the evidence outcome. Successful review records `approved` before `done`.
+
 Implementation/worker runs use `project-spec-completion.schema.json`. Review runs use `project-spec-review.schema.json` and return `approved`, `changes_requested`, `blocked`, or `failed`; the router records the review thread independently and never converts a non-approved result into success.
 
 For version 2, the router advances matching Markdown/manifest status only after validated evidence and appends the transition to `evidence/lifecycle.json`. Completion and review attempts are retained; canonical `completion.json` and `review.json` point to the latest accepted attempt.
+
+Already materialized version 1 schemas remain executable: the router creates an in-memory strict schema by resolving their dynamic AC/VAL maps to the IDs declared by that Spec, replacing unsupported unions, and adding missing enum/const types. It does not rewrite the historical project schema.
+
+Git reconciliation combines the captured baseline HEAD with dirty/untracked content hashes. It therefore still distinguishes added, modified, and deleted files after an implementation commit, while unchanged pre-existing user dirt stays excluded.
 
 `.harness/runtime/` may hold recoverable Spec-to-thread mappings and operational status. A done audit uses durable evidence and does not depend on it. It is gitignored and must not hold secrets, transcripts, conversation history, domain truth, ADRs, Specs, or persistent documentation.
 

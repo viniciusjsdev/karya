@@ -3,7 +3,7 @@
 ## States
 
 ```txt
-draft -> design -> ready -> implementation -> implemented -> review -> done
+draft -> design -> ready -> implementation -> implemented -> review -> approved -> done
                            ^                         |
                            |                         v
                            +--- changes_requested ---+
@@ -18,6 +18,7 @@ draft -> design -> ready -> implementation -> implemented -> review -> done
 - `needs_design`: execution found a consequential missing or contradictory decision.
 - `implemented`: implementation and required executor validation are reported complete.
 - `review`: required review is underway.
+- `approved`: the independent review accepted the implementation; the router then closes the durable lifecycle as `done`.
 - `changes_requested`: review found bounded corrections; resume the existing implementation thread, then the existing review thread.
 - `done`: acceptance, validation, completion evidence, and required review are reconciled.
 
@@ -34,6 +35,8 @@ The validator enforces the material parts of this test:
 - resolved model, reasoning, thread mode, skills, references, validations, review, escalation, and completion paths;
 - every required project reference and project-local skill path exists;
 - runtime deviations from policy include a reason.
+- strict Structured Outputs compatibility, including resolvable local `$ref` values;
+- a structural baseline whose inventory shape, counts, paths, protected areas, and pre-Spec decisions are valid before execution.
 
 Human review must still ask: could a clean thread execute without asking what the design conversation decided? Passing syntax checks is necessary, not sufficient.
 

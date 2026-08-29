@@ -150,3 +150,74 @@ def test_audit_does_not_treat_nested_example_project_as_root_spec(
 
     assert report["status"] == "approved"
     assert report["summary"]["specs"] == 0
+
+
+def test_v2_audit_blocks_invalid_sequence_equal_count_test_substitution_and_missing_decision(
+    tmp_path: Path,
+) -> None:
+    project, spec_dir, mock = _fixture(tmp_path)
+    router = (
+        Path(__file__).resolve().parents[2]
+        / "codex-runtime-router/scripts/route_codex_runtime.py"
+    )
+    assert _run(router, project, mock).returncode == 1
+    for _ in range(4):
+        assert _run(router, project, mock).returncode == 0
+    lifecycle_path = spec_dir / "evidence/lifecycle.json"
+    lifecycle = json.loads(lifecycle_path.read_text())
+    lifecycle["events"][-1]["sequence"] = 99
+    lifecycle_path.write_text(json.dumps(lifecycle), encoding="utf-8")
+    (project / "tests/test_value.py").unlink()
+    (project / "tests/test_irrelevant.py").write_text(
+        "def test_irrelevant():\n    assert True\n", encoding="utf-8"
+    )
+    (project / "docs/decisions/archive.json").unlink()
+
+    report = audit_project_harness(project, skills_root=project / ".agents/skills")
+
+    assert report["status"] == "blocked"
+    assert any(
+        item["category"] == "lifecycle" and "sequence" in item["message"]
+        for item in report["findings"]
+    )
+    assert any(
+        item["category"] == "baseline" and "tests paths" in item["message"]
+        for item in report["findings"]
+    )
+    assert any(
+        item["category"] == "baseline" and "decisions paths" in item["message"]
+        for item in report["findings"]
+    )
+
+
+def test_v2_audit_blocks_missing_review_phase_with_contiguous_sequence(
+    tmp_path: Path,
+) -> None:
+    project, spec_dir, mock = _fixture(tmp_path)
+    router = (
+        Path(__file__).resolve().parents[2]
+        / "codex-runtime-router/scripts/route_codex_runtime.py"
+    )
+    assert _run(router, project, mock).returncode == 1
+    for _ in range(4):
+        assert _run(router, project, mock).returncode == 0
+    lifecycle_path = spec_dir / "evidence/lifecycle.json"
+    lifecycle = json.loads(lifecycle_path.read_text())
+    lifecycle["events"] = [
+        event for event in lifecycle["events"] if event["phase"] != "review"
+    ]
+    for sequence, event in enumerate(lifecycle["events"], start=1):
+        event["sequence"] = sequence
+    lifecycle_path.write_text(json.dumps(lifecycle), encoding="utf-8")
+    shutil.rmtree(project / ".harness")
+
+    report = audit_project_harness(project, skills_root=project / ".agents/skills")
+
+    assert report["status"] == "blocked"
+    assert any(
+        item["category"] == "lifecycle"
+        and (
+            "transition" in item["message"] or "final event outcome" in item["message"]
+        )
+        for item in report["findings"]
+    )

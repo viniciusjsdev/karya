@@ -18,9 +18,12 @@ SPEC_SCRIPTS = (
 )
 if str(SPEC_SCRIPTS) not in os.sys.path:
     os.sys.path.insert(0, str(SPEC_SCRIPTS))
-from _spec_core import validate_spec_pair  # noqa: E402
-from _structured_output_schema import (  # noqa: E402
-    validate_structured_output_schema as validate_structured_output_schema,
+from _spec_core import validate_spec_pair
+from _structured_output_schema import (
+    normalize_legacy_output_schema as _normalize_legacy_output_schema,
+)
+from _structured_output_schema import (
+    validate_structured_output_schema as _validate_structured_output_schema,
 )
 
 BASELINE_CATEGORIES = {
@@ -44,6 +47,20 @@ LIFECYCLE_STATUSES = {
     "blocked",
     "failed",
 }
+
+
+def normalize_legacy_output_schema(
+    schema: Any, *, acceptance_ids: list[str], validation_ids: list[str]
+) -> Any:
+    """Expose the shared v1 migration helper through the runtime core."""
+    return _normalize_legacy_output_schema(
+        schema, acceptance_ids=acceptance_ids, validation_ids=validation_ids
+    )
+
+
+def validate_structured_output_schema(schema: Any) -> list[str]:
+    """Expose the shared strict schema validator through the runtime core."""
+    return _validate_structured_output_schema(schema)
 
 
 def _is_object(value: Any) -> bool:
@@ -189,35 +206,79 @@ def _change_from_status(status: str, *, existed_before: bool, exists_now: bool) 
 def produced_git_changes(
     project_root: str | Path, baseline: dict[str, Any]
 ) -> dict[str, str] | None:
-    """Return changes made after the baseline, excluding unchanged pre-existing dirt."""
+    """Return committed and working-tree changes since baseline, excluding user dirt."""
     if not baseline.get("git_available"):
         return None
+    root = Path(project_root).resolve()
     current = capture_git_snapshot(
-        project_root, baseline["spec_id"], baseline["contract_version"]
+        root, baseline["spec_id"], baseline["contract_version"]
     )
     if not current.get("git_available"):
+        return None
+    try:
+        raw_diff = (
+            subprocess.run(
+                [
+                    "git",
+                    "diff",
+                    "--name-status",
+                    "-z",
+                    "--find-renames",
+                    str(baseline["head"]),
+                    "--",
+                ],
+                cwd=root,
+                capture_output=True,
+                check=True,
+            )
+            .stdout.decode(errors="replace")
+            .split("\0")
+        )
+    except (OSError, subprocess.CalledProcessError, KeyError):
         return None
     before = {item["path"]: item for item in baseline.get("entries", [])}
     after = {item["path"]: item for item in current.get("entries", [])}
     changes: dict[str, str] = {}
-    for path in sorted(set(before) | set(after)):
-        old, new = before.get(path), after.get(path)
-        if old == new:
+    index = 0
+    while index < len(raw_diff):
+        status = raw_diff[index]
+        index += 1
+        if not status or index >= len(raw_diff):
             continue
-        if (
-            old
-            and new
-            and all(
-                old.get(key) == new.get(key)
-                for key in ("status", "exists", "is_file", "sha256")
+        first_path = raw_diff[index].replace("\\", "/")
+        index += 1
+        code = status[0]
+        if code in {"R", "C"} and index < len(raw_diff):
+            second_path = raw_diff[index].replace("\\", "/")
+            index += 1
+            if code == "R":
+                changes[first_path] = "deleted"
+            changes[second_path] = "added"
+        else:
+            changes[first_path] = (
+                "added" if code == "A" else "deleted" if code == "D" else "modified"
             )
-        ):
+
+    for path in sorted(set(before) | set(after)):
+        old = before.get(path)
+        new = after.get(path)
+        resolved = root / path
+        exists_now = resolved.exists()
+        current_hash = _sha256(resolved)
+        if old:
+            unchanged_existing = old.get("exists") and current_hash == old.get("sha256")
+            unchanged_absent = not old.get("exists") and not exists_now
+            if unchanged_existing or unchanged_absent:
+                changes.pop(path, None)
+                if old.get("old_path"):
+                    changes.pop(old["old_path"], None)
+                continue
+            changes[path] = "modified" if exists_now else "deleted"
             continue
-        changes[path] = _change_from_status(
-            (new or old or {}).get("status", ""),
-            existed_before=bool(old and old.get("exists")),
-            exists_now=bool(new and new.get("exists")),
-        )
+        if new and not old:
+            changes[path] = _change_from_status(
+                new.get("status", ""), existed_before=False, exists_now=exists_now
+            )
     return changes
 
 
@@ -762,6 +823,80 @@ def validate_lifecycle(lifecycle: Any, manifest: dict[str, Any]) -> list[str]:
             phase_ids[phase] and recorded not in phase_ids[phase]
         ):
             errors.append(f"durable lifecycle must preserve exactly one {slot}")
+    valid_events = [
+        event
+        for event in events
+        if isinstance(event, dict) and set(event) == event_keys
+    ]
+    previous_outcome: str | None = None
+    previous_phase: str | None = None
+    index = 0
+    while index < len(valid_events):
+        entry = valid_events[index]
+        phase = entry.get("phase")
+        if entry.get("outcome") != phase or phase not in {"implementation", "review"}:
+            errors.append("durable lifecycle run must begin with its phase outcome")
+            break
+        allowed_next_phase = {
+            None: {"implementation"},
+            "failed": {previous_phase},
+            "blocked": {previous_phase},
+            "needs_design": {"implementation"},
+            "implemented": {"review"},
+            "changes_requested": {"implementation"},
+        }.get(previous_outcome, set())
+        if phase not in allowed_next_phase:
+            errors.append(
+                f"durable lifecycle cannot transition from {previous_outcome} to {phase}"
+            )
+        if index + 1 >= len(valid_events):
+            errors.append("durable lifecycle phase entry has no outcome")
+            break
+        terminal = valid_events[index + 1]
+        allowed_terminal = (
+            {"implemented", "needs_design", "blocked", "failed"}
+            if phase == "implementation"
+            else {"approved", "changes_requested", "blocked", "failed"}
+        )
+        if (
+            terminal.get("phase") != phase
+            or terminal.get("thread_id") != entry.get("thread_id")
+            or terminal.get("action") != entry.get("action")
+            or terminal.get("outcome") not in allowed_terminal
+        ):
+            errors.append(f"durable lifecycle {phase} run has an invalid outcome")
+            break
+        previous_outcome = terminal.get("outcome")
+        previous_phase = phase
+        index += 2
+        closes_without_review = (
+            phase == "implementation"
+            and previous_outcome == "implemented"
+            and not manifest.get("review", {}).get("required")
+        )
+        if previous_outcome == "approved" or closes_without_review:
+            if (
+                index >= len(valid_events)
+                or valid_events[index].get("outcome") != "done"
+            ):
+                errors.append(
+                    "durable lifecycle successful terminal outcome must close as done"
+                )
+                break
+            done = valid_events[index]
+            if (
+                done.get("phase") != phase
+                or done.get("thread_id") != entry.get("thread_id")
+                or done.get("action") != entry.get("action")
+            ):
+                errors.append("durable lifecycle done event does not match its run")
+            previous_outcome = "done"
+            index += 1
+            if index != len(valid_events):
+                errors.append("durable lifecycle has events after done")
+                break
+    if valid_events and lifecycle.get("status") != valid_events[-1].get("outcome"):
+        errors.append("durable lifecycle status must match its final event outcome")
     return errors
 
 

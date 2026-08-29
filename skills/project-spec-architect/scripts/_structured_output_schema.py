@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import copy
 from typing import Any
 
 ALLOWED_TYPES = {"object", "array", "string", "number", "integer", "boolean", "null"}
@@ -82,6 +83,7 @@ def validate_structured_output_schema(schema: Any) -> list[str]:
     property_count = 0
     string_budget = 0
     enum_count = 0
+    references: list[tuple[str, Any]] = []
     if not isinstance(schema, dict):
         return ["output schema root must be an object"]
     if schema.get("type") != "object":
@@ -102,6 +104,8 @@ def validate_structured_output_schema(schema: Any) -> list[str]:
             errors.append(
                 f"{path} uses unsupported Structured Outputs keyword {keyword}"
             )
+        if "$ref" in node:
+            references.append((path, node["$ref"]))
         node_types = _types(node)
         if "type" in node:
             if not node_types or not node_types.issubset(ALLOWED_TYPES):
@@ -183,6 +187,25 @@ def validate_structured_output_schema(schema: Any) -> list[str]:
             string_budget += len(str(node["const"]))
 
     walk(schema, "$", 1)
+    for path, reference in references:
+        if not isinstance(reference, str):
+            errors.append(f"{path}.$ref must be a string")
+            continue
+        if reference == "#":
+            continue
+        if not reference.startswith("#/"):
+            errors.append(f"{path}.$ref must be a local JSON pointer")
+            continue
+        target: Any = schema
+        try:
+            for raw_part in reference[2:].split("/"):
+                part = raw_part.replace("~1", "/").replace("~0", "~")
+                target = target[part]
+        except (KeyError, TypeError):
+            errors.append(f"{path}.$ref does not resolve: {reference}")
+            continue
+        if not isinstance(target, dict):
+            errors.append(f"{path}.$ref target must be a schema object: {reference}")
     if property_count > 5000:
         errors.append("output schema exceeds 5000 total object properties")
     if string_budget > 120000:
@@ -192,3 +215,66 @@ def validate_structured_output_schema(schema: Any) -> list[str]:
     if enum_count > 1000:
         errors.append("output schema exceeds 1000 total enum values")
     return list(dict.fromkeys(errors))
+
+
+def normalize_legacy_output_schema(
+    schema: Any, *, acceptance_ids: list[str], validation_ids: list[str]
+) -> Any:
+    """Create an in-memory strict schema for an already materialized v1 contract."""
+    value = copy.deepcopy(schema)
+
+    def infer_type(item: Any) -> str | None:
+        if item is None:
+            return "null"
+        if isinstance(item, bool):
+            return "boolean"
+        if isinstance(item, int):
+            return "integer"
+        if isinstance(item, float):
+            return "number"
+        if isinstance(item, str):
+            return "string"
+        return None
+
+    def normalize(node: Any, field_name: str | None = None) -> None:
+        if not isinstance(node, dict):
+            return
+        if "oneOf" in node and "anyOf" not in node:
+            node["anyOf"] = node.pop("oneOf")
+        node.pop("minLength", None)
+        node.pop("maxLength", None)
+        if "type" not in node:
+            candidates = node.get("enum")
+            if isinstance(candidates, list) and candidates:
+                inferred = {infer_type(item) for item in candidates}
+                if len(inferred) == 1 and None not in inferred:
+                    node["type"] = inferred.pop()
+            elif "const" in node:
+                inferred = infer_type(node["const"])
+                if inferred:
+                    node["type"] = inferred
+        additional = node.get("additionalProperties")
+        ids = (
+            acceptance_ids
+            if field_name == "acceptance_evidence"
+            else validation_ids
+            if field_name == "validation_evidence"
+            else None
+        )
+        if isinstance(additional, dict) and ids is not None:
+            template = copy.deepcopy(additional)
+            normalize(template)
+            node["properties"] = {identity: copy.deepcopy(template) for identity in ids}
+            node["required"] = list(ids)
+            node["additionalProperties"] = False
+        for name, child in node.get("properties", {}).items():
+            normalize(child, name)
+        for child in node.get("anyOf", []):
+            normalize(child)
+        if "items" in node:
+            normalize(node["items"])
+        for child in node.get("$defs", {}).values():
+            normalize(child)
+
+    normalize(value)
+    return value

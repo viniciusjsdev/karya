@@ -235,3 +235,38 @@ def test_rejects_structured_output_enum_count_over_platform_limit() -> None:
         "1000 total enum values" in error
         for error in validate_structured_output_schema(schema)
     )
+
+
+def test_rejects_unresolved_non_string_and_external_structured_output_refs() -> None:
+    schema = {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["missing", "typed", "external"],
+        "properties": {
+            "missing": {"$ref": "#/$defs/absent"},
+            "typed": {"$ref": 42},
+            "external": {"$ref": "other.json#/value"},
+        },
+        "$defs": {},
+    }
+
+    errors = validate_structured_output_schema(schema)
+
+    assert any("does not resolve" in error for error in errors)
+    assert any("must be a string" in error for error in errors)
+    assert any("local JSON pointer" in error for error in errors)
+
+
+def test_rejects_structured_output_ref_to_non_schema_value() -> None:
+    schema = {
+        "title": "Not a schema target",
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["value"],
+        "properties": {"value": {"$ref": "#/title"}},
+    }
+
+    assert any(
+        "$ref target must be a schema object" in error
+        for error in validate_structured_output_schema(schema)
+    )
