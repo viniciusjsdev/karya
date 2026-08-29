@@ -27,6 +27,8 @@ Then perform semantic reconciliation against actual project artifacts. Preserve 
 - runtime policy defaults against resolved historical execution;
 - thread IDs/purposes and context boundaries against the manifest;
 - validation claims against commands, exit codes, and evidence;
+- durable lifecycle and attempt history without relying on `.harness/runtime/`;
+- structural baselines against test inventory, CLI, JSON, persistence, schemas, protected paths, and decisions effective before the Spec;
 - parallel-writing claims against actual isolation and ownership.
 - optional OpenCode route results against the external request fingerprint, Spec/version, snapshot diff, approved writable paths, router-run validations, and independent Codex review; OpenCode-authored completion is never approval.
 

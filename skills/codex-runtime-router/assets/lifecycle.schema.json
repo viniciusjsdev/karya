@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Harness durable Spec lifecycle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "spec_id", "contract_version", "status", "implementation_thread_id", "review_thread_id", "events"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "spec_id": {"type": "string"},
+    "contract_version": {"type": "integer"},
+    "status": {"enum": ["ready", "implementation", "implemented", "review", "changes_requested", "needs_design", "approved", "done", "blocked", "failed"]},
+    "implementation_thread_id": {"type": ["string", "null"]},
+    "review_thread_id": {"type": ["string", "null"]},
+    "events": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["sequence", "phase", "action", "outcome", "thread_id", "evidence_path", "recorded_at"], "properties": {"sequence": {"type": "integer"}, "phase": {"enum": ["implementation", "review"]}, "action": {"enum": ["start", "resume"]}, "outcome": {"type": "string"}, "thread_id": {"type": "string"}, "evidence_path": {"type": ["string", "null"]}, "recorded_at": {"type": "string"}}}}
+  }
+}

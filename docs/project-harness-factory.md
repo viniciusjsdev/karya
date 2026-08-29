@@ -20,7 +20,7 @@ It may be invoked directly or selected through an approved `$karya` recommendati
 | `karya-commercial-router` | keep specific | continues approved external commercial operations |
 | generic Spec lifecycle/readiness | create new | `project-spec-architect`, schemas, validator, templates |
 | explicit GPT-5.6 runtime + reasoning materialization | create new | centralized runtime policy and per-Spec resolved execution manifest |
-| Codex SDK start/resume router and thread mapping | create new | Python 3.12+ `codex-runtime-router`, official Python SDK, ignored `.harness/runtime/` state, and mock-tested adapter |
+| Codex SDK start/resume router and thread mapping | create new | Python 3.12+ `codex-runtime-router`, official Python SDK, durable lifecycle plus recoverable ignored state, and mock-tested adapter |
 | generic optional economic execution | create new | `karya-execution-router` consumes a READY non-Django Spec plus an external approved request and returns OpenCode evidence or Codex fallback |
 | cross-project harness audit | create new | `project-harness-auditor` with deterministic and semantic layers |
 
@@ -48,8 +48,8 @@ Idea or existing project
   -> clean-thread READY validation and resolved runtime
   -> codex-runtime-router thread_start/thread_resume
        or explicitly approved karya-execution-router/OpenCode execution
-  -> completion evidence or needs_design
-  -> independent Codex review when OpenCode executed
+  -> durable completion evidence or needs_design
+  -> derived independent review -> changes_requested/correction/re-review when needed
   -> project-harness-auditor
 ```
 
@@ -58,13 +58,14 @@ The Factory never invokes MVP, Research, or Marketing automatically. Those facto
 ## Runtime and evidence guarantees
 
 - Bootstrap copies a versioned runtime policy into `.codex/references/runtime-policy.json`; the router blocks a missing or version-incompatible policy instead of silently using a newer Factory default.
-- Persistent operational knowledge remains under `.codex/`. Ephemeral thread mappings, implementation/review state, temporary receipts, usage, and status remain under gitignored `.harness/runtime/`; secrets, transcripts, conversation history, domain truth, ADRs, Specs, and persistent documentation are prohibited there.
+- Persistent operational knowledge remains under `.codex/`. Durable lifecycle, completion, review, and attempt evidence live beside the Spec. Gitignored `.harness/runtime/` contains only recoverable operational mapping; secrets, transcripts, conversation history, domain truth, ADRs, Specs, and persistent documentation are prohibited there.
 - The new Harness core runs on Python 3.12+ and calls the official Python Codex SDK directly. Existing Node-based mechanisms from MVP, Research, and Marketing remain unchanged.
-- `new` is rejected when the Spec/purpose already has a mapped thread. Once the SDK exposes an ID, the mapping survives invalid structured output so the next attempt uses `resume`.
-- Implementation and worker runs emit `project-spec-completion.schema.json`. Independent review runs emit `project-spec-review.schema.json` and return `approved`, `changes_requested`, `blocked`, or `failed`.
-- Completion validation reconciles acceptance and validation IDs, exact required commands, thread/runtime identity, and the existence of declared changed files and local artifacts.
+- Structured Outputs schemas are checked locally before SDK import; doctor and dry-run reject unsupported composition, dynamic maps, missing types, and incomplete `required` arrays without a paid call.
+- Each purpose starts once. Once the SDK exposes an ID, invalid schema/evidence resumes that ID; `changes_requested` resumes the same implementation thread and then the same review thread.
+- Implementation emits AC/VAL arrays with every declared ID exactly once. The router injects and executes canonical required commands. Changed files distinguish added, modified, and deleted paths and reconcile with the pre-run Git snapshot.
+- Structural migrations require a baseline of tests, CLI, JSON fields, persistence methods, schemas/idempotency keys, protected paths, and decisions effective before the Spec. Review records a category-by-category assessment.
 - Optional economic execution keeps provider configuration, credentials, and its exact action-time request outside the project repository; it snapshots the project, restricts writes, returns one process-exit signal, reruns exact validations, and requires independent Codex review.
-- A `DONE` Spec with required independent review must have an approved review receipt whose runtime and inputs match the manifest.
+- A `DONE` Spec with required independent review must have a durable done lifecycle and approved review receipt whose runtime, baseline inputs, and purpose-specific thread IDs reconcile without `.harness/runtime/`.
 
 The executable [SPEC-023 sensor export example](../examples/project-harness/spec-023-sensor-export/) demonstrates bootstrap, local skill creation, clean-thread handoff, `needs_design`, ADR resolution, resume, real implementation tests, completion evidence, independent review, and final audit without subagents.
 

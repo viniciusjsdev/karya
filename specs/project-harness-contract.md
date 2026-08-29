@@ -13,8 +13,11 @@ An idea, empty or existing project, product, software system, research program, 
 - one human-readable `SPEC.md` and machine-readable `SPEC.execution.json` per bounded change;
 - versioned runtime policy plus resolved historical runtime in each manifest;
 - optional external economic execution requests outside the project repository, with exact confirmation, provider/model readiness, bounded writable paths, mandatory prohibitions, snapshot, validations, and Codex fallback;
-- ephemeral Spec-to-implementation/review thread mapping under gitignored `.harness/runtime/`;
-- structured acceptance/validation completion evidence with existing changed-file/artifact paths;
+- durable Spec lifecycle with one implementation thread ID, one review thread ID when required, and append-only attempts;
+- recoverable operational mapping under gitignored `.harness/runtime/`;
+- structured acceptance/validation arrays with every declared ID exactly once;
+- changed-file evidence that distinguishes added, modified, and deleted files and reconciles against a pre-run Git snapshot;
+- structural behavior baselines covering tests, CLI, JSON, persistence, schemas/idempotency, protected paths, and pre-Spec decisions;
 - structured independent review evidence when review is required;
 - independent audit findings.
 
@@ -24,7 +27,8 @@ An idea, empty or existing project, product, software system, research program, 
 - Architect decides, executor implements, auditor verifies.
 - A router validates a materialized decision and does not ask another model to choose the runtime.
 - OpenCode is an optional implementation executor, never a Harness prerequisite, architect, external-action authority, or auditor.
-- The router uses the project-pinned policy and preserves exposed thread IDs across output/evidence failures.
+- The router uses the project-pinned policy, rejects incompatible Structured Outputs schemas before SDK access, and preserves exposed thread IDs across output/evidence failures.
+- The implementation runtime remains historical; review runtime is derived from `review` without manual manifest rewrites.
 - The smallest capable runtime is preferred; size is not complexity.
 - Subagents are not the default specialization mechanism.
 - Project truth, decisions, Specs, skills, scripts, and policy remain persistent; ephemeral runtime state remains isolated under `.harness/runtime/` and contains no secrets, transcripts, chat history, domain truth, ADRs, Specs, or documentation.
@@ -35,7 +39,7 @@ An idea, empty or existing project, product, software system, research program, 
 
 ## Machine-readable contracts
 
-Canonical schemas and templates live under `skills/project-spec-architect/assets/`, including separate implementation completion and independent review evidence schemas. Ephemeral Codex thread state and route results are defined under `skills/codex-runtime-router/assets/` and materialized under generated-project `.harness/runtime/`. External economic execution requests, snapshots, raw logs, and route results are defined by `skills/karya-execution-router/` and stay in operating-system temporary storage outside the project repository. Harness bootstrap and audit schemas live in their owning skills.
+Canonical schemas and templates live under `skills/project-spec-architect/assets/`, including separate implementation completion, independent review, and structural baseline schemas. Durable lifecycle evidence is defined under `skills/codex-runtime-router/assets/` and materialized beside Spec evidence; `.harness/runtime/` retains only recoverable operational state. External economic execution requests, snapshots, raw logs, and route results are defined by `skills/karya-execution-router/` and stay in operating-system temporary storage outside the project repository.
 
 ## Completion
 

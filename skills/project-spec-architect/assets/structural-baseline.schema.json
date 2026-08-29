@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Harness structural behavior baseline",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "spec_id", "contract_version", "captured_at", "tests", "cli", "json_contracts", "persistence", "schemas", "protected_paths", "decisions"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "spec_id": {"type": "string", "pattern": "^SPEC-[0-9]{3,}$"},
+    "contract_version": {"type": "integer", "minimum": 1},
+    "captured_at": {"type": "string"},
+    "tests": {"type": "object", "additionalProperties": false, "required": ["count", "paths", "commands", "notes"], "properties": {"count": {"type": "integer", "minimum": 0}, "paths": {"type": "array", "items": {"type": "string"}}, "commands": {"type": "array", "items": {"type": "string"}}, "notes": {"type": "array", "items": {"type": "string"}}}},
+    "cli": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["command", "flags"], "properties": {"command": {"type": "string"}, "flags": {"type": "array", "items": {"type": "string"}}}}},
+    "json_contracts": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["path", "fields"], "properties": {"path": {"type": "string"}, "fields": {"type": "array", "items": {"type": "string"}}}}},
+    "persistence": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["path", "public_methods"], "properties": {"path": {"type": "string"}, "public_methods": {"type": "array", "items": {"type": "string"}}}}},
+    "schemas": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["path", "idempotency_keys"], "properties": {"path": {"type": "string"}, "idempotency_keys": {"type": "array", "items": {"type": "string"}}}}},
+    "protected_paths": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["path", "kind"], "properties": {"path": {"type": "string"}, "kind": {"enum": ["file", "directory"]}}}},
+    "decisions": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["path", "status", "effective_before_spec"], "properties": {"path": {"type": "string"}, "status": {"type": "string"}, "effective_before_spec": {"type": "boolean"}}}}
+  }
+}

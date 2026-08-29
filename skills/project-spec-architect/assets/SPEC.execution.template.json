@@ -1,6 +1,6 @@
 {
   "$schema": "../../../.codex/schemas/project-spec-execution.schema.json",
-  "schema_version": "1.0",
+  "schema_version": "2.0",
   "spec_id": "SPEC-001",
   "contract_version": 1,
   "status": "draft",
@@ -21,7 +21,9 @@
   "skills": [],
   "references": [],
   "validation": [{ "id": "VAL-001", "kind": "test", "command": "replace with an exact command", "required": true }],
-  "review": { "required": false, "independence": "self", "model": null, "reasoning": null, "rationale": "Low-risk bounded change uses executor self-validation." },
+  "review": { "required": false, "independence": "self", "model": null, "reasoning": null, "rationale": "Low-risk bounded change uses executor self-validation.", "schema_path": ".codex/schemas/project-spec-review.schema.json", "output_path": "specs/active/SPEC-001/evidence/review.json", "handoff_prompt": "Review this Spec from durable evidence, baseline, diff, validations, and completion evidence." },
   "escalation": { "policy_version": "1.0", "allowed": ["terra_high", "needs_design"] },
-  "completion": { "schema_path": ".codex/schemas/project-spec-completion.schema.json", "output_path": ".harness/runtime/completions/SPEC-001.json" }
+  "completion": { "schema_path": ".codex/schemas/project-spec-completion.schema.json", "output_path": "specs/active/SPEC-001/evidence/completion.json" },
+  "baseline": { "required": false, "path": null, "snapshot_path": null, "rationale": "This bounded change is not a structural migration." },
+  "lifecycle": { "output_path": "specs/active/SPEC-001/evidence/lifecycle.json" }
 }

@@ -6,10 +6,10 @@
   "required": ["schema_version", "spec_id", "contract_version", "status", "automatic_handoff", "execution", "skills", "references", "validation", "review", "escalation", "completion"],
   "properties": {
     "$schema": { "type": "string" },
-    "schema_version": { "const": "1.0" },
+    "schema_version": { "enum": ["1.0", "2.0"] },
     "spec_id": { "type": "string", "pattern": "^SPEC-[0-9]{3,}$" },
     "contract_version": { "type": "integer", "minimum": 1 },
-    "status": { "enum": ["draft", "design", "ready", "in_progress", "needs_design", "implemented", "review", "done"] },
+    "status": { "enum": ["draft", "design", "ready", "in_progress", "needs_design", "implemented", "review", "changes_requested", "done"] },
     "automatic_handoff": { "const": false },
     "execution": {
       "type": "object",
@@ -75,10 +75,22 @@
         "independence": { "enum": ["self", "independent"] },
         "model": { "type": ["string", "null"] },
         "reasoning": { "type": ["string", "null"] },
-        "rationale": { "type": "string", "minLength": 10 }
+        "rationale": { "type": "string", "minLength": 10 },
+        "schema_path": { "type": "string", "minLength": 1 },
+        "output_path": { "type": "string", "minLength": 1 },
+        "handoff_prompt": { "type": "string", "minLength": 40 }
       }
     },
     "escalation": { "type": "object", "additionalProperties": false, "required": ["policy_version", "allowed"], "properties": { "policy_version": { "type": "string", "minLength": 1 }, "allowed": { "type": "array", "items": { "enum": ["terra_medium", "terra_high", "needs_design", "sol_high", "sol_xhigh"] }, "uniqueItems": true } } },
-    "completion": { "type": "object", "additionalProperties": false, "required": ["schema_path", "output_path"], "properties": { "schema_path": { "type": "string", "minLength": 1 }, "output_path": { "type": "string", "minLength": 1 } } }
-  }
+    "completion": { "type": "object", "additionalProperties": false, "required": ["schema_path", "output_path"], "properties": { "schema_path": { "type": "string", "minLength": 1 }, "output_path": { "type": "string", "minLength": 1 } } },
+    "baseline": { "type": "object", "additionalProperties": false, "required": ["required", "path", "snapshot_path", "rationale"], "properties": { "required": { "type": "boolean" }, "path": { "type": ["string", "null"] }, "snapshot_path": { "type": ["string", "null"] }, "rationale": { "type": "string" } } },
+    "lifecycle": { "type": "object", "additionalProperties": false, "required": ["output_path"], "properties": { "output_path": { "type": "string", "minLength": 1 } } }
+  },
+  "allOf": [{
+    "if": { "properties": { "schema_version": { "const": "2.0" } } },
+    "then": {
+      "required": ["baseline", "lifecycle"],
+      "properties": { "review": { "required": ["required", "independence", "model", "reasoning", "rationale", "schema_path", "output_path", "handoff_prompt"] } }
+    }
+  }]
 }

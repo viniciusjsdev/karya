@@ -3,10 +3,12 @@
 ## States
 
 ```txt
-draft -> design -> ready -> in_progress -> implemented -> review -> done
-                    ^          |
-                    |          v
-                    +---- needs_design
+draft -> design -> ready -> implementation -> implemented -> review -> done
+                           ^                         |
+                           |                         v
+                           +--- changes_requested ---+
+                           |
+                           +--- needs_design
 ```
 
 - `draft`: the change is recorded but incomplete.
@@ -16,6 +18,7 @@ draft -> design -> ready -> in_progress -> implemented -> review -> done
 - `needs_design`: execution found a consequential missing or contradictory decision.
 - `implemented`: implementation and required executor validation are reported complete.
 - `review`: required review is underway.
+- `changes_requested`: review found bounded corrections; resume the existing implementation thread, then the existing review thread.
 - `done`: acceptance, validation, completion evidence, and required review are reconciled.
 
 `needs_design` returns to the design thread. Update durable docs or an ADR when the answer changes project truth, update the Spec and execution manifest, validate `ready` again, then resume the existing implementation thread whenever possible.
@@ -38,4 +41,4 @@ Human review must still ask: could a clean thread execute without asking what th
 
 Return structured completion evidence with status `needs_design` and the missing question, why it is consequential, impact, affected areas, alternatives when useful, and the current implementation thread ID.
 
-Do not discard validated work. The design thread resolves and persists the decision; the manifest changes to thread mode `resume` with the existing thread ID.
+Do not discard validated work. The design thread resolves and persists the decision; version 2 routing resumes the recorded implementation thread without rewriting the implementation runtime.

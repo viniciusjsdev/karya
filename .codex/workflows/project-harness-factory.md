@@ -11,10 +11,11 @@ This workflow is independent and opt-in. Do not insert it into MVP, Research, or
 7. Require clean-thread READY validation.
 8. Validate against the project-pinned `.codex/references/runtime-policy.json`, then either use the Python 3.12+ `codex-runtime-router` for the exact materialized Codex SDK runtime or, when the user explicitly prioritizes economy, evaluate a READY non-Django implementation with `karya-execution-router`.
 9. For optional OpenCode execution, keep provider configuration and the exact request outside the project, require action-time confirmation, snapshot the project, restrict writes/commands, wait for one final child-process result, and preserve Codex fallback.
-10. Preserve any SDK-exposed thread ID. On `needs_design` or invalid output, do not create a duplicate thread; persist the design resolution when applicable, revalidate, and resume.
-11. Reconcile completion IDs/commands with existing changed files and artifacts. OpenCode output always requires independent Codex review using its diff/snapshots, completion evidence, and router-run validations.
-12. Use `project-harness-auditor` for the cross-project audit and report unassessed semantic areas honestly.
+10. Before structural work, require a durable behavior baseline and capture the dirty/untracked Git snapshot before SDK access.
+11. Preserve any SDK-exposed thread ID. On `needs_design`, invalid schema, invalid evidence, or `changes_requested`, resume the existing purpose-specific thread instead of creating a duplicate.
+12. Reconcile AC/VAL arrays, canonical router-run validations, and added/modified/deleted files against the baseline. OpenCode output still requires independent Codex review using its diff/snapshots, completion evidence, and router-run validations.
+13. Materialize completion, review attempts, and lifecycle beside the Spec; use `project-harness-auditor` without depending on `.harness/runtime/`.
 
-Keep persistent operating knowledge under `.codex/`. Keep Codex Spec-to-thread mappings, implementation/review state, temporary receipts, usage, and operational status only under gitignored `.harness/runtime/`; do not put secrets, transcripts, chat history, domain truth, ADRs, Specs, or persistent documentation there. Keep OpenCode provider configuration, credentials, external execution requests, snapshots, and raw logs outside the project repository.
+Keep persistent operating knowledge under `.codex/`. Keep durable Spec lifecycle and evidence under the Spec; keep only recoverable mappings and operational status under gitignored `.harness/runtime/`. Do not put secrets, transcripts, chat history, domain truth, ADRs, Specs, or persistent documentation there.
 
 Same-working-tree writes are sequential by default. Parallel writers require isolated worktrees/branches and explicit ownership, merge, conflict, and completion policy.

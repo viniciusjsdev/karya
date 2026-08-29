@@ -185,6 +185,7 @@ python -m pytest \
   skills/project-spec-architect/scripts/test_spec_validator.py \
   skills/project-skill-author/scripts/test_project_skill_validator.py \
   skills/codex-runtime-router/scripts/test_runtime_router.py \
+  skills/codex-runtime-router/scripts/test_runtime_router_v2.py \
   skills/karya-execution-router/scripts/test_execution_router.py \
   skills/project-harness-auditor/scripts/test_harness_auditor.py \
   examples/project-harness/spec-023-sensor-export/project/tests/test_sensor_export.py -q

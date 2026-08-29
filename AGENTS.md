@@ -29,7 +29,7 @@ Rules:
 - Use `karya-execution-router` only as an optional economic route for a READY non-Django implementation with exact external confirmation, provider/model readiness, writable paths, mandatory prohibitions, snapshot, validations, and independent Codex review. OpenCode is never essential to Karya and Codex remains the fallback.
 - Use `project-harness-auditor` to reconcile project truth, decisions, Specs, skills, runtime, threads, validation, and completion evidence without implementing corrections.
 - Keep the project-pinned runtime policy at `.codex/references/runtime-policy.json`; do not silently validate a historical Spec against a newer Factory default.
-- Keep ephemeral Spec/thread/run state under generated-project `.harness/runtime/`, gitignored and separate from durable project truth. Never store secrets, transcripts, conversation history, domain knowledge, ADRs, Specs, or persistent documentation there.
+- Keep only recoverable Spec/thread/run state under generated-project `.harness/runtime/`, gitignored and separate from durable project truth. Keep lifecycle, completion, review, and attempt evidence durably beside the Spec. Never store secrets, transcripts, conversation history, domain knowledge, ADRs, Specs, or persistent documentation in runtime state.
 - Implement new Project Harness core scripts and deterministic tests in Python 3.12+; use the official Python Codex SDK directly for live routing. Preserve pre-existing Node mechanisms belonging to the other Factories.
 - Prefer Design Thread -> durable Spec -> independent Implementation Thread. Do not use subagents as the normal specialization mechanism.
 - Start from a PRD, product brief, client notes, or rough idea.
@@ -67,12 +67,12 @@ Rules:
 - Central runtime defaults are Sol/high for design, Terra/medium for normal implementation, Luna/low for mechanical work, and Sol/high for critical review; deviations require reasons.
 - Treat complexity as the nature of reasoning, not the number of files.
 - On an absent consequential decision, return `needs_design`, persist the resolution in docs/ADR/Spec, and resume the existing implementation thread when possible.
-- Preserve a thread ID as soon as the SDK exposes it, including failed structured-output/evidence runs; retry through `resume`, not a duplicate `new` thread.
+- Reject incompatible Structured Outputs schemas before SDK access. Preserve a thread ID as soon as the SDK exposes it, including failed schema/evidence runs; retry through `resume`, not a duplicate `new` thread. Preserve one implementation ID and one review ID through correction cycles.
 - Keep OpenCode provider configuration, credentials, and exact execution requests outside project repositories, documentation, Specs, persisted prompts, and project `.env` files. A live external run requires separate action-time confirmation after the exact executor, provider, model, writable paths, validation IDs, and cost mode are known.
 - Route generic OpenCode execution through one passive non-interactive child process and one final completion/error result. Do not spend Codex turns polling it. Reconcile snapshot diff, completion evidence, router-run validations, and independent Codex review before approval.
 - Preserve `karya-backend-router` as the richer Django-specific route. Never send its backend contracts or migration rules through `karya-execution-router`.
 - Use the implementation completion schema for implementation/worker runs and the independent review evidence schema for review runs. A required review must receive the Spec, resolved manifest, diff/artifacts, tests, and completion evidence.
-- Audit declared changed files and local artifacts against the working tree. Structured prose claiming a command passed is not sufficient when its files, IDs, paths, or required review do not reconcile.
+- Audit added, modified, and deleted files against the pre-run Git snapshot and structural baseline. Reexecute required automatable validation commands canonically; structured prose claiming a command passed is not sufficient when its files, IDs, paths, or required review do not reconcile.
 - Keep same-working-tree writes sequential by default. Parallel writers require isolated worktrees/branches, ownership, merge, conflict, and completion policy.
 - Preserve frontend/backend context starters and specialized Django contracts/audits; generic Harness artifacts may reference but must not downgrade them.
 

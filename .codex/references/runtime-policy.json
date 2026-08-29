@@ -1,0 +1,25 @@
+{
+  "$schema": "../../skills/project-spec-architect/assets/runtime-policy.schema.json",
+  "policy_version": "1.0",
+  "selection_principle": "Choose the smallest runtime capable of acceptable reliability.",
+  "models": {
+    "gpt-5.6-sol": { "profile": "frontier design and critical review", "relative_cost": "high" },
+    "gpt-5.6-terra": { "profile": "balanced implementation", "relative_cost": "medium" },
+    "gpt-5.6-luna": { "profile": "bounded mechanical work", "relative_cost": "low" }
+  },
+  "reasoning_levels": ["low", "medium", "high", "xhigh", "max"],
+  "defaults": {
+    "design": { "role": "architect", "model": "gpt-5.6-sol", "reasoning": "high" },
+    "normal_implementation": { "role": "developer", "model": "gpt-5.6-terra", "reasoning": "medium" },
+    "mechanical": { "role": "worker", "model": "gpt-5.6-luna", "reasoning": "low" },
+    "critical_review": { "role": "reviewer", "model": "gpt-5.6-sol", "reasoning": "high" }
+  },
+  "critical_review_triggers": ["authentication", "authorization", "security", "payments", "concurrency", "complex_migration", "public_contract", "critical_infrastructure", "cross_domain", "hard_to_reverse_data"],
+  "escalations": [
+    { "from": "gpt-5.6-luna/low", "to": "gpt-5.6-terra/medium", "condition": "work is no longer mechanical" },
+    { "from": "gpt-5.6-terra/medium", "to": "gpt-5.6-terra/high", "condition": "implementation is unusually complex while the Spec remains clear" },
+    { "from": "gpt-5.6-terra/medium", "to": "needs_design", "condition": "a consequential design decision is absent" },
+    { "from": "needs_design", "to": "gpt-5.6-sol/high", "condition": "the design thread must resolve and persist the decision" },
+    { "from": "gpt-5.6-sol/high", "to": "gpt-5.6-sol/xhigh", "condition": "high was insufficient for an exceptional problem" }
+  ]
+}
