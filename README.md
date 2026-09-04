@@ -217,6 +217,10 @@ Read the [Karya brand principles and official asset policy](./docs/branding.md).
 
 Contributions to skills, deterministic tooling, tests, examples, documentation, and cross-platform support are welcome. Read [CONTRIBUTING.md](./CONTRIBUTING.md) for the package format, runtime conventions, validation requirements, and pull-request checklist.
 
+## Acknowledgments
+
+Thanks to Leiming Cloud for providing a complimentary permanent license to evaluate [BizBot](https://bizbot.zvo.cn/), a standalone platform for AI-assisted business outreach. The evaluation helped inform Karya’s thinking about lead discovery, outreach workflows, human approval gates, and the separation between research and commercial execution. BizBot remains an independent external product and is not a Karya dependency.
+
 ## License
 
 Karya is available under the [MIT License](./LICENSE).
