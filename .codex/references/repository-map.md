@@ -1,5 +1,7 @@
 # Repository Map
 
+The living navigation index for the entire Karya repository is [project-map.json](project-map.json). This Markdown remains a concise orientation source. The JSON covers coordination, every Factory and installable skill, contracts, examples, templates, the site and brand; maintain its paths and explicit relationships with repository changes.
+
 ## Source of Truth
 
 - `skills/`: installable Codex skills.

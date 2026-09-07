@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; font-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Mapa do projeto · Karya</title>
+<style>
+:root{color-scheme:dark;--bg:#171310;--canvas:#121110;--panel:#1d1916;--raised:#28221d;--text:#f2e7d5;--muted:#b8ac9a;--line:#3c342c;--accent:#e27758;--blue:#82c0c6;--gold:#d6b16c;--sage:#a1b594;--font:'Space Grotesk','Segoe UI',sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:13px/1.5 var(--font)}button,input,select{font:inherit;color:inherit}button,select{cursor:pointer}button,input,select{border:1px solid var(--line);background:var(--panel);border-radius:5px;min-height:36px}button{padding:7px 11px}button:hover{background:var(--raised);border-color:var(--muted)}button:disabled{opacity:.4;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px}button[aria-pressed=true]{border-color:var(--accent);background:#34251e;color:var(--text)}input[type=search]{width:100%;padding:9px 12px}input[type=checkbox]{width:15px;height:15px;min-height:0;accent-color:var(--accent);cursor:pointer}select{width:100%;padding:8px}header{height:66px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:22px;padding:0 22px}.brand{display:flex;align-items:center;gap:9px;font-weight:600;letter-spacing:.17em}.brand img{width:32px;height:32px}.heading{display:flex;align-items:baseline;gap:12px;min-width:0;flex:1}.eyebrow{color:var(--muted);font-size:10px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}h1{font-size:16px;font-weight:500;margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.header-stat{font:11px 'Cascadia Code',monospace;color:var(--muted);white-space:nowrap}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 296px;height:calc(100dvh - 100px);min-height:550px}.canvas{position:relative;overflow:hidden;background:radial-gradient(ellipse at 40% 45%,#1c1b19 0%,var(--canvas) 72%)}#graph{width:100%;height:100%;display:block;touch-action:none;user-select:none;cursor:grab}#graph:active{cursor:grabbing}.graph-top{position:absolute;top:20px;left:22px;right:22px;display:flex;gap:9px;align-items:flex-start;pointer-events:none}.graph-top>*{pointer-events:auto}.searchbox{width:min(320px,60%);filter:drop-shadow(0 6px 14px #0005)}.filters{position:relative}.filters summary{cursor:pointer;list-style:none;padding:8px 12px;min-height:38px;border:1px solid var(--line);border-radius:5px;background:var(--panel)}.filters summary::-webkit-details-marker{display:none}.filter-menu{position:absolute;top:44px;left:0;width:232px;padding:15px;background:var(--panel);border:1px solid var(--line);border-radius:7px;box-shadow:0 12px 30px #0006;z-index:5}.filter-menu label{display:grid;gap:5px;margin-bottom:12px;font-size:11px;color:var(--muted)}.filter-menu button{width:100%}.graph-caption{position:absolute;bottom:21px;left:22px;pointer-events:none;color:var(--muted);font-size:11px;max-width:50%}.graph-caption strong{display:block;font-size:12px;color:var(--text);font-weight:500;margin-bottom:3px}.zoom{position:absolute;bottom:20px;right:20px;display:flex;gap:5px}.zoom button{background:#211c18e8;min-width:36px}.empty{position:absolute;top:46%;left:20px;right:20px;text-align:center;color:var(--muted);pointer-events:none}.edge{fill:none;stroke-width:.9;opacity:.28;vector-effect:non-scaling-stroke;pointer-events:none}.edge.focus{stroke-width:1.8;opacity:.9}.edge.dim{opacity:.045}.map-node{cursor:pointer;outline:none}.map-node .halo{fill:none;stroke-width:2;opacity:0}.map-node .dot{stroke:var(--canvas);stroke-width:1.2}.map-node.selected .halo,.map-node:focus-visible .halo{opacity:1}.map-node.dim{opacity:.13}.map-node text{fill:var(--text);font:11px var(--font);paint-order:stroke;stroke:var(--canvas);stroke-width:3px;stroke-linejoin:round;pointer-events:none}.sidebar{background:var(--panel);border-left:1px solid var(--line);overflow:auto;overscroll-behavior:contain;padding:21px 18px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:16px}h2{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin:0;color:var(--muted)}h3{font-size:20px;font-weight:500;line-height:1.3;margin:12px 0;overflow-wrap:anywhere}.total{font:11px 'Cascadia Code',monospace;color:var(--muted)}.tabbar{display:flex;border-bottom:1px solid var(--line);gap:20px;margin-bottom:18px}.tabbar button{background:none;border:0;border-radius:0;padding:0 0 10px;color:var(--muted)}.tabbar button[aria-pressed=true]{color:var(--text);border-bottom:2px solid var(--accent)}.community-actions{display:flex;gap:6px;margin-bottom:10px}.community-actions button{font-size:11px;min-height:28px;padding:4px 8px}.community-list{display:grid;gap:3px}.community{display:grid;grid-template-columns:16px 9px minmax(0,1fr) auto;align-items:center;gap:9px;padding:8px 0;cursor:pointer}.swatch{height:8px;width:8px;border-radius:50%;display:inline-block}.community-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}.community-count{color:var(--muted);font:11px 'Cascadia Code',monospace}.side-note{font-size:11px;color:var(--muted);margin:20px 0;line-height:1.65}.node-list{display:grid;gap:4px}.node-list button{text-align:left;border-color:transparent;background:transparent;font-size:12px;overflow-wrap:anywhere;padding:8px}.node-list button.active{border-color:var(--accent);background:var(--raised)}.node-list small{display:block;color:var(--muted);font-size:10px}.details-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.details-top button{border:0;min-height:28px;padding:3px 8px}.badge{display:inline-flex;gap:7px;align-items:center;font-size:11px;color:var(--muted)}.path{font:11px/1.7 'Cascadia Code',monospace;padding:10px;background:var(--bg);border:1px solid var(--line);border-radius:5px;overflow-wrap:anywhere;user-select:all}.details p{color:var(--muted);font-size:12px;overflow-wrap:anywhere}.details dl{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11px;margin:16px 0}.details dt{color:var(--muted)}.details dd{margin:0;overflow-wrap:anywhere}.details #neighbors{width:100%;margin:6px 0 22px}.connections{display:grid;gap:7px;margin-top:12px}.connections button{text-align:left;padding:10px;font-size:12px}.connections small{display:block;color:var(--muted);font-size:10px;margin-top:4px}.shortcut{padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}.shortcut span{display:block;margin-bottom:6px}kbd{display:inline-block;min-width:20px;text-align:center;border:1px solid var(--line);border-radius:3px;background:var(--bg);font:10px var(--font);padding:1px 4px;margin-right:6px}footer{height:34px;display:flex;gap:14px;align-items:center;padding:0 20px;border-top:1px solid var(--line);font-size:10px;color:var(--muted)}#status{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;color:var(--gold)}#status.current{color:var(--sage)}#snapshot{white-space:nowrap;color:var(--muted)}[hidden]{display:none!important}
+@media(max-width:900px){.workspace{grid-template-columns:minmax(0,1fr) 255px}.header-stat{display:none}.sidebar{padding:18px 14px}.graph-top{left:15px;right:15px}.searchbox{width:65%}}
+@media(max-width:650px){header{height:62px;padding:0 14px;gap:15px}.brand{font-size:11px}.brand img{width:27px;height:27px}.heading{display:block}.eyebrow{font-size:9px}h1{font-size:14px}.workspace{display:flex;flex-direction:column;height:auto;min-height:0}.canvas{height:65dvh;min-height:450px}.sidebar{border-left:0;border-top:1px solid var(--line);max-height:65dvh;padding:20px}.graph-top{top:15px;gap:7px}.searchbox{width:calc(100% - 84px)}.filter-menu{left:auto;right:0}.graph-caption{bottom:64px;max-width:90%;font-size:10px;left:15px}.zoom{right:15px;bottom:15px}.community-list{grid-template-columns:1fr 1fr;column-gap:14px}.community{gap:6px}.shortcut{display:none}footer{height:auto;min-height:48px;padding:10px 14px;display:grid;gap:5px}#status{white-space:normal;overflow-wrap:anywhere}#snapshot{white-space:normal}}
+
+.view-switch{display:flex;gap:3px;position:absolute;top:72px;left:22px;padding:3px;border:1px solid var(--line);border-radius:7px;background:#1d1916e8}.view-switch button{min-height:29px;padding:4px 11px;border:0;background:transparent;font-size:11px}.view-switch button[aria-pressed=true]{background:#3b2b22;color:#f2e7d5}.layer-list{display:grid;gap:10px}.layer-card{border:1px solid var(--line);border-radius:8px;padding:13px;background:#221d18}.layer-card label{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px}.layer-card p{margin:8px 0 10px;color:var(--muted);font-size:11px;line-height:1.6}.layer-card button{min-height:27px;font-size:10px;padding:3px 9px}.layer-card .community-count{margin-left:auto}.layer-key{font:10px monospace;color:var(--muted);margin-bottom:9px;letter-spacing:.1em}.view-note{font-size:11px;color:var(--muted);line-height:1.7}.sphere-wire{fill:none;stroke-width:.65;vector-effect:non-scaling-stroke;pointer-events:none}.sphere-volume{pointer-events:none}.map-node .dot{stroke-width:.8}.map-node text{stroke-width:4px}.tabbar{gap:16px}#guides{pointer-events:none}
+@media(max-width:650px){.view-switch{left:15px;top:64px}.view-switch button{padding:4px 9px}.layer-list{grid-template-columns:1fr}.canvas{min-height:500px}}
+
+.orbit-controls{position:absolute;top:116px;left:22px;width:272px;padding:10px 12px;border:1px solid var(--line);border-radius:7px;background:#1d1916ed}.orbit-controls label{font-size:11px;display:flex;align-items:center;gap:8px}.orbit-controls output{margin-left:auto;color:var(--gold);font:11px monospace}.orbit-controls input[type=range]{width:100%;height:23px;min-height:0;accent-color:var(--accent);margin:5px 0}.orbit-controls .edge-choice{font-size:10px;color:var(--muted)}.orbit-controls input:disabled{opacity:.35}.orbit-label{font:11px var(--font);paint-order:stroke;stroke:var(--canvas);stroke-width:4px;pointer-events:none}
+@media(max-width:650px){.orbit-controls{left:15px;top:106px;width:254px}.view-switch button{padding:4px 8px}.canvas{min-height:600px}}
+
+.drag-choice{display:flex;align-items:center;gap:5px;margin-top:7px;color:var(--muted);font-size:10px}.drag-choice button{min-height:25px;padding:2px 9px;font-size:10px}.orbit-hit{fill:none;stroke:transparent;stroke-width:18px;vector-effect:non-scaling-stroke;pointer-events:stroke;cursor:grab}.orbit-hit:active{cursor:grabbing}.canvas[data-drag=moving] #graph{cursor:move}.orbit-controls{z-index:2}.graph-top{z-index:3}.orbit-controls label[for=node-spread]{margin-top:5px}.view-switch{z-index:2}
+@media(max-width:650px){.canvas{min-height:700px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><img src="data:image/png;base64,__KARYA_LOGO__" alt="">KARYA</div><div class="heading"><span class="eyebrow">Mapa de navegação</span><h1 id="project-title">Projeto</h1></div><span class="header-stat" id="header-stat"></span></header>
+<main class="workspace">
+<section class="canvas" aria-label="Grafo interativo">
+<svg id="graph" aria-label="Rede de relações do projeto"><defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="7" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7" fill="#c8bba8"/></marker></defs><rect id="drag-surface" width="100%" height="100%" fill="transparent" pointer-events="all"/><g id="viewport"><g id="guides"></g><g id="edges"></g><g id="nodes"></g></g></svg>
+<div class="graph-top"><div class="searchbox"><input id="search" type="search" aria-label="Buscar no mapa" placeholder="Buscar elemento, caminho, responsabilidade…" autocomplete="off"></div><details class="filters"><summary>Filtros</summary><div class="filter-menu"><label>Categoria<select id="kind"><option value="">Todas as categorias</option></select></label><label>Relação<select id="relation"><option value="">Todas as relações</option></select></label><label>Cores<select id="color-by"><option value="area">Áreas e pastas</option><option value="layer">Tipos de conteúdo</option></select></label><label>Rótulos<select id="labels"><option value="auto">Principais e selecionados</option><option value="all">Todos</option><option value="none">Apenas selecionado</option></select></label><button id="clear">Limpar filtros</button></div></details></div>
+<div class="view-switch" aria-label="Visualização"><button id="view-atomic" aria-pressed="true">Atômico</button><button id="view-sphere" aria-pressed="false">Esfera</button><button id="view-exploded" aria-pressed="false">Camadas</button><button id="view-flat" aria-pressed="false">2D</button></div>
+<div class="orbit-controls"><label for="separation">Separação das camadas <output id="separation-value" for="separation">1.6×</output></label><input id="separation" type="range" min="0" max="200" value="60" aria-label="Separação das camadas"><label for="node-spread">Espalhar nós <output id="node-spread-value" for="node-spread">35%</output></label><input id="node-spread" type="range" min="0" max="100" value="35" aria-label="Espaçamento entre nós"><label class="edge-choice"><input id="show-all-edges" type="checkbox">Também mostrar referências <span title="Dependências sempre visíveis; selecione um nó para ver todas as suas relações.">· selecione para detalhes</span></label><p id="manual-status" class="edge-choice">Posições livres nesta sessão · Restaurar desfaz os movimentos.</p><div class="drag-choice">Fundo:<button id="drag-rotate" aria-pressed="true">Girar</button><button id="drag-pan" aria-pressed="false">Mover</button></div></div>
+<div class="empty" id="empty" hidden>Nenhum elemento corresponde aos filtros.</div>
+<div class="graph-caption"><strong id="count"></strong><span><span id="gesture-hint">Arraste para girar · Shift + arraste para mover · selecione para conectar</span></span></div>
+<div class="zoom"><button id="layout" aria-label="Restaurar vista" title="Restaurar orientação e posições">↻</button><button id="zoom-out" aria-label="Diminuir zoom">−</button><button id="fit">Enquadrar</button><button id="zoom-in" aria-label="Aumentar zoom">+</button></div>
+</section>
+<aside class="sidebar" aria-label="Explorar mapa">
+<section id="explorer"><div class="tabbar"><button id="layers-tab" aria-pressed="true">Tipos</button><button id="groups-tab" aria-pressed="false">Áreas</button><button id="nodes-tab" aria-pressed="false">Elementos</button></div><section id="layers-panel"><div class="section-title"><h2>Tipos de conteúdo</h2><span class="total">3 conjuntos</span></div><div id="layer-list" class="layer-list"></div><p class="view-note">Arraste os nós livremente. Cor indica área; tom indica pasta. Linhas contínuas apontam de quem depende para sua dependência; tracejadas mostram outras relações. As órbitas organizam tipos de conteúdo: posição manual, altura ou proximidade não alteram as dependências registradas.</p><p class="view-note" id="dependency-summary"></p><button id="all-layers">Mostrar todos os tipos</button></section><section id="groups-panel" hidden><div class="section-title"><h2>Filtrar por área</h2><span id="group-total" class="total"></span></div><div class="community-actions"><button id="all-groups">Selecionar todos</button><button id="no-groups">Limpar</button></div><div id="communities" class="community-list"></div><p class="side-note">Áreas vêm do JSON e filtram este mesmo mapa. Um elemento pode ter mais de uma associação. Selecionar uma área não cria outro domínio espacial.</p></section><section id="nodes-panel" hidden><div class="section-title"><h2>Elementos visíveis</h2><span id="visible-total" class="total"></span></div><div id="node-list" class="node-list"></div></section><div class="shortcut"><span><kbd>/</kbd> Buscar no mapa</span><span><kbd>Esc</kbd> Fechar seleção</span><span><kbd>F</kbd> Enquadrar a rede</span><span><kbd>← ↑ ↓ →</kbd> Girar a vista com foco no grafo</span></div></section>
+<section id="details" class="details" hidden><div class="details-top"><h2>Elemento selecionado</h2><button id="close-details" aria-label="Fechar detalhes">✕</button></div><div id="detail-body"></div><button id="neighbors" aria-pressed="false">Somente conexões</button><h2>Relações declaradas</h2><div id="connections" class="connections"></div></section>
+</aside>
+</main>
+<footer><span id="status" role="status"></span><span id="snapshot"></span></footer>
+<script id="map-data" type="application/json">__MAP_DATA__</script>
+<script>
+'use strict';
+const payload=JSON.parse(document.getElementById('map-data').textContent), map=payload.map;
+const $=id=>document.getElementById(id), ns='http://www.w3.org/2000/svg';
+const labels={domain:'Domínio',product:'Produto',architecture:'Arquitetura',decision:'Decisão',contract:'Contrato',code:'Código',validation:'Validação',workflow:'Workflow',reference:'Referência',operation:'Operação',spec:'Spec',runtime:'Runtime',data:'Dados',methodology:'Metodologia',other:'Outro'};
+const relationLabels={contains:'contém',references:'referencia',governed_by:'é governado por',implements:'implementa',validates:'valida',depends_on:'depende de',supersedes:'substitui'};
+const byId=new Map(map.nodes.map(n=>[n.id,n])), adjacency=new Map(map.nodes.map(n=>[n.id,new Map()]));
+for(const edge of map.relations){const weight=edge.type==='depends_on'?3:edge.type==='contains'?.45:1;for(const [a,b] of [[edge.from,edge.to],[edge.to,edge.from]])adjacency.get(a).set(b,(adjacency.get(a).get(b)||0)+weight);}
+const degree=id=>adjacency.get(id).size, radius=id=>4+Math.min(15,Math.sqrt(degree(id))*2.3);
+const hash=text=>{let h=2166136261;for(const c of text){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;};
+const el=(tag,attrs={},text)=>{const e=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;return e;};
+const html=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
+const shorten=(value,size)=>value.length>size?value.slice(0,size-1)+'…':value;
+const areas=map.navigation?.areas||[],rootId=map.navigation?.root||null;
+const areaMembership=new Map(map.nodes.map(n=>[n.id,areas.filter(a=>a.members.includes(n.id)).map(a=>a.id)]));
+const areaHues=[42,210,145,24,275,175,330,70];
+const areaFilters=areas.map((a,i)=>({...a,hue:areaHues[i%areaHues.length],color:`hsl(${areaHues[i%areaHues.length]} 55% 65%)`}));
+if(areas.length&&map.nodes.some(n=>n.id!==rootId&&!areaMembership.get(n.id).length))areaFilters.push({id:'unassigned-filter',label:'Sem área revisada',color:'#bcac95',members:map.nodes.filter(n=>n.id!==rootId&&!areaMembership.get(n.id).length).map(n=>n.id)});
+const enabledAreas=new Set(areaFilters.map(a=>a.id));
+const groups=[{id:'all',members:[...byId.keys()]}],groupOf=new Map([...byId.keys()].map(id=>[id,groups[0]])),enabled=new Set(['all']);
+let view='atomic',separation=1.6,nodeSpread=.35,dragMode='rotate',yaw=-.45,pitch=-.28,world=new Map();
+const manualPositions=new Map(['atomic','sphere','exploded','flat'].map(mode=>[mode,new Map()]));let flatWorld=new Map();
+let visible=[],edges=[],positions=new Map(),selected=null,hovered=null,focusNeighbors=false,scale=1,tx=0,ty=0,drag=null;
+const pointers=new Map();let pinch=null;
+$('project-title').textContent=map.project.name;document.title=map.project.name+' · Mapa Karya';
+$('header-stat').textContent=map.nodes.length+' elementos / '+map.relations.length+' relações';
+$('group-total').textContent=areaFilters.length;$('color-by').value='area';
+const current=payload.check.status==='current',snapshotOnly=payload.check.status==='snapshot';
+$('status').textContent=snapshotOnly?'● Demonstração estática · sem verificação local das fontes':current?'● Revisado na geração · confira sempre as fontes originais':'● Revisão pendente · '+payload.check.pending.length+' ocorrências';
+$('status').classList.toggle('current',current);$('status').title=snapshotOnly?'Snapshot público gerado no build do site; não acompanha alterações locais.':current?'Fingerprints conferidos; isso não comprova correção semântica.':payload.check.pending.join('\n');
+$('snapshot').textContent=new Date(payload.generated_at).toLocaleString('pt-BR')+' · snapshot '+payload.digest.slice(0,8)+' · HTML sem atualização automática';
+for(const kind of [...new Set(map.nodes.map(n=>n.kind))].sort()){const o=html('option',labels[kind]||kind);o.value=kind;$('kind').append(o);}
+for(const type of [...new Set(map.relations.map(e=>e.type))].sort()){const o=html('option',relationLabels[type]||type);o.value=type;$('relation').append(o);}
+for(const area of areaFilters){const row=html('label',undefined,'community'),input=html('input');input.type='checkbox';input.checked=true;input.dataset.area=area.id;input.setAttribute('aria-label','Mostrar área '+area.label);input.addEventListener('change',()=>{input.checked?enabledAreas.add(area.id):enabledAreas.delete(area.id);update();});const dot=html('i',undefined,'swatch');dot.style.background=area.color;row.append(input,dot,html('span',area.label,'community-name'),html('span',String(area.members.length),'community-count'));$('communities').append(row);}
+if(!areas.length)$('communities').append(html('p','Este projeto ainda não registra áreas. A navegação por camadas e tipos continua disponível.'));
+function syncAreas(){for(const input of document.querySelectorAll('[data-area]'))input.checked=enabledAreas.has(input.dataset.area);}
+function matchesArea(id){if(!areas.length||id===rootId)return true;const memberships=areaMembership.get(id);return memberships.length?memberships.some(a=>enabledAreas.has(a)):enabledAreas.has('unassigned-filter');}
+function areaLabel(id){if(id===rootId)return 'Contexto do projeto';const memberships=areas.filter(a=>a.members.includes(id));return memberships.length?memberships.map(a=>a.label).join(' · '):'Sem área revisada';}
+
+// Content filters are independent of dependency ranks and area color families.
+const layers=[
+ {id:'intent',label:'Produto e decisões',hint:'Produto, domínio, decisões e metodologia',color:'#d6b16c',radius:165,kinds:['domain','product','decision','methodology']},
+ {id:'structure',label:'Contratos e workflows',hint:'Arquitetura, contratos, workflows, referências e Specs',color:'#82c0c6',radius:290,kinds:['architecture','contract','workflow','reference','spec']},
+ {id:'execution',label:'Código e operação',hint:'Código, validação, operação, runtime e dados',color:'#e27758',radius:420,kinds:['code','validation','operation','runtime','data','other']}
+];
+const layerOf=new Map(map.nodes.map(n=>[n.id,layers.find(l=>l.kinds.includes(n.kind))||layers[2]])),enabledLayers=new Set(layers.map(l=>l.id));
+// Colors express declared association; folder tones never imply ownership or dependency.
+function folderOf(n){if(n.target==='external')return 'external';const parts=n.path.replaceAll('\\','/').split('/').filter(Boolean);return n.target==='directory'?parts.join('/'):parts.slice(0,-1).join('/')||'.';}
+function colorFamily(id){const n=byId.get(id),matches=areaFilters.filter(a=>a.members.includes(id));return matches.length?matches.map(a=>a.id):areas.length?['unassigned-filter']:['folder:'+folderOf(n).split('/')[0]];}
+function folderTone(id,hue){const folder=folderOf(byId.get(id));return `hsl(${hue} ${48+hash(folder)%13}% ${59+hash(folder)%15}%)`;}
+function nodeColor(id){if($('color-by').value==='layer')return layerOf.get(id).color;
+ const matches=areaFilters.filter(a=>a.members.includes(id));
+ if(matches.length>1)return 'url(#membership-'+hash(id)+')';
+ if(matches.length===1)return matches[0].hue===undefined?'#bcac95':folderTone(id,matches[0].hue);
+ return areas.length?'#bcac95':folderTone(id,hash(folderOf(byId.get(id)).split('/')[0])%360);
+}
+function membershipPaint(){for(const n of map.nodes){const matches=areaFilters.filter(a=>a.members.includes(n.id));if(matches.length<2)continue;const gradient=el('linearGradient',{id:'membership-'+hash(n.id)});matches.forEach((a,i)=>{for(const offset of [i/matches.length,(i+1)/matches.length])gradient.append(el('stop',{offset:offset*100+'%','stop-color':folderTone(n.id,a.hue)}));});$('graph').append(gradient);}}
+membershipPaint();
+for(const [index,layer] of layers.entries()){
+ const card=html('div',undefined,'layer-card'),label=html('label'),input=html('input');input.type='checkbox';input.checked=true;input.dataset.layer=layer.id;input.setAttribute('aria-label','Mostrar tipo '+layer.label);
+ input.addEventListener('change',()=>{input.checked?enabledLayers.add(layer.id):enabledLayers.delete(layer.id);update();});
+ const dot=html('i',undefined,'swatch');dot.style.background=layer.color;label.append(input,dot,html('span',layer.label),html('span',String(map.nodes.filter(n=>layerOf.get(n.id)===layer).length),'community-count'));
+ const isolate=html('button','Isolar tipo');isolate.setAttribute('aria-label','Isolar '+layer.label);isolate.addEventListener('click',()=>{enabledLayers.clear();enabledLayers.add(layer.id);syncLayers();update();});
+ card.append(html('div','0'+(index+1)+' / '+'TIPO DE CONTEÚDO','layer-key'),label,html('p',layer.hint),isolate);$('layer-list').append(card);
+}
+function syncLayers(){for(const input of document.querySelectorAll('[data-layer]'))input.checked=enabledLayers.has(input.dataset.layer);}
+// Analyze recorded dependencies independently of freely movable visual coordinates.
+function dependencyLayout(){
+ const ids=[...byId.keys()].sort(),out=new Map(ids.map(id=>[id,new Set()])),incoming=new Map(ids.map(id=>[id,new Set()]));
+ for(const e of map.relations.filter(e=>e.type==='depends_on')){out.get(e.from).add(e.to);incoming.get(e.to).add(e.from);}
+ const seen=new Set(),finish=[];
+ for(const start of ids){if(seen.has(start))continue;seen.add(start);const stack=[[start,[...out.get(start)],0]];while(stack.length){const f=stack[stack.length-1];if(f[2]<f[1].length){const next=f[1][f[2]++];if(!seen.has(next)){seen.add(next);stack.push([next,[...out.get(next)],0]);}}else{finish.push(f[0]);stack.pop();}}}
+ const component=new Map(),components=[];
+ for(const start of finish.reverse()){if(component.has(start))continue;const index=components.length,members=[],stack=[start];component.set(start,index);while(stack.length){const id=stack.pop();members.push(id);for(const next of incoming.get(id))if(!component.has(next)){component.set(next,index);stack.push(next);}}components.push(members.sort());}
+ const deps=components.map(()=>new Set()),users=components.map(()=>new Set());
+ for(const id of ids)for(const target of out.get(id)){const a=component.get(id),b=component.get(target);if(a!==b){deps[a].add(b);users[b].add(a);}}
+ const ranks=components.map(()=>0),remaining=deps.map(d=>d.size),queue=[];remaining.forEach((n,i)=>{if(!n)queue.push(i);});
+ for(let i=0;i<queue.length;i++){const dep=queue[i];for(const consumer of users[dep]){ranks[consumer]=Math.max(ranks[consumer],ranks[dep]+1);if(--remaining[consumer]===0)queue.push(consumer);}}
+ const info=new Map(ids.map(id=>{const c=component.get(id),known=out.get(id).size+incoming.get(id).size>0;return [id,{rank:known?ranks[c]:null,component:c,cycle:components[c].length>1||out.get(id).has(id),dependencies:out.get(id).size,consumers:incoming.get(id).size}];}));
+ return {info,components,unknown:ids.filter(id=>info.get(id).rank===null)};
+}
+const dependency=dependencyLayout();
+$('dependency-summary').textContent=[...dependency.info.values()].filter(n=>n.rank!==null).length+' nós com dependências registradas · '+dependency.unknown.length+' sem dependência registrada. Ciclos: '+dependency.components.filter(c=>c.some(id=>dependency.info.get(id).cycle)).length+'.';
+function dependencyLabel(id){const d=dependency.info.get(id);return d.rank===null?'Sem dependência registrada':(d.cycle?'Ciclo · ':'')+'nível '+d.rank;}
+function rotate(p){const x=p.x*Math.cos(yaw)+p.z*Math.sin(yaw),z=-p.x*Math.sin(yaw)+p.z*Math.cos(yaw);return {x,y:p.y*Math.cos(pitch)-z*Math.sin(pitch),z:p.y*Math.sin(pitch)+z*Math.cos(pitch)};}
+function cameraDistance(){return view==='atomic'?4000: view==='exploded'?3200:1250;}
+function project(p){const r=rotate(p),distance=cameraDistance(),factor=distance/Math.max(distance*.15,distance-r.z);return {x:r.x*factor,y:r.y*factor,z:r.z,factor};}
+function makeWorld(){
+ world=new Map();for(const [li,layer] of layers.entries()){
+  const members=map.nodes.filter(n=>layerOf.get(n.id)===layer).sort((a,b)=>hash(a.id)-hash(b.id));
+  members.forEach((n,i)=>{const y=1-2*(i+.5)/members.length,a=i*Math.PI*(3-Math.sqrt(5)),r=Math.sqrt(1-y*y);world.set(n.id,{id:n.id,x:Math.cos(a)*r*layer.radius,y:y*layer.radius,z:Math.sin(a)*r*layer.radius,li,root:n.id===rootId,angle:i/members.length*Math.PI*2,lane:i%3-1,radial:Math.cos(a)*Math.sqrt((i+.5)/members.length),normal:Math.sin(a)*Math.sqrt((i+.5)/members.length)});});
+ }
+ arrangeRelatedSlots();
+}
+function orbitRadius(li){return [80,270+separation*110,450+separation*240][li];}
+function orbitPoint(angle,li,lane=0,radial=0,normal=0){const radius=orbitRadius(li)+lane*25+radial,x=Math.cos(angle)*radius,z=Math.sin(angle)*radius,tilt=[0,.72,-.85][li],turn=[0,-.32,.58][li],y=normal*Math.cos(tilt)-z*Math.sin(tilt),depth=normal*Math.sin(tilt)+z*Math.cos(tilt);return {x:x*Math.cos(turn)-y*Math.sin(turn),y:x*Math.sin(turn)+y*Math.cos(turn),z:depth};}
+function baseWorldPoint(p,mode=view){if(p.root)return {x:0,y:0,z:0};
+ if(mode==='atomic'){if(p.li===0){const factor=.48*(1+nodeSpread);return {x:p.x*factor,y:p.y*factor,z:p.z*factor};}return orbitPoint(p.angle,p.li,p.lane,(p.radial||0)*nodeSpread*150,(p.normal||0)*nodeSpread*210);}
+ if(mode==='exploded')return {x:p.x*.8+(p.radial||0)*nodeSpread*100,y:p.y*.16+(p.li-1)*(240+separation*220)+(p.normal||0)*nodeSpread*170,z:p.z*.8};const factor=1+(p.radial||0)*nodeSpread*.3;return {x:p.x*factor,y:p.y*factor,z:p.z*factor};
+}
+function drawOrbitGuides(){
+ for(const [li,layer] of layers.entries()){
+  if(!enabledLayers.has(layer.id)||!visible.some(n=>layerOf.get(n.id)===layer))continue;
+  const bands=li===0?[0]:[-1,0,1];
+  for(const band of bands){const halves=[[],[]];for(let i=0;i<=128;i++){const angle=i/128*Math.PI*2,p=li===0?{x:Math.cos(angle)*80,y:Math.sin(angle)*80,z:0}:orbitPoint(angle,li,band),q=project(p),side=q.z>=0?1:0;
+   halves[side].push((i&&halves[side].length?'L':'M')+q.x+' '+q.y);halves[1-side].push('M'+q.x+' '+q.y);
+  }halves.forEach((commands,side)=>$('guides').append(el('path',{d:commands.join(' '),class:'sphere-wire',stroke:layer.color,opacity:band===0?(side?.65:.28):.10,'stroke-dasharray':side?'none':'4 6'})));if(band===0){const hit=el('path',{d:halves.map(parts=>parts.join(' ')).join(' '),class:'orbit-hit','aria-hidden':'true'});hit.dataset.orbitLayer=layer.id;$('guides').append(hit);}}
+ }
+}
+
+function drawGuides(){
+ const guide=$('guides');guide.replaceChildren();if(view==='flat')return;if(view==='atomic'){drawOrbitGuides();return;}
+ for(const [li,layer] of layers.entries()){
+  if(!enabledLayers.has(layer.id)||!visible.some(n=>layerOf.get(n.id)===layer))continue;
+  // Great circles rotate with the data, exposing front and back depth without a remote renderer.
+  for(let axis=0;axis<3;axis++){
+   const halves=[[],[]];for(let i=0;i<=96;i++){const a=i/96*Math.PI*2,u=Math.cos(a)*layer.radius,v=Math.sin(a)*layer.radius,p=axis===0?{x:u,y:v,z:0,li}:axis===1?{x:u,y:0,z:v,li}:{x:0,y:u,z:v,li},q=project(worldPoint(p));
+    const side=q.z>0?1:0;halves[side].push((i&&halves[side].length?'L':'M')+q.x+' '+q.y);halves[1-side].push('M'+q.x+' '+q.y);
+   }
+   halves.forEach((commands,side)=>guide.append(el('path',{d:commands.join(' '),class:'sphere-wire',stroke:layer.color,opacity:side?.28:.08,'stroke-dasharray':side?'none':'3 7'})));const hit=el('path',{d:halves.map(parts=>parts.join(' ')).join(' '),class:'orbit-hit','aria-hidden':'true'});hit.dataset.orbitLayer=layer.id;guide.append(hit);
+  }
+ }
+}
+
+function worldPoint(p){const base=baseWorldPoint(p),offset=manualPositions.get(view).get(p.id);return offset?{x:base.x+offset.x,y:base.y+offset.y,z:base.z+offset.z}:base;}
+// Swap only slots of the same content band, minimizing recorded connection length in both 3D modes.
+// Bounded work keeps large maps usable; this is a visual heuristic, never a new relation.
+function arrangeRelatedSlots(){
+ const ids=[...world.keys()].filter(id=>id!==rootId).slice(0,200).sort();
+ const points=new Map(ids.map(id=>[id,['atomic','sphere'].map(mode=>baseWorldPoint(world.get(id),mode))]));
+ if(rootId&&world.has(rootId))points.set(rootId,[{x:0,y:0,z:0},{x:0,y:0,z:0}]);
+ const cost=id=>{let total=0;for(const [other,weight] of adjacency.get(id)){if(!points.has(other))continue;for(let k=0;k<2;k++){const a=points.get(id)[k],b=points.get(other)[k];total+=weight*Math.hypot(a.x-b.x,a.y-b.y,a.z-b.z);}}return total;};
+ for(let pass=0;pass<2;pass++)for(let i=0;i<ids.length;i++)for(let j=i+1;j<ids.length;j++){
+  const a=ids[i],b=ids[j];if(world.get(a).li!==world.get(b).li)continue;const before=cost(a)+cost(b),pa=points.get(a),pb=points.get(b);points.set(a,pb);points.set(b,pa);
+  if(cost(a)+cost(b)<before-1e-6){const wa=world.get(a),wb=world.get(b);world.set(a,{...wb,id:a});world.set(b,{...wa,id:b});}else{points.set(a,pa);points.set(b,pb);}
+ }
+}
+function makeFlatWorld(){
+ const ids=[...byId.keys()].sort(),solved=ids.slice(0,200),active=new Set(solved);
+ flatWorld=new Map(ids.map((id,i)=>{const a=i/Math.max(1,ids.length)*Math.PI*2;return [id,{x:Math.cos(a)*350,y:Math.sin(a)*350,z:0,vx:0,vy:0}];}));
+ const links=map.relations.filter(e=>active.has(e.from)&&active.has(e.to));
+ for(let step=0;step<160;step++){
+  for(let i=0;i<solved.length;i++)for(let j=i+1;j<solved.length;j++){const a=flatWorld.get(solved[i]),b=flatWorld.get(solved[j]);let dx=a.x-b.x,dy=a.y-b.y;if(!dx&&!dy){dx=.1;dy=.2;}const f=90/(dx*dx+dy*dy+20);a.vx+=dx*f;b.vx-=dx*f;a.vy+=dy*f;b.vy-=dy*f;}
+  for(const e of links){const a=flatWorld.get(e.from),b=flatWorld.get(e.to),dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1,f=(e.type==='depends_on'?.02:.008)*(d-95)/d;a.vx+=dx*f;b.vx-=dx*f;a.vy+=dy*f;b.vy-=dy*f;}
+  for(const id of solved){const p=flatWorld.get(id);p.vx=(p.vx-p.x*.001)*.58;p.vy=(p.vy-p.y*.001)*.58;p.x+=Math.max(-12,Math.min(12,p.vx))*(1-step/200);p.y+=Math.max(-12,Math.min(12,p.vy))*(1-step/200);}
+ }
+}
+function flatPoint(id){const p=flatWorld.get(id),o=manualPositions.get('flat').get(id)||{x:0,y:0,z:0};return {x:p.x+o.x,y:p.y+o.y,z:0,factor:1};}
+// Convert a screen-plane drag back into world axes at the node's current depth.
+function moveNode(id,dx,dy){
+ const offset=manualPositions.get(view).get(id)||{x:0,y:0,z:0};let delta;
+ if(view==='flat')delta={x:dx/scale,y:dy/scale,z:0};
+ else{const factor=positions.get(id).factor,u=dx/(scale*factor),v=dy/(scale*factor),depth=-v*Math.sin(pitch);delta={x:u*Math.cos(yaw)-depth*Math.sin(yaw),y:v*Math.cos(pitch),z:u*Math.sin(yaw)+depth*Math.cos(yaw)};}
+ manualPositions.get(view).set(id,{x:offset.x+delta.x,y:offset.y+delta.y,z:offset.z+delta.z});hovered=null;scene();
+}
+function scene(){$('manual-status').textContent=manualPositions.get(view).size+' nós reposicionados nesta vista · Restaurar desfaz os movimentos.';
+  positions=new Map(visible.map(n=>[n.id,view==='flat'?flatPoint(n.id):project(worldPoint(world.get(n.id)))]));
+ const focused=document.activeElement?.closest?.('.map-node'),nodes=[...$('nodes').children];nodes.sort((a,b)=>positions.get(a.dataset.id).z-positions.get(b.dataset.id).z);
+ for(const node of nodes){const p=positions.get(node.dataset.id),r=radius(node.dataset.id)*p.factor;node.setAttribute('transform',`translate(${p.x},${p.y})`);node.querySelector('.dot').setAttribute('r',r);node.querySelector('.halo').setAttribute('r',r+5);$('nodes').append(node);}
+ if(focused)focused.focus({preventScroll:true});drawGuides();drawEdges();paintFocus();
+}
+makeWorld();makeFlatWorld();
+
+function transform(){ $('viewport').setAttribute('transform',`translate(${tx},${ty}) scale(${scale})`);paintFocus(); }
+function fit(){if(!visible.length)return;const box=$('graph').getBoundingClientRect(),xs=visible.map(n=>positions.get(n.id).x),ys=visible.map(n=>positions.get(n.id).y);const minX=Math.min(...xs)-65,minY=Math.min(...ys)-85,w=Math.max(...xs)-minX+100,h=Math.max(...ys)-minY+110;scale=Math.max(.01,Math.min(2,(box.width-70)/w,(box.height-320)/h));tx=(box.width-w*scale)/2-minX*scale;ty=275+(box.height-320-h*scale)/2-minY*scale;transform();}
+function zoom(factor,x,y){const box=$('graph').getBoundingClientRect();x=x??box.width/2;y=y??box.height/2;const old=scale;scale=Math.max(.035,Math.min(6,scale*factor));tx=x-(x-tx)*scale/old;ty=y-(y-ty)*scale/old;transform();}
+function layout(){positions=new Map(visible.map(n=>[n.id,view==='flat'?flatPoint(n.id):project(worldPoint(world.get(n.id)))]));}
+function drawEdges(){const layer=$('edges');layer.replaceChildren();for(const edge of edges){const a=positions.get(edge.from),b=positions.get(edge.to),dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1,r=radius(edge.to)*(b.factor||1)+3;const loop=edge.from===edge.to,cyclic=edge.type==='depends_on'&&dependency.info.get(edge.from).component===dependency.info.get(edge.to).component;const route=loop?`M${a.x-r} ${a.y} C${a.x-65} ${a.y-75} ${a.x+65} ${a.y-75} ${a.x+r} ${a.y}`:cyclic?`M${a.x} ${a.y} Q${(a.x+b.x)/2} ${(a.y+b.y)/2+(dx>0?-40:40)} ${b.x-dx/d*r} ${b.y-dy/d*r}`:`M${a.x} ${a.y} L${b.x-dx/d*r} ${b.y-dy/d*r}`;const path=el('path',{d:route,class:'edge',stroke:nodeColor(edge.from)});path.dataset.from=edge.from;path.dataset.to=edge.to;path.dataset.type=edge.type;if(edge.type!=='depends_on')path.setAttribute('stroke-dasharray','4 5');path.append(el('title',{},byId.get(edge.from).label+' → '+relationLabels[edge.type]+' → '+byId.get(edge.to).label+' · '+edge.rationale));layer.append(path);}}
+function paintFocus(){const active=hovered||selected,near=active?new Set([active,...adjacency.get(active).keys()]):null,occupied=[];
+ const ordered=[...$('nodes').children].sort((a,b)=>Number(b.dataset.id===active)-Number(a.dataset.id===active)||Number(b.dataset.id===selected)-Number(a.dataset.id===selected)||degree(b.dataset.id)-degree(a.dataset.id));
+ for(const node of ordered){const id=node.dataset.id,chosen=id===selected,close=near?.has(id);node.classList.toggle('selected',chosen);node.classList.toggle('dim',!!near&&!close);let show=chosen||id===hovered||($('labels').value!=='none'&&(($('labels').value==='all')||(near&&close)||degree(id)>=6||scale>1.8));const text=node.querySelector('text'),p=positions.get(id),visualRadius=view==='atomic'?Math.max(2.5/scale,radius(id)*(p.factor||1)):radius(id)*(p.factor||1),x=(p.x+visualRadius+7)*scale,y=p.y*scale,rect={x,y:y-10,w:text.textContent.length*6.1+8,h:17};
+ const left=x+tx+rect.w>$('graph').clientWidth-12;text.setAttribute('text-anchor',left?'end':'start');text.setAttribute('x',(left?-1:1)*(visualRadius+7));if(left)rect.x=(p.x-visualRadius-7)*scale-rect.w;
+ if(show&&$('labels').value==='auto'&&!chosen&&id!==hovered&&occupied.some(r=>rect.x<r.x+r.w&&rect.x+rect.w>r.x&&rect.y<r.y+r.h&&rect.y+rect.h>r.y))show=false;
+ node.querySelector('.dot').setAttribute('r',visualRadius);node.querySelector('.halo').setAttribute('r',visualRadius+5);
+ node.style.opacity=String((near&&!close?.13:1)*(view==='flat'?1:Math.max(.4,Math.min(1,.68+(p.z||0)/1000))));node.querySelector('.dot').setAttribute('fill',nodeColor(id));node.querySelector('.halo').setAttribute('stroke',nodeColor(id));
+ if(show)occupied.push(rect);text.style.display=show?'':'none';text.style.fontSize=(11/scale)+'px';}
+ for(const edge of $('edges').children){const activeEdge=active&&(edge.dataset.from===active||edge.dataset.to===active);edge.classList.toggle('focus',!!activeEdge);edge.classList.toggle('dim',!!active&&!activeEdge);const isDependency=edge.dataset.type==='depends_on';edge.style.opacity=String(activeEdge?.95:active?.045:isDependency?.65:$('show-all-edges').checked?.12:0);edge.setAttribute('stroke',nodeColor(edge.dataset.from));if(activeEdge||isDependency)edge.setAttribute('marker-end','url(#arrow)');else edge.removeAttribute('marker-end');}}
+function renderDetails(){const n=byId.get(selected);if(!n)return;const body=$('detail-body');body.replaceChildren();const badge=html('span',undefined,'badge'),dot=html('i',undefined,'swatch');dot.style.background=nodeColor(n.id);dot.style.background=areaFilters.find(a=>a.members.includes(n.id))?.color||'#bcac95';badge.append(dot,html('span',labels[n.kind]||n.kind));body.append(badge,html('h3',n.label),html('p',n.summary||'Sem descrição adicional.'),html('div',n.path,'path'));const dl=html('dl');for(const[k,v]of[['Tipo de conteúdo',layerOf.get(n.id).label],['Cadeia de dependências',dependencyLabel(n.id)],['Depende de',String(dependency.info.get(n.id).dependencies)],['Dependentes',String(dependency.info.get(n.id).consumers)],['Conexões',String(degree(n.id))],['Pasta / tom',folderOf(n)],['Estado',n.status==='planned'?'Previsto':'Existente'],['Autoridade',n.authority],['ID',n.id]])dl.append(html('dt',k),html('dd',v));body.append(dl);if(dependency.info.get(n.id).cycle)body.append(html('p','Ciclo registrado: '+dependency.components[dependency.info.get(n.id).component].map(id=>byId.get(id).label).join(' ↔ ')));if(areas.length){body.append(html('p','Área: '+areaLabel(n.id)));for(const area of areas.filter(a=>a.members.includes(n.id))){body.append(html('p',area.rationale));for(const sourceId of area.sources){const source=byId.get(sourceId),button=html('button','Fonte: '+source.path);button.addEventListener('click',()=>select(sourceId,true));body.append(button);}}}
+ $('connections').replaceChildren();for(const edge of map.relations.filter(e=>e.from===selected||e.to===selected)){const outgoing=edge.from===selected,other=byId.get(outgoing?edge.to:edge.from),b=html('button',(outgoing?'→ ':'← ')+relationLabels[edge.type]+' · '+other.label);b.append(html('small',edge.rationale));b.addEventListener('click',()=>select(other.id,true));$('connections').append(b);}if(!$('connections').childElementCount)$('connections').append(html('p','Nenhuma relação declarada. Isso não comprova ausência de dependências.'));}
+function select(id,reveal=false){if(reveal){$('search').value='';$('kind').value='';$('relation').value='';enabled.add(groupOf.get(id).id);enabledLayers.add(layerOf.get(id).id);for(const area of areaFilters.filter(a=>a.members.includes(id)))enabledAreas.add(area.id);syncAreas();syncLayers();}selected=id;hovered=null;$('explorer').hidden=true;$('details').hidden=false;renderDetails();if(reveal||focusNeighbors)update();else paintFocus();document.querySelectorAll('.node-list button').forEach(b=>b.classList.toggle('active',b.dataset.id===id));}
+function closeDetails(){selected=null;hovered=null;$('details').hidden=true;$('explorer').hidden=false;if(focusNeighbors){focusNeighbors=false;$('neighbors').setAttribute('aria-pressed','false');update();}else paintFocus();}
+function update(){
+ const terms=$('search').value.toLocaleLowerCase().split(/\s+/).filter(Boolean),kind=$('kind').value,type=$('relation').value;
+ const filtered=map.relations.filter(e=>!type||e.type===type),connected=new Set(filtered.flatMap(e=>[e.from,e.to]));
+ const near=new Set([selected,...filtered.filter(e=>e.from===selected||e.to===selected).flatMap(e=>[e.from,e.to])]);
+ const all=map.nodes.filter(n=>matchesArea(n.id)&&enabledLayers.has(layerOf.get(n.id).id)&&enabled.has(groupOf.get(n.id).id)&&(!kind||n.kind===kind)&&terms.every(t=>(n.label+' '+n.path+' '+n.summary+' '+(areas.length?areaLabel(n.id):'')).toLocaleLowerCase().includes(t))&&(!type||connected.has(n.id))&&(!focusNeighbors||near.has(n.id)));
+ visible=all.slice(0,200);if(selected&&all.some(n=>n.id===selected)&&!visible.some(n=>n.id===selected))visible[visible.length-1]=byId.get(selected);const ids=new Set(visible.map(n=>n.id));edges=filtered.filter(e=>ids.has(e.from)&&ids.has(e.to));hovered=null;
+ if(selected&&!ids.has(selected)){selected=null;focusNeighbors=false;$('neighbors').setAttribute('aria-pressed','false');$('details').hidden=true;$('explorer').hidden=false;return update();}
+ $('count').textContent=visible.length+' de '+map.nodes.length+' elementos · '+edges.length+' relações'+(all.length>200?' · limite 200, refine a busca':'');$('visible-total').textContent=visible.length;$('empty').hidden=visible.length>0;layout();$('nodes').replaceChildren();$('node-list').replaceChildren();
+ for(const n of visible){const p=positions.get(n.id),color=nodeColor(n.id),r=radius(n.id),g=el('g',{class:'map-node',transform:`translate(${p.x},${p.y})`,tabindex:'0',role:'button','aria-label':n.label+' — '+(labels[n.kind]||n.kind)});g.dataset.id=n.id;g.append(el('circle',{class:'halo',r:r+5,stroke:color}),el('circle',{class:'dot',r,fill:color}),el('text',{x:r+7,y:4},shorten(n.label,36)),el('title',{},n.label+'\n'+n.path+'\n'+degree(n.id)+' conexões'));
+ g.addEventListener('pointerenter',()=>{if(!drag){hovered=n.id;paintFocus();}});g.addEventListener('pointerleave',()=>{hovered=null;paintFocus();});g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(n.id);}});g.addEventListener('pointerdown',e=>{if(e.button!==0)return;e.stopPropagation();pointerDown(e,n.id);});g.addEventListener('click',e=>{if(e.detail===0)select(n.id);});$('nodes').append(g);
+ const b=html('button',n.label);b.dataset.id=n.id;b.classList.toggle('active',selected===n.id);b.append(html('small',labels[n.kind]||n.kind));b.addEventListener('click',()=>select(n.id));$('node-list').append(b);}
+ scene();fit();
+}
+function pointerDown(e,id=null){pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});$('graph').setPointerCapture(e.pointerId);if(pointers.size===2){const[a,b]=[...pointers.values()];pinch={distance:Math.hypot(a.x-b.x,a.y-b.y),x:(a.x+b.x)/2,y:(a.y+b.y)/2};drag=null;}else drag={id,x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY,moved:false,pan:e.shiftKey||dragMode==='pan'};}
+$('graph').addEventListener('pointerdown',e=>{if(e.button===0)pointerDown(e);});
+$('graph').addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(pinch&&pointers.size===2){const[a,b]=[...pointers.values()],distance=Math.hypot(a.x-b.x,a.y-b.y),x=(a.x+b.x)/2,y=(a.y+b.y)/2,box=$('graph').getBoundingClientRect();zoom(distance/Math.max(1,pinch.distance),pinch.x-box.left,pinch.y-box.top);tx+=x-pinch.x;ty+=y-pinch.y;pinch={distance,x,y};transform();return;}if(!drag)return;const dx=e.clientX-drag.x,dy=e.clientY-drag.y;drag.moved=drag.moved||Math.hypot(e.clientX-drag.startX,e.clientY-drag.startY)>3;if(drag.id){if(!drag.moved)return;moveNode(drag.id,dx,dy);}else if(view!=='flat'&&!drag.pan){yaw+=dx*.008;pitch=Math.max(-1.5,Math.min(1.5,pitch+dy*.008));hovered=null;scene();}else{tx+=dx;ty+=dy;transform();}drag.x=e.clientX;drag.y=e.clientY;});
+function release(e){if(drag?.id&&!drag.moved&&e.type==='pointerup')select(drag.id);pointers.delete(e.pointerId);drag=null;pinch=null;if($('graph').hasPointerCapture(e.pointerId))$('graph').releasePointerCapture(e.pointerId);}
+$('graph').addEventListener('pointerup',release);$('graph').addEventListener('pointercancel',release);
+$('graph').addEventListener('wheel',e=>{e.preventDefault();const b=$('graph').getBoundingClientRect();zoom(e.deltaY<0?1.12:1/1.12,e.clientX-b.left,e.clientY-b.top);},{passive:false});
+$('search').addEventListener('input',update);$('kind').addEventListener('change',update);$('relation').addEventListener('change',update);$('labels').addEventListener('change',paintFocus);
+$('clear').addEventListener('click',()=>{$('search').value='';$('kind').value='';$('relation').value='';focusNeighbors=false;$('neighbors').setAttribute('aria-pressed','false');for(const group of groups)enabled.add(group.id);for(const layer of layers)enabledLayers.add(layer.id);for(const a of areaFilters)enabledAreas.add(a.id);syncAreas();syncLayers();update();});
+$('neighbors').addEventListener('click',()=>{focusNeighbors=!focusNeighbors;$('neighbors').setAttribute('aria-pressed',String(focusNeighbors));update();});$('close-details').addEventListener('click',closeDetails);
+for(const which of ['layers','groups','nodes'])$(which+'-tab').addEventListener('click',()=>{for(const other of ['layers','groups','nodes']){$(other+'-panel').hidden=other!==which;$(other+'-tab').setAttribute('aria-pressed',String(other===which));}});
+$('all-groups').addEventListener('click',()=>{for(const a of areaFilters)enabledAreas.add(a.id);syncAreas();update();});$('no-groups').addEventListener('click',()=>{enabledAreas.clear();syncAreas();update();});
+$('zoom-in').addEventListener('click',()=>zoom(1.25));$('zoom-out').addEventListener('click',()=>zoom(.8));$('fit').addEventListener('click',fit);$('layout').addEventListener('click',()=>{for(const offsets of manualPositions.values())offsets.clear();yaw=-.45;pitch=-.28;separation=1.6;nodeSpread=.35;$('node-spread').value='35';$('node-spread-value').textContent='35%';$('separation').value='60';$('separation-value').textContent='1.6×';makeWorld();makeFlatWorld();update();});
+addEventListener('keydown',e=>{if(e.key==='Escape'){document.querySelector('.filters').open=false;closeDetails();return;}if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)||e.ctrlKey||e.metaKey||e.altKey)return;if(e.key==='/'){e.preventDefault();$('search').focus();}if(e.key.toLowerCase()==='f')fit();});
+
+for(const mode of ['atomic','sphere','exploded','flat'])$('view-'+mode).addEventListener('click',()=>{view=mode;$('node-spread').disabled=view==='flat';$('separation').disabled=!['atomic','exploded'].includes(view);for(const other of ['atomic','sphere','exploded','flat'])$('view-'+other).setAttribute('aria-pressed',String(mode===other));gestureHint();update();});
+$('separation').addEventListener('input',()=>{separation=1+Number($('separation').value)/100;$('separation-value').textContent=separation.toFixed(1)+'×';scene();});
+$('node-spread').addEventListener('input',()=>{nodeSpread=Number($('node-spread').value)/100;$('node-spread-value').textContent=Math.round(nodeSpread*100)+'%';scene();});
+for(const mode of ['rotate','pan'])$('drag-'+mode).addEventListener('click',()=>{dragMode=mode;$('drag-rotate').setAttribute('aria-pressed',String(mode==='rotate'));$('drag-pan').setAttribute('aria-pressed',String(mode==='pan'));document.querySelector('.canvas').dataset.drag=mode==='pan'?'moving':'rotating';gestureHint();});
+$('show-all-edges').addEventListener('change',paintFocus);
+$('color-by').addEventListener('change',()=>{scene();if(selected)renderDetails();});
+$('all-layers').addEventListener('click',()=>{for(const l of layers)enabledLayers.add(l.id);syncLayers();update();});
+$('graph').setAttribute('tabindex','0');$('graph').addEventListener('keydown',e=>{if(view==='flat'||!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key))return;e.preventDefault();if(e.key==='ArrowLeft')yaw-=.12;if(e.key==='ArrowRight')yaw+=.12;if(e.key==='ArrowUp')pitch=Math.max(-1.5,pitch-.12);if(e.key==='ArrowDown')pitch=Math.min(1.5,pitch+.12);scene();});
+function gestureHint(){$('drag-rotate').disabled=view==='flat';$('gesture-hint').textContent='Arraste nós para reposicionar · '+(view==='flat'||dragMode==='pan'?'fundo: mover':'fundo: girar · Shift: mover');}
+new ResizeObserver(fit).observe($('graph'));gestureHint();update();
+</script>
+</body>
+</html>

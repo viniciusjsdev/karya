@@ -59,6 +59,8 @@ Record only durable context needed by a clean thread.
 
 - VAL-001: Exact command or observable verification.
 
+When the project has `.codex/references/project-map.json`, add a VAL command for `python scripts/harness/project_map.py check --project-root .` with `kind: test` and `required: true`. Reconcile documentation and map impact, then explicitly record the executor's map review before this check. Never auto-review merely to clear pending fingerprints.
+
 ## Review requirements
 
 State self-validation or independent review and the risk basis.

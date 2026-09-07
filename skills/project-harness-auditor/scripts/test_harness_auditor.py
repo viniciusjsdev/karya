@@ -8,6 +8,7 @@ from pathlib import Path
 
 from audit_project_harness import audit_project_harness
 from test_runtime_router_v2 import _fixture, _run
+from _project_map import MAP_PATH, atomic_write, review_map
 
 
 def test_blocks_missing_agents_and_reports_unassessed_chat_knowledge(
@@ -17,6 +18,37 @@ def test_blocks_missing_agents_and_reports_unassessed_chat_knowledge(
     assert report["status"] == "blocked"
     assert any("AGENTS.md" in item["message"] for item in report["findings"])
     assert any("Chat-only" in item for item in report["unassessed"])
+
+
+def test_missing_adopted_json_cannot_fall_back_to_legacy_markdown(tmp_path: Path) -> None:
+    (tmp_path / ".codex/references").mkdir(parents=True)
+    (tmp_path / "AGENTS.md").write_text(f"Read {MAP_PATH}", encoding="utf-8")
+    (tmp_path / ".codex/references/project-harness.md").write_text("Legacy", encoding="utf-8")
+    report = audit_project_harness(tmp_path)
+    assert any(item["category"] == "navigation" and item["severity"] == "high" for item in report["findings"])
+
+
+def test_json_map_audit_detects_drift_even_with_legacy_map(tmp_path: Path) -> None:
+    """New-map freshness is checked without refreshing or falling back to Markdown."""
+    root = tmp_path
+    (root / ".codex/references").mkdir(parents=True)
+    (root / "AGENTS.md").write_text(f"Consult {MAP_PATH}\n", encoding="utf-8")
+    (root / "source.md").write_text("Approved source\n", encoding="utf-8")
+    (root / ".codex/references/project-harness.md").write_text("Legacy map\n", encoding="utf-8")
+    data = {"schema_version": "1.0", "project": {"name": "Audit", "objective": "Check map freshness"}, "nodes": [{"id": "source", "label": "Source", "kind": "reference", "summary": "Approved source", "path": "source.md", "target": "file", "status": "existing", "authority": "primary", "fingerprint": None}], "relations": [], "maintenance": {"reviewed_at": None, "review_note": "", "map_fingerprint": None, "project_fingerprint": None}}
+    data = review_map(root, data, "Reviewed fixture source and navigation.")
+    atomic_write(root / MAP_PATH, json.dumps(data))
+    report = audit_project_harness(root)
+    assert not any(item["category"] == "navigation" for item in report["findings"])
+    (root / "source.md").write_text("Changed source\n", encoding="utf-8")
+    before = (root / MAP_PATH).read_bytes()
+    report = audit_project_harness(root)
+    assert any(item["category"] == "navigation" and item["severity"] == "medium" for item in report["findings"])
+    assert (root / MAP_PATH).read_bytes() == before
+    data["relations"] = [{"from": "source", "to": "missing", "type": "references", "rationale": "Broken fixture"}]
+    atomic_write(root / MAP_PATH, json.dumps(data))
+    report = audit_project_harness(root)
+    assert any(item["category"] == "navigation" and item["severity"] == "high" for item in report["findings"])
 
 
 def test_blocks_done_spec_when_required_review_receipt_is_missing(

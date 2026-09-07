@@ -161,3 +161,12 @@ references/
 scripts/      optional
 assets/       optional
 ```
+
+<!-- karya-project-map:start -->
+## Project navigation map
+
+Use `.codex/references/project-map.json` as the current navigation index. Existing Markdown navigation remains a preserved source, not a competing generated map.
+Before changes, run `python scripts/harness/project_map.py check --project-root .`, query relevant nodes, and read their original sources and applicable contracts. A pending check calls for reconciliation, not blind refresh; source reading and required tests remain mandatory.
+Before completion, inspect changed code and docs, update affected sources, paths and explicit relations, then run `python scripts/harness/project_map.py review --project-root . --note "Explain source/map reconciliation and any unchanged-map decision"`. Run `check` again and include it in the Spec's required validation. Never run review automatically just to make a check pass.
+Use `query --project-root . --text "topic"` for bounded navigation. When the user wants to see the map, run `render --project-root .` and show `.harness/views/project-map.html`; regenerate after changes. HTML is a read-only snapshot, not an editor or source of truth.
+<!-- karya-project-map:end -->

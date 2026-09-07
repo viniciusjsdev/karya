@@ -38,6 +38,16 @@ def _run(
     )
 
 
+def test_navigation_omission_blocks_before_sdk_import(tmp_path: Path) -> None:
+    root, _, mock = _fixture(tmp_path)
+    (root / ".codex/references/project-map.json").write_text("{}", encoding="utf-8")
+    mock.write_text("raise RuntimeError('SDK must not be imported')", encoding="utf-8")
+    run = _run(Path(__file__).with_name("route_codex_runtime.py"), root, mock)
+    assert run.returncode == 1
+    assert "mandatory navigation validation" in run.stdout
+    assert "SDK must not be imported" not in run.stdout + run.stderr
+
+
 def _git(root: Path, *args: str) -> None:
     subprocess.run(["git", *args], cwd=root, text=True, capture_output=True, check=True)
 

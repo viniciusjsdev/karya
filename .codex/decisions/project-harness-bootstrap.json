@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0",
+  "status": "accepted",
+  "project": {
+    "name": "Karya",
+    "domain": "AI-native project creation, research, commercial workflows and durable project operations",
+    "project_type": "ai",
+    "objective": "Maintain navigable source ownership and explicit relationships across all Karya, its coordinator, four independent Factories, skill packages, contracts, tools, examples, templates, website and visual identity."
+  },
+  "sources_of_truth": [
+    {
+      "path": "AGENTS.md",
+      "kind": "operation",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "README.md",
+      "kind": "product",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "docs/karya-architecture.md",
+      "kind": "architecture",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "specs/skill-catalog.md",
+      "kind": "contract",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "specs/factory-handoff-contracts.md",
+      "kind": "contract",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "skills",
+      "kind": "operation",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "docs",
+      "kind": "architecture",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "specs",
+      "kind": "contract",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "site",
+      "kind": "product",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "assets/brand",
+      "kind": "product",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "templates",
+      "kind": "architecture",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": "examples",
+      "kind": "architecture",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": ".codex/references/repository-map.md",
+      "kind": "operation",
+      "authority": "primary",
+      "action": "preserve"
+    },
+    {
+      "path": ".codex/references/project-harness.md",
+      "kind": "operation",
+      "authority": "primary",
+      "action": "preserve"
+    }
+  ],
+  "documentation": {
+    "preserve": [
+      "AGENTS.md",
+      "README.md",
+      "docs/karya-architecture.md",
+      "specs/skill-catalog.md",
+      "specs/factory-handoff-contracts.md",
+      "skills",
+      "docs",
+      "specs",
+      "site",
+      "assets/brand",
+      "templates",
+      "examples",
+      ".codex/references/repository-map.md",
+      ".codex/references/project-harness.md"
+    ],
+    "create": [],
+    "path_mappings": []
+  },
+  "decisions": {
+    "durable_path": ".codex/decisions",
+    "open": []
+  },
+  "workflows": [
+    {
+      "name": "MVP Factory",
+      "path": "docs/product-workflow.md",
+      "action": "preserve"
+    },
+    {
+      "name": "Research Factory",
+      "path": "docs/research-workflow.md",
+      "action": "preserve"
+    },
+    {
+      "name": "Marketing Factory",
+      "path": "docs/marketing-workflow.md",
+      "action": "preserve"
+    },
+    {
+      "name": "Project Harness Factory",
+      "path": "docs/project-harness-factory.md",
+      "action": "preserve"
+    }
+  ],
+  "local_skill_candidates": [],
+  "spec_strategy": {
+    "root": "specs",
+    "active_pattern": "specs/active/SPEC-NNN",
+    "markdown_name": "SPEC.md",
+    "execution_name": "SPEC.execution.json"
+  },
+  "validation": [
+    {
+      "id": "VAL-001",
+      "command": "python scripts/harness/project_map.py check --project-root .",
+      "required": true
+    },
+    {
+      "id": "VAL-002",
+      "command": "python skills/project-harness-auditor/scripts/audit_project_harness.py --project-root .",
+      "required": true
+    },
+    {
+      "id": "VAL-003",
+      "command": "git diff --check",
+      "required": true
+    }
+  ],
+  "runtime_policy": {
+    "policy_version": "1.0",
+    "project_path": ".codex/references/runtime-policy.json"
+  },
+  "thread_policy": {
+    "design": "current explicitly approved task",
+    "implementation": "sequential current working tree",
+    "needs_design": "persist consequential decisions before continuing",
+    "parallel_writes": "sequential_by_default",
+    "subagents": "not_default"
+  },
+  "automatic_handoff": false
+}

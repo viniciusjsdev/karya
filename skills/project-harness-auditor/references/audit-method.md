@@ -27,6 +27,8 @@ Each finding names severity, category, statement, and evidence. `high` blocks ap
 
 ## Knowledge audit questions
 
+If JSON navigation exists, the deterministic audit validates its structure, local targets and fingerprints; stale or unreviewed maps require correction even when a legacy Markdown map also exists. Check that AGENTS points to JSON. Then independently reconcile node responsibilities and relation rationales with sources and the actual change. An executor's `review --note` is not independent semantic evidence. Legacy Markdown-only projects retain their prior navigation contract; do not require migration just to audit them.
+
 - What important fact or decision exists only in supplied chat history?
 - Which docs are contradicted by code, data, procedures, or observed behavior?
 - Which recurring procedure is repeatedly re-discovered and deserves a Skill or script?

@@ -1,5 +1,7 @@
 # Project Harness navigation
 
+This is a specialized reference for the Harness Factory. The living map of **all Karya** is [project-map.json](project-map.json); use it for cross-Factory and repository-wide navigation.
+
 This repository is the source of the Karya Project Harness Factory. Durable workflow and routing truth is split by responsibility:
 
 - `AGENTS.md` defines repository-wide boundaries and invariants.

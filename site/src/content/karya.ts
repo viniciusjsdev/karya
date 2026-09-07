@@ -7,6 +7,8 @@ export const docs = {
   routing: `${repositoryUrl}/blob/main/docs/karya-routing.md`,
   workflowMap: `${repositoryUrl}/blob/main/docs/factory-workflow-map.md`,
   harness: `${repositoryUrl}/blob/main/docs/project-harness-factory.md`,
+  navigationMap: `${repositoryUrl}/blob/main/skills/project-harness-architect/references/project-map.md`,
+  navigationJson: `${repositoryUrl}/blob/main/.codex/references/project-map.json`,
   product: `${repositoryUrl}/blob/main/docs/product-workflow.md`,
   research: `${repositoryUrl}/blob/main/docs/research-workflow.md`,
   marketing: `${repositoryUrl}/blob/main/docs/marketing-workflow.md`,
@@ -19,9 +21,21 @@ export const navigation = [
   { id: 'architecture', label: 'Architecture' },
   { id: 'routing', label: 'Routing' },
   { id: 'factories', label: 'Factories' },
-  { id: 'why', label: 'Why Karya' },
+  { id: 'navigation-map', label: 'Project map' },
   { id: 'start', label: 'Get started' },
 ] as const
+
+export const projectNavigation = {
+  viewerUrl: `${siteBase}project-map.html`,
+  steps: [
+    ['Locate', 'Query modules, responsibilities, decisions, and explicit relationships.'],
+    ['Read', 'Open the original code, docs, and contracts that give the task its context.'],
+    ['Reconcile', 'After implementation and tests, update affected sources and relationships.'],
+    ['Review and check', 'Record the source review, then check for drift before completion.'],
+  ],
+  query:
+    'python scripts/harness/project_map.py query --project-root . --text "payments" --limit 20',
+} as const
 
 export type DetailItem = {
   id: string

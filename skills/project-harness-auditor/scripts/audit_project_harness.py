@@ -13,6 +13,7 @@ for scripts in (
     SKILLS_ROOT / "project-spec-architect" / "scripts",
     SKILLS_ROOT / "codex-runtime-router" / "scripts",
     SKILLS_ROOT / "project-skill-author" / "scripts",
+    SKILLS_ROOT / "project-harness-architect" / "scripts",
 ):
     if str(scripts) not in os.sys.path:
         os.sys.path.insert(0, str(scripts))
@@ -23,6 +24,7 @@ from _runtime_core import (
 )
 from _spec_core import validate_spec_pair, validate_structural_baseline
 from validate_project_skill import validate_project_skill
+from _project_map import MAP_PATH, check_map, load_map
 
 
 def audit_project_harness(
@@ -54,7 +56,20 @@ def audit_project_harness(
 
     if not (root / "AGENTS.md").exists():
         add("high", "agents", "AGENTS.md is missing.", ["AGENTS.md"])
-    if not (root / ".codex/references/project-harness.md").exists():
+    if (root / MAP_PATH).exists():
+        try:
+            navigation = check_map(root, load_map(root))
+            for error in navigation["errors"]:
+                add("high", "navigation", error, [MAP_PATH])
+            for pending in navigation["pending"]:
+                add("medium", "navigation", pending, [MAP_PATH])
+            if (root / "AGENTS.md").is_file() and MAP_PATH not in (root / "AGENTS.md").read_text(encoding="utf-8-sig"):
+                add("medium", "navigation", "AGENTS.md does not point to the JSON navigation map.", ["AGENTS.md", MAP_PATH])
+        except (ValueError, OSError, TypeError, KeyError) as error:
+            add("high", "navigation", f"Invalid navigation map: {error}", [MAP_PATH])
+    elif (root / "AGENTS.md").is_file() and MAP_PATH in (root / "AGENTS.md").read_text(encoding="utf-8-sig"):
+        add("high", "navigation", "JSON navigation map is missing despite AGENTS routing to it.", ["AGENTS.md", MAP_PATH])
+    elif not (root / ".codex/references/project-harness.md").exists():
         add(
             "medium",
             "navigation",

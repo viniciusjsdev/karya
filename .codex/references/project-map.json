@@ -1,0 +1,3198 @@
+{
+  "schema_version": "1.1",
+  "project": {
+    "name": "Karya",
+    "objective": "Maintain navigable source ownership and explicit relationships across all Karya, its coordinator, four independent Factories, skill packages, contracts, tools, examples, templates, website and visual identity."
+  },
+  "nodes": [
+    {
+      "id": "n-a54ff182c7e8",
+      "label": "Regras do repositório",
+      "kind": "operation",
+      "summary": "Invariantes obrigatórios, limites entre Factories e ciclo de manutenção do mapa.",
+      "path": "AGENTS.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "400a59ad0e91bce21195d05104f91a1ccbf059add3df313e9cc42a1828ce370e"
+    },
+    {
+      "id": "n-b33563055168",
+      "label": "Entrada pública de Karya",
+      "kind": "product",
+      "summary": "Apresentação, instalação, catálogo, navegação viva e primeiros passos.",
+      "path": "README.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "630b86209f805aaa66f0c2e433dcf126c3458cc8f05abb4706c30266af65ff66"
+    },
+    {
+      "id": "n-98f25c14eed9",
+      "label": "Karya Architecture",
+      "kind": "architecture",
+      "summary": "Karya is the umbrella system for four independent, explicitly invoked Factories:",
+      "path": "docs/karya-architecture.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "e39a9b82db2ed00b6856de8244e0daf9663dd40cab32747e7b9e2220a022d215"
+    },
+    {
+      "id": "n-c3db765145ed",
+      "label": "Skill Catalog",
+      "kind": "contract",
+      "summary": "Karya provides one optional conversational coordination skill plus specialist skills divided into four independent Factories. Users may invoke `$karya` to receive an explained route and continue through approved specialist capabilities without learning the catalog first, or invoke a specialist directly when the route is already known. Research, Marketing, and Project Harness are never implicit prerequisites of MVP construction or of one another.",
+      "path": "specs/skill-catalog.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "771801c05c7d894f95326384b06a4337d8b12f0f42f8e901f9acff493cbfc79c"
+    },
+    {
+      "id": "n-b6c5ad248937",
+      "label": "Factory Handoff Contracts",
+      "kind": "contract",
+      "summary": "The MVP, Research, Marketing, and Project Harness Factories are independent. The handoffs below describe compatible artifacts, not a mandatory global pipeline. A consumer runs only after explicit user invocation or approval; a producer must never trigger it silently. `$karya` may recommend and coordinate an approved handoff, but it does not change this boundary.",
+      "path": "specs/factory-handoff-contracts.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "b1e7c08a2e13def62a7ee1420019a260a323a21bc572d789ef32180c83926186"
+    },
+    {
+      "id": "n-32c1cf49a2fe",
+      "label": "Skills instaláveis",
+      "kind": "code",
+      "summary": "Pacotes independentes das quatro Factories e coordenação opcional; cada SKILL.md define seu contrato.",
+      "path": "skills",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "bfd0b1f655c0f009deb511f6d5b68f9b3b83afdc24d133efb165108f145c04a1"
+    },
+    {
+      "id": "n-46b42b4229cd",
+      "label": "Arquitetura e métodos",
+      "kind": "architecture",
+      "summary": "Fontes de verdade sobre método, arquitetura, workflows e identidade de Karya.",
+      "path": "docs",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "c7ed9c241ffabd6687a10f3a07bc58a671ef03be29b58bb6f44bcaa6edbb9b83"
+    },
+    {
+      "id": "n-7846086ae9fc",
+      "label": "Contratos e Specs",
+      "kind": "contract",
+      "summary": "Contratos duráveis de escopo e handoff; não representam automaticamente uma execução ativa.",
+      "path": "specs",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "ad3822dbadc1d3b147f51b31776059176f33031b8e56b0c9537e1de19c6dedd5"
+    },
+    {
+      "id": "n-fbae041b02c4",
+      "label": "Site oficial Karya",
+      "kind": "product",
+      "summary": "Aplicação React/TypeScript que apresenta o sistema, a coordenação e as quatro Factories.",
+      "path": "site",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "5141c6d24f837d1c0755d19f305cc29f56133baabaf5b6c087c56554f7ef288e"
+    },
+    {
+      "id": "n-069b0dbb39d6",
+      "label": "Identidade visual Karya",
+      "kind": "product",
+      "summary": "Ativos visuais oficiais preservados; regras em docs/branding.md.",
+      "path": "assets/brand",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "e8f386eff3b301b9c0d45859e20ecdfe1bc5d3485ec24b1d1252e236a3f01d59"
+    },
+    {
+      "id": "n-9c6641c1f9cf",
+      "label": "Starters compartilhados",
+      "kind": "reference",
+      "summary": "Orientação e organização para material reutilizável de projetos gerados.",
+      "path": "templates",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "439a36f04e52cbbb58232e0dcc25f9c980299ea4042d86abf6dae68793b06b66"
+    },
+    {
+      "id": "n-c590b3c924c3",
+      "label": "Exemplos de contratos e projetos",
+      "kind": "reference",
+      "summary": "Amostras e fixtures por Factory; não são produção nem histórico executado da Karya.",
+      "path": "examples",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "f4c94958d0bda05ca4ea17834a99c7bc42eb3ff803eb8f49d0110e4505b05d38"
+    },
+    {
+      "id": "n-e980e1921077",
+      "label": ".codex/references/repository-map.md",
+      "kind": "operation",
+      "summary": "Source declared in the accepted Harness plan.",
+      "path": ".codex/references/repository-map.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "a6cbd1b1ada314e1090ccde6cffdaec5c22eadae5ff51283fa77b0dc28892cdf"
+    },
+    {
+      "id": "n-4194dac67277",
+      "label": ".codex/references/project-harness.md",
+      "kind": "operation",
+      "summary": "Source declared in the accepted Harness plan.",
+      "path": ".codex/references/project-harness.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "0e6c206e7606f5f9b5e19ed5ccc0814aa3ddda4c23859cdcfa2783f45019b585"
+    },
+    {
+      "id": "n-a0a14512336f",
+      "label": "MVP Factory",
+      "kind": "workflow",
+      "summary": "MVP Factory. Workflow independente definido nesta fonte e em specs/skill-catalog.md.",
+      "path": "docs/product-workflow.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "565500d748b7cea208810c957675ccafa10ddb8ab6ab0f0f7ac991308f2d2c46"
+    },
+    {
+      "id": "n-7bf810db6273",
+      "label": "Research Factory",
+      "kind": "workflow",
+      "summary": "Research Factory. Workflow independente definido nesta fonte e em specs/skill-catalog.md.",
+      "path": "docs/research-workflow.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "607891caa2e0cb8c01678d892c50542899f11c80302e16f7e5bb6c37123430b5"
+    },
+    {
+      "id": "n-cf1d3f68c1ff",
+      "label": "Marketing Factory",
+      "kind": "workflow",
+      "summary": "Marketing Factory. Workflow independente definido nesta fonte e em specs/skill-catalog.md.",
+      "path": "docs/marketing-workflow.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "0637b680b1b87bf53eeba35f983316095719aeefa274c6ee1c0e3816b2623213"
+    },
+    {
+      "id": "n-ad47f38e78a7",
+      "label": "Project Harness Factory",
+      "kind": "workflow",
+      "summary": "Project Harness Factory. Workflow independente definido nesta fonte e em specs/skill-catalog.md.",
+      "path": "docs/project-harness-factory.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "ad90d8734d61ddf719ff23904d8e55f61aadeb2f3a080411748292854039999f"
+    },
+    {
+      "id": "n-27b26f9ecc89",
+      "label": ".codex/decisions",
+      "kind": "reference",
+      "summary": "Material durável desta área; consulte os arquivos originais para as regras específicas.",
+      "path": ".codex/decisions",
+      "target": "directory",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "331f6875ae8382bc8c7ac9b7ad9415eef1caebdf7385a6ee9b6766a986c02b47"
+    },
+    {
+      "id": "n-fe9c8ff1a869",
+      "label": "Active Spec path pattern",
+      "kind": "spec",
+      "summary": "Pattern only, not a selected active Spec.",
+      "path": "specs/active/SPEC-NNN",
+      "target": "pattern",
+      "status": "planned",
+      "authority": "supporting",
+      "fingerprint": null
+    },
+    {
+      "id": "n-6eaf23ea94a1",
+      "label": "Runtime policy",
+      "kind": "runtime",
+      "summary": "Policy path declared in accepted plan.",
+      "path": ".codex/references/runtime-policy.json",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "e99db93e16bd933e0ab0b26e74d06c2757a958c881ad0c3e574fdb4d21495e69"
+    },
+    {
+      "id": "n-f1ecf3947b77",
+      "label": "Accepted bootstrap plan",
+      "kind": "reference",
+      "summary": "Historical input; validation commands are declarations, not proof of execution.",
+      "path": ".codex/decisions/project-harness-bootstrap.json",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "96059ab37d1e77397892cc83ff60368d4342d50cadabd739228e98cae47e2e59"
+    },
+    {
+      "id": "v-4af079c9638f",
+      "label": "VAL-001",
+      "kind": "validation",
+      "summary": "Declared command (not executed): python scripts/harness/project_map.py check --project-root . [required]",
+      "path": ".codex/decisions/project-harness-bootstrap.json",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "96059ab37d1e77397892cc83ff60368d4342d50cadabd739228e98cae47e2e59"
+    },
+    {
+      "id": "v-aff8d853fda4",
+      "label": "VAL-002",
+      "kind": "validation",
+      "summary": "Declared command (not executed): python skills/project-harness-auditor/scripts/audit_project_harness.py --project-root . [required]",
+      "path": ".codex/decisions/project-harness-bootstrap.json",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "96059ab37d1e77397892cc83ff60368d4342d50cadabd739228e98cae47e2e59"
+    },
+    {
+      "id": "v-1f19c181f55f",
+      "label": "VAL-003",
+      "kind": "validation",
+      "summary": "Declared command (not executed): git diff --check [required]",
+      "path": ".codex/decisions/project-harness-bootstrap.json",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "96059ab37d1e77397892cc83ff60368d4342d50cadabd739228e98cae47e2e59"
+    },
+    {
+      "id": "n-cdb4ee2aea69",
+      "label": "Karya · sistema completo",
+      "kind": "architecture",
+      "summary": "Coordenação opcional, MVP Factory, Research Factory, Marketing Factory, Project Harness Factory e infraestrutura do repositório. Fonte: docs/karya-architecture.md.",
+      "path": ".",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "e240632fd557b7c58dc786c4aef7b4ea30fadb340c43541a91191c6b8c5080b8"
+    },
+    {
+      "id": "n-a1d1128ffe5a",
+      "label": "Contexto operacional",
+      "kind": "operation",
+      "summary": "Referências, decisões, workflows, checklists e templates persistentes da Karya.",
+      "path": ".codex",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "286b6a99bb5e8d21586519b0e37446fce9c2456f76e9cabaf98ba3be3e939eb8"
+    },
+    {
+      "id": "n-b7bc26fc2492",
+      "label": "Ferramentas locais do mapa",
+      "kind": "code",
+      "summary": "Kit autossuficiente instalado neste repositório; mantém e renderiza seu mapa completo.",
+      "path": "scripts/harness",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "58dabd3b8059d0d97d9dc64fae0bc58421ca135e525f1c16926efdf7e6f2f904"
+    },
+    {
+      "id": "n-bdcc6a2a85f6",
+      "label": "Automação GitHub",
+      "kind": "operation",
+      "summary": "Workflow versionado de build e publicação do site; presença não prova deploy atual.",
+      "path": ".github",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "240a60acd3fe33530d6a5a6f827f7c4b87861c262b40ab5e0c14a5df6e950dd5"
+    },
+    {
+      "id": "n-1bd4219ef980",
+      "label": "Architecture Standard",
+      "kind": "architecture",
+      "summary": "This repository is a skill catalog and factory method repository.",
+      "path": "docs/architecture-standard.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "0333af50e96e188c024015c7e6d12f8ea7bac306db6d026ed48882699a6a6e6e"
+    },
+    {
+      "id": "n-32585ca60546",
+      "label": "Karya Brand",
+      "kind": "architecture",
+      "summary": "**Brand statement:** “Karya is the structure behind AI-native development.”",
+      "path": "docs/branding.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "5a7632b2c6e8f0e7a2a23271639c2ed0d7aec0c682da1fca3ea54b4be2608bfa"
+    },
+    {
+      "id": "n-eab4ddb10895",
+      "label": "Codex and Manus Integration",
+      "kind": "architecture",
+      "summary": "Official API behavior last verified: 2026-07-13.",
+      "path": "docs/codex-manus-integration.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "7e9bc2347703d2bb24119a04e420c2fed5af21c67dc3280a1c02f91f040f9316"
+    },
+    {
+      "id": "n-1dac2ca96e9f",
+      "label": "Optional Economic Execution Routing",
+      "kind": "architecture",
+      "summary": "Karya can recommend OpenCode when a user explicitly wants to economize Codex limits or execution cost. OpenCode is only an implementation executor. Codex remains the architect, coordinator, fallback, independent validator, and final auditor.",
+      "path": "docs/economic-execution-routing.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "513e6027b40fc7ae766f36db644a95915bed817a6d1ed2ebd9afa78253bc6f8a"
+    },
+    {
+      "id": "n-0449c98243c6",
+      "label": "Factory Workflow Map",
+      "kind": "architecture",
+      "summary": "When the route is unknown, start with `$karya`. It classifies the current objective and artifact state, recommends the smallest route with reasons, and waits for approval before applying specialist skills internally. Direct specialist invocation remains valid when the route is already known.",
+      "path": "docs/factory-workflow-map.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "f3ac083346f82767190d1241bc64c6d1c0e5a3653d7fb498c099faceafda755e"
+    },
+    {
+      "id": "n-ee83a06e5209",
+      "label": "Karya Method",
+      "kind": "architecture",
+      "summary": "This document describes only the MVP Factory. It remains independently runnable: the Research Factory, Marketing Factory, and Project Harness Factory are optional workflows. Users who do not know the appropriate entry point may first invoke `$karya` for an explained recommendation and approval; direct invocation of `product-brief-architect` remains valid.",
+      "path": "docs/karya-method.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "64a796dd8bff5d4d3a7ed9288b7df6dbc238b6007319c5be3bb1cf206176f459"
+    },
+    {
+      "id": "n-68ecdd2c4bbb",
+      "label": "Karya Routing and Coordination",
+      "kind": "architecture",
+      "summary": "`$karya` is the optional conversational front door to the Karya catalog. A user describes the desired outcome once; Karya inspects the prompt and relevant project state, recommends the smallest suitable route, explains the decision, obtains approval, and then applies specialist skills internally while remaining the user-facing coordinator.",
+      "path": "docs/karya-routing.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "3c34a7f9619acb2b77200cc2bf6b01e3c9c091e49cde09966d2be5fa7cdfc760"
+    },
+    {
+      "id": "n-7c9880307525",
+      "label": "OpenCode for Backend Execution",
+      "kind": "architecture",
+      "summary": "Codex remains the Karya orchestrator. It creates or validates the Goal, requires an approved backend contract, invokes the router once, waits passively, and resumes only when OpenCode exits successfully or with an error. OpenCode performs the heavy Django code-writing phase using `django-backend-code-executor`. Codex then sends the result to `django-backend-service-architect` for contract audit.",
+      "path": "docs/opencode-backend-execution.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "3c291faa5752e40f4fd189df8805f1ec17f2c08654c4477f204eef78ec307bf0"
+    },
+    {
+      "id": "n-816608f5658b",
+      "label": "Project Generation Flow",
+      "kind": "architecture",
+      "summary": "This is the standalone MVP generation flow. Research and marketing may consume or contribute artifacts through explicit handoffs, but they are never implicit generation stages.",
+      "path": "docs/project-generation-flow.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "a3bca0025474fe356f18452dcee4176f3314bef94eb7d1109fc69205c4a38793"
+    },
+    {
+      "id": "n-d2bb8fa727be",
+      "label": "Research Harness Adoption Record",
+      "kind": "architecture",
+      "summary": "The separate `research-harness` repository was reviewed as a methodological reference for Karya's Research Factory. Its strongest contribution is an adversarial validation loop that distinguishes sourced evidence from interpretation and deliberately constructs both rejection and opportunity cases.",
+      "path": "docs/research-harness-adoption.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "a14f55c19f39a435d6d3f6a1285613ed7c36c2ed17aed9498ef81ca222b96d64"
+    },
+    {
+      "id": "n-a6cd7367cb96",
+      "label": "Skill Sequences",
+      "kind": "architecture",
+      "summary": "There is no mandatory global sequence. When the correct route is unclear, `$karya` classifies the immediate objective, recommends one primary route, explains why, and waits for approval. It then remains the conversational coordinator while approved specialist skills work internally. Users may still invoke any specialist directly when the route is already known.",
+      "path": "docs/skill-sequence.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "db9988dee44a4785430bdd633c189c31ce4b2f7001699c3d8f6970f4a60bd77e"
+    },
+    {
+      "id": "n-9e30facea473",
+      "label": "Stack Standard",
+      "kind": "architecture",
+      "summary": "The complete version and supply-chain baseline lives in `skills/karya-frontend-builder/references/stack-baseline.md` and `npm-supply-chain-security.md`.",
+      "path": "docs/stack-standard.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "30cf8b9f96fe7291022511bd5ed0eaf5d309278690655dbf621162737bf4c116"
+    },
+    {
+      "id": "n-a24b4021b634",
+      "label": "Commercial Launch Contract",
+      "kind": "contract",
+      "summary": "Define an executable commercial launch for any product without assuming prior Research or MVP work.",
+      "path": "specs/commercial-launch-contract.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "7bd9578c167878ea5680b6352e01699e46b05440e247a590307f7a625946be10"
+    },
+    {
+      "id": "n-fb6b156fbe76",
+      "label": "Commercial Operation Contract",
+      "kind": "contract",
+      "summary": "Authorize and bound one external commercial action after final content and target are known.",
+      "path": "specs/commercial-operation-contract.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "d59c333e7c69b4c59beed0805b59186b6bb6235b8e5ac08230237e6d708351ef"
+    },
+    {
+      "id": "n-3c658d2d5eba",
+      "label": "Commercial Validation Contract",
+      "kind": "contract",
+      "summary": "Commercial launch/experiment contract, creative manifest, execution receipts, platform/product/CRM metrics, costs, feedback, and tracking definitions.",
+      "path": "specs/commercial-validation-contract.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "5dcd9381d5553f2dbc917b0a2684ef10cb0f10543cae455b5471f9e605fb0cf9"
+    },
+    {
+      "id": "n-72e09d1480e8",
+      "label": "Django Backend Contract",
+      "kind": "contract",
+      "summary": "Consume product contracts, numbered business rules, data/DTO contracts, authorization and sensitive-data expectations, acceptance criteria, frontend architecture, and frontend service/API contracts.",
+      "path": "specs/django-backend-contract.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "7e69f50610289e47ecf8bcf9a2a6fecc141b3cc3212887170c15b5fd5ed6e0bf"
+    },
+    {
+      "id": "n-8015b9aa5c35",
+      "label": "Frontend Build Contract",
+      "kind": "contract",
+      "summary": "The frontend must preserve explicit product semantics. Any implementation assumption or variance must be recorded for backend and product review.",
+      "path": "specs/frontend-build-contract.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "cc5510db1149e80065a66597783a932a677c898810d3fed04a7ab480a0e9bd99"
+    },
+    {
+      "id": "n-8bfb6605a695",
+      "label": "Infra Orchestration Contract",
+      "kind": "contract",
+      "summary": "`karya-infra-orchestrator`",
+      "path": "specs/infra-orchestration-contract.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "55f6f4c8b791aa7304c1797b90690cb9eb8ff45f8e94e7ed31196a27b5c65d20"
+    },
+    {
+      "id": "n-84475a5930bb",
+      "label": "Market Research Contract",
+      "kind": "contract",
+      "summary": "Define the decision, hypotheses, evidence tasks, and stop conditions before research is routed. The contract is provider-neutral and optional relative to MVP/Marketing work.",
+      "path": "specs/market-research-contract.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "032d922e1926bc749f10bd0286bfc4eaffebd2edf67c1d75c68bc278b8db173c"
+    },
+    {
+      "id": "n-cec43bf9a763",
+      "label": "Market Validation Contract",
+      "kind": "contract",
+      "summary": "Research contract, normalized evidence bundle, calculations, limitations, counterevidence, and search-failure log.",
+      "path": "specs/market-validation-contract.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "684dc75fb0d6c372b0e37ca9433a14969f1945e95d56c01f47dcd74de66e7ad6"
+    },
+    {
+      "id": "n-e35b34ac0d20",
+      "label": "Platform Research Contract",
+      "kind": "contract",
+      "summary": "Task/decision ID, platform/session authority, query, audience, geography/language/time, inclusion/exclusion, maximum result count, required fields, privacy constraints, and completion condition.",
+      "path": "specs/platform-research-contract.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "5f84e08895c84b017ba35fd2886066b7fdf7a56dca4c00118edd1c7aef26025f"
+    },
+    {
+      "id": "n-379f728f856c",
+      "label": "Executable Product Contract",
+      "kind": "contract",
+      "summary": "The product contract is the handoff from product intent to implementation.",
+      "path": "specs/product-contract.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "a5e1ad8909c78c68bc89c7208e7679a60dc3e468881ed5877270723e98be1b32"
+    },
+    {
+      "id": "n-214405677eb3",
+      "label": "Project Harness Factory contract",
+      "kind": "contract",
+      "summary": "An idea, empty or existing project, product, software system, research program, data/AI project, automation, infrastructure, commercial project, or other bounded project.",
+      "path": "specs/project-harness-contract.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "716d9d41a5658f8ca6e77faa37e80329c7e5a81a2118536e1412fd551a994c02"
+    },
+    {
+      "id": "n-68f9051d55c5",
+      "label": "Project navigation map contract",
+      "kind": "contract",
+      "summary": "Karya Harness projects use one JSON map at `.codex/references/project-map.json` for navigation. Original docs, ADRs, domain contracts and Spec references remain authoritative. The owner approved a live map maintained with changes and an optional offline interactive HTML using Karya branding. This contract records the resolved implementation scope; it does not dispatch an SDK thread or alter runtime manifests.",
+      "path": "specs/project-navigation-map-contract.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "6ff609e89b9c04e92b5f7ec9941a3131b132ccc148ffb7a1bd765949d2298d9b"
+    },
+    {
+      "id": "n-e8a2102bdca5",
+      "label": "Research Provider Routing Contract",
+      "kind": "contract",
+      "summary": "Route bounded tasks according to evidence need, authentication, availability, cost, and source quality.",
+      "path": "specs/research-provider-routing-contract.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "ef667ee4c5b29e7085861d70b496e328a42706fa566a15ce38c4531f75571c08"
+    },
+    {
+      "id": "n-1a68ebe9a79a",
+      "label": "Install Skills Workflow",
+      "kind": "workflow",
+      "summary": "Procedimento persistente descrito neste arquivo; requer as aprovações e fontes dos contratos originais.",
+      "path": ".codex/workflows/install-skills.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "8c1baafcc5bb059b79db6a57905db0a2b74ba46aa26b7eb92e3b392c7bf421aa"
+    },
+    {
+      "id": "n-b9328eafaa3c",
+      "label": "Karya End-to-End Workflow",
+      "kind": "workflow",
+      "summary": "Procedimento persistente descrito neste arquivo; requer as aprovações e fontes dos contratos originais.",
+      "path": ".codex/workflows/karya-end-to-end.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "0464d5a577e8a88f16d2cdf24ada2d94447a9c8c415123eaf318d4ad7a955015"
+    },
+    {
+      "id": "n-98e289a05394",
+      "label": "Marketing Factory Workflow",
+      "kind": "workflow",
+      "summary": "Procedimento persistente descrito neste arquivo; requer as aprovações e fontes dos contratos originais.",
+      "path": ".codex/workflows/marketing-factory.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "e17fdc298e385fdc25fa4d95685a6e24a830ae0ccd3c57becf2cea4d9d043a70"
+    },
+    {
+      "id": "n-21a956f366ad",
+      "label": "Project Harness Factory workflow",
+      "kind": "workflow",
+      "summary": "Procedimento persistente descrito neste arquivo; requer as aprovações e fontes dos contratos originais.",
+      "path": ".codex/workflows/project-harness-factory.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "468ed1c3949340076d0614bf2937bad85b13dc464845cf63098d593d04ce73f6"
+    },
+    {
+      "id": "n-fe15b7ce3ed9",
+      "label": "Research Factory Workflow",
+      "kind": "workflow",
+      "summary": "Procedimento persistente descrito neste arquivo; requer as aprovações e fontes dos contratos originais.",
+      "path": ".codex/workflows/research-factory.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "5d4f10a92dcbbc2b65a864766b7db0a7b2bc5d7dd8cc67366af19a219abe8fc1"
+    },
+    {
+      "id": "n-9ad68d4d71fa",
+      "label": ".codex/checklists",
+      "kind": "reference",
+      "summary": "Material durável desta área; consulte os arquivos originais para as regras específicas.",
+      "path": ".codex/checklists",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "f57b360dac70cd915eed309f1d3459871af04da2079e05aac967d3b72c713f26"
+    },
+    {
+      "id": "n-6358c4bed25d",
+      "label": ".codex/templates",
+      "kind": "reference",
+      "summary": "Material durável desta área; consulte os arquivos originais para as regras específicas.",
+      "path": ".codex/templates",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "8a8633fc13c8cd143de42792a6ed2afffcd5d647005d4f3838a8239f3d994e5b"
+    },
+    {
+      "id": "n-85b78164ec90",
+      "label": ".codex/goals",
+      "kind": "reference",
+      "summary": "Material durável desta área; consulte os arquivos originais para as regras específicas.",
+      "path": ".codex/goals",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "1135435535170fe810e508751f57c0a731d3829b4e6e5f7489e75388b77cab9d"
+    },
+    {
+      "id": "n-56de38683445",
+      "label": "templates/root",
+      "kind": "reference",
+      "summary": "Material durável desta área; consulte os arquivos originais para as regras específicas.",
+      "path": "templates/root",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "e83a328dae8e4afae65a4d3d63e044e913100fd3ad679969c608d5ae39be35d8"
+    },
+    {
+      "id": "n-ab19ac3c829a",
+      "label": "templates/backend",
+      "kind": "reference",
+      "summary": "Material durável desta área; consulte os arquivos originais para as regras específicas.",
+      "path": "templates/backend",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "7c35d87546117b77798714e0566ceda195c0cec0317611cca5f15df6669d78da"
+    },
+    {
+      "id": "n-f4bb4d5036f1",
+      "label": "templates/frontend",
+      "kind": "reference",
+      "summary": "Material durável desta área; consulte os arquivos originais para as regras específicas.",
+      "path": "templates/frontend",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "5b9685e6acf2d4ef2b695c5ef1ed77acea02c9900cd7b8014745c4b24a085fe9"
+    },
+    {
+      "id": "n-be7992e4a739",
+      "label": "templates/docs",
+      "kind": "reference",
+      "summary": "Material durável desta área; consulte os arquivos originais para as regras específicas.",
+      "path": "templates/docs",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "27417ffae640b8bb654f118d7af8d2ecb2f8d8b3a62a076ec43695b99623c6e6"
+    },
+    {
+      "id": "n-49e94c1e31fd",
+      "label": "templates/docker",
+      "kind": "reference",
+      "summary": "Material durável desta área; consulte os arquivos originais para as regras específicas.",
+      "path": "templates/docker",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "6342a10b0a14abda61ecc82511f88974f92dcc88f5f37166d0a6454d5d0aaf8b"
+    },
+    {
+      "id": "n-eca12c0a30e2",
+      "label": "Contribuição e manutenção",
+      "kind": "operation",
+      "summary": "Como evoluir skills, contratos e o mapa deste repositório.",
+      "path": "CONTRIBUTING.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "e10bbdcb5374bf9f419c54c8e1cc8267bc004ac427e7d2547a9f0cb871435b9c"
+    },
+    {
+      "id": "n-c693279643b8",
+      "label": "Licença MIT",
+      "kind": "contract",
+      "summary": "Termos de distribuição e reutilização do código e ativos do repositório.",
+      "path": "LICENSE",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "dc15f66d29d112e6ea261ce8064843a4d400ee9e196ba6c5d845b91a0d355303"
+    },
+    {
+      "id": "n-761f3243317d",
+      "label": "Conteúdo do site",
+      "kind": "code",
+      "summary": "Textos, links e dados das visualizações que apresentam Karya e suas Factories.",
+      "path": "site/src/content/karya.ts",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "29ef70c94861eb6c4bf9ba347e24e645d7e8d72d0e79e9a96bd80f541f706bac"
+    },
+    {
+      "id": "n-cbced11a8765",
+      "label": "Aplicação do site",
+      "kind": "code",
+      "summary": "Composição das seções e diagramas do site oficial.",
+      "path": "site/src/App.tsx",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "6e7dee42a4d2d9056396cfea978095b98afe98a65a31955588572db4d8950233"
+    },
+    {
+      "id": "n-ce2de2a978bb",
+      "label": "Componentes do site",
+      "kind": "code",
+      "summary": "Cabeçalho, diagramas, seções e interações do site.",
+      "path": "site/src/components",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "00f9b382ec3d2db81eda5bb3b67dd74964e61d30e094ddb260d9b4d15434850f"
+    },
+    {
+      "id": "n-5db96d6f9be4",
+      "label": "Tokens e estilos Karya",
+      "kind": "code",
+      "summary": "Cores, tipografia, estados e layouts da identidade visual aplicada ao site.",
+      "path": "site/src/styles.css",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "d9f27fcf294f509f31ff20ad409ea914da8e6bc8e6a86eb21d8b621c5cc341f9"
+    },
+    {
+      "id": "n-35f15d66f9b3",
+      "label": "Comandos e dependências do site",
+      "kind": "operation",
+      "summary": "Declara build, testes, lint e segurança; não é evidência de execução.",
+      "path": "site/package.json",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "cc1f3ac9e1845a2a85233c55f0c93cd9a650f0e80fa7de3a72cf78aa08752212"
+    },
+    {
+      "id": "n-351bd6a5da17",
+      "label": "Testes do conteúdo do site",
+      "kind": "validation",
+      "summary": "Testes das invariantes do conteúdo e dos links; consultar os asserts para o alcance exato.",
+      "path": "site/src/content/karya.test.ts",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "d11940d57a4f00540870f09805f748b527c7af67412489e9fd9cd515dbe0ee1c"
+    },
+    {
+      "id": "n-a410bf6c8fa1",
+      "label": "Ferramentas do site",
+      "kind": "code",
+      "summary": "Sincronização dos ativos de marca e verificações locais de dependências.",
+      "path": "site/scripts",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "7fe5baa69903c84dccea953870806d398bc6fa459c38068678d5bad32b9ce646"
+    },
+    {
+      "id": "n-02a5ea3eaa32",
+      "label": "Manifesto de marca",
+      "kind": "contract",
+      "summary": "Inventário e restrições dos ativos oficiais.",
+      "path": "assets/brand/manifest.json",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "b79a7a1de70e8d54aa6cd1da9c9eb95e181efdcf8771bc422fa41dc9569a8ae5"
+    },
+    {
+      "id": "n-267452bb53d3",
+      "label": "Publicação GitHub Pages",
+      "kind": "workflow",
+      "summary": "Build do diretório site e deploy declarado no workflow; não afirma estado remoto atual.",
+      "path": ".github/workflows/pages.yml",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "93e5bade1bc92583a336394a9641a6c6ee0505bca78ad42a7c6e7d5cc97e71c2"
+    },
+    {
+      "id": "n-06638b5eb96f",
+      "label": "karya",
+      "kind": "workflow",
+      "summary": "Karya Coordination. Act as Karya's conversational front door by understanding a user's objective and project context, classifying the immediate need, recommending the smallest suitable Factory, specialist skill, or direct-execution route, explaining why, and waiting for approval before applying specialist capabilities internally. Entrada: skills/karya/SKILL.md.",
+      "path": "skills/karya",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "a15c30f341cf5fc8e08e7e0a82d189b4405fb90409002bf494931e5d689ba657"
+    },
+    {
+      "id": "n-d441e6aeb3e4",
+      "label": "product-brief-architect",
+      "kind": "workflow",
+      "summary": "MVP Factory. Transform a rough product idea, PRD, client notes, market problem, feature list, or screen list into an executable product contract for direct frontend and backend implementation. Entrada: skills/product-brief-architect/SKILL.md.",
+      "path": "skills/product-brief-architect",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "b2c01cb54ab45e17113568eaddbd4b608fe1ca2b9824a1d3fe3e57aa9c1f6a68"
+    },
+    {
+      "id": "n-f5421d18ee15",
+      "label": "karya-frontend-builder",
+      "kind": "workflow",
+      "summary": "MVP Factory. Build complete frontend applications directly from a product contract, PRD, screen specification, client notes, or sufficiently defined product idea. Entrada: skills/karya-frontend-builder/SKILL.md.",
+      "path": "skills/karya-frontend-builder",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "ce8793ef9e4013f3b542f0327ddbfa7a0ff8c61895f0bb43341846bcaa2cc6d8"
+    },
+    {
+      "id": "n-5abfd81ff4f1",
+      "label": "django-backend-service-architect",
+      "kind": "workflow",
+      "summary": "MVP Factory. Plan and audit API-first Django backends from executable product, frontend, and API contracts using scalable per-domain Model, Configuration, DTO, explicit Mapper, Controller, Service, and Repository packages. Entrada: skills/django-backend-service-architect/SKILL.md.",
+      "path": "skills/django-backend-service-architect",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "7cd384ee6f207a6cbeae405b00a01f5f0fe17f74fa2808ac2b8fdb0f871d4102"
+    },
+    {
+      "id": "n-4cab0b25175f",
+      "label": "karya-backend-router",
+      "kind": "workflow",
+      "summary": "MVP Factory. Route an explicitly approved Django backend implementation to OpenCode Go when the CLI, OpenCode Go authentication, and configured coding model are available, otherwise continue with Codex using the same executor-neutral contract. Entrada: skills/karya-backend-router/SKILL.md.",
+      "path": "skills/karya-backend-router",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "e026e736edf0c630524d90522f5bb23ebc58c6d20a3d6291f125d47695ff2f10"
+    },
+    {
+      "id": "n-4cfb5c52ea7c",
+      "label": "django-backend-code-executor",
+      "kind": "workflow",
+      "summary": "MVP Factory. Implement an approved Django backend contract using scalable per-domain Model, Configuration, DTO, explicit Mapper, Controller, Service, and Repository packages. Entrada: skills/django-backend-code-executor/SKILL.md.",
+      "path": "skills/django-backend-code-executor",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "406aab903ed00a31341c204c12a2b3c27c3a151757350197eba52d0479133857"
+    },
+    {
+      "id": "n-c16e0bfaf7c3",
+      "label": "karya-infra-orchestrator",
+      "kind": "workflow",
+      "summary": "MVP Factory. Use this skill when creating or normalizing Karya infrastructure for a monorepo with frontend, backend, Docker, Docker Compose, Terraform, Render, Supabase and Vercel. It creates local container orchestration, provider-scoped Terraform for declarative cloud infrastructure, frontend/backend Dockerfiles, environment contracts, deployment guidance and validation commands. Do not use this skill for frontend UI refactors or backend business logic.. Entrada: skills/karya-infra-orchestrator/SKILL.md.",
+      "path": "skills/karya-infra-orchestrator",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "6ef8bfd6fb3746871087f625af0217ed8cc8bab6e1ede5213e07bb68b645dd6f"
+    },
+    {
+      "id": "n-3d1487a5ea43",
+      "label": "market-research-architect",
+      "kind": "workflow",
+      "summary": "Research Factory. Turn a product idea, PRD, app concept, market question, or existing product into an executable market-research contract. Entrada: skills/market-research-architect/SKILL.md.",
+      "path": "skills/market-research-architect",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "4db1a907a834efdc8891916884c2c7772ddca6314b2505e415aae34a0af36e44"
+    },
+    {
+      "id": "n-fa291f17e983",
+      "label": "karya-research-router",
+      "kind": "workflow",
+      "summary": "Research Factory. Route an approved market-research contract to Codex, AppStoreTracker, Apple, OpenAlex, optional Perplexity, or Manus according to evidence type, authentication needs, cost, and source quality. Entrada: skills/karya-research-router/SKILL.md.",
+      "path": "skills/karya-research-router",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "88c67677c83e094a7f1e83c1b643621cf08d0476d139311b9919fdf7ff75cca8"
+    },
+    {
+      "id": "n-26f706f7b6b1",
+      "label": "app-market-intelligence-analyst",
+      "kind": "workflow",
+      "summary": "Research Factory. Analyze the iOS market for a specific app, developer portfolio, family of apps, category, or comparable cohort using AppStoreTracker and corroborating Apple evidence. Entrada: skills/app-market-intelligence-analyst/SKILL.md.",
+      "path": "skills/app-market-intelligence-analyst",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "78e3cfe10297f370cbc4806ca0de2d271b4d6d0fe12792cdd7f67f41178d13b9"
+    },
+    {
+      "id": "n-03a39ca0717c",
+      "label": "manus-platform-researcher",
+      "kind": "workflow",
+      "summary": "Research Factory. Execute a bounded, read-only research brief inside authenticated or platform-native environments such as Instagram, TikTok, LinkedIn, communities, directories, or creator marketplaces. Entrada: skills/manus-platform-researcher/SKILL.md.",
+      "path": "skills/manus-platform-researcher",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "c7618370433e688ec17cbcaf1eb99b72c9dd24b58b0f3940c9a4d0ac2908896f"
+    },
+    {
+      "id": "n-bf7b97e7ce4f",
+      "label": "market-validation-harness",
+      "kind": "workflow",
+      "summary": "Research Factory. Challenge a market hypothesis with a provider-neutral, adversarial evidence review and produce an auditable proceed, experiment, revise, pause, or reject decision. Entrada: skills/market-validation-harness/SKILL.md.",
+      "path": "skills/market-validation-harness",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "00a9ea69dcda7d2358922153c49d51e87556ba87ab1514c6155ea89f0f585061"
+    },
+    {
+      "id": "n-31afb375a840",
+      "label": "commercial-launch-architect",
+      "kind": "workflow",
+      "summary": "Marketing Factory. Turn an existing app, platform, service, product brief, or validated idea into an executable commercial launch contract. Entrada: skills/commercial-launch-architect/SKILL.md.",
+      "path": "skills/commercial-launch-architect",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "82200246c66f4c70c3d55cb06751cd9477e8c03bc854ca3d167b8bb4d1f4de8c"
+    },
+    {
+      "id": "n-5749bea184d8",
+      "label": "marketing-creative-builder",
+      "kind": "workflow",
+      "summary": "Marketing Factory. Build a channel-ready marketing creative pack from an approved launch contract, brand inputs, product evidence, and available screenshots or assets. Entrada: skills/marketing-creative-builder/SKILL.md.",
+      "path": "skills/marketing-creative-builder",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "782de1d8eb55798bf5f53697a92b91cd350df992e2700966b270d2d2942c2225"
+    },
+    {
+      "id": "n-f714d13ac470",
+      "label": "karya-commercial-router",
+      "kind": "workflow",
+      "summary": "Marketing Factory. Route an approved commercial task between Codex, Manus, and mandatory human gates while minimizing paid Manus credits. Entrada: skills/karya-commercial-router/SKILL.md.",
+      "path": "skills/karya-commercial-router",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "cf2adeb6e82ad647f54d86490e07c19c3751f3249cee6e816c9b76dc2c286d63"
+    },
+    {
+      "id": "n-62bbd72dc94a",
+      "label": "manus-commercial-operator",
+      "kind": "workflow",
+      "summary": "Marketing Factory. Execute an explicitly approved, bounded commercial action through a connected platform in Manus and return a verifiable receipt. Entrada: skills/manus-commercial-operator/SKILL.md.",
+      "path": "skills/manus-commercial-operator",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "4380da0be56f3fbf4eff837e7ed1075794fb9a6acb4de26a4762ae1e244de114"
+    },
+    {
+      "id": "n-0aee2c201db4",
+      "label": "commercial-validation-analyst",
+      "kind": "workflow",
+      "summary": "Marketing Factory. Evaluate a launch or acquisition experiment from an approved commercial contract, execution receipts, funnel metrics, costs, and qualitative feedback. Entrada: skills/commercial-validation-analyst/SKILL.md.",
+      "path": "skills/commercial-validation-analyst",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "22ab95dbd90b14dd989f102964a5b57af02d6baf3b702646eb0c7a49e275d475"
+    },
+    {
+      "id": "n-bdc35b169ea3",
+      "label": "project-harness-architect",
+      "kind": "workflow",
+      "summary": "Project Harness Factory. Audit and prepare a new or existing project to work durably with AI through sources of truth, domain-appropriate documentation, AGENTS.md, Codex context, local skills, Specs, runtime policy, thread policy, validation, evidence, and audit. Entrada: skills/project-harness-architect/SKILL.md.",
+      "path": "skills/project-harness-architect",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "39d85c083a1a3c321d0cf5c4a459ea3cfde2877ff9758e52ca71a9cae577d41d"
+    },
+    {
+      "id": "n-6058adfb0944",
+      "label": "project-spec-architect",
+      "kind": "workflow",
+      "summary": "Project Harness Factory. Design or refine an executable project change Spec with a human-readable SPEC.md and a resolved machine-readable SPEC.execution.json. Entrada: skills/project-spec-architect/SKILL.md.",
+      "path": "skills/project-spec-architect",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "ffb8689db71321f6b82558b528404adb49b99c3cf07fad6ba186cd00d5c60560"
+    },
+    {
+      "id": "n-4fcb91156983",
+      "label": "project-skill-author",
+      "kind": "workflow",
+      "summary": "Project Harness Factory. Create or update a project-local skill from a stable, specialized, recurring capability with clear triggers, context, invariants, references, workflow, and validation. Entrada: skills/project-skill-author/SKILL.md.",
+      "path": "skills/project-skill-author",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "27d24dac8e90d14955df5db954fe148cd04b557d1a565392e09be5a61e277d6a"
+    },
+    {
+      "id": "n-f9a646a700b9",
+      "label": "codex-runtime-router",
+      "kind": "workflow",
+      "summary": "Project Harness Factory. Validate and execute an already resolved Project Harness Spec through the Codex SDK using its materialized implementation runtime, derived review runtime, durable lifecycle, baseline, validation, and evidence contracts. Entrada: skills/codex-runtime-router/SKILL.md.",
+      "path": "skills/codex-runtime-router",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "1839235e9107f3baeea85a781142e9c6778d8a4357430c9b73c9809397694e01"
+    },
+    {
+      "id": "n-f05178ad3f52",
+      "label": "karya-execution-router",
+      "kind": "workflow",
+      "summary": "Project Harness Factory. Route an explicitly approved, READY, executor-neutral project implementation to OpenCode as an optional economic executor or return Codex fallback, while preserving project contracts, blocked actions, one final signal, independent validation, and Codex audit. Entrada: skills/karya-execution-router/SKILL.md. Projetos com mapa vivo usam Codex fallback antes de acessar o provedor, preservando a proteção de .codex.",
+      "path": "skills/karya-execution-router",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "cbec4755779dd1597352b5d3a435c61490afca5043f4c1b92891a8cc405ea860"
+    },
+    {
+      "id": "n-62dbc968f613",
+      "label": "project-harness-auditor",
+      "kind": "workflow",
+      "summary": "Project Harness Factory. Audit a project's durable AI operating harness by reconciling documentation, decisions, AGENTS.md, Specs, local skills, runtime policy, thread state, completion evidence, validation, and implementation reality. Entrada: skills/project-harness-auditor/SKILL.md.",
+      "path": "skills/project-harness-auditor",
+      "target": "directory",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "9d5e74c330e92441969b013d0a1c8f08bb650067b36d44c6fb92710adb30c9a9"
+    },
+    {
+      "id": "n-9fa2ccf4b917",
+      "label": "skill-map",
+      "kind": "reference",
+      "summary": "Modelo compacto de coordenação e catálogo distribuído junto da skill Karya.",
+      "path": "skills/karya/references/skill-map.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "bbd0bebbb17140dfffc9ef4f6581313b26232b8adfd4f95c0bea8b8e17028b27"
+    },
+    {
+      "id": "n-0a1dfe037fed",
+      "label": "routing-model",
+      "kind": "reference",
+      "summary": "Modelo compacto de coordenação e catálogo distribuído junto da skill Karya.",
+      "path": "skills/karya/references/routing-model.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "a37c3251f786dd05228d89f2def839ba0b5625cb352bf49a76eb436bde1b97fe"
+    },
+    {
+      "id": "n-41766bc70d47",
+      "label": "Bootstrap de novos projetos",
+      "kind": "code",
+      "summary": "Ferramenta determinística da capacidade project-harness-architect. Consulte o módulo para a fronteira de validação e efeitos.",
+      "path": "skills/project-harness-architect/scripts/bootstrap_project_harness.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "3c63bd8d051a3b807b54d1a01bba7f9ac596bd33a1f01d93adf455f9b506d5b2"
+    },
+    {
+      "id": "n-92a96f7b21dc",
+      "label": "CLI distribuída do mapa",
+      "kind": "code",
+      "summary": "Ferramenta determinística da capacidade project-harness-architect. Consulte o módulo para a fronteira de validação e efeitos.",
+      "path": "skills/project-harness-architect/scripts/project_map.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "49c4bafd70e7d020ba3a21d8403c74b133976c2c86ba823891e7523cc7e78883"
+    },
+    {
+      "id": "n-89f693f4d10d",
+      "label": "Validação e fingerprints do mapa",
+      "kind": "code",
+      "summary": "Ferramenta determinística da capacidade project-harness-architect. Consulte o módulo para a fronteira de validação e efeitos.",
+      "path": "skills/project-harness-architect/scripts/_project_map.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "d4f333e491e7d61749067ba07a34091e25f8ecd2c7fe58ff1cb79b0427c4a99f"
+    },
+    {
+      "id": "n-f1855daae7f9",
+      "label": "Validação de Specs e gate do mapa",
+      "kind": "code",
+      "summary": "Ferramenta determinística da capacidade project-spec-architect. Consulte o módulo para a fronteira de validação e efeitos.",
+      "path": "skills/project-spec-architect/scripts/_spec_core.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "0f51a72f57564f92148abbf39c2b2b95779d278d8f4026e4e65dc22d5414e9f4"
+    },
+    {
+      "id": "n-94d6935f662d",
+      "label": "Execução Codex e ciclo de revisão",
+      "kind": "code",
+      "summary": "Ferramenta determinística da capacidade codex-runtime-router. Consulte o módulo para a fronteira de validação e efeitos.",
+      "path": "skills/codex-runtime-router/scripts/route_codex_runtime.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "6e424da541b7388578a6c161cd1fc3dd2c74a5febaa9878b8040dab78d33ebc5"
+    },
+    {
+      "id": "n-e206dd689160",
+      "label": "Auditoria estrutural Harness",
+      "kind": "code",
+      "summary": "Ferramenta determinística da capacidade project-harness-auditor. Consulte o módulo para a fronteira de validação e efeitos.",
+      "path": "skills/project-harness-auditor/scripts/audit_project_harness.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "32a7b80acbcb4ced5347971bd4ba4115183a6c7d2bedb3e31ed8c3765c4c9062"
+    },
+    {
+      "id": "n-9cf485ed91f2",
+      "label": "CLI do mapa da própria Karya",
+      "kind": "code",
+      "summary": "Ferramenta determinística da capacidade project-harness-architect. Consulte o módulo para a fronteira de validação e efeitos.",
+      "path": "scripts/harness/project_map.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "49c4bafd70e7d020ba3a21d8403c74b133976c2c86ba823891e7523cc7e78883"
+    },
+    {
+      "id": "n-2d3b7b5f366b",
+      "label": "test_project_map.py",
+      "kind": "validation",
+      "summary": "Regressões locais da responsabilidade do módulo relacionado; assertions delimitam a cobertura.",
+      "path": "skills/project-harness-architect/scripts/test_project_map.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "9d885f991296206c6969300f809b4cc0089eded6e4d02ae36797901b23ce52c9"
+    },
+    {
+      "id": "n-cc1f4f8c3983",
+      "label": "test_harness_bootstrap.py",
+      "kind": "validation",
+      "summary": "Regressões locais da responsabilidade do módulo relacionado; assertions delimitam a cobertura.",
+      "path": "skills/project-harness-architect/scripts/test_harness_bootstrap.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "19e21752be325661159171a3641ae71c077e3c025cd2a0a741bdf460eea27cd2"
+    },
+    {
+      "id": "n-d12d109ca477",
+      "label": "test_spec_validator.py",
+      "kind": "validation",
+      "summary": "Regressões locais da responsabilidade do módulo relacionado; assertions delimitam a cobertura.",
+      "path": "skills/project-spec-architect/scripts/test_spec_validator.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "50888623e27f4772b8c96bef3de1951712485e982e50041dceed4dc74b4bfad6"
+    },
+    {
+      "id": "n-b5bde5da7d63",
+      "label": "test_harness_auditor.py",
+      "kind": "validation",
+      "summary": "Regressões locais da responsabilidade do módulo relacionado; assertions delimitam a cobertura.",
+      "path": "skills/project-harness-auditor/scripts/test_harness_auditor.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "914e6007e2f6c6a0fe7427fed97265b522c979f7a6f1326230478bb315f2e172"
+    },
+    {
+      "id": "n-afc0c37d7fc4",
+      "label": "Adoção do mapa em toda Karya",
+      "kind": "decision",
+      "summary": "Escopo aprovado, auditoria dos mecanismos existentes, manutenção e limites de implantação local.",
+      "path": ".codex/decisions/navigation-map-adoption.md",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "f08fcb526a0a45a2e1bbc41f94f81e5382769d5d056fbd7e0d0828ff6059a463"
+    },
+    {
+      "id": "n-33b8bb80766a",
+      "path": "opencode.json",
+      "label": "Configuração OpenCode deste repositório",
+      "kind": "runtime",
+      "summary": "Configuração restrita à própria Karya. .codex/references/repository-map.md proíbe copiá-la para projetos gerados; não confere autorização de execução.",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "37bae5233d09a54acbf39c6898cbcdb5e12956631c7c6903dfefaf539698660e"
+    },
+    {
+      "id": "n-a3046da0d15a",
+      "path": ".env.example",
+      "label": "Exemplo de ambiente da Karya",
+      "kind": "reference",
+      "summary": "Modelo de ambiente do repositório, não deve ser copiado para projetos gerados. Fonte: .codex/references/repository-map.md.",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "2f1d8caf89867da740dfd2f463fb7fcfd097cafc39a244eb6041a634a713aaab"
+    },
+    {
+      "id": "n-83dd82438028",
+      "label": "_harness_plan_core.py",
+      "kind": "code",
+      "summary": "Valida o plano aceito consumido pelo bootstrap e pela CLI de navegação.",
+      "path": "skills/project-harness-architect/scripts/_harness_plan_core.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "6a5c157bee4d22045524f461c70773f4ff2260c7e3822563b7b494396913b13b"
+    },
+    {
+      "id": "n-3babd8aa59de",
+      "label": "project-map.html",
+      "kind": "code",
+      "summary": "Template offline do mapa atômico/esférico com arraste livre, aproximação visual de relações e cores por áreas/pastas; dependências permanecem explícitas nas linhas e detalhes.",
+      "path": "skills/project-harness-architect/assets/project-map.html",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "e431148c1551d57b8ab91b5dad8ce16fb65ae75983fecdb008573890cfa8d531"
+    },
+    {
+      "id": "n-685401f53090",
+      "label": "project-map.schema.json",
+      "kind": "contract",
+      "summary": "Schema usado para validar o mapa de navegação.",
+      "path": "skills/project-harness-architect/assets/project-map.schema.json",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "02b930bb5d1bf1b7c6bc388c289abf559af9e07723b0a5e84f7777f284efc818"
+    },
+    {
+      "id": "n-7f45ef008d5a",
+      "label": "karya-icon.png",
+      "kind": "reference",
+      "summary": "Marca embutida pelo renderer no HTML offline.",
+      "path": "skills/project-harness-architect/assets/karya-icon.png",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "e79b780fcb4beb56808f8098acbbb772007e038975378d25d1d1488fae5a4134"
+    },
+    {
+      "id": "n-1027c5a09642",
+      "label": "test_project_map_view.py",
+      "kind": "validation",
+      "summary": "Exercita a lógica JavaScript real em DOM isolado, sem afirmar inspeção visual no navegador.",
+      "path": "skills/project-harness-architect/scripts/test_project_map_view.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "589b14c5941f4b23dc43850cca24d4beba8fddc268d03d1898b7a60c69ec4b7c"
+    },
+    {
+      "id": "n-612b2c1ae21c",
+      "label": "_runtime_core.py",
+      "kind": "code",
+      "summary": "Preflight, ciclo de execução e evidências usados pelo roteador e auditor.",
+      "path": "skills/codex-runtime-router/scripts/_runtime_core.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "46bd86507999ca8b4a130183d1609dc507e618e40e2520f151fb657595d4da9f"
+    },
+    {
+      "id": "n-8c5b7c74696b",
+      "label": "_structured_output_schema.py",
+      "kind": "code",
+      "summary": "Validação determinística de schemas consumida pelo Spec e pelo runtime.",
+      "path": "skills/project-spec-architect/scripts/_structured_output_schema.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "640fb64abcc0bc6ba649d5e5a7c22243f5adacb7917bc58032f1b223d9fa8e55"
+    },
+    {
+      "id": "n-66c5fe9a8404",
+      "label": "validate_project_skill.py",
+      "kind": "code",
+      "summary": "Valida skills locais; chamado pelo auditor do Harness.",
+      "path": "skills/project-skill-author/scripts/validate_project_skill.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "caa565114411a7579cec8b7b63c012cbcdc1c158d803d86b58535b2b107b177d"
+    },
+    {
+      "id": "n-7e7d168be039",
+      "label": "_project_map.py",
+      "kind": "code",
+      "summary": "Cópia local do núcleo de navegação usada pela CLI de manutenção de Karya.",
+      "path": "scripts/harness/_project_map.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "d4f333e491e7d61749067ba07a34091e25f8ecd2c7fe58ff1cb79b0427c4a99f"
+    },
+    {
+      "id": "n-145453c225aa",
+      "label": "_harness_plan_core.py",
+      "kind": "code",
+      "summary": "Validador de plano distribuído no kit local de Karya.",
+      "path": "scripts/harness/_harness_plan_core.py",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "6a5c157bee4d22045524f461c70773f4ff2260c7e3822563b7b494396913b13b"
+    },
+    {
+      "id": "n-10475e157076",
+      "label": "project-map.html",
+      "kind": "code",
+      "summary": "Template local usado ao gerar a visualização de Karya.",
+      "path": "scripts/harness/project-map.html",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "e431148c1551d57b8ab91b5dad8ce16fb65ae75983fecdb008573890cfa8d531"
+    },
+    {
+      "id": "n-4b4f40d78397",
+      "label": "project-map.schema.json",
+      "kind": "contract",
+      "summary": "Schema local utilizado pelo kit de navegação de Karya.",
+      "path": "scripts/harness/project-map.schema.json",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "02b930bb5d1bf1b7c6bc388c289abf559af9e07723b0a5e84f7777f284efc818"
+    },
+    {
+      "id": "n-318f394c9e1d",
+      "label": "karya-icon.png",
+      "kind": "reference",
+      "summary": "Marca local incorporada à visualização offline.",
+      "path": "scripts/harness/karya-icon.png",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "e79b780fcb4beb56808f8098acbbb772007e038975378d25d1d1488fae5a4134"
+    },
+    {
+      "id": "n-53adf8e4b224",
+      "label": "main.tsx",
+      "kind": "code",
+      "summary": "Entrada React que importa App e o CSS global.",
+      "path": "site/src/main.tsx",
+      "target": "file",
+      "status": "existing",
+      "authority": "supporting",
+      "fingerprint": "77aaa85d0a532963cd63d1c6171a833f73b608dd83b4085f855b279dbe922939"
+    },
+    {
+      "id": "n-e7cc0e2d667f",
+      "label": "Demonstração de navegação no site",
+      "kind": "code",
+      "summary": "Apresenta o ciclo de manutenção e abre o visualizador compartilhado em iframe sob demanda.",
+      "path": "site/src/components/ProjectNavigation.tsx",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "e06d4905645b87626d75d400358cf8069766f29ef165974ce5b2056597ed1994"
+    },
+    {
+      "id": "n-ca9be206d241",
+      "label": "Build público do mapa",
+      "kind": "code",
+      "summary": "Lê o JSON da Karya, template e marca do Harness para gerar um snapshot público com estado estático explícito.",
+      "path": "site/scripts/build-project-map.mjs",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "48bc9a5a6513c462e283292b73e1412755c855766c6c0bbc96c3f8df843ddce2"
+    },
+    {
+      "id": "n-72397ee8689c",
+      "label": "Testes da demonstração de navegação",
+      "kind": "validation",
+      "summary": "Verifica ciclo legível, abertura e fechamento sob demanda, isolamento do iframe e links.",
+      "path": "site/src/components/ProjectNavigation.test.tsx",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "995befa014a1b618c1ee964dc32fcc4d2ea304a3e86e9884d55c32e8dc31cb06"
+    },
+    {
+      "id": "n-b5c9518b3e1f",
+      "label": "Testes do snapshot público",
+      "kind": "validation",
+      "summary": "Verifica serialização segura, omissão de revisão privada, status estático e uso do template canônico.",
+      "path": "site/scripts/build-project-map.test.ts",
+      "target": "file",
+      "status": "existing",
+      "authority": "primary",
+      "fingerprint": "23dfdebff0758bbbde2e7669d84599b5066faecbae8d04d55ab17f04290128ad"
+    }
+  ],
+  "relations": [
+    {
+      "from": "v-4af079c9638f",
+      "to": "n-f1ecf3947b77",
+      "type": "references",
+      "rationale": "Validation declaration is stored in the accepted bootstrap plan; this is not proof of test coverage."
+    },
+    {
+      "from": "v-aff8d853fda4",
+      "to": "n-f1ecf3947b77",
+      "type": "references",
+      "rationale": "Validation declaration is stored in the accepted bootstrap plan; this is not proof of test coverage."
+    },
+    {
+      "from": "v-1f19c181f55f",
+      "to": "n-f1ecf3947b77",
+      "type": "references",
+      "rationale": "Validation declaration is stored in the accepted bootstrap plan; this is not proof of test coverage."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-a0a14512336f",
+      "type": "references",
+      "rationale": "docs/karya-architecture.md enumera esta Factory independente como parte de Karya; não há execução automática."
+    },
+    {
+      "from": "n-a0a14512336f",
+      "to": "n-d441e6aeb3e4",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção MVP Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-d441e6aeb3e4",
+      "to": "n-379f728f856c",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/product-brief-architect/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-a0a14512336f",
+      "to": "n-f5421d18ee15",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção MVP Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-f5421d18ee15",
+      "to": "n-8015b9aa5c35",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/karya-frontend-builder/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-a0a14512336f",
+      "to": "n-5abfd81ff4f1",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção MVP Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-5abfd81ff4f1",
+      "to": "n-72e09d1480e8",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/django-backend-service-architect/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-a0a14512336f",
+      "to": "n-4cab0b25175f",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção MVP Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-4cab0b25175f",
+      "to": "n-72e09d1480e8",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/karya-backend-router/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-a0a14512336f",
+      "to": "n-4cfb5c52ea7c",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção MVP Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-4cfb5c52ea7c",
+      "to": "n-72e09d1480e8",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/django-backend-code-executor/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-a0a14512336f",
+      "to": "n-c16e0bfaf7c3",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção MVP Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-c16e0bfaf7c3",
+      "to": "n-8bfb6605a695",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/karya-infra-orchestrator/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-7bf810db6273",
+      "type": "references",
+      "rationale": "docs/karya-architecture.md enumera esta Factory independente como parte de Karya; não há execução automática."
+    },
+    {
+      "from": "n-7bf810db6273",
+      "to": "n-3d1487a5ea43",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Research Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-3d1487a5ea43",
+      "to": "n-84475a5930bb",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/market-research-architect/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-7bf810db6273",
+      "to": "n-fa291f17e983",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Research Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-fa291f17e983",
+      "to": "n-e8a2102bdca5",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/karya-research-router/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-7bf810db6273",
+      "to": "n-26f706f7b6b1",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Research Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-26f706f7b6b1",
+      "to": "n-84475a5930bb",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/app-market-intelligence-analyst/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-7bf810db6273",
+      "to": "n-03a39ca0717c",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Research Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-03a39ca0717c",
+      "to": "n-e35b34ac0d20",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/manus-platform-researcher/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-7bf810db6273",
+      "to": "n-bf7b97e7ce4f",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Research Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-bf7b97e7ce4f",
+      "to": "n-cec43bf9a763",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/market-validation-harness/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-cf1d3f68c1ff",
+      "type": "references",
+      "rationale": "docs/karya-architecture.md enumera esta Factory independente como parte de Karya; não há execução automática."
+    },
+    {
+      "from": "n-cf1d3f68c1ff",
+      "to": "n-31afb375a840",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Marketing Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-31afb375a840",
+      "to": "n-a24b4021b634",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/commercial-launch-architect/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-cf1d3f68c1ff",
+      "to": "n-5749bea184d8",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Marketing Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-5749bea184d8",
+      "to": "n-a24b4021b634",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/marketing-creative-builder/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-cf1d3f68c1ff",
+      "to": "n-f714d13ac470",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Marketing Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-f714d13ac470",
+      "to": "n-fb6b156fbe76",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/karya-commercial-router/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-cf1d3f68c1ff",
+      "to": "n-62bbd72dc94a",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Marketing Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-62bbd72dc94a",
+      "to": "n-fb6b156fbe76",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/manus-commercial-operator/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-cf1d3f68c1ff",
+      "to": "n-0aee2c201db4",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Marketing Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-0aee2c201db4",
+      "to": "n-3c658d2d5eba",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/commercial-validation-analyst/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-ad47f38e78a7",
+      "type": "references",
+      "rationale": "docs/karya-architecture.md enumera esta Factory independente como parte de Karya; não há execução automática."
+    },
+    {
+      "from": "n-ad47f38e78a7",
+      "to": "n-bdc35b169ea3",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Project Harness Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-bdc35b169ea3",
+      "to": "n-214405677eb3",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/project-harness-architect/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-ad47f38e78a7",
+      "to": "n-6058adfb0944",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Project Harness Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-6058adfb0944",
+      "to": "n-214405677eb3",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/project-spec-architect/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-ad47f38e78a7",
+      "to": "n-4fcb91156983",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Project Harness Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-4fcb91156983",
+      "to": "n-214405677eb3",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/project-skill-author/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-ad47f38e78a7",
+      "to": "n-f9a646a700b9",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Project Harness Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-f9a646a700b9",
+      "to": "n-214405677eb3",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/codex-runtime-router/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-ad47f38e78a7",
+      "to": "n-f05178ad3f52",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Project Harness Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-f05178ad3f52",
+      "to": "n-214405677eb3",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/karya-execution-router/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-ad47f38e78a7",
+      "to": "n-62dbc968f613",
+      "type": "references",
+      "rationale": "specs/skill-catalog.md, seção Project Harness Factory, atribui esta skill à Factory. Associação não autoriza handoff."
+    },
+    {
+      "from": "n-62dbc968f613",
+      "to": "n-214405677eb3",
+      "type": "governed_by",
+      "rationale": "Contrato de responsabilidade e handoff da capacidade descrita em skills/project-harness-auditor/SKILL.md e specs/skill-catalog.md; contratos especializados internos permanecem obrigatórios."
+    },
+    {
+      "from": "n-06638b5eb96f",
+      "to": "n-a0a14512336f",
+      "type": "references",
+      "rationale": "skills/karya/references/routing-model.md oferece esta rota somente conforme objetivo e aprovação explícita."
+    },
+    {
+      "from": "n-06638b5eb96f",
+      "to": "n-7bf810db6273",
+      "type": "references",
+      "rationale": "skills/karya/references/routing-model.md oferece esta rota somente conforme objetivo e aprovação explícita."
+    },
+    {
+      "from": "n-06638b5eb96f",
+      "to": "n-cf1d3f68c1ff",
+      "type": "references",
+      "rationale": "skills/karya/references/routing-model.md oferece esta rota somente conforme objetivo e aprovação explícita."
+    },
+    {
+      "from": "n-06638b5eb96f",
+      "to": "n-ad47f38e78a7",
+      "type": "references",
+      "rationale": "skills/karya/references/routing-model.md oferece esta rota somente conforme objetivo e aprovação explícita."
+    },
+    {
+      "from": "n-06638b5eb96f",
+      "to": "n-9fa2ccf4b917",
+      "type": "references",
+      "rationale": "SKILL.md do coordenador manda consultar esta referência para recomendar a rota."
+    },
+    {
+      "from": "n-06638b5eb96f",
+      "to": "n-0a1dfe037fed",
+      "type": "references",
+      "rationale": "SKILL.md do coordenador manda consultar esta referência para recomendar a rota."
+    },
+    {
+      "from": "n-41766bc70d47",
+      "to": "n-214405677eb3",
+      "type": "implements",
+      "rationale": "Responsabilidade declarada na docstring do módulo e no contrato; não implica aprovação automática da execução."
+    },
+    {
+      "from": "n-92a96f7b21dc",
+      "to": "n-68f9051d55c5",
+      "type": "implements",
+      "rationale": "Responsabilidade declarada na docstring do módulo e no contrato; não implica aprovação automática da execução."
+    },
+    {
+      "from": "n-89f693f4d10d",
+      "to": "n-68f9051d55c5",
+      "type": "implements",
+      "rationale": "Responsabilidade declarada na docstring do módulo e no contrato; não implica aprovação automática da execução."
+    },
+    {
+      "from": "n-f1855daae7f9",
+      "to": "n-214405677eb3",
+      "type": "implements",
+      "rationale": "Responsabilidade declarada na docstring do módulo e no contrato; não implica aprovação automática da execução."
+    },
+    {
+      "from": "n-94d6935f662d",
+      "to": "n-214405677eb3",
+      "type": "implements",
+      "rationale": "Responsabilidade declarada na docstring do módulo e no contrato; não implica aprovação automática da execução."
+    },
+    {
+      "from": "n-e206dd689160",
+      "to": "n-214405677eb3",
+      "type": "implements",
+      "rationale": "Responsabilidade declarada na docstring do módulo e no contrato; não implica aprovação automática da execução."
+    },
+    {
+      "from": "n-9cf485ed91f2",
+      "to": "n-68f9051d55c5",
+      "type": "implements",
+      "rationale": "Responsabilidade declarada na docstring do módulo e no contrato; não implica aprovação automática da execução."
+    },
+    {
+      "from": "n-2d3b7b5f366b",
+      "to": "n-89f693f4d10d",
+      "type": "validates",
+      "rationale": "O teste importa ou executa este módulo e verifica seu comportamento; não prova semântica de projetos arbitrários."
+    },
+    {
+      "from": "n-cc1f4f8c3983",
+      "to": "n-41766bc70d47",
+      "type": "validates",
+      "rationale": "O teste importa ou executa este módulo e verifica seu comportamento; não prova semântica de projetos arbitrários."
+    },
+    {
+      "from": "n-d12d109ca477",
+      "to": "n-f1855daae7f9",
+      "type": "validates",
+      "rationale": "O teste importa ou executa este módulo e verifica seu comportamento; não prova semântica de projetos arbitrários."
+    },
+    {
+      "from": "n-b5bde5da7d63",
+      "to": "n-e206dd689160",
+      "type": "validates",
+      "rationale": "O teste importa ou executa este módulo e verifica seu comportamento; não prova semântica de projetos arbitrários."
+    },
+    {
+      "from": "n-761f3243317d",
+      "to": "n-c3db765145ed",
+      "type": "references",
+      "rationale": "Os dados do site apresentam as skills e Factories descritas no catálogo; verificar sincronismo ao alterá-los."
+    },
+    {
+      "from": "n-cbced11a8765",
+      "to": "n-761f3243317d",
+      "type": "depends_on",
+      "rationale": "App.tsx importa dados de ./content/karya para compor as seções."
+    },
+    {
+      "from": "n-351bd6a5da17",
+      "to": "n-761f3243317d",
+      "type": "validates",
+      "rationale": "Testes importam dados de karya.ts e verificam as invariantes declaradas."
+    },
+    {
+      "from": "n-fbae041b02c4",
+      "to": "n-32585ca60546",
+      "type": "governed_by",
+      "rationale": "As regras visuais do site seguem docs/branding.md e os tokens de site/src/styles.css."
+    },
+    {
+      "from": "n-069b0dbb39d6",
+      "to": "n-32585ca60546",
+      "type": "governed_by",
+      "rationale": "docs/branding.md identifica ativos aprovados e proíbe alterar os logos."
+    },
+    {
+      "from": "n-267452bb53d3",
+      "to": "n-35f15d66f9b3",
+      "type": "references",
+      "rationale": "Workflow executa comandos npm no diretório site."
+    },
+    {
+      "from": "n-41766bc70d47",
+      "to": "n-6058adfb0944",
+      "type": "depends_on",
+      "rationale": "Bootstrap copia schemas e templates do diretório assets da skill irmã."
+    },
+    {
+      "from": "n-e206dd689160",
+      "to": "n-89f693f4d10d",
+      "type": "depends_on",
+      "rationale": "Auditor importa check_map e load_map do módulo da skill arquiteta."
+    },
+    {
+      "from": "n-9cf485ed91f2",
+      "to": "n-92a96f7b21dc",
+      "type": "references",
+      "rationale": "Cópia instalada da CLI distribuída; conferir paridade ao atualizar o mecanismo em Karya."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-a54ff182c7e8",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-b33563055168",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-98f25c14eed9",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-c3db765145ed",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-b6c5ad248937",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-32c1cf49a2fe",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-46b42b4229cd",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-7846086ae9fc",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-fbae041b02c4",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-069b0dbb39d6",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-9c6641c1f9cf",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-c590b3c924c3",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-a1d1128ffe5a",
+      "to": "n-e980e1921077",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-a1d1128ffe5a",
+      "to": "n-4194dac67277",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-a0a14512336f",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-7bf810db6273",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-cf1d3f68c1ff",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-ad47f38e78a7",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-a1d1128ffe5a",
+      "to": "n-27b26f9ecc89",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-fe9c8ff1a869",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-a1d1128ffe5a",
+      "to": "n-6eaf23ea94a1",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-27b26f9ecc89",
+      "to": "n-f1ecf3947b77",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-27b26f9ecc89",
+      "to": "v-4af079c9638f",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-27b26f9ecc89",
+      "to": "v-aff8d853fda4",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-27b26f9ecc89",
+      "to": "v-1f19c181f55f",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-a1d1128ffe5a",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-b7bc26fc2492",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-bdcc6a2a85f6",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-1bd4219ef980",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-32585ca60546",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-eab4ddb10895",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-1dac2ca96e9f",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-0449c98243c6",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-ee83a06e5209",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-68ecdd2c4bbb",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-7c9880307525",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-816608f5658b",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-d2bb8fa727be",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-a6cd7367cb96",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-46b42b4229cd",
+      "to": "n-9e30facea473",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-a24b4021b634",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-fb6b156fbe76",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-3c658d2d5eba",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-72e09d1480e8",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-8015b9aa5c35",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-8bfb6605a695",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-84475a5930bb",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-cec43bf9a763",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-e35b34ac0d20",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-379f728f856c",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-214405677eb3",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-68f9051d55c5",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-7846086ae9fc",
+      "to": "n-e8a2102bdca5",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-a1d1128ffe5a",
+      "to": "n-1a68ebe9a79a",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-a1d1128ffe5a",
+      "to": "n-b9328eafaa3c",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-a1d1128ffe5a",
+      "to": "n-98e289a05394",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-a1d1128ffe5a",
+      "to": "n-21a956f366ad",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-a1d1128ffe5a",
+      "to": "n-fe15b7ce3ed9",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-a1d1128ffe5a",
+      "to": "n-9ad68d4d71fa",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-a1d1128ffe5a",
+      "to": "n-6358c4bed25d",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-a1d1128ffe5a",
+      "to": "n-85b78164ec90",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-9c6641c1f9cf",
+      "to": "n-56de38683445",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-9c6641c1f9cf",
+      "to": "n-ab19ac3c829a",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-9c6641c1f9cf",
+      "to": "n-f4bb4d5036f1",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-9c6641c1f9cf",
+      "to": "n-be7992e4a739",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-9c6641c1f9cf",
+      "to": "n-49e94c1e31fd",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-eca12c0a30e2",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-c693279643b8",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-fbae041b02c4",
+      "to": "n-761f3243317d",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-fbae041b02c4",
+      "to": "n-cbced11a8765",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-fbae041b02c4",
+      "to": "n-ce2de2a978bb",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-fbae041b02c4",
+      "to": "n-5db96d6f9be4",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-fbae041b02c4",
+      "to": "n-35f15d66f9b3",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-fbae041b02c4",
+      "to": "n-351bd6a5da17",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-fbae041b02c4",
+      "to": "n-a410bf6c8fa1",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-069b0dbb39d6",
+      "to": "n-02a5ea3eaa32",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-bdcc6a2a85f6",
+      "to": "n-267452bb53d3",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-06638b5eb96f",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-d441e6aeb3e4",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-f5421d18ee15",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-5abfd81ff4f1",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-4cab0b25175f",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-4cfb5c52ea7c",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-c16e0bfaf7c3",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-3d1487a5ea43",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-fa291f17e983",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-26f706f7b6b1",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-03a39ca0717c",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-bf7b97e7ce4f",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-31afb375a840",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-5749bea184d8",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-f714d13ac470",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-62bbd72dc94a",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-0aee2c201db4",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-bdc35b169ea3",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-6058adfb0944",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-4fcb91156983",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-f9a646a700b9",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-f05178ad3f52",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-32c1cf49a2fe",
+      "to": "n-62dbc968f613",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-06638b5eb96f",
+      "to": "n-9fa2ccf4b917",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-06638b5eb96f",
+      "to": "n-0a1dfe037fed",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-bdc35b169ea3",
+      "to": "n-41766bc70d47",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-bdc35b169ea3",
+      "to": "n-92a96f7b21dc",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-bdc35b169ea3",
+      "to": "n-89f693f4d10d",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-6058adfb0944",
+      "to": "n-f1855daae7f9",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-f9a646a700b9",
+      "to": "n-94d6935f662d",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-62dbc968f613",
+      "to": "n-e206dd689160",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-b7bc26fc2492",
+      "to": "n-9cf485ed91f2",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-bdc35b169ea3",
+      "to": "n-2d3b7b5f366b",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-bdc35b169ea3",
+      "to": "n-cc1f4f8c3983",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-6058adfb0944",
+      "to": "n-d12d109ca477",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-62dbc968f613",
+      "to": "n-b5bde5da7d63",
+      "type": "contains",
+      "rationale": "Contenção de caminho no diretório mapeado mais próximo; não infere dependência funcional."
+    },
+    {
+      "from": "n-27b26f9ecc89",
+      "to": "n-afc0c37d7fc4",
+      "type": "contains",
+      "rationale": "Decisão durável localizada no diretório de decisões do repositório."
+    },
+    {
+      "from": "n-b7bc26fc2492",
+      "to": "n-afc0c37d7fc4",
+      "type": "governed_by",
+      "rationale": "A decisão autoriza e delimita a adoção local do kit em toda Karya."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-33b8bb80766a",
+      "type": "contains",
+      "rationale": "Arquivo operacional localizado na raiz de Karya."
+    },
+    {
+      "from": "n-33b8bb80766a",
+      "to": "n-e980e1921077",
+      "type": "governed_by",
+      "rationale": ".codex/references/repository-map.md, seção Do Not Confuse, restringe estes arquivos ao repositório de Karya."
+    },
+    {
+      "from": "n-cdb4ee2aea69",
+      "to": "n-a3046da0d15a",
+      "type": "contains",
+      "rationale": "Arquivo operacional localizado na raiz de Karya."
+    },
+    {
+      "from": "n-a3046da0d15a",
+      "to": "n-e980e1921077",
+      "type": "governed_by",
+      "rationale": ".codex/references/repository-map.md, seção Do Not Confuse, restringe estes arquivos ao repositório de Karya."
+    },
+    {
+      "from": "n-bdc35b169ea3",
+      "to": "n-83dd82438028",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-bdc35b169ea3",
+      "to": "n-3babd8aa59de",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-bdc35b169ea3",
+      "to": "n-685401f53090",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-bdc35b169ea3",
+      "to": "n-7f45ef008d5a",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-bdc35b169ea3",
+      "to": "n-1027c5a09642",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-f9a646a700b9",
+      "to": "n-612b2c1ae21c",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-6058adfb0944",
+      "to": "n-8c5b7c74696b",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-4fcb91156983",
+      "to": "n-66c5fe9a8404",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-b7bc26fc2492",
+      "to": "n-7e7d168be039",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-b7bc26fc2492",
+      "to": "n-145453c225aa",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-b7bc26fc2492",
+      "to": "n-10475e157076",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-b7bc26fc2492",
+      "to": "n-4b4f40d78397",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-b7bc26fc2492",
+      "to": "n-318f394c9e1d",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-fbae041b02c4",
+      "to": "n-53adf8e4b224",
+      "type": "contains",
+      "rationale": "Contenção de caminho verificada no repositório; não implica dependência de funcionamento."
+    },
+    {
+      "from": "n-41766bc70d47",
+      "to": "n-92a96f7b21dc",
+      "type": "depends_on",
+      "rationale": "Importa initialize e install_kit diretamente de project_map.py."
+    },
+    {
+      "from": "n-41766bc70d47",
+      "to": "n-89f693f4d10d",
+      "type": "depends_on",
+      "rationale": "Importa MAP_PATH de _project_map.py."
+    },
+    {
+      "from": "n-41766bc70d47",
+      "to": "n-83dd82438028",
+      "type": "depends_on",
+      "rationale": "Importa load_plan e validate_harness_plan."
+    },
+    {
+      "from": "n-92a96f7b21dc",
+      "to": "n-83dd82438028",
+      "type": "depends_on",
+      "rationale": "Importa o carregador e o validador do plano para inicialização/migração."
+    },
+    {
+      "from": "n-92a96f7b21dc",
+      "to": "n-89f693f4d10d",
+      "type": "depends_on",
+      "rationale": "Importa operações de revisão, check, leitura e renderização."
+    },
+    {
+      "from": "n-94d6935f662d",
+      "to": "n-612b2c1ae21c",
+      "type": "depends_on",
+      "rationale": "Importa diretamente o preflight e as operações de ciclo/evidência de _runtime_core.py."
+    },
+    {
+      "from": "n-612b2c1ae21c",
+      "to": "n-f1855daae7f9",
+      "type": "depends_on",
+      "rationale": "Importa validate_spec_pair após resolver o diretório da skill Spec."
+    },
+    {
+      "from": "n-612b2c1ae21c",
+      "to": "n-8c5b7c74696b",
+      "type": "depends_on",
+      "rationale": "Importa normalização e validação do schema de saída."
+    },
+    {
+      "from": "n-f1855daae7f9",
+      "to": "n-8c5b7c74696b",
+      "type": "depends_on",
+      "rationale": "Importa normalização e validação de Structured Outputs."
+    },
+    {
+      "from": "n-e206dd689160",
+      "to": "n-f1855daae7f9",
+      "type": "depends_on",
+      "rationale": "Importa validate_spec_pair e validate_structural_baseline."
+    },
+    {
+      "from": "n-e206dd689160",
+      "to": "n-612b2c1ae21c",
+      "type": "depends_on",
+      "rationale": "Importa validadores de conclusão, ciclo e evidência de review."
+    },
+    {
+      "from": "n-e206dd689160",
+      "to": "n-66c5fe9a8404",
+      "type": "depends_on",
+      "rationale": "Importa validate_project_skill para auditar skills locais."
+    },
+    {
+      "from": "n-9cf485ed91f2",
+      "to": "n-7e7d168be039",
+      "type": "depends_on",
+      "rationale": "Importa o núcleo local de manutenção; não executa a cópia da skill distribuída."
+    },
+    {
+      "from": "n-9cf485ed91f2",
+      "to": "n-145453c225aa",
+      "type": "depends_on",
+      "rationale": "Importa load_plan e validate_harness_plan da cópia local."
+    },
+    {
+      "from": "n-53adf8e4b224",
+      "to": "n-cbced11a8765",
+      "type": "depends_on",
+      "rationale": "Importa App de ./App e o renderiza com createRoot."
+    },
+    {
+      "from": "n-53adf8e4b224",
+      "to": "n-5db96d6f9be4",
+      "type": "depends_on",
+      "rationale": "Importa ./styles.css na entrada React."
+    },
+    {
+      "from": "n-cbced11a8765",
+      "to": "n-ce2de2a978bb",
+      "type": "depends_on",
+      "rationale": "Importa Header, BenefitDisclosure, ProblemFlow, Section e WorkflowDiagram; carrega ArchitectureDiagram com lazy. Relação agregada à pasta, não a todo arquivo nela."
+    },
+    {
+      "from": "n-ce2de2a978bb",
+      "to": "n-761f3243317d",
+      "type": "depends_on",
+      "rationale": "Header, ProblemFlow, BenefitDisclosure, WorkflowDiagram e ArchitectureDiagram importam dados de ../content/karya. Relação agregada, não uniforme em todos os componentes."
+    },
+    {
+      "from": "n-351bd6a5da17",
+      "to": "n-761f3243317d",
+      "type": "depends_on",
+      "rationale": "O teste importa factories, routingExamples e workflowSteps do módulo de conteúdo."
+    },
+    {
+      "from": "n-1027c5a09642",
+      "to": "n-3babd8aa59de",
+      "type": "depends_on",
+      "rationale": "O teste lê e executa o JavaScript do template em VM Node com DOM isolado."
+    },
+    {
+      "from": "n-89f693f4d10d",
+      "to": "n-3babd8aa59de",
+      "type": "depends_on",
+      "rationale": "render_html lê este template para gerar o HTML. Evidência: resource(), validate_map() e render_html() em skills/project-harness-architect/scripts/_project_map.py."
+    },
+    {
+      "from": "n-89f693f4d10d",
+      "to": "n-685401f53090",
+      "type": "depends_on",
+      "rationale": "validate_map lê este schema para conferir o JSON. Evidência: resource(), validate_map() e render_html() em skills/project-harness-architect/scripts/_project_map.py."
+    },
+    {
+      "from": "n-89f693f4d10d",
+      "to": "n-7f45ef008d5a",
+      "type": "depends_on",
+      "rationale": "render_html lê a marca e a incorpora como base64. Evidência: resource(), validate_map() e render_html() em skills/project-harness-architect/scripts/_project_map.py."
+    },
+    {
+      "from": "n-7e7d168be039",
+      "to": "n-10475e157076",
+      "type": "depends_on",
+      "rationale": "render_html lê este template para gerar o HTML. Evidência: resource(), validate_map() e render_html() em scripts/harness/_project_map.py."
+    },
+    {
+      "from": "n-7e7d168be039",
+      "to": "n-4b4f40d78397",
+      "type": "depends_on",
+      "rationale": "validate_map lê este schema para conferir o JSON. Evidência: resource(), validate_map() e render_html() em scripts/harness/_project_map.py."
+    },
+    {
+      "from": "n-7e7d168be039",
+      "to": "n-318f394c9e1d",
+      "type": "depends_on",
+      "rationale": "render_html lê a marca e a incorpora como base64. Evidência: resource(), validate_map() e render_html() em scripts/harness/_project_map.py."
+    },
+    {
+      "from": "n-ce2de2a978bb",
+      "to": "n-e7cc0e2d667f",
+      "type": "contains",
+      "rationale": "Arquivo localizado nesta pasta; contenção não implica dependência funcional."
+    },
+    {
+      "from": "n-a410bf6c8fa1",
+      "to": "n-ca9be206d241",
+      "type": "contains",
+      "rationale": "Arquivo localizado nesta pasta; contenção não implica dependência funcional."
+    },
+    {
+      "from": "n-ce2de2a978bb",
+      "to": "n-72397ee8689c",
+      "type": "contains",
+      "rationale": "Arquivo localizado nesta pasta; contenção não implica dependência funcional."
+    },
+    {
+      "from": "n-a410bf6c8fa1",
+      "to": "n-b5c9518b3e1f",
+      "type": "contains",
+      "rationale": "Arquivo localizado nesta pasta; contenção não implica dependência funcional."
+    },
+    {
+      "from": "n-cbced11a8765",
+      "to": "n-e7cc0e2d667f",
+      "type": "depends_on",
+      "rationale": "App.tsx importa ProjectNavigation e o renderiza na seção navigation-map."
+    },
+    {
+      "from": "n-e7cc0e2d667f",
+      "to": "n-761f3243317d",
+      "type": "depends_on",
+      "rationale": "ProjectNavigation importa docs e projectNavigation para ciclo, consulta e URLs."
+    },
+    {
+      "from": "n-ca9be206d241",
+      "to": "n-3babd8aa59de",
+      "type": "depends_on",
+      "rationale": "buildProjectMap lê este ativo canônico para gerar o snapshot do site."
+    },
+    {
+      "from": "n-ca9be206d241",
+      "to": "n-7f45ef008d5a",
+      "type": "depends_on",
+      "rationale": "buildProjectMap lê este ativo canônico para gerar o snapshot do site."
+    },
+    {
+      "from": "n-72397ee8689c",
+      "to": "n-e7cc0e2d667f",
+      "type": "depends_on",
+      "rationale": "O teste importa diretamente o módulo sob teste."
+    },
+    {
+      "from": "n-72397ee8689c",
+      "to": "n-e7cc0e2d667f",
+      "type": "validates",
+      "rationale": "Asserções executáveis verificam os comportamentos descritos no teste; não certificam completude semântica do grafo."
+    },
+    {
+      "from": "n-b5c9518b3e1f",
+      "to": "n-ca9be206d241",
+      "type": "depends_on",
+      "rationale": "O teste importa diretamente o módulo sob teste."
+    },
+    {
+      "from": "n-b5c9518b3e1f",
+      "to": "n-ca9be206d241",
+      "type": "validates",
+      "rationale": "Asserções executáveis verificam os comportamentos descritos no teste; não certificam completude semântica do grafo."
+    }
+  ],
+  "maintenance": {
+    "reviewed_at": "2026-09-07T03:04:10.231187+00:00",
+    "review_note": "Reconciled the staged release against source contracts and direct imports/resource reads: living navigation bootstrap, maintenance gates, portable text fingerprints, preserved atomic/free-node viewer, README and website snapshot with four new site/test nodes. Source-backed areas and existing relations preserved. Python and site tests plus local browser checks passed. Pending document-context work is excluded from this release; this is executor reconciliation, not independent semantic approval.",
+    "project_fingerprint": "e240632fd557b7c58dc786c4aef7b4ea30fadb340c43541a91191c6b8c5080b8",
+    "map_fingerprint": "b27def036b8bb836dad640e38fc2b67af4c3b9053aac697471f2f26b8138f39a"
+  },
+  "navigation": {
+    "root": "n-cdb4ee2aea69",
+    "areas": [
+      {
+        "id": "coordination",
+        "label": "Coordenação Karya",
+        "rationale": "Coordenação opcional e suas referências de roteamento. O catálogo mantém a invocação direta; esta área não é uma Factory.",
+        "sources": [
+          "n-68ecdd2c4bbb",
+          "n-c3db765145ed"
+        ],
+        "members": [
+          "n-68ecdd2c4bbb",
+          "n-06638b5eb96f",
+          "n-9fa2ccf4b917",
+          "n-0a1dfe037fed"
+        ]
+      },
+      {
+        "id": "mvp",
+        "label": "MVP Factory",
+        "rationale": "Skills de produto, frontend, Django e infraestrutura; contratos e starters especializados usados no fluxo MVP.",
+        "sources": [
+          "n-a0a14512336f",
+          "n-c3db765145ed",
+          "n-816608f5658b",
+          "n-9e30facea473"
+        ],
+        "members": [
+          "n-a0a14512336f",
+          "n-7c9880307525",
+          "n-816608f5658b",
+          "n-9e30facea473",
+          "n-72e09d1480e8",
+          "n-8015b9aa5c35",
+          "n-8bfb6605a695",
+          "n-379f728f856c",
+          "n-ab19ac3c829a",
+          "n-f4bb4d5036f1",
+          "n-49e94c1e31fd",
+          "n-d441e6aeb3e4",
+          "n-f5421d18ee15",
+          "n-5abfd81ff4f1",
+          "n-4cab0b25175f",
+          "n-4cfb5c52ea7c",
+          "n-c16e0bfaf7c3"
+        ]
+      },
+      {
+        "id": "research",
+        "label": "Research Factory",
+        "rationale": "Skills, contratos, workflow e registro de adoção de pesquisa e validação de mercado.",
+        "sources": [
+          "n-7bf810db6273",
+          "n-c3db765145ed"
+        ],
+        "members": [
+          "n-7bf810db6273",
+          "n-d2bb8fa727be",
+          "n-84475a5930bb",
+          "n-cec43bf9a763",
+          "n-e35b34ac0d20",
+          "n-e8a2102bdca5",
+          "n-fe15b7ce3ed9",
+          "n-3d1487a5ea43",
+          "n-fa291f17e983",
+          "n-26f706f7b6b1",
+          "n-03a39ca0717c",
+          "n-bf7b97e7ce4f"
+        ]
+      },
+      {
+        "id": "marketing",
+        "label": "Marketing Factory",
+        "rationale": "Skills, contratos e workflow de lançamento, operação comercial e validação.",
+        "sources": [
+          "n-cf1d3f68c1ff",
+          "n-c3db765145ed"
+        ],
+        "members": [
+          "n-cf1d3f68c1ff",
+          "n-a24b4021b634",
+          "n-fb6b156fbe76",
+          "n-3c658d2d5eba",
+          "n-98e289a05394",
+          "n-31afb375a840",
+          "n-5749bea184d8",
+          "n-f714d13ac470",
+          "n-62bbd72dc94a",
+          "n-0aee2c201db4"
+        ]
+      },
+      {
+        "id": "harness",
+        "label": "Project Harness Factory",
+        "rationale": "Capacidades distribuídas de contexto, Specs, runtime, execução e auditoria; seus contratos, código e testes.",
+        "sources": [
+          "n-ad47f38e78a7",
+          "n-c3db765145ed"
+        ],
+        "members": [
+          "n-ad47f38e78a7",
+          "n-1dac2ca96e9f",
+          "n-214405677eb3",
+          "n-68f9051d55c5",
+          "n-21a956f366ad",
+          "n-bdc35b169ea3",
+          "n-6058adfb0944",
+          "n-4fcb91156983",
+          "n-f9a646a700b9",
+          "n-f05178ad3f52",
+          "n-62dbc968f613",
+          "n-41766bc70d47",
+          "n-92a96f7b21dc",
+          "n-89f693f4d10d",
+          "n-f1855daae7f9",
+          "n-94d6935f662d",
+          "n-e206dd689160",
+          "n-2d3b7b5f366b",
+          "n-cc1f4f8c3983",
+          "n-d12d109ca477",
+          "n-b5bde5da7d63",
+          "n-83dd82438028",
+          "n-3babd8aa59de",
+          "n-685401f53090",
+          "n-7f45ef008d5a",
+          "n-1027c5a09642",
+          "n-612b2c1ae21c",
+          "n-8c5b7c74696b",
+          "n-66c5fe9a8404"
+        ]
+      },
+      {
+        "id": "shared",
+        "label": "Recursos compartilhados",
+        "rationale": "Recursos transversais e suporte da própria Karya: catálogo, documentação comum, site, marca, exemplos, instalação e contexto operacional local. O kit local do mapa é adoção pela própria Karya; o kit distribuído pertence ao Harness.",
+        "sources": [
+          "n-e980e1921077",
+          "n-98f25c14eed9",
+          "n-afc0c37d7fc4"
+        ],
+        "members": [
+          "n-a54ff182c7e8",
+          "n-b33563055168",
+          "n-98f25c14eed9",
+          "n-c3db765145ed",
+          "n-b6c5ad248937",
+          "n-32c1cf49a2fe",
+          "n-46b42b4229cd",
+          "n-7846086ae9fc",
+          "n-fbae041b02c4",
+          "n-069b0dbb39d6",
+          "n-9c6641c1f9cf",
+          "n-c590b3c924c3",
+          "n-e980e1921077",
+          "n-4194dac67277",
+          "n-27b26f9ecc89",
+          "n-fe9c8ff1a869",
+          "n-6eaf23ea94a1",
+          "n-f1ecf3947b77",
+          "v-4af079c9638f",
+          "v-aff8d853fda4",
+          "v-1f19c181f55f",
+          "n-a1d1128ffe5a",
+          "n-b7bc26fc2492",
+          "n-bdcc6a2a85f6",
+          "n-32585ca60546",
+          "n-eab4ddb10895",
+          "n-0449c98243c6",
+          "n-ee83a06e5209",
+          "n-a6cd7367cb96",
+          "n-1a68ebe9a79a",
+          "n-b9328eafaa3c",
+          "n-9ad68d4d71fa",
+          "n-6358c4bed25d",
+          "n-85b78164ec90",
+          "n-56de38683445",
+          "n-be7992e4a739",
+          "n-eca12c0a30e2",
+          "n-c693279643b8",
+          "n-761f3243317d",
+          "n-cbced11a8765",
+          "n-ce2de2a978bb",
+          "n-5db96d6f9be4",
+          "n-35f15d66f9b3",
+          "n-351bd6a5da17",
+          "n-a410bf6c8fa1",
+          "n-02a5ea3eaa32",
+          "n-267452bb53d3",
+          "n-9cf485ed91f2",
+          "n-afc0c37d7fc4",
+          "n-33b8bb80766a",
+          "n-a3046da0d15a",
+          "n-1bd4219ef980",
+          "n-7e7d168be039",
+          "n-145453c225aa",
+          "n-10475e157076",
+          "n-4b4f40d78397",
+          "n-318f394c9e1d",
+          "n-53adf8e4b224",
+          "n-e7cc0e2d667f",
+          "n-ca9be206d241",
+          "n-72397ee8689c",
+          "n-b5c9518b3e1f"
+        ]
+      }
+    ]
+  }
+}

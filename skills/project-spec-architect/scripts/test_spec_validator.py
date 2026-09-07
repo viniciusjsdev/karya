@@ -6,6 +6,8 @@ import copy
 import json
 from pathlib import Path
 
+import pytest
+
 from _spec_core import load_json, validate_spec_pair
 from _structured_output_schema import validate_structured_output_schema
 
@@ -125,6 +127,48 @@ def test_valid_ready_pair_and_schema_files(tmp_path: Path) -> None:
         )
         == []
     )
+
+
+@pytest.mark.parametrize("status", ["ready", "in_progress", "implemented", "review", "changes_requested"])
+def test_adopted_project_requires_navigation_in_active_contracts(tmp_path: Path, status: str) -> None:
+    policy = load_json(Path(__file__).resolve().parent.parent / "assets/runtime-policy.json")
+    (tmp_path / ".codex/references").mkdir(parents=True)
+    (tmp_path / ".codex/references/project-map.json").write_text("{}", encoding="utf-8")
+    (tmp_path / "scripts/harness").mkdir(parents=True)
+    (tmp_path / "scripts/harness/project_map.py").write_text("# fixture", encoding="utf-8")
+    manifest = _manifest()
+    manifest["status"] = status
+    markdown = _markdown().replace("status: ready", f"status: {status}")
+    def navigation_errors():
+        return [error for error in validate_spec_pair(markdown, manifest, policy, project_root=tmp_path)
+                if "navigation" in error.lower()]
+    assert any("mandatory navigation" in error for error in navigation_errors())
+    check = {"id": "VAL-002", "kind": "test", "command": "python scripts/harness/project_map.py check --project-root .", "required": False}
+    manifest["validation"].append(check)
+    assert navigation_errors()
+    check["required"] = True
+    assert navigation_errors() == []
+    check["kind"] = "manual"
+    assert navigation_errors()
+    check["kind"] = "test"
+    check["command"] = "python scripts/harness/project_map.py review --project-root . --note bypass"
+    assert navigation_errors()
+    check["command"] = "python scripts/harness/project_map.py check --project-root ."
+    manifest["execution"]["working_directory"] = "src"
+    assert any("project root" in error for error in navigation_errors())
+
+
+def test_navigation_gate_preserves_completed_history_and_detects_deleted_map(tmp_path: Path) -> None:
+    policy = load_json(Path(__file__).resolve().parent.parent / "assets/runtime-policy.json")
+    (tmp_path / "AGENTS.md").write_text("Read .codex/references/project-map.json", encoding="utf-8")
+    manifest = _manifest()
+    manifest["status"] = "done"
+    assert not any("navigation" in error.lower() for error in validate_spec_pair(
+        _markdown().replace("status: ready", "status: done"), manifest, policy, project_root=tmp_path))
+    manifest["status"] = "ready"
+    errors = validate_spec_pair(_markdown(), manifest, policy, project_root=tmp_path)
+    assert any("map is missing" in error for error in errors)
+    assert any("maintenance tool is missing" in error for error in errors)
 
 
 def test_rejects_chat_dependency_override_drift_policy_drift_and_unsafe_command(

@@ -23,6 +23,8 @@ Karya
 
 Artifacts may move between Factories only through an explicit, approved handoff. A compatible output never means automatic invocation.
 
+The living navigation map records six source-backed areas: optional Karya coordination, the four independent Factories, and shared resources. Karya as a complete project is the root context; these areas are peers, not execution stages or concentric levels of authority. Shared resources include the public site and brand, repository-wide documentation/catalogs, installation, examples and the local operating kit used by Karya itself. The distributed Harness capabilities and their tests belong to Project Harness; applying that kit to this repository is local shared support. Area membership does not propagate automatically through directory containment. The viewer uses areas as color families, actual folder paths as related tones, and filters that preserve positions. The initial atomic/spherical composition brings connected records closer within content bands, and every node can be repositioned freely in the page session. Recorded `depends_on` direction, depth and cycles are shown in details; screen height and orbit membership do not impose a dependency hierarchy. Nodes without dependency evidence remain explicitly identified within the same map. Source-backed imports and resource reads enrich the map without turning optional Factory workflows into runtime dependencies. Content types remain a separate filter; neither area membership nor type determines an authority hierarchy.
+
 ## Karya coordination layer
 
 `$karya` is the optional conversational front door for users who do not already know which Factory or skill fits their immediate objective. It reads a compact routing model and skill map, inspects relevant project context, recommends the smallest suitable route, explains why, and waits for approval.
@@ -122,7 +124,13 @@ When execution encounters a consequential unresolved decision, it returns `needs
 - Missing research does not block an MVP; missing marketing does not block publication of a technical preview.
 - Secrets and authenticated session material stay outside the repository and generated projects.
 
+## Living project navigation
+
+New Project Harness bootstraps materialize `.codex/references/project-map.json` as the operational navigation graph, with explicit source/contract relations and a standalone maintenance tool. Project/map changes require source reconciliation and an explicit review record; new Specs include the freshness check and Harness audit verifies it. An optional offline HTML visualizes the JSON on request. Original docs and accepted bootstrap history remain authoritative in their own roles; legacy Markdown maps are preserved until explicit migration. See the [navigation map contract](../specs/project-navigation-map-contract.md).
+
 ## Repository shape
+
+Karya also consumes its own navigation mechanism: `.codex/references/project-map.json` maps the whole repository, with local maintenance tools under `scripts/harness/`. Its scope includes all four Factories and the coordinator, installable packages, source contracts, examples/starters, distribution, brand and website. The website remains a separate product surface; generating a local map view does not publish it. Adoption by this repository does not make Harness a prerequisite for another Factory.
 
 ```txt
 skills/

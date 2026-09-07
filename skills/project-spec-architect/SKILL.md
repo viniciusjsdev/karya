@@ -21,6 +21,10 @@ A Spec is `ready` only when a clean thread can execute it from `AGENTS.md`, the 
 6. Record `automatic_handoff: false`. This skill prepares the handoff; it does not start another Factory or execution thread.
 7. Run `python scripts/validate_spec.py <SPEC.md> <SPEC.execution.json> --project-root <root> --require-ready` before marking the Spec `ready`.
 
+When `.codex/references/project-map.json` exists, consult it and the affected original sources. Include `python scripts/harness/project_map.py check --project-root .` as a required validation in the new Spec/manifest. Require the executor to reconcile code/documentation/map impact and explicitly record `project_map.py review --note` before that final check; unchanged navigation still requires source-based review after code changes. A check must never trigger review automatically. Preserve historical Specs and retain ordinary source reads, tests and review authority.
+
+The validator enforces the canonical command as `kind: test`, `required: true`, with project-root execution for active Specs in adopted projects, including before SDK dispatch. A manual validation is insufficient because routers do not execute it. Completed historical Specs remain unchanged; an older active Spec resumed after adoption must add the check through its normal contract revision. Draft/design work may establish the contract before READY; the gate checks the declaration and tool presence, while execution/audit checks actual freshness.
+
 ## Lifecycle authority
 
 - `draft`, `design`, and `needs_design`: the architect may change design content.

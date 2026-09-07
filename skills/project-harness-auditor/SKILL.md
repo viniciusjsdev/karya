@@ -24,6 +24,7 @@ Then perform semantic reconciliation against actual project artifacts. Preserve 
 - Specs against implementation/artifacts and completion evidence;
 - local skills against recurring workflows and authoritative sources;
 - AGENTS routing against the actual project shape and skill inventory;
+- JSON navigation structure/freshness when present, plus independent source-to-relation reconciliation; an executor's map-review note does not prove semantic correctness. Legacy Markdown navigation remains supported until explicit migration;
 - runtime policy defaults against resolved historical execution;
 - thread IDs/purposes and context boundaries against the manifest;
 - validation claims against commands, exit codes, and evidence;

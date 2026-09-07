@@ -4,6 +4,7 @@ import { ArrowDown, ExternalLink, Github, ShieldCheck } from 'lucide-react'
 import { Header } from './components/Header'
 import { BenefitDisclosure } from './components/BenefitDisclosure'
 import { ProblemFlow } from './components/ProblemFlow'
+import { ProjectNavigation } from './components/ProjectNavigation'
 import { Section, Arrow } from './components/Section'
 import { WorkflowDiagram } from './components/WorkflowDiagram'
 import {
@@ -79,13 +80,13 @@ function App() {
             <h1 aria-label="Karya">KARYA</h1>
             <p className="hero-statement">The structure behind AI-native development.</p>
             <p className="hero-description">
-              Karya gives AI-native development durable structure through project knowledge,
-              executable Specs, reusable Skills, isolated Threads, deliberate routing, validation,
-              evidence, and audit.
+              Karya gives AI-native development durable structure through project knowledge, living
+              navigation maps, executable Specs, reusable Skills, isolated Threads, deliberate
+              routing, validation, evidence, and audit.
             </p>
             <div className="hero-actions">
-              <a className="button primary" href="#workflow">
-                Explore how Karya works <ArrowDown size={17} />
+              <a className="button primary" href="#navigation-map">
+                Explore living project navigation <ArrowDown size={17} />
               </a>
               <a className="button secondary" href={repositoryUrl} target="_blank" rel="noreferrer">
                 <Github size={17} /> View on GitHub
@@ -175,7 +176,16 @@ function App() {
         </Section>
 
         <Section
-          eyebrow="06 / Durable transformation"
+          id="navigation-map"
+          eyebrow="06 / Living navigation"
+          title="Give models a map. Keep project context within reach."
+          intro="As an application grows, relevant knowledge spreads across code, contracts, and decisions. Karya makes that context discoverable and keeps its navigation under review."
+        >
+          <ProjectNavigation />
+        </Section>
+
+        <Section
+          eyebrow="07 / Durable transformation"
           title="Knowledge, Spec, and Skill are not synonyms"
           intro="Information becomes executable through a chain of artifacts and responsibilities. Each layer has one job."
         >
@@ -195,7 +205,7 @@ function App() {
 
         <Section
           id="routing"
-          eyebrow="07 / Routing"
+          eyebrow="08 / Routing"
           title="Karya recommends. The user approves."
           intro="Routing starts from the immediate desired outcome and current artifact state. These are illustrative routing examples, not a live classifier."
         >
@@ -251,7 +261,7 @@ function App() {
 
         <Section
           id="factories"
-          eyebrow="08 / Factories"
+          eyebrow="09 / Factories"
           title="Four independent workflow families"
           intro="Every Factory is opt-in. None is a prerequisite, hidden stage, or automatic continuation of another."
         >
@@ -338,7 +348,7 @@ function App() {
         </Section>
 
         <Section
-          eyebrow="09 / Project Harness"
+          eyebrow="10 / Project Harness"
           title="A project that can survive the Thread that designed it"
           intro="Project Harness makes project knowledge, Specs, runtime, completion evidence, and review explicit—without turning chat history into durable truth."
         >
@@ -370,7 +380,7 @@ function App() {
 
         <Section
           id="evidence"
-          eyebrow="10 / Evidence and audit"
+          eyebrow="11 / Evidence and audit"
           title="Execution is not the end."
           intro="Karya keeps an important distinction visible: a task can run without its completion claim being proved."
         >
@@ -412,7 +422,7 @@ function App() {
         </Section>
 
         <Section
-          eyebrow="11 / Boundaries"
+          eyebrow="12 / Boundaries"
           title="What Karya is—and what it deliberately is not"
           intro="Clear boundaries keep coordination from becoming implicit authority."
         >
@@ -433,7 +443,7 @@ function App() {
         </Section>
 
         <Section
-          eyebrow="12 / The name"
+          eyebrow="13 / The name"
           title="The Caryatid is not decoration. She is structure."
           intro="In classical architecture, Caryatids are female figures used as structural supports. Karya uses that history as metaphor and identity—not as a literal translation or decorative Greek theme."
           className="story-section"
@@ -459,7 +469,7 @@ function App() {
 
         <Section
           id="start"
-          eyebrow="13 / Get started"
+          eyebrow="14 / Get started"
           title="Start with Karya"
           intro="You do not need to know the catalog. Use the documented optional coordinator when the route is unclear—or invoke a specialist directly when you already know it."
         >

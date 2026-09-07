@@ -6,7 +6,7 @@ An idea, empty or existing project, product, software system, research program, 
 
 ## Durable outputs
 
-- accepted harness plan and source-of-truth map;
+- accepted historical harness plan and an operational navigation map at `.codex/references/project-map.json` for new projects, with standalone maintenance tools and optional offline HTML; preserve existing JSON and legacy Markdown maps, migrating legacy projects only explicitly;
 - domain-appropriate documentation additions only where missing;
 - accurate `AGENTS.md` routing and concise `.codex/` context;
 - project-local skills only for stable specialized recurring procedures;
@@ -23,6 +23,8 @@ An idea, empty or existing project, product, software system, research program, 
 
 ## Invariants
 
+- The navigation map points to authoritative sources; it does not replace them. It distinguishes planned artifacts, active Spec path patterns, and declared validations from existing files, selected Specs and execution evidence. Preview makes no writes; repeat bootstrap preserves the map. A mismatch between declared runtime policy and bootstrap destination must be reported.
+- A JSON map is reviewed with each change's documentation impact. Deterministic checks detect map/project changes, invalid paths and relations; the executor explicitly reconciles sources before recording review. Freshness is not independent semantic approval. New Specs declare the map check as a required validation, and the auditor checks it without refreshing. See [project-navigation-map-contract.md](project-navigation-map-contract.md).
 - READY means a clean thread can execute without design-chat history.
 - Architect decides, executor implements, auditor verifies.
 - A router validates a materialized decision and does not ask another model to choose the runtime.

@@ -2,6 +2,7 @@
 .env.*
 !.env.example
 .karya/runs/
-.harness/runtime/
+# Local runs, generated views, screenshots and construction helpers are disposable.
+.harness/
 **/__pycache__/
 *.pyc

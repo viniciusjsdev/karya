@@ -120,6 +120,14 @@ def main() -> int:
         return 2
 
     project_root = Path(preflight["project_root"])
+    if (project_root / ".codex/references/project-map.json").is_file():
+        # Source edits need explicit review of protected .codex navigation state.
+        forced = request["executor"] == "opencode"
+        emit(run_dir, {**base_result,
+            "route": "opencode-unavailable" if forced else "codex-fallback-required",
+            "executor": "none" if forced else "codex",
+            "reasons": ["Living navigation requires Codex-owned source reconciliation and map review. The economic executor cannot modify protected .codex state; continue the same Spec with Codex."]})
+        return 3 if forced else 0
     readiness = inspect_opencode(request["provider"], request["model"], request["provider_kind"])
     sanitized_readiness = {
         "ready": readiness["ready"],

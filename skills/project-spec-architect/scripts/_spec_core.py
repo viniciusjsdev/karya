@@ -516,6 +516,35 @@ def _section_body(markdown: str, heading: str) -> str:
     return match.group(1).strip() if match else ""
 
 
+def validate_navigation_requirement(manifest: dict[str, Any], root: Path) -> list[str]:
+    """Require the executable map check for active contracts in adopted projects."""
+    map_path = root / ".codex/references/project-map.json"
+    agents_path = root / "AGENTS.md"
+    adopted = map_path.exists() or (
+        agents_path.is_file()
+        and ".codex/references/project-map.json" in agents_path.read_text(encoding="utf-8-sig")
+    )
+    if not adopted:
+        return []
+    errors = []
+    if not map_path.is_file():
+        errors.append("Project navigation map is missing despite AGENTS routing to it")
+    if not (root / "scripts/harness/project_map.py").is_file():
+        errors.append("Project navigation maintenance tool is missing: scripts/harness/project_map.py")
+    command = "python scripts/harness/project_map.py check --project-root ."
+    validations = manifest.get("validation")
+    matches = [item for item in (validations if isinstance(validations, list) else [])
+               if isinstance(item, dict) and isinstance(item.get("command"), str)
+               and item["command"].strip() == command and item.get("required") is True
+               and item.get("kind") == "test"]
+    if not matches:
+        errors.append(f"Active Spec requires mandatory navigation validation (kind=test): {command}")
+    working_directory = manifest.get("execution", {}).get("working_directory", ".")
+    if not isinstance(working_directory, str) or (root / working_directory).resolve() != root.resolve():
+        errors.append("Navigation validation must execute from the project root (execution.working_directory)")
+    return errors
+
+
 def validate_spec_pair(
     markdown: str,
     manifest: dict[str, Any],
@@ -544,6 +573,10 @@ def validate_spec_pair(
         errors.append("contract_version differs between Markdown and manifest")
     if require_ready and manifest.get("status") != "ready":
         errors.append("--require-ready requires status ready")
+    if project_root and (require_ready or manifest.get("status") in {
+        "ready", "in_progress", "implemented", "review", "changes_requested"
+    }):
+        errors.extend(validate_navigation_requirement(manifest, Path(project_root).resolve()))
     if manifest.get("status") in {"ready", "review"} or require_ready:
         for heading in REQUIRED_SECTIONS:
             body = _section_body(markdown, heading)

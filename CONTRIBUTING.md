@@ -21,6 +21,8 @@ The `karya` skill is the narrow coordination exception: it may recommend and app
 
 Read [AGENTS.md](AGENTS.md) before changing repository structure or Factory behavior. The complete catalog is in [specs/skill-catalog.md](specs/skill-catalog.md).
 
+This repository uses the living [Karya navigation map](.codex/references/project-map.json) across all four Factories, coordination, packages, contracts, site and brand. Before changes, run `python scripts/harness/project_map.py check --project-root .` and read the relevant original sources. Before completion, reconcile documentation and map impact, record `review --note` with the reason for updates or unchanged navigation, and run `check` again. Generate the optional offline view with `python scripts/harness/project_map.py render --project-root .`. See [the maintenance guide](skills/project-harness-architect/references/project-map.md).
+
 ## Ways to contribute
 
 ### New skill

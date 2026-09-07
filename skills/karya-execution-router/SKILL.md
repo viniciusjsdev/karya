@@ -54,6 +54,7 @@ Provider configuration and credentials belong to OpenCode's user-level stores. N
 - A critical or hard-to-reverse implementation is ineligible by default. Record and approve a narrower exception before routing it externally.
 - Shell commands are denied by default. Only exact manifest validation commands and a small read-only Git set may run.
 - Web access, subagents, questions, Git mutation, Spec changes, `.env`, `.codex`, `.agents`, `AGENTS.md`, provider configuration, credentials, and external-directory writes are blocked.
+- A project with the living JSON navigation map uses Codex fallback before any provider command: source changes require explicit map review, and the economic executor cannot write protected `.codex` state. An explicitly forced OpenCode request returns unavailable. Preserve the same Spec and required validations; do not relax protection or auto-review to allow delegation.
 - Run artifacts belong to the operating-system temporary directory. The router never intentionally writes credentials or provider configuration secrets and sanitizes common credential forms from executor evidence as defense in depth.
 
 ## Completion

@@ -37,6 +37,8 @@ A conversation, Codex thread, turn, execution/run, and subagent are distinct. De
 
 Load progressively: Spec, declared skills, declared references, then relevant repository files discovered during execution. Do not pass the full design conversation.
 
+During Spec design, narrow supporting reads by the unresolved requirement, then expand to definitions, exceptions, and relevant table/figure context. Keep all required contract reads. Give declared references usable paths and identify the sections or source locations supporting material requirements in `SPEC.md`; preserve source qualifications and expose missing evidence. A summary cannot replace a required source that the implementation thread cannot access. More reasoning may help reconcile inspected evidence, but cannot resolve an absent consequential decision or compensate for an unreadable source.
+
 Same-working-tree writes are sequential by default. Parallel writers require isolated branches/worktrees, explicit ownership, merge and conflict policy, and completion reconciliation.
 
 ## Optional economic executor

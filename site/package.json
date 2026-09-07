@@ -10,8 +10,8 @@
   },
   "scripts": {
     "sync:brand": "node scripts/sync-brand-assets.mjs",
-    "dev": "node scripts/sync-brand-assets.mjs && vite",
-    "build": "node scripts/sync-brand-assets.mjs && tsc -b && vite build",
+    "dev": "node scripts/sync-brand-assets.mjs && node scripts/build-project-map.mjs && vite",
+    "build": "node scripts/sync-brand-assets.mjs && node scripts/build-project-map.mjs && tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b --pretty false",
     "lint": "eslint . --max-warnings 0",

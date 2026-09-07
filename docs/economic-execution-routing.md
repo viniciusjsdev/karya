@@ -6,6 +6,8 @@ Karya can recommend OpenCode when a user explicitly wants to economize Codex lim
 
 OpenCode is not required to use Karya, the MVP Factory, Research Factory, Marketing Factory, or Project Harness Factory.
 
+Projects using `.codex/references/project-map.json` currently take Codex fallback before any provider command. Updating project sources requires an explicit map review, and this generic external executor is forbidden to change `.codex`. A forced OpenCode request returns unavailable. This preserves the same Spec and validations without weakening protected-state boundaries or automatically acknowledging a stale map. The Django-specific router remains a separate contract.
+
 ## Eligibility
 
 An external implementation is eligible only when:

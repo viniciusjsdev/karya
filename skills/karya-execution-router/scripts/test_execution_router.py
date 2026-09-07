@@ -283,5 +283,35 @@ def test_economic_execution_router() -> None:
     main()
 
 
+def test_living_map_returns_codex_before_any_provider_command(tmp_path: Path) -> None:
+    repository_root = Path(__file__).resolve().parents[3]
+    project = make_project(tmp_path / "mapped", repository_root)
+    before = (project / "src/value.py").read_bytes()
+    (project / ".codex/references/project-map.json").write_text("{}", encoding="utf-8")
+    (project / "scripts/harness").mkdir(parents=True)
+    (project / "scripts/harness/project_map.py").write_text("raise RuntimeError('not executed in preflight')", encoding="utf-8")
+    contract = manifest()
+    contract["validation"].append({"id": "VAL-002", "kind": "test", "required": True,
+        "command": "python scripts/harness/project_map.py check --project-root ."})
+    (project / "specs/active/SPEC-024/SPEC.execution.json").write_text(json.dumps(contract), encoding="utf-8")
+    approved = request(project)
+    approved["validation_ids"].append("VAL-002")
+    approved["confirmation"]["validation_ids"].append("VAL-002")
+    request_path = tmp_path / "mapped-request.json"
+    fake = tmp_path / "provider-must-not-run.py"
+    fake.write_text("raise RuntimeError('provider must not run')", encoding="utf-8")
+    router = Path(__file__).with_name("route_economic_execution.py")
+    for executor, expected_code, expected_route in [("auto", 0, "codex-fallback-required"), ("opencode", 3, "opencode-unavailable")]:
+        approved["executor"] = executor
+        request_path.write_text(json.dumps(approved), encoding="utf-8")
+        code, result, stderr = run_router(router, request_path, fake)
+        assert code == expected_code, result
+        assert result["route"] == expected_route, result
+        assert "Codex-owned" in result["reasons"][0]
+        assert "provider must not run" not in stderr
+        assert "readiness" not in result
+        assert (project / "src/value.py").read_bytes() == before
+
+
 if __name__ == "__main__":
     main()
