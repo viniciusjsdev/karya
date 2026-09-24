@@ -15,7 +15,7 @@ python scripts/harness/project_map.py review --project-root . --note "Reviewed c
 python scripts/harness/project_map.py check --project-root .
 ```
 
-`review` is the executor's attestation. Never schedule it or call it automatically to clear a failing check. It refuses missing existing targets and newly created targets still labeled planned. The auditor independently checks facts and relationships; fingerprints establish change detection only. Run the check after all relevant changes and include it as a required VAL command in new Specs; do not rewrite historical manifests merely to adopt this tool.
+`review` is the executor's attestation. Never schedule it or call it automatically to clear a failing check. It refuses missing existing targets and newly created targets still labeled planned. The auditor independently checks facts and relationships; fingerprints establish change detection only. Run the check after all relevant changes. If the user chose a Spec, include it as a required VAL command; do not rewrite historical manifests merely to adopt this tool.
 
 The Spec validator rejects active contracts without the canonical check declared as `kind: test`, `required: true`, or without the local tool, and requires execution from the project root. A manual declaration would not be executed by the router and is rejected. Completed historical Specs are preserved; resuming an older active Spec after adoption requires a normal contract revision adding the check. Removing JSON while AGENTS still routes to it is an error, even when legacy Markdown remains. Neither Spec design nor read-only queries automatically acknowledge current fingerprints.
 

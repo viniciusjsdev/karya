@@ -37,7 +37,7 @@ Merge relevant routing into an existing `AGENTS.md` after inspection; never over
 
 This Factory is independent and opt-in. It may consume an idea, existing project, or output from MVP, Research, or Marketing, but it never invokes those factories automatically. Product, backend, frontend, research, commercial, and infrastructure specialists keep their richer contracts and authority.
 
-Use `project-spec-architect` for bounded change Specs, `project-skill-author` for approved recurring project procedures, `codex-runtime-router` for an already resolved READY execution manifest, and `project-harness-auditor` for reconciliation. Do not implement the project with this skill.
+Suggest `project-spec-architect` when a change needs many steps or interactions across sessions. Do not create a Spec automatically for every change; the user chooses whether to use that route. Use `project-skill-author` for approved recurring project procedures, `codex-runtime-router` for an already resolved READY execution manifest, and `project-harness-auditor` for reconciliation. Do not implement the project with this skill.
 
 When the user explicitly wants an economic implementation route, map the project to `karya-execution-router` without making OpenCode part of the minimum Harness. Preserve the READY Spec and Codex fallback/review runtime, keep provider configuration and the exact execution request outside the project repository, and require a separate action-time confirmation. Use `karya-backend-router` instead when the implementation is governed by the richer Django backend contract.
 

@@ -14,7 +14,7 @@
       "target": "file",
       "status": "existing",
       "authority": "primary",
-      "fingerprint": "400a59ad0e91bce21195d05104f91a1ccbf059add3df313e9cc42a1828ce370e"
+      "fingerprint": "5a0d5870cdf0951ee2c3df1e85d9636b8a631861fac32c88d8d1b11ae63aa467"
     },
     {
       "id": "n-b33563055168",
@@ -69,7 +69,7 @@
       "target": "directory",
       "status": "existing",
       "authority": "primary",
-      "fingerprint": "bfd0b1f655c0f009deb511f6d5b68f9b3b83afdc24d133efb165108f145c04a1"
+      "fingerprint": "1845cdb9b6ec435383b841ed90ee78f77c17dd4e001a43e24045292b348273f2"
     },
     {
       "id": "n-46b42b4229cd",
@@ -80,7 +80,7 @@
       "target": "directory",
       "status": "existing",
       "authority": "primary",
-      "fingerprint": "c7ed9c241ffabd6687a10f3a07bc58a671ef03be29b58bb6f44bcaa6edbb9b83"
+      "fingerprint": "57feed0736d493a1522e979ffedebb754b6c68670ab451aa005a4ef23dd40efa"
     },
     {
       "id": "n-7846086ae9fc",
@@ -91,7 +91,7 @@
       "target": "directory",
       "status": "existing",
       "authority": "primary",
-      "fingerprint": "ad3822dbadc1d3b147f51b31776059176f33031b8e56b0c9537e1de19c6dedd5"
+      "fingerprint": "8d54c0755b46ed2fb55da8da2acbcb1371e722705cfe45f01f835e603b59f245"
     },
     {
       "id": "n-fbae041b02c4",
@@ -201,7 +201,7 @@
       "target": "file",
       "status": "existing",
       "authority": "supporting",
-      "fingerprint": "ad90d8734d61ddf719ff23904d8e55f61aadeb2f3a080411748292854039999f"
+      "fingerprint": "b597b21f5344d7ceec9efed6a7ab234aa7777a81b4f195cc2f5ac45cc3295819"
     },
     {
       "id": "n-27b26f9ecc89",
@@ -289,7 +289,7 @@
       "target": "directory",
       "status": "existing",
       "authority": "primary",
-      "fingerprint": "e240632fd557b7c58dc786c4aef7b4ea30fadb340c43541a91191c6b8c5080b8"
+      "fingerprint": "d201e3b91ade0e1eb510056b48adfde6de755926035bf1dd04f1be9ae5e1e986"
     },
     {
       "id": "n-a1d1128ffe5a",
@@ -300,7 +300,7 @@
       "target": "directory",
       "status": "existing",
       "authority": "primary",
-      "fingerprint": "286b6a99bb5e8d21586519b0e37446fce9c2456f76e9cabaf98ba3be3e939eb8"
+      "fingerprint": "e2273f7039f2fad000d759aeda91c8e063ce89d6890396eb7d03cfe2ec36d2f2"
     },
     {
       "id": "n-b7bc26fc2492",
@@ -311,7 +311,7 @@
       "target": "directory",
       "status": "existing",
       "authority": "primary",
-      "fingerprint": "58dabd3b8059d0d97d9dc64fae0bc58421ca135e525f1c16926efdf7e6f2f904"
+      "fingerprint": "77c88e5dc566ac17409e183f0c5f5b830a82d35c14b6ef483a5b39d73c872838"
     },
     {
       "id": "n-bdcc6a2a85f6",
@@ -575,7 +575,7 @@
       "target": "file",
       "status": "existing",
       "authority": "primary",
-      "fingerprint": "716d9d41a5658f8ca6e77faa37e80329c7e5a81a2118536e1412fd551a994c02"
+      "fingerprint": "0215543f4a1defd7cf02449eb7d21fdd67d7833d09c340071abcbdeffcc3cea0"
     },
     {
       "id": "n-68f9051d55c5",
@@ -641,7 +641,7 @@
       "target": "file",
       "status": "existing",
       "authority": "primary",
-      "fingerprint": "468ed1c3949340076d0614bf2937bad85b13dc464845cf63098d593d04ce73f6"
+      "fingerprint": "6b30a8934207aa351366e57ddd317bb30eadc6ae5f85f8e9aee77bb1aeb8aa52"
     },
     {
       "id": "n-fe15b7ce3ed9",
@@ -1059,7 +1059,7 @@
       "target": "directory",
       "status": "existing",
       "authority": "primary",
-      "fingerprint": "39d85c083a1a3c321d0cf5c4a459ea3cfde2877ff9758e52ca71a9cae577d41d"
+      "fingerprint": "67be3fcb31c080a6fc6be9c03c04376fb16737ffd7a789fccb29d790a7ea7e5c"
     },
     {
       "id": "n-6058adfb0944",
@@ -1158,7 +1158,7 @@
       "target": "file",
       "status": "existing",
       "authority": "primary",
-      "fingerprint": "49c4bafd70e7d020ba3a21d8403c74b133976c2c86ba823891e7523cc7e78883"
+      "fingerprint": "b522ae39b21ba8661eeda45cbb723c1596d2be4e90e4c4a71aaa5a720c37ce3c"
     },
     {
       "id": "n-89f693f4d10d",
@@ -1213,7 +1213,7 @@
       "target": "file",
       "status": "existing",
       "authority": "primary",
-      "fingerprint": "49c4bafd70e7d020ba3a21d8403c74b133976c2c86ba823891e7523cc7e78883"
+      "fingerprint": "b522ae39b21ba8661eeda45cbb723c1596d2be4e90e4c4a71aaa5a720c37ce3c"
     },
     {
       "id": "n-2d3b7b5f366b",
@@ -1235,7 +1235,7 @@
       "target": "file",
       "status": "existing",
       "authority": "primary",
-      "fingerprint": "19e21752be325661159171a3641ae71c077e3c025cd2a0a741bdf460eea27cd2"
+      "fingerprint": "c8557268ff897f016b9cf9ec68374d2684405edadaafff671811b34eff86cc52"
     },
     {
       "id": "n-d12d109ca477",
@@ -2982,10 +2982,10 @@
     }
   ],
   "maintenance": {
-    "reviewed_at": "2026-09-07T03:04:10.231187+00:00",
-    "review_note": "Reconciled the staged release against source contracts and direct imports/resource reads: living navigation bootstrap, maintenance gates, portable text fingerprints, preserved atomic/free-node viewer, README and website snapshot with four new site/test nodes. Source-backed areas and existing relations preserved. Python and site tests plus local browser checks passed. Pending document-context work is excluded from this release; this is executor reconciliation, not independent semantic approval.",
-    "project_fingerprint": "e240632fd557b7c58dc786c4aef7b4ea30fadb340c43541a91191c6b8c5080b8",
-    "map_fingerprint": "b27def036b8bb836dad640e38fc2b67af4c3b9053aac697471f2f26b8138f39a"
+    "reviewed_at": "2026-09-24T00:38:31.731922+00:00",
+    "review_note": "Reviewed optional Spec guidance, bootstrap template, workflow, contract and taxonomy for this isolated change. Map paths, responsibilities and relations remain accurate; no semantic map edit needed.",
+    "project_fingerprint": "d201e3b91ade0e1eb510056b48adfde6de755926035bf1dd04f1be9ae5e1e986",
+    "map_fingerprint": "ac568315fe71b92405d258f7532efd4ce060a2f30133bb069e119db3eb1031f3"
   },
   "navigation": {
     "root": "n-cdb4ee2aea69",

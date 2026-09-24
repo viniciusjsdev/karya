@@ -23,15 +23,15 @@ Rules:
 - Never make Research or Marketing a prerequisite, hidden stage, or blocking gate for the MVP Factory.
 - Invoke a cross-factory handoff only after explicit user request or approval; record `automatic_handoff: false` in machine-readable decisions.
 - Use `project-harness-architect` only when the user explicitly asks to bootstrap or evolve how a project works with AI; it is not a prerequisite of any other Factory.
-- Use `project-spec-architect` to create a bounded human-readable Spec plus resolved machine-readable execution manifest; READY requires clean-thread executability without design-chat history.
-- Use `project-skill-author` only for stable, specialized, recurring project procedures; keep truth in docs, decisions in ADRs, changes in Specs, and deterministic operations in scripts.
+- Suggest a Spec when a change will require many steps or interactions across sessions; create one only if the user chooses that route. Handle bounded, sufficiently defined work directly. When a Spec is chosen, use `project-spec-architect` for its human-readable contract and resolved execution manifest; READY requires clean-thread executability without design-chat history.
+- Use `project-skill-author` only for stable, specialized, recurring project procedures; keep truth in docs, decisions in ADRs, selected multi-step changes in Specs, and deterministic operations in scripts.
 - Use `codex-runtime-router` only after runtime selection is materialized; the router validates and starts/resumes the declared Codex thread without another LLM choosing the runtime.
 - Use `karya-execution-router` only as an optional economic route for a READY non-Django implementation with exact external confirmation, provider/model readiness, writable paths, mandatory prohibitions, snapshot, validations, and independent Codex review. OpenCode is never essential to Karya and Codex remains the fallback.
 - Use `project-harness-auditor` to reconcile project truth, decisions, Specs, skills, runtime, threads, validation, and completion evidence without implementing corrections.
 - Keep the project-pinned runtime policy at `.codex/references/runtime-policy.json`; do not silently validate a historical Spec against a newer Factory default.
 - Keep only recoverable Spec/thread/run state under generated-project `.harness/runtime/`, gitignored and separate from durable project truth. Keep lifecycle, completion, review, and attempt evidence durably beside the Spec. Never store secrets, transcripts, conversation history, domain knowledge, ADRs, Specs, or persistent documentation in runtime state.
 - Implement new Project Harness core scripts and deterministic tests in Python 3.12+; use the official Python Codex SDK directly for live routing. Preserve pre-existing Node mechanisms belonging to the other Factories.
-- Prefer Design Thread -> durable Spec -> independent Implementation Thread. Do not use subagents as the normal specialization mechanism.
+- For an approved Spec route, prefer Design Thread -> durable Spec -> independent Implementation Thread. Do not use subagents as the normal specialization mechanism.
 - Start from a PRD, product brief, client notes, or rough idea.
 - Use `product-brief-architect` to create an executable product contract.
 - Use `karya-frontend-builder` to implement the React frontend directly from product contracts.
@@ -57,7 +57,7 @@ Rules:
 - For project knowledge architecture, AGENTS/Codex context, local skill policy, Spec-driven execution, deterministic model/reasoning/thread routing, or harness audit, use the standalone Project Harness Factory.
 - Accept existing products and artifacts from outside Karya; no factory must have produced the input for another factory to use it.
 - Preserve producer artifacts and use optional handoff contracts instead of silently changing another factory's source of truth.
-- For a new project or one without durable AI structure, recommend Sol/high for Harness diagnosis, source/documentation/decision design, and the first Spec; recommend Terra/medium for the first resolved implementation, Luna/low for later mechanical corrections, and Sol/high for security, credentials, consequential external actions, hard-to-reverse changes, or critical review. Require an independent Harness audit after bootstrap materialization.
+- For a new project or one without durable AI structure, recommend Sol/high for Harness diagnosis and source/documentation/decision design; use it for a first Spec only when the user chooses that route. Recommend Terra/medium for the first resolved implementation, Luna/low for later mechanical corrections, and Sol/high for security, credentials, consequential external actions, hard-to-reverse changes, or critical review. Require an independent Harness audit after bootstrap materialization.
 
 ## Project Harness Factory
 
@@ -167,6 +167,6 @@ assets/       optional
 
 Use `.codex/references/project-map.json` as the current navigation index. Existing Markdown navigation remains a preserved source, not a competing generated map.
 Before changes, run `python scripts/harness/project_map.py check --project-root .`, query relevant nodes, and read their original sources and applicable contracts. A pending check calls for reconciliation, not blind refresh; source reading and required tests remain mandatory.
-Before completion, inspect changed code and docs, update affected sources, paths and explicit relations, then run `python scripts/harness/project_map.py review --project-root . --note "Explain source/map reconciliation and any unchanged-map decision"`. Run `check` again and include it in the Spec's required validation. Never run review automatically just to make a check pass.
+Before completion, inspect changed code and docs, update affected sources, paths and explicit relations, then run `python scripts/harness/project_map.py review --project-root . --note "Explain source/map reconciliation and any unchanged-map decision"`. Run `check` again. For an approved Spec, include the check in its required validation. Never run review automatically just to make a check pass.
 Use `query --project-root . --text "topic"` for bounded navigation. When the user wants to see the map, run `render --project-root .` and show `.harness/views/project-map.html`; regenerate after changes. HTML is a read-only snapshot, not an editor or source of truth.
 <!-- karya-project-map:end -->

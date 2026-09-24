@@ -4,7 +4,7 @@
 | --- | --- | --- |
 | persistent knowledge or truth | domain-appropriate docs or reference | future work must rely on it |
 | durable architectural decision | ADR or `.codex/decisions/` | alternatives and consequence matter |
-| bounded implementable change | Spec | one execution/review lifecycle |
+| many-step change when the user chooses a Spec | Spec | one execution/review lifecycle |
 | specialized recurring procedure | `.agents/skills/<name>/` | coherent capability with repeated triggers |
 | deterministic repeated operation | script | inputs and outputs can be checked mechanically |
 | one-time task | task/Spec only when needed | recurrence does not justify a skill |

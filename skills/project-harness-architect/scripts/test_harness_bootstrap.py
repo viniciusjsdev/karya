@@ -111,6 +111,8 @@ def test_bootstrap_generates_navigation_from_accepted_plan(tmp_path: Path) -> No
     assert not (project / "changes").exists()
     agents = (project / "AGENTS.md").read_text(encoding="utf-8")
     assert MAP_PATH in agents
+    assert "Suggest a Spec when a change needs many steps or interactions" in agents
+    assert "create one only if the user chooses that route" in agents
 
 
 def test_dry_run_lists_navigation_without_creating_project(tmp_path: Path) -> None:
@@ -145,6 +147,7 @@ def test_existing_navigation_is_preserved_in_preview_and_bootstrap(tmp_path: Pat
     assert ".codex/references/project-harness.md" in agents
     assert MAP_PATH not in agents
     assert "project_map.py check" not in agents
+    assert "create one only if the user chooses that route" in agents
 
 
 def test_runtime_path_mismatch_is_visible_without_materializing_alternate_policy(tmp_path: Path) -> None:

@@ -44,12 +44,14 @@ Idea or existing project
   -> project-harness-architect audit and accepted harness plan
   -> minimal AGENTS/.codex/context plus domain truth mappings
   -> project-skill-author only for recurring specialized procedures
-  -> project-spec-architect for one bounded change
-  -> clean-thread READY validation and resolved runtime
-  -> codex-runtime-router thread_start/thread_resume
-       or explicitly approved karya-execution-router/OpenCode execution
-  -> durable completion evidence or needs_design
-  -> derived independent review -> changes_requested/correction/re-review when needed
+  -> bounded, sufficiently defined work: direct execution and relevant validation
+  -> work with many steps/interactions: suggest a Spec; if the user chooses it:
+       -> project-spec-architect for one bounded change
+       -> clean-thread READY validation and resolved runtime
+       -> codex-runtime-router thread_start/thread_resume
+            or explicitly approved karya-execution-router/OpenCode execution
+       -> durable completion evidence or needs_design
+       -> derived independent review -> changes_requested/correction/re-review when needed
   -> project-harness-auditor
 ```
 

@@ -10,10 +10,10 @@ An idea, empty or existing project, product, software system, research program, 
 - domain-appropriate documentation additions only where missing;
 - accurate `AGENTS.md` routing and concise `.codex/` context;
 - project-local skills only for stable specialized recurring procedures;
-- one human-readable `SPEC.md` and machine-readable `SPEC.execution.json` per bounded change;
-- versioned runtime policy plus resolved historical runtime in each manifest;
+- optional human-readable `SPEC.md` and machine-readable `SPEC.execution.json` for a change with many steps or interactions, when the user chooses that route;
+- versioned runtime policy plus resolved historical runtime in each created manifest;
 - optional external economic execution requests outside the project repository, with exact confirmation, provider/model readiness, bounded writable paths, mandatory prohibitions, snapshot, validations, and Codex fallback;
-- durable Spec lifecycle with one implementation thread ID, one review thread ID when required, and append-only attempts;
+- for routed Specs, durable lifecycle with one implementation thread ID, one review thread ID when required, and append-only attempts;
 - recoverable operational mapping under gitignored `.harness/runtime/`;
 - structured acceptance/validation arrays with every declared ID exactly once;
 - changed-file evidence that distinguishes committed or uncommitted added, modified, and deleted files by reconciling the captured baseline HEAD plus pre-existing dirty content hashes;
@@ -24,6 +24,7 @@ An idea, empty or existing project, product, software system, research program, 
 ## Invariants
 
 - The navigation map points to authoritative sources; it does not replace them. It distinguishes planned artifacts, active Spec path patterns, and declared validations from existing files, selected Specs and execution evidence. Preview makes no writes; repeat bootstrap preserves the map. A mismatch between declared runtime policy and bootstrap destination must be reported.
+- A Spec is suggested for work with many steps or interactions across sessions and is created only when the user chooses that route. Bounded, sufficiently defined work can proceed directly without a Spec.
 - A JSON map is reviewed with each change's documentation impact. Deterministic checks detect map/project changes, invalid paths and relations; the executor explicitly reconciles sources before recording review. Freshness is not independent semantic approval. New Specs declare the map check as a required validation, and the auditor checks it without refreshing. See [project-navigation-map-contract.md](project-navigation-map-contract.md).
 - READY means a clean thread can execute without design-chat history.
 - Architect decides, executor implements, auditor verifies.
