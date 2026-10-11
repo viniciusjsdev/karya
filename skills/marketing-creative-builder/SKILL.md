@@ -22,6 +22,8 @@ Translate an approved commercial strategy into reusable, measurable creative ass
 
 Confirm channel, placement, campaign/experiment ID, audience, awareness stage, primary message, allowed proof, prohibited claims, CTA, destination, language, tone, visual assets, and approval owner. Return missing strategic decisions to `$commercial-launch-architect`.
 
+Read the approved brief and search supporting product/brand materials for the intended claims. Expand each relevant passage to its qualifications and inspect table headers, units, periods, captions, and footnotes before using numbers or visuals. Use the available reading tools; note unreadable or unchecked proof instead of inferring it from a summary. Preserve source locations in the claim/proof register for the quality check.
+
 ### 2. Create a message system
 
 Define the core promise, problem framing, proof, objection response, CTA, and 3-5 reusable message angles. Label unproven angles as hypotheses. Avoid fake urgency, fake scarcity, invented testimonials, and claims that exceed product evidence.

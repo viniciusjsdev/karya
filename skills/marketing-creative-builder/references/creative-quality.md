@@ -8,6 +8,8 @@
 ## Claims and trust
 
 - Every factual/performance claim is supported or removed.
+- The claim/proof register identifies the source path or URL and a usable section, page, table, or sheet/range when available; the proof retains applicable units, periods, qualifications, and approval scope.
+- A generated description of a chart or screenshot is labeled as interpretation and checked against the original before it supports a factual claim.
 - No invented testimonial, user count, award, urgency, scarcity, comparison, or guarantee.
 - Regulated or sensitive claims have the required approval.
 

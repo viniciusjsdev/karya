@@ -14,7 +14,7 @@ Karya is not a fifth Factory and does not replace specialist contracts.
 1. Understand the user's immediate desired outcome, not merely the project type or nouns in the prompt.
 2. Inspect the current project read-only when repository state materially affects the route. Preserve its `AGENTS.md`, documentation, contracts, code, and existing decisions as authoritative context.
 3. Read [references/routing-model.md](references/routing-model.md) to classify the request. Read [references/skill-map.md](references/skill-map.md) when selecting an entry skill, checking prerequisites, or planning internal specialist use.
-4. Recommend the smallest route that can achieve the immediate outcome. Direct execution without a Factory is a valid recommendation for bounded, well-defined work.
+4. Recommend the smallest route that can achieve the immediate outcome. Direct execution without a Factory is a valid recommendation for bounded, well-defined work. For work with many steps or interactions across sessions, suggest a Spec and create it only if the user chooses that route.
 5. Treat an explicit need to economize Codex limits or cost as a routing signal. Recommend OpenCode only as an optional implementation executor after a READY contract; never make it a Karya prerequisite or imply that installation, authentication, subscription, credit, or model access exists.
 6. Recommend the runtime profile for the immediate phase. Read the runtime section in [references/routing-model.md](references/routing-model.md), state the model, reasoning, rationale, downshift condition, and required audit. Treat this as advisory unless an approved Project Harness manifest materializes it.
 7. Explain the recommendation, named capabilities, prerequisites, alternatives when useful, and why other Factories are not currently necessary.
@@ -22,6 +22,14 @@ Karya is not a fifth Factory and does not replace specialist contracts.
 9. After approval, load and apply the named specialist skill through the environment's normal skill mechanism. Keep Karya as the user-facing coordinator; do not require the user to invoke the specialist manually.
 10. Move to another skill only when it was included in the approved scope and its prerequisites are satisfied. Propose and obtain approval for any material scope expansion or new Factory.
 11. Return one unified result with active capabilities, produced artifacts, validation, unresolved items, and optional next routes.
+
+## Document context
+
+Use the available search, reading, and format-specific tools for supplied documents. Start with the question, source map, and authoritative files; inspect relevant sections and expand to definitions, exceptions, tables, or figures needed to interpret them. Search hits select what to read; they are not evidence that the surrounding document was checked. Complete any reading required by the active contract.
+
+Keep material conclusions traceable to a source path or URL and a section, page, table, or sheet/range when available. Preserve headings, units, captions, and footnotes; distinguish extracted content from model interpretation and report unreadable or unchecked material that affects the result.
+
+Separate interpretation difficulty from retrieval difficulty. Recommend model/reasoning changes through the existing runtime policy when interpretation warrants them; a stronger model cannot supply missing evidence. Propose indexing or RAG only for a demonstrated recurring retrieval bottleneck or an explicitly requested product capability, with a bounded evaluation against direct search and reading. Document volume or format alone does not justify new infrastructure, a new skill, or a Factory handoff.
 
 ## Recommendation format
 
@@ -60,8 +68,8 @@ Do not overwhelm the user with the entire catalog. Show one primary route, the c
 
 ## Runtime recommendation
 
-- A new project, or one without durable AI structure, starts its Harness diagnosis, source mapping, documentation/decision design, and first Spec with `gpt-5.6-sol/high`.
-- After the contract and READY Spec resolve the work, recommend `gpt-5.6-terra/medium` for the first implementation. Use `gpt-5.6-terra/high` only for unusual implementation complexity while the Spec remains complete.
+- A new project, or one without durable AI structure, starts its Harness diagnosis, source mapping, and documentation/decision design with `gpt-5.6-sol/high`. Use that profile for a first Spec only if the user chooses a Spec route.
+- After a chosen contract and READY Spec resolve the work, recommend `gpt-5.6-terra/medium` for the first implementation. Use `gpt-5.6-terra/high` only for unusual implementation complexity while the Spec remains complete.
 - Recommend `gpt-5.6-luna/low` for later bounded mechanical corrections with resolved behavior and low risk.
 - Recommend `gpt-5.6-sol/high` for security, credentials, consequential external actions, hard-to-reverse changes, or critical review.
 - When cost or Codex limits matter, recommend `$karya-execution-router` only for normal or mechanical implementation with a READY Spec, exact validations, bounded writable paths, a snapshot, and independent Codex review. OpenCode is an optional executor; Codex remains the fallback.

@@ -49,12 +49,12 @@ Every Karya recommendation names a runtime for the immediate phase, even when no
 
 | Immediate phase | Recommended runtime | Downshift or escalation |
 | --- | --- | --- |
-| New project or missing AI structure: diagnose sources, documentation, decisions, and first Spec | `gpt-5.6-sol/high` | Downshift after the contract and READY Spec remove design uncertainty |
+| New project or missing AI structure: diagnose sources, documentation, and decisions; design a first Spec only if chosen | `gpt-5.6-sol/high` | Downshift after the relevant decisions or chosen READY Spec remove design uncertainty |
 | First implementation from a resolved contract/Spec | `gpt-5.6-terra/medium` | Use Terra/high only when implementation is unusually complex but design remains resolved |
 | Later bounded mechanical correction | `gpt-5.6-luna/low` | Escalate to Terra/medium when behavior or architecture is no longer mechanical |
 | Security, credentials, consequential external action, hard-to-reverse change, or critical review | `gpt-5.6-sol/high` | Do not downshift while the risk trigger remains |
 
-When Project Harness bootstrap is the route, plan `project-harness-architect` for diagnosis/materialization and a final independent `project-harness-auditor` pass in the same approved Factory scope. The first implementation is a later phase and uses a separately resolved Spec runtime, normally Terra/medium.
+When Project Harness bootstrap is the route, plan `project-harness-architect` for diagnosis/materialization and a final independent `project-harness-auditor` pass in the same approved Factory scope. Suggest a Spec for later work with many steps or interactions, but create one only if the user chooses it. A routed implementation then uses a separately resolved Spec runtime, normally Terra/medium.
 
 ## Select the earliest unmet prerequisite
 
@@ -96,7 +96,7 @@ Do not skip a prerequisite because the user asked for a later stage. Explain wha
 | Available state and objective | Entry skill |
 | --- | --- |
 | A new or existing project needs its minimum durable AI operating structure designed or evolved | `project-harness-architect` |
-| One bounded change needs a clean-thread-executable Spec and resolved runtime manifest | `project-spec-architect` |
+| The user chooses a clean-thread-executable Spec and resolved runtime manifest for a bounded change | `project-spec-architect` |
 | A stable specialized recurring project procedure deserves a project-local skill | `project-skill-author` |
 | A READY execution manifest must start or resume the exact Codex implementation/review thread | `codex-runtime-router` |
 | A READY non-Django implementation may use an explicitly approved economic OpenCode executor | `karya-execution-router` |

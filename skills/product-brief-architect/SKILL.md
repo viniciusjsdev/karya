@@ -32,6 +32,12 @@ Accept one or more of:
 
 Before writing, inspect `AGENTS.md`, existing `docs/product/`, relevant architecture documents, and current frontend/backend contracts. Preserve useful existing content and unrelated user work.
 
+## Reading supporting materials
+
+Start with the existing PRD and the questions needed to resolve product behavior. Search supporting files for relevant sections, then read enough surrounding content to check definitions, exceptions, and contradictions. Complete required contract reads; targeted search is not a substitute for them.
+
+When a requirement comes from a document, retain its path or URL and a usable locator in the existing contract's source notes. For tables and figures, inspect headings, units, captions, and footnotes with the available format tools. Label interpretation or assumptions separately from explicit source statements; report extraction gaps that affect a rule rather than guessing. A supplied rough idea does not require a separate evidence dossier or document index.
+
 ## Choose Contract Granularity
 
 Use one of two modes:

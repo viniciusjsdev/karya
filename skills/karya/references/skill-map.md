@@ -44,7 +44,7 @@ This is a compact routing index. After approval, load the selected skill's full 
 | Skill | Responsibility | Required state |
 | --- | --- | --- |
 | `project-harness-architect` | Audits and materializes the minimum durable AI operating structure | Explicit request to bootstrap or evolve how a project works with AI |
-| `project-spec-architect` | Creates one bounded `SPEC.md` and resolved `SPEC.execution.json` | A concrete change needing clean-thread execution |
+| `project-spec-architect` | Creates one bounded `SPEC.md` and resolved `SPEC.execution.json` | The user chooses a Spec route for a concrete change, typically involving many steps or interactions |
 | `project-skill-author` | Creates a project-local skill for a stable specialized recurring procedure | Durable truth exists and recurrence justifies a skill |
 | `codex-runtime-router` | Validates and starts/resumes an exact READY implementation or review thread | Resolved valid execution manifest and project-pinned runtime policy |
 | `karya-execution-router` | Routes a READY non-Django implementation to optional economic OpenCode execution or Codex fallback, then returns one evidence signal for Codex audit | Exact external confirmation, provider/model readiness, writable scope, snapshot, validations, and independent review |

@@ -124,7 +124,11 @@ When execution encounters a consequential unresolved decision, it returns `needs
 - Missing research does not block an MVP; missing marketing does not block publication of a technical preview.
 - Secrets and authenticated session material stay outside the repository and generated projects.
 
-## Living project navigation
+## Document context in existing workflows
+
+Karya uses available search, reading, and format-specific tools to inspect relevant source material progressively. Specialists preserve the context of tables and figures, attach source locations to material conclusions, and distinguish source statements from interpretation and access gaps. Required contract and audit reads still apply. Product source notes, research evidence bundles, Specs, and creative claim/proof registers carry this traceability without introducing a mandatory new artifact.
+
+Model and reasoning recommendations address interpretation difficulty through the existing runtime policy. Indexing or RAG is an optional proposal for a demonstrated recurring retrieval bottleneck or an explicitly requested product feature, evaluated against ordinary search and reading. It is not a prerequisite for using Karya or any Factory.
 
 New Project Harness bootstraps materialize `.codex/references/project-map.json` as the operational navigation graph, with explicit source/contract relations and a standalone maintenance tool. Project/map changes require source reconciliation and an explicit review record; new Specs include the freshness check and Harness audit verifies it. An optional offline HTML visualizes the JSON on request. Original docs and accepted bootstrap history remain authoritative in their own roles; legacy Markdown maps are preserved until explicit migration. See the [navigation map contract](../specs/project-navigation-map-contract.md).
 
